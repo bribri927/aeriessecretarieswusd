@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WUSD Aeries Professional Hub V2.2</title>
+<title>WUSD Aeries Professional Hub V3</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +21,10 @@ body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at
 .md ol{list-style:decimal} .md ul{list-style:disc}
 .md blockquote{border-left:5px solid #f59e0b;background:#fffbeb;color:#92400e;border-radius:.6rem;padding:.8rem 1rem;margin:1rem 0;font-weight:700}
 .badge{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em}
+.ai-hero{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(248,250,252,.92));}
+.prompt-chip{transition:all .18s ease}
+.prompt-chip:hover{transform:translateY(-1px);}
+.answer-prose pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;}
 </style>
 </head>
 <body class="min-h-screen text-slate-900">
@@ -28,25 +32,49 @@ body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at
   <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
     <div class="flex items-center gap-3">
       <div class="w-12 h-12 rounded-2xl hero text-white font-black text-2xl grid place-items-center shadow-lg">W</div>
-      <div><h1 class="text-2xl md:text-3xl font-black tracking-tight">WUSD Aeries Professional Hub <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full align-middle">V2.2</span></h1><p class="text-sm text-slate-500 font-semibold">Role-based Aeries support for Principals, Counselors, and Teachers</p></div>
+      <div><h1 class="text-2xl md:text-3xl font-black tracking-tight">WUSD Aeries Professional Hub <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full align-middle">V3</span></h1><p class="text-sm text-slate-500 font-semibold">Role-based Aeries support for Principals, Counselors, and Teachers</p></div>
     </div>
     <div class="flex gap-2 flex-wrap"><span class="badge bg-emerald-100 text-emerald-800 px-3 py-2 rounded-full">AI Assistant + Search</span><span class="badge bg-amber-100 text-amber-800 px-3 py-2 rounded-full">Training Coach</span></div>
   </div>
 </header>
 <main class="max-w-7xl mx-auto p-5 space-y-6">
 <section class="hero rounded-[2rem] p-7 md:p-10 text-white overflow-hidden relative shadow-2xl">
-  <div class="max-w-3xl relative z-10"><p class="badge bg-white/20 border border-white/30 inline-block px-3 py-1 rounded-full mb-4">Choose your role to begin</p><h2 class="text-4xl md:text-6xl font-black leading-tight">One Aeries hub. Three professional learning paths.</h2><p class="mt-4 text-blue-50 text-lg font-medium">Search guides, use quick actions, and practice real-world scenarios. Built as a polished WUSD internal support experience.</p></div>
+  <div class="max-w-3xl relative z-10"><p class="badge bg-white/20 border border-white/30 inline-block px-3 py-1 rounded-full mb-4">V3 • Smart Office Assistant First</p><h2 class="text-4xl md:text-6xl font-black leading-tight">Ask first. Learn next. Practice when ready.</h2><p class="mt-4 text-blue-50 text-lg font-medium">A polished WUSD Aeries support hub for Principals, Counselors, and Teachers with the AI-style assistant moved front and center.</p></div>
   <div class="absolute -right-12 -bottom-16 w-72 h-72 rounded-full bg-white/10"></div>
 </section>
+
+<section class="ai-hero glass border border-white/80 rounded-[2rem] p-5 md:p-7 shadow-2xl" id="assistantTop">
+  <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
+    <div class="max-w-2xl">
+      <div class="flex items-center gap-3 mb-2"><div class="h-12 w-12 rounded-2xl bg-blue-100 grid place-items-center text-2xl">🤖</div><div><p class="badge text-blue-700">District Smart Office Assistant</p><h2 class="text-3xl md:text-4xl font-black tracking-tight">Ask the Hub</h2></div></div>
+      <p class="text-slate-600 font-medium leading-relaxed">Ask any Aeries, workflow, or starter query question. The assistant checks role-specific guides and provides step-by-step help, including sample Aeries queries when available.</p>
+    </div>
+    <div class="flex gap-2 flex-wrap lg:justify-end"><span class="badge bg-blue-100 text-blue-800 px-3 py-2 rounded-full">Role-aware</span><span class="badge bg-indigo-100 text-indigo-800 px-3 py-2 rounded-full">Query Helper</span><span class="badge bg-emerald-100 text-emerald-800 px-3 py-2 rounded-full">Guide-grounded</span></div>
+  </div>
+
+  <div class="mt-5 grid lg:grid-cols-[1fr_220px] gap-4">
+    <div>
+      <textarea id="askBox" class="w-full min-h-28 rounded-3xl border border-slate-200 bg-white px-5 py-4 text-lg focus:outline-none focus:ring-4 focus:ring-blue-100 shadow-sm" placeholder="Ask a question, like: How do I create a master schedule? What query shows EL status? How do I fix gradebook N/A?"></textarea>
+      <div class="mt-3 flex flex-wrap gap-2" id="smartChips"></div>
+    </div>
+    <div class="flex flex-col gap-3">
+      <button id="askHubBtn" type="button" onclick="askAssistant()" class="h-16 lg:h-full min-h-16 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-3xl px-6 text-xl shadow-lg shadow-blue-200 transition">Ask the Hub →</button>
+      <button onclick="document.getElementById('askBox').value='';document.getElementById('answerBox').innerHTML='Ask a question above or choose a smart prompt chip.'" class="bg-white hover:bg-slate-50 border border-slate-200 text-slate-600 font-black rounded-2xl px-4 py-3 transition">Clear</button>
+    </div>
+  </div>
+  <div id="answerBox" class="answer-prose mt-5 text-sm md:text-base bg-white border border-slate-200 rounded-3xl p-5 text-slate-700 shadow-sm">Ask a question above or choose a smart prompt chip.</div>
+</section>
+
 <section class="grid md:grid-cols-3 gap-4" id="roleCards"></section>
+
 <section class="grid lg:grid-cols-[330px_1fr] gap-5">
 <aside class="space-y-5">
   <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-3">Quick Actions</h3><div id="quickActions" class="space-y-2"></div></div>
   <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">Search Guides</h3><input id="searchBox" class="w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-100" placeholder="Try: master schedule, transcript, gradebook" oninput="renderGuides()"><p class="text-xs text-slate-500 mt-3">Search is role-aware and scans titles, categories, summaries, and guide content.</p></div>
-  <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">AI Assistant</h3><textarea id="askBox" class="w-full min-h-28 rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-100" placeholder="Ask an Aeries question..."></textarea><button id="askHubBtn" type="button" onclick="askAssistant()" class="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl py-3">Ask the Hub</button><div id="answerBox" class="mt-3 text-sm bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-700">Ask a question like “How do I create a master schedule?” or “What query shows EL status?” The assistant checks guides and provides starter Aeries queries.</div></div>
+  <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">Training Coach</h3><p class="text-sm text-slate-500 mb-3">Practice realistic scenarios after reviewing the guides.</p><button onclick="showTraining()" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-black rounded-2xl px-5 py-3">Open Training Coach</button></div>
 </aside>
 <section class="space-y-5">
-  <div class="glass border border-white/70 rounded-3xl p-5"><div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3"><div><p class="badge text-blue-700">Current Role</p><h2 id="roleTitle" class="text-3xl font-black"></h2><p id="roleSubtitle" class="text-slate-500 font-medium"></p></div><button onclick="showTraining()" class="bg-amber-500 hover:bg-amber-600 text-white font-black rounded-2xl px-5 py-3">Open Training Coach</button></div></div>
+  <div class="glass border border-white/70 rounded-3xl p-5"><div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3"><div><p class="badge text-blue-700">Current Role</p><h2 id="roleTitle" class="text-3xl font-black"></h2><p id="roleSubtitle" class="text-slate-500 font-medium"></p></div><a href="#assistantTop" class="bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl px-5 py-3 text-center">Ask a Question</a></div></div>
   <div id="trainingBox" class="hidden glass border border-amber-200 rounded-3xl p-5"></div>
   <div id="guideResults" class="grid md:grid-cols-2 gap-4"></div>
   <div id="guideDetail" class="glass border border-white/70 rounded-3xl p-6 hidden"></div>
@@ -71,7 +99,7 @@ function setRole(role){currentRole=role;document.getElementById('searchBox').val
 function renderQuick(){
  document.getElementById('quickActions').innerHTML=quick[currentRole].map(q=>`<button onclick="quickAsk('${q}')" class="w-full text-left bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl px-4 py-3 font-bold text-sm transition">${q}</button>`).join('');
 }
-function quickAsk(q){document.getElementById('askBox').value=q;askAssistant();}
+function quickAsk(q){document.getElementById('askBox').value=q;document.getElementById('assistantTop').scrollIntoView({behavior:'smooth',block:'start'});askAssistant();}
 function renderGuides(){
  const q=document.getElementById('searchBox').value.toLowerCase();
  const list=guides.filter(g=>g.role===currentRole).filter(g=>!q||JSON.stringify(g).toLowerCase().includes(q));
@@ -159,7 +187,18 @@ function checkAnswer(idx,choice){
  if(choice===s.a){f.className='mt-3 rounded-xl p-3 text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200';f.innerHTML='Correct. '+s.why;}
  else{f.className='mt-3 rounded-xl p-3 text-sm font-semibold bg-amber-50 text-amber-900 border border-amber-200';f.innerHTML='Not quite. '+s.why;}
 }
-function renderAll(){renderRoles();renderQuick();document.getElementById('roleTitle').textContent=roleInfo[currentRole].title;document.getElementById('roleSubtitle').textContent=roleInfo[currentRole].subtitle;renderGuides();}
+
+const smartPrompts = {
+ Principal: ['How do I create a master schedule?', 'What query can I use for suspensions?', 'How do I monitor attendance trends?', 'How do I resolve scheduling conflicts?', 'How do I check missing grades?'],
+ Counselor: ['How do I run a transcript?', 'How do I change a student schedule?', 'What query can help with graduation credits?', 'How do I resolve a schedule conflict?', 'How do I document an intervention?'],
+ Teacher: ['How do I create a gradebook?', 'How do I backup my gradebook?', 'How do I fix N/A in gradebook?', 'What query shows EL status?', 'How do I take attendance?']
+};
+function renderSmartChips(){
+ const wrap=document.getElementById('smartChips');
+ if(!wrap) return;
+ wrap.innerHTML=smartPrompts[currentRole].map(p=>`<button class="prompt-chip bg-slate-100 hover:bg-blue-100 border border-slate-200 hover:border-blue-200 text-slate-700 hover:text-blue-900 rounded-full px-4 py-2 text-sm font-black" onclick="quickAsk('${p.replace(/'/g,"&#39;")}')">${p}</button>`).join('');
+}
+function renderAll(){renderRoles();renderQuick();renderSmartChips();document.getElementById('roleTitle').textContent=roleInfo[currentRole].title;document.getElementById('roleSubtitle').textContent=roleInfo[currentRole].subtitle;renderGuides();}
 renderAll();
 </script>
 </body>
