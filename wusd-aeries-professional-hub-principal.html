@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WUSD Aeries Professional Hub V2</title>
+<title>WUSD Aeries Professional Hub V2.2</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@ body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at
   <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
     <div class="flex items-center gap-3">
       <div class="w-12 h-12 rounded-2xl hero text-white font-black text-2xl grid place-items-center shadow-lg">W</div>
-      <div><h1 class="text-2xl md:text-3xl font-black tracking-tight">WUSD Aeries Professional Hub <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full align-middle">V2</span></h1><p class="text-sm text-slate-500 font-semibold">Role-based Aeries support for Principals, Counselors, and Teachers</p></div>
+      <div><h1 class="text-2xl md:text-3xl font-black tracking-tight">WUSD Aeries Professional Hub <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full align-middle">V2.2</span></h1><p class="text-sm text-slate-500 font-semibold">Role-based Aeries support for Principals, Counselors, and Teachers</p></div>
     </div>
     <div class="flex gap-2 flex-wrap"><span class="badge bg-emerald-100 text-emerald-800 px-3 py-2 rounded-full">AI Assistant + Search</span><span class="badge bg-amber-100 text-amber-800 px-3 py-2 rounded-full">Training Coach</span></div>
   </div>
@@ -43,7 +43,7 @@ body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at
 <aside class="space-y-5">
   <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-3">Quick Actions</h3><div id="quickActions" class="space-y-2"></div></div>
   <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">Search Guides</h3><input id="searchBox" class="w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-100" placeholder="Try: master schedule, transcript, gradebook" oninput="renderGuides()"><p class="text-xs text-slate-500 mt-3">Search is role-aware and scans titles, categories, summaries, and guide content.</p></div>
-  <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">AI Assistant</h3><textarea id="askBox" class="w-full min-h-28 rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-100" placeholder="Ask an Aeries question..."></textarea><button id="askHubBtn" type="button" onclick="askAssistant()" class="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl py-3">Ask the Hub</button><div id="answerBox" class="mt-3 text-sm bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-700">Select a role and ask a question. This local assistant uses the built-in guide library.</div></div>
+  <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">AI Assistant</h3><textarea id="askBox" class="w-full min-h-28 rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-100" placeholder="Ask an Aeries question..."></textarea><button id="askHubBtn" type="button" onclick="askAssistant()" class="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl py-3">Ask the Hub</button><div id="answerBox" class="mt-3 text-sm bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-700">Ask a question like “How do I create a master schedule?” or “What query shows EL status?” The assistant checks guides and provides starter Aeries queries.</div></div>
 </aside>
 <section class="space-y-5">
   <div class="glass border border-white/70 rounded-3xl p-5"><div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3"><div><p class="badge text-blue-700">Current Role</p><h2 id="roleTitle" class="text-3xl font-black"></h2><p id="roleSubtitle" class="text-slate-500 font-medium"></p></div><button onclick="showTraining()" class="bg-amber-500 hover:bg-amber-600 text-white font-black rounded-2xl px-5 py-3">Open Training Coach</button></div></div>
@@ -84,28 +84,64 @@ function openGuide(title){
  box.innerHTML=`<div class="flex items-start justify-between gap-3"><div><span class="badge bg-amber-100 text-amber-800 px-2 py-1 rounded-full">${g.role} • ${g.category}</span><h2 class="text-3xl font-black mt-3">${g.title}</h2><p class="text-slate-500 mt-2 font-medium">${g.summary}</p></div><button onclick="document.getElementById('guideDetail').classList.add('hidden')" class="bg-slate-100 hover:bg-slate-200 rounded-xl px-3 py-2 font-black">×</button></div><div class="md md-output mt-5">${g.content}</div>`;
  box.scrollIntoView({behavior:'smooth',block:'start'});
 }
+const queryBank = [
+ {keys:['ell','el status','language fluency','english learner'], title:'EL / Language Fluency list', query:'LIST STU ID LN FN GR LF', note:'Lists student ID, last name, first name, grade, and Language Fluency. This matches the teacher guide example for checking ELL status.'},
+ {keys:['attendance','absence','absent','tardy','period attendance'], title:'Basic attendance review', query:'LIST STU ATT STU.ID STU.LN STU.FN STU.GR ATT.DT ATT.AL ATT.PR BY STU.LN', note:'Use this as a starter. Verify the attendance table/field names in your Aeries environment before running.'},
+ {keys:['suspension','suspended','discipline','assertive discipline','iss','sus'], title:'Suspension / Assertive Discipline starter', query:'LIST STU ADS DSP STU.SC STU.ID STU.LN STU.FN STU.GR ADS.IID DSP.DS DSP.DD DSP.ED DSP.DY IF DSP.DS = SUS OR DSP.DS = ISS', note:'Use for suspension review. Add a date condition such as AND DSP.DD >= 08/01/2025 for the current school year.'},
+ {keys:['credit','credits','graduation','transcript'], title:'Credit review starter', query:'LIST STU HIS STU.ID STU.LN STU.FN STU.GR HIS.CN HIS.MK HIS.CR BY STU.LN', note:'Starter query for transcript/course history review. Counselors should confirm course history fields before using.'},
+ {keys:['gradebook','missing grades','low grades','failing','d','f'], title:'Low grade / grade reporting starter', query:'LIST STU GRD STU.ID STU.LN STU.FN STU.GR GRD.CN GRD.M1 GRD.M2 IF GRD.M1 = D OR GRD.M1 = F BY STU.LN', note:'Starter only. Grade reporting field names can vary by term and setup.'},
+ {keys:['parent','phone','contact','email','guardian'], title:'Student contact information starter', query:'LIST STU CON STU.ID STU.LN STU.FN STU.GR CON.NM CON.RL CON.EM CON.TL BY STU.LN', note:'Use to review parent/guardian contact information. Confirm local privacy expectations before exporting.'},
+ {keys:['enrollment','new students','students by grade','roster'], title:'Enrollment by grade starter', query:'LIST STU STU.SC STU.ID STU.LN STU.FN STU.GR STU.TG BY STU.GR STU.LN', note:'Useful for basic enrollment/roster review. Add school or grade conditions as needed.'}
+];
+function escapeHtml(str){return String(str).replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function findQueryHelp(query){
+ const q=query.toLowerCase();
+ return queryBank.find(item=>item.keys.some(k=>q.includes(k)));
+}
+function buildRoleIntro(){
+ if(currentRole==='Principal') return 'I will answer as a principal support coach, focusing on schoolwide setup, monitoring, compliance checks, and who needs to be looped in.';
+ if(currentRole==='Counselor') return 'I will answer as a counselor support coach, focusing on student schedules, transcripts, credits, course requests, and interventions.';
+ return 'I will answer as a teacher support coach, focusing on gradebook, attendance, communication, rosters, and classroom workflows.';
+}
+function makeStepsFromGuide(g){
+ const temp=document.createElement('div'); temp.innerHTML=g.content;
+ const items=[...temp.querySelectorAll('li')].slice(0,8).map(li=>li.textContent.trim());
+ if(items.length) return '<ol class="list-decimal pl-5 space-y-1">'+items.map(x=>`<li>${escapeHtml(x)}</li>`).join('')+'</ol>';
+ return '<p>'+escapeHtml(g.summary)+'</p>';
+}
 function askAssistant(){
  const raw=document.getElementById('askBox').value.trim();
  const query=raw.toLowerCase();
  const box=document.getElementById('answerBox');
  if(!query){box.innerHTML='<strong>Ask the Hub:</strong> Type a question first, then click the button again.';return;}
- box.innerHTML='<strong>Searching the '+currentRole+' guide library...</strong>';
+ box.innerHTML='<strong>Thinking...</strong> Checking guides and the Aeries query helper.';
+ const wantsQuery = /\b(query|sql|list stu|aeries query|report)\b/i.test(raw);
+ const queryHelp = wantsQuery ? findQueryHelp(query) : null;
  const words=query.split(/\s+/).map(w=>w.replace(/[^a-z0-9]/g,'')).filter(w=>w.length>2);
  const matches=guides.filter(g=>g.role===currentRole).map(g=>{
   const hay=(g.title+' '+g.category+' '+g.summary+' '+g.content).toLowerCase();
   let score=0;
   words.forEach(w=>{if(hay.includes(w)) score++;});
-  if(hay.includes(query)) score+=5;
+  if(hay.includes(query)) score+=6;
+  if(query.includes('master') && g.title.toLowerCase().includes('master')) score+=8;
+  if(query.includes('gradebook') && g.title.toLowerCase().includes('gradebook')) score+=8;
+  if(query.includes('transcript') && g.title.toLowerCase().includes('transcript')) score+=8;
   return {g,score};
  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
- if(matches.length===0){
-  box.innerHTML=`<strong>${currentRole} assistant:</strong> I do not have a direct guide match for <strong>${raw}</strong> yet. Try the Search Guides box, or add this as a future guide topic.`;
-  box.scrollIntoView({behavior:'smooth',block:'nearest'});
-  return;
+ let html=`<div class="space-y-3"><p><strong>${currentRole} Assistant:</strong> ${buildRoleIntro()}</p>`;
+ if(queryHelp){
+  html+=`<div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-3"><p class="font-black text-indigo-900">Suggested Aeries Query: ${escapeHtml(queryHelp.title)}</p><pre class="whitespace-pre-wrap bg-white border border-indigo-100 rounded-xl p-3 mt-2 text-xs overflow-auto"><code>${escapeHtml(queryHelp.query)}</code></pre><p class="text-xs text-indigo-900 mt-2"><strong>Note:</strong> ${escapeHtml(queryHelp.note)}</p></div>`;
  }
- const top=matches[0].g;
- const safeTitle=top.title.replace(/'/g,"&#39;");
- box.innerHTML=`<strong>${currentRole} assistant:</strong> I found a guide for <strong>${raw}</strong>.<br><br><button class="text-blue-700 font-black underline" onclick="openGuide('${safeTitle}')">Open: ${top.title}</button><br><br>${top.summary}<br><br><strong>Related:</strong> ${matches.map(m=>m.g.title).join(', ')}.`;
+ if(matches.length){
+  const top=matches[0].g;
+  const safeTitle=top.title.replace(/'/g,"&#39;");
+  html+=`<div class="bg-white border border-slate-200 rounded-2xl p-3"><p><strong>Best matching guide:</strong> <button class="text-blue-700 font-black underline" onclick="openGuide('${safeTitle}')">${escapeHtml(top.title)}</button></p><p class="mt-2">${escapeHtml(top.summary)}</p><div class="mt-3"><strong>Suggested steps:</strong>${makeStepsFromGuide(top)}</div></div>`;
+  if(matches.length>1){ html+=`<p class="text-xs text-slate-500"><strong>Related guides:</strong> ${matches.slice(1).map(m=>escapeHtml(m.g.title)).join(', ')}</p>`; }
+ } else if(!queryHelp){
+  html+=`<div class="bg-amber-50 border border-amber-200 rounded-2xl p-3"><p><strong>I do not have a direct guide match yet.</strong></p><p class="mt-2">Try asking with words like master schedule, transcript, schedule change, gradebook, attendance, suspension, EL status, or Aeries query. This would also be a good future guide topic.</p></div>`;
+ }
+ html+=`<div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 text-xs text-slate-600"><strong>Reminder:</strong> This hub can provide guidance and starter queries, but staff should confirm sensitive processes, exports, discipline, attendance, and student data decisions with WUSD procedures and the appropriate department.</div></div>`;
+ box.innerHTML=html;
  box.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
