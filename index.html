@@ -518,22 +518,22 @@
       },
       {
         id: "portal-001",
-        title: "Parent Portal and Verification Support",
+        title: "Parent Portal Account Support",
         category: "Parent Communication",
         roles: ["Secretary", "Admin Assistant"],
-        keywords: ["parent portal", "portal", "account", "password", "login", "verification code", "vpc", "email", "parent access"],
-        content: "How to generate a Parent Portal account invitation, retrieve or update parents' emails, and generate Aeries Verification Codes (VPCs).",
+        keywords: ["parent portal", "portal", "account", "password", "login", "email", "parent access", "forgot password", "troubleshoot"],
+        content: "WUSD does not use validation passcodes for portal logins. Parents create and recover their own accounts using the Forgot Password function on the Aeries Parent Portal login page.",
         aeriesSteps: [
-          "Navigate to <strong>Student Data > Demographics</strong> screen.",
-          "Click the <strong>Parent Portal Account Status</strong> icon.",
-          "Verify the parent's identity against the contact list (CON table) and check for any custody flags or no-contact orders.",
-          "If verified, find the <strong>Verification Code (VPC)</strong> or click <strong>Reset Password / Send Invitation Email</strong>.",
-          "Instruct the parent to enter the VPC, Student ID, and Primary Telephone number to establish their profile."
+          "<strong>For parents setting up a new account:</strong> Direct them to the Aeries Parent Portal login page and instruct them to click <strong>Forgot Password</strong> to create their login.",
+          "The parent will need access to the email address on file in Aeries. If their email is incorrect or missing, update it first in <strong>Student Data > Demographics > Contacts (CON)</strong>.",
+          "For step-by-step parent instructions, share the WUSD Parent &amp; Student Portal Accounts guide: <strong>https://docs.google.com/document/d/1LoHxxJK0hzXMMI1M7qnaWQSxdP7nJUJKpKFOhxT5xB8/edit</strong>",
+          "<strong>For parents having trouble:</strong> Use the WUSD Diagnosing &amp; Troubleshooting Parent Portal Accounts guide: <strong>https://docs.google.com/document/d/1FuVgDvqB7zr-Mk-jgfZsA1CTaLQbQhrzVi8jIz2HP-Y/edit</strong>",
+          "Verify the parent's identity and check for any custody flags or no-contact orders in the CON table before updating any contact information."
         ],
-        wusdProcess: "Never release a Student Verification Code (VPC) over the phone. You must verify parent ID in person or verify the exact matching primary email registered in the system prior to sending account reset tools.",
-        forms: ["Aeries Parent Portal Quick Start Guide", "Parent Portal Account Release Authorization Form"],
-        legalCompliance: "FERPA mandates that educational records (including online portal views) are strictly secured. Releasing verification codes to unauthorized adults is a severe breach of student privacy.",
-        lastUpdated: "2026-02-15"
+        wusdProcess: "WUSD no longer uses validation passcodes for portal logins. Parents are responsible for creating their own accounts via Forgot Password. The office role is to ensure the correct parent email is on file in Aeries and to direct parents to the WUSD support guides. Never update a parent email address without verifying the requestor's identity in person.",
+        forms: ["WUSD Parent & Student Portal Accounts Guide", "WUSD Diagnosing & Troubleshooting Parent Portal Accounts Guide"],
+        legalCompliance: "FERPA mandates that educational records (including online portal views) are strictly secured. Only update contact information for verified, authorized parents or guardians. Check custody orders and no-contact flags before making any contact record changes.",
+        lastUpdated: "2026-05-28"
       },
 
       // ── NEW ENTRIES ──────────────────────────────────────────────
@@ -1482,7 +1482,7 @@
           "Parent Data Confirmation income survey responses: <code>LIST STU FRE STU.SC STU.ID STU.NM FRE.CD FRE.SRC FRE.ESD FRE.EED FRE.PIR FRE.PDT FRE.MO IF FRE.SRC = PDC</code>",
           "Military family pending records from Data Confirmation: <code>LIST STU ICL PRS STU.SC STU.ID STU.NM STU.GR PRS.DT PRS.TY PRS.CD PRS.ST PRS.UN PRS.ID STU.LD STU.TG BY ICL.SC IF PRS.TY = 2 AND PRS.ST = P AND PRS.DT > 07/01/2022 AND ICL.TC = 'FinalDataConf' AND ICL.DT > 7/1/2022</code>"
         ],
-        wusdProcess: "Use the portal activity query to verify that parents have logged in after being issued VPC codes. Use the email query to confirm specific emails were sent and received. Authorization records are critical for custody and FERPA compliance audits. Never share portal access logs externally without administrator authorization.",
+        wusdProcess: "Use the portal activity query to verify that parents have logged in after being set up with portal access. Use the email query to confirm specific emails were sent and received. Authorization records are critical for custody and FERPA compliance audits. Never share portal access logs externally without administrator authorization.",
         forms: ["Parent Portal Quick Start Guide", "Parent Portal Account Release Authorization Form", "Annual Data Confirmation Instructions"],
         legalCompliance: "FERPA protects portal access logs and authorization records. PWA login data may only be accessed by authorized staff for legitimate educational purposes. Email logs should be retained per district records retention policy.",
         lastUpdated: "2026-05-28"
