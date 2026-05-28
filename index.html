@@ -1080,10 +1080,10 @@
         aeriesSteps: [
           "Navigate to <strong>Query</strong> in Aeries Web.",
           "Enter the following query, replacing 20##-20## with the current school year (e.g. 2025-2026):",
-          "<code>LIST STU AHS STU.ID STU.GR STU.NM AHS.EN AHS.AB AHS.PR (( LEFT ( (( 100 * AHS.PR / AHS.EN )) , 5 ) + "%" )) AHS.YR IF AHS.YR = "2025-2026" AND AHS.EN > 0</code>",
+          "<code>LIST STU AHS STU.ID STU.GR STU.NM AHS.EN AHS.AB AHS.PR (( LEFT ( (( 100 * AHS.PR / AHS.EN )) , 5 ) + '%' )) AHS.YR IF AHS.YR = '2025-2026' AND AHS.EN > 0</code>",
           "Click <strong>Excel</strong> to export results for further analysis or reporting.",
           "To sort by lowest attendance, click the percentage column header in the results.",
-          "<strong>Flex version (elementary):</strong> <code>LIST STU AHS STU.ID STU.SC STU.NM STU.CU AHS.SP AHS.EN AHS.AB AHS.PR (( 1.0 * AHS.PR/AHS.EN * 100 )) BY AHS.SCL IF AHS.EN # 0 AND AHS.YR = "2025-2026" AND AHS.SCL = STU.SC AND LOC.U = 0</code>"
+          "<strong>Flex version (elementary):</strong> <code>LIST STU AHS STU.ID STU.SC STU.NM STU.CU AHS.SP AHS.EN AHS.AB AHS.PR (( 1.0 * AHS.PR/AHS.EN * 100 )) BY AHS.SCL IF AHS.EN # 0 AND AHS.YR = '2025-2026' AND AHS.SCL = STU.SC AND LOC.U = 0</code>"
         ],
         wusdProcess: "Run this report monthly to identify chronically absent students (missing 10% or more of school days). Export to Excel and share with site principals. Ensure Attendance History Configuration is run nightly for accurate data — check with your Aeries administrator if data appears stale.",
         forms: ["Chronic Absence Monitoring Log", "Parent Attendance Notification Letter"],
@@ -1100,7 +1100,7 @@
         aeriesSteps: [
           "Navigate to <strong>Query</strong> in Aeries Web.",
           "Enter the following query, replacing the ## date placeholders with your date range:",
-          "<code>LIST STU ATT STU.ID STU.NM STU.GR ATT.AL ATT.DT BY ATT.AL IF ATT.AL # " " AND ATT.DT > ##/##/20## AND ATT.DT < ##/##/20##</code>",
+          "<code>LIST STU ATT STU.ID STU.NM STU.GR ATT.AL ATT.DT BY ATT.AL IF ATT.AL # ' ' AND ATT.DT > ##/##/20## AND ATT.DT < ##/##/20##</code>",
           "Results are sorted by absence code (ATT.AL), making it easy to see all unexcused absences together.",
           "Click <strong>Excel</strong> to export for a parent notification mail merge."
         ],
@@ -1119,7 +1119,7 @@
         aeriesSteps: [
           "Navigate to <strong>Query</strong> in Aeries Web.",
           "Enter the following query, replacing # in STU.GR = # with the grade level (or remove that condition for all grades):",
-          "<code>LIST STU ATT STU.ID STU.NM STU.SP STU.GR ATT.DY ATT.AL BY STU.SP ATT.DY ATT.AL IF ATT.DY < 21 AND ATT.AL # " " AND STU.GR = #</code>",
+          "<code>LIST STU ATT STU.ID STU.NM STU.SP STU.GR ATT.DY ATT.AL BY STU.SP ATT.DY ATT.AL IF ATT.DY < 21 AND ATT.AL # ' ' AND STU.GR = #</code>",
           "Remove the <code>AND STU.GR = #</code> condition to pull all grade levels at once.",
           "Cross-reference this list with teacher rosters to confirm all absences are accurately coded."
         ],
@@ -1194,8 +1194,8 @@
         content: "Lists all students with medications on file in Aeries along with their start dates and expiration dates. Critical for identifying expired medications that need renewal before the school year.",
         aeriesSteps: [
           "Navigate to <strong>Query</strong> in Aeries Web.",
-          "To list by grade level: <code>LIST STU MLM STU.LN STU.FN STU.GR MLM.CD MLM.SD MLM.EX MLM.CO BY STU.GR IF MLM.CD > " "</code>",
-          "To list by expiration date (most useful for catching expired meds): <code>LIST STU MLM STU.LN STU.FN STU.GR MLM.CD MLM.SD MLM.EX MLM.CO BY MLM.EX IF MLM.CD > " "</code>",
+          "To list by grade level: <code>LIST STU MLM STU.LN STU.FN STU.GR MLM.CD MLM.SD MLM.EX MLM.CO BY STU.GR IF MLM.CD > ' '</code>",
+          "To list by expiration date (most useful for catching expired meds): <code>LIST STU MLM STU.LN STU.FN STU.GR MLM.CD MLM.SD MLM.EX MLM.CO BY MLM.EX IF MLM.CD > ' '</code>",
           "Review the MLM.EX (expiration) column — any date in the past requires immediate parent and physician follow-up.",
           "Contact families with expired medications to obtain updated physician authorization before the student returns."
         ],
@@ -1213,10 +1213,10 @@
         content: "Queries to pull vision, hearing, and scoliosis screening results including pass/fail status, referrals, and follow-up data. Use for state-mandated screening tracking and parent notification.",
         aeriesSteps: [
           "Students who failed hearing screening after a specific date: <code>LIST STU HRN STU.ID STU.NM HRN.TD HRN.SCN HRN.PF STU.GR BY STU.GR IF HRN.PF = F AND HRN.TD > ##/##/20##</code>",
-          "Students with hearing or vision follow-up data by teacher: <code>LIST STU HRN VSN TCH STU.ID STU.NM STU.GR HRN.FO VSN.FO TCH.TE BY TCH.TE IF VSN.FO # " " OR HRN.FO # " "</code>",
-          "Scoliosis referrals (7th grade girls / 8th grade boys): <code>LIST STU SCO STU.ID STU.NM SCO.TD SCO.SCN SCO.DR SCO.CO IF SCO.DR = "R"</code>",
+          "Students with hearing or vision follow-up data by teacher: <code>LIST STU HRN VSN TCH STU.ID STU.NM STU.GR HRN.FO VSN.FO TCH.TE BY TCH.TE IF VSN.FO # ' ' OR HRN.FO # ' '</code>",
+          "Scoliosis referrals (7th grade girls / 8th grade boys): <code>LIST STU SCO STU.ID STU.NM SCO.TD SCO.SCN SCO.DR SCO.CO IF SCO.DR = 'R'</code>",
           "Students not screened or who failed scoliosis: <code>LIST STU SCO STU.ID STU.NM STU.GR SCO.TD SCO.SCN SCO.PF SCO.CO IF SCO.PF = F OR SCO.PF = NULL</code>",
-          "Generate parent mailing labels for students needing referrals: <code>LIST STU SCO "To the parent of:" \ STU.FN STU.LN \ STU.AD \ STU.CY STU.ZC IF SCO.DR = "R"</code>"
+          "Generate parent mailing labels for students needing referrals: <code>LIST STU SCO 'To the parent of:' \ STU.FN STU.LN \ STU.AD \ STU.CY STU.ZC IF SCO.DR = 'R'</code>"
         ],
         wusdProcess: "WUSD requires vision and hearing screening in grades K, 2, 5, and 8; scoliosis in grade 7 (females) and grade 8 (males). After screenings, run these queries to generate referral letters within 5 school days. Document all parent notifications in the student health record.",
         forms: ["Vision/Hearing Referral Letter", "Scoliosis Referral Form", "Health Screening Completion Roster"],
@@ -1254,7 +1254,7 @@
         aeriesSteps: [
           "Students enrolled after a specific date: <code>LIST STU ID NM STU.GR STU.ED IF STU.ED > ##/##/20##</code>",
           "Students enrolled after a specific date with teacher: <code>LIST STU TCH STU.NM TCH.TE STU.GR STU.ED IF STU.ED > 08/20/2026</code>",
-          "Students exited after a specific date (check 'Include Inactive Students'): <code>LIST STU TCH STU.NM TCH.TE STU.GR STU.LD IF STU.TG # " " AND STU.LD > ##/##/20##</code>",
+          "Students exited after a specific date (check 'Include Inactive Students'): <code>LIST STU TCH STU.NM TCH.TE STU.GR STU.LD IF STU.TG # ' ' AND STU.LD > ##/##/20##</code>",
           "Students exited with No-Show tag (N470): <code>LIST STU ID NM LD TG IF TG = N</code>",
           "Students where Next Grade = Current Grade (likely a retention or rollover error): <code>LIST STU NM ID GR NG IF NG = GR</code>",
           "Students with Next School, Grade, and Teacher pre-populated: <code>LIST STU ID NM NS NG NT</code>"
@@ -1272,9 +1272,9 @@
         keywords: ["query", "CALPADS", "race", "ethnicity", "ETH", "RC1", "demographics", "home language", "EL", "Hispanic", "missing race"],
         content: "Queries to identify students with missing or incomplete race and ethnicity data required for CALPADS Fall 1 submission. Also includes home language code lookup.",
         aeriesSteps: [
-          "Students missing Ethnicity or Race Code: <code>LIST STU ID NM GR ETH RC1 IF ETH = " " OR RC1 = " "</code>",
+          "Students missing Ethnicity or Race Code: <code>LIST STU ID NM GR ETH RC1 IF ETH = ' ' OR RC1 = ' '</code>",
           "Students by Race Code sorted by grade: <code>LIST STU ID FN LN GR RC1 BY GR RC1</code>",
-          "Non-Hispanic students to check for missing Race Codes: <code>LIST STU ID NM ETH RC1 GR GN BY RC1 IF ETH = "N"</code>",
+          "Non-Hispanic students to check for missing Race Codes: <code>LIST STU ID NM ETH RC1 GR GN BY RC1 IF ETH = 'N'</code>",
           "Total students by Ethnicity and Gender: <code>TOTAL STU ETH GN BY ETH GN</code>",
           "Total students by Race and Grade: <code>TOTAL STU RC1 GR BY RC1 GR</code>",
           "Home Language codes lookup: <code>LIST COD CD DE IF TC = STU AND FC = HL</code> (run at district level)",
@@ -1295,11 +1295,11 @@
         aeriesSteps: [
           "Calculate graduation year: <code>LIST STU ID NM GR (( 2026 + 12 - GR ))</code>",
           "Round GPA to 2 decimal places: <code>LIST STU FN LN ID TP (( ROUND ( TP, 2 ) ))</code>",
-          "Attendance percentage with formatting: <code>LIST STU AHS STU.SC STU.ID STU.NM AHS.SP AHS.EN AHS.AB AHS.PR (( LEFT ( (( 100 * AHS.PR / AHS.EN )) , 5 ) + "%" )) BY AHS.SCL IF AHS.EN > 0 AND AHS.YR = "2025-2026" AND AHS.SCL = STU.SC</code>",
-          "IIF to label GPA performance: <code>LIST STU ID NM GR TP (( IIF(TP>=3,"Doing Well", IIF(TP>2,"Need to do more","At Risk" ) ) ))</code>",
+          "Attendance percentage with formatting: <code>LIST STU AHS STU.SC STU.ID STU.NM AHS.SP AHS.EN AHS.AB AHS.PR (( LEFT ( (( 100 * AHS.PR / AHS.EN )) , 5 ) + '%' )) BY AHS.SCL IF AHS.EN > 0 AND AHS.YR = '2025-2026' AND AHS.SCL = STU.SC</code>",
+          "IIF to label GPA performance: <code>LIST STU ID NM GR TP (( IIF(TP>=3,'Doing Well', IIF(TP>2,'Need to do more','At Risk' ) ) ))</code>",
           "Create network username from name + last 4 of ID: <code>LIST STU LN FN ID (( LEFT(FN,1) + LN + RIGHT(ID,4) )) IF GR = 1</code>",
           "Format birth date as text: <code>LIST STU ID BD (( CONVERT(VARCHAR,BD,107) ))</code>",
-          "<strong>NULL vs Blank rule:</strong> Use NULL for date fields with no data (e.g., <code>IF BD = NULL</code>). Use " " (quote space quote) for text/code fields with no data (e.g., <code>IF MHS.CD = " "</code>)."
+          "<strong>NULL vs Blank rule:</strong> Use NULL for date fields with no data (e.g., <code>IF BD = NULL</code>). Use ' ' (quote space quote) for text/code fields with no data (e.g., <code>IF MHS.CD = ' '</code>)."
         ],
         wusdProcess: "Advanced queries are typically run by the District Registrar or Technology Department. Before running a CHANGE query, always run the corresponding LIST query first to verify which records will be affected. Never run a CHANGE query without administrator approval.",
         forms: ["Query Results Documentation Log"],
@@ -1314,10 +1314,10 @@
         keywords: ["query", "medical history", "MHS", "FLG", "flag", "health", "medical alert", "medical log", "MED", "health visit"],
         content: "Queries to pull student medical history codes, active health flags, and medical log visit records. Essential for health office compliance and teacher notification.",
         aeriesSteps: [
-          "Students with any Medical History Code: <code>LIST STU MHS STU.ID STU.NM STU.GR MHS.CD MHS.CD? MHS.CO IF MHS.CD # " "</code>",
+          "Students with any Medical History Code: <code>LIST STU MHS STU.ID STU.NM STU.GR MHS.CD MHS.CD? MHS.CO IF MHS.CD # ' '</code>",
           "Students with medical flags (MHS, MED, MNO, IMM tables) active since 07/01/2024: <code>LIST STU FLG MHS STU.ID STU.NM STU.GR STU.BD MHS.SD MHS.ED MHS.CD MHS.TG MHS.CO MHS.PC FLG.CO BY STU.GR STU.LN IF FLG.TC = 'MHS' OR FLG.TC = 'MNO' OR FLG.TC = 'MED' OR FLG.TC = 'IMM' AND MHS.CD # NULL AND MHS.SD >= '07/01/2024'</code>",
-          "Medical log visits after a specific date: <code>LIST STU LN FN STU.ID MED MED.CD MED.CD? MED.DT IF MED.DT >= "8/21/2025"</code>",
-          "For elementary schools with master schedule — students with medical codes by teacher: <code>LIST STU MHS SEC MST TCH TCH.TE MST.PD STU.NM STU.GR MHS.CD? MHS.CO BY TCH.TE IF MHS.CD # " " OR MHS.CO # " "</code>",
+          "Medical log visits after a specific date: <code>LIST STU LN FN STU.ID MED MED.CD MED.CD? MED.DT IF MED.DT >= '8/21/2025'</code>",
+          "For elementary schools with master schedule — students with medical codes by teacher: <code>LIST STU MHS SEC MST TCH TCH.TE MST.PD STU.NM STU.GR MHS.CD? MHS.CO BY TCH.TE IF MHS.CD # ' ' OR MHS.CO # ' '</code>",
           "All flags for a specific table (e.g., MED for medical): <code>LIST STU FLG STU.NM STU.GR FLG.TC FLG.CO IF FLG.TC = MED</code>"
         ],
         wusdProcess: "Run the medical history query at the start of each year to generate teacher notification lists. Every teacher needs to know which students in their class have active medical alerts before the first day. The health clerk distributes this list — never post it publicly. Store the export in a password-protected folder.",
@@ -1337,7 +1337,7 @@
           "Students not scheduled in a specific course (replace #### with course number): <code>LIST STU SEC MST STU.ID STU.NM STU.GR BY STU.GR IF MST.CN = ####</code>",
           "Students in a specific section: <code>KEEP STU SEC MST IF MST.SE = ###</code>",
           "Courses by course number with subject area codes: <code>LIST CRS CN CO NA S1 S2 S3 CP BY CN</code>",
-          "Courses currently matched to CALPADS state codes: <code>LIST CRS CN CO C3 C3? IF C3 > " " AND C3 # 6012</code>",
+          "Courses currently matched to CALPADS state codes: <code>LIST CRS CN CO C3 C3? IF C3 > ' ' AND C3 # 6012</code>",
           "Flex schools — primary teacher for each student: <code>LIST STU ID LN FN GR PRIMARYTEACHERNAME BY PRIMARYTEACHERNAME</code>",
           "Students with a specific course request in Scheduling: <code>LIST STU SSS CRS STU.ID STU.NM STU.GR SSS.CN CRS.CO IF SSS.CN = XXXX</code>"
         ],
@@ -1360,9 +1360,9 @@
           "Student Information (SINF) — birthdate, enter dates, US enrollment: <code>LIST STU LAC STU.CID STU.ID STU.NM STU.GR STU.BD STU.DD STU.ED LAC.USS</code>",
           "Students not born in US — birth city/state/country and language fluency: <code>LIST STU SSD STU.NM STU.BCY STU.BST STU.BCU STU.LF SSD.SUS IF STU.BCU # US</code>",
           "English Language Acquisition (SELA) fields for CALPADS verification: <code>LIST STU LAC STU.SC STU.ID STU.NM STU.GR STU.LF LAC.STS LAC.USS LAC.EAC LAC.EAD STU.DD STU.ED BY STU.SC STU.LF</code>",
-          "Migrant students who are active: <code>LIST STU SSD STU.HL? STU.SC? STU.CID STU.NM STU.AD STU.CY STU.ST STU.ZC STU.PG STU.TL STU.BST IF SSD.MID # " " AND STU.TG = " "</code>",
-          "Teachers missing a Staff ID (SCSE compliance): <code>LIST TCH TE ID IF ID = " "</code>",
-          "Teachers missing a SEID — run at district level: <code>LIST STF LN FN SID IF TG # I AND SID = " "</code>"
+          "Migrant students who are active: <code>LIST STU SSD STU.HL? STU.SC? STU.CID STU.NM STU.AD STU.CY STU.ST STU.ZC STU.PG STU.TL STU.BST IF SSD.MID # ' ' AND STU.TG = ' '</code>",
+          "Teachers missing a Staff ID (SCSE compliance): <code>LIST TCH TE ID IF ID = ' '</code>",
+          "Teachers missing a SEID — run at district level: <code>LIST STF LN FN SID IF TG # I AND SID = ' '</code>"
         ],
         wusdProcess: "Run CALPADS reconciliation queries before each submission window: Fall 1 (October), Fall 2 (January), EOY 1 (April), EOY 2 (July). The District Registrar coordinates batch submissions. Site registrars resolve site-level errors within 5 business days of notification. Never run CHANGE queries without administrator approval.",
         forms: ["CALPADS Submission Checklist", "CALPADS Error Resolution Log", "SSID Merge Request Form"],
@@ -1381,9 +1381,9 @@
           "Students enrolled in a specific course on Information Day (replace ## with date, #### with course): <code>LIST STU CAR TCH CRS STU.CID STU.NM CAR.CN CRS.CO CAR.PD CAR.SE TCH.TE BY STU.NM CAR.PD IF CAR.DS < ##/##/20## AND CAR.DE > ##/##/20## AND CRS.CN = ####</code>",
           "Teacher Ed Service, Language of Instruction, Instructional Strategy — elementary: <code>LIST TCH TE ESR LI INS</code>",
           "Teacher Ed Service codes — secondary (from master schedule): <code>LIST MST TCH MST.SE TCH.TE MST.ESR MST.LI MST.INS</code>",
-          "CHANGE: Populate 12th grade Completion Status (run only after administrator approval): <code>CHANGE STU STU.HSG TO 100 IF GR = 12 AND STU.HSG = " "</code>",
+          "CHANGE: Populate 12th grade Completion Status (run only after administrator approval): <code>CHANGE STU STU.HSG TO 100 IF GR = 12 AND STU.HSG = ' '</code>",
           "CHANGE: Populate 12th grade Completion Date: <code>CHANGE STU DG TO MM/DD/20YY IF GR = 12 AND DG = NULL</code>",
-          "CHANGE: Fix Language of Instruction erroneously coded 00 or 37 for ELD teachers: <code>CHANGE MST LI TO " " IF LI = 00 OR LI = 37 AND ESR = 4</code>"
+          "CHANGE: Fix Language of Instruction erroneously coded 00 or 37 for ELD teachers: <code>CHANGE MST LI TO ' ' IF LI = 00 OR LI = 37 AND ESR = 4</code>"
         ],
         wusdProcess: "SENR submission requires every active course enrollment to have accurate start and end dates. SCSE requires Ed Service codes on every section with EL students. Graduation fields (HSG and DG) must be populated for all 12th graders before EOY submissions. Always LIST before running any CHANGE query.",
         forms: ["CALPADS SENR Checklist", "CALPADS SCSE Verification Form", "12th Grade Graduation Completion Log"],
@@ -1399,7 +1399,7 @@
         content: "Queries for pulling student grades, finding missing marks, identifying D/F students, and working with GPA and transcript data. From the official Aeries Grade Reporting query library.",
         aeriesSteps: [
           "Students with D, F, or Incomplete grades for specific courses in a marking period: <code>LIST STU GRD STU.ID STU.NM STU.GR GRD.PD GRD.CN GRD.TN GRD.M1 BY GRD.CN IF ( GRD.CN = #### OR GRD.CN = #### ) AND ( GRD.M1 : D OR GRD.M1 : F OR GRD.M1 : I )</code>",
-          "Students with missing grades, citizenship, work habits, or comments for M2: <code>LIST STU GRD TCH STU.NM STU.GR TCH.TE GRD.PD GRD.M2 GRD.CI GRD.WH GRD.C1 BY TCH.TE IF GRD.M2 = " " OR GRD.CI = " " OR GRD.WH = " " OR GRD.C1 = " " AND STU.TG = " "</code>",
+          "Students with missing grades, citizenship, work habits, or comments for M2: <code>LIST STU GRD TCH STU.NM STU.GR TCH.TE GRD.PD GRD.M2 GRD.CI GRD.WH GRD.C1 BY TCH.TE IF GRD.M2 = ' ' OR GRD.CI = ' ' OR GRD.WH = ' ' OR GRD.C1 = ' ' AND STU.TG = ' '</code>",
           "All grades by specific teachers sorted by teacher and course: <code>LIST STU GRD CRS TCH STU.ID STU.NM GRD.CN CRS.CO GRD.M1 GRD.M2 GRD.M3 GRD.M4 TCH.TE BY TCH.TE GRD.CN IF GRD.TN = ### OR GRD.TN = ###</code>",
           "Student GPA list with class rank sorted by GPA descending for a specific grade: <code>LIST STU SEC MST CRS STU.NM STU.GR STU.GP MST.PD CRS.CO BY STU.GP ^ IF STU.GR = ##</code>",
           "Various built-in GPAs with credits and class rank: <code>LIST STU ID NM GR TP CR CS GP CP UR CA CC GG GT GK GS BY GR CR</code>",
@@ -1423,7 +1423,7 @@
           "Students with suspension, in-house suspension, or expulsion this year: <code>LIST STU ADS DSP STU.SC STU.ID STU.CID STU.NM DSP.DS DSP.DY ADS.DT ADS.CD ADS.CD? IF ADS.DT > 06/30/20## AND DSP.DS = SUS OR DSP.DS = SUS-H OR DSP.DS = SUS-P OR DSP.DS = EXP</code>",
           "Full demographic data with discipline records for CALPADS EOY3: <code>LIST STU ADS DSP STU.ID STU.NM STU.GR STU.SX STU.ETH STU.RC1 ADS.CD ADS.CD? ADS.DT DSP.DS DSP.DY DSP.DD DSP.ED DSP.AA DSP.PL DSP.RS IF ADS.DT > 06/30/20##</code>",
           "All discipline records with SpEd status for Fall 2 reconciliation: <code>LIST STU IDN CSE ADS DSP STU.SC STU.NM DSP.SC ADS.IID ADS.DT ADS.CD ADS.CD? DSP.DS DSP.DD DSP.ED DSP.DY ADS.CO CSE.DI CSE.XD BY STU.SC STU.NM IF DSP.DD > 06/30/####</code>",
-          "Newer DIS table — discipline records by student and date: <code>LIST STU DIS STF STU.NM STU.GR DIS.DT DIS.CD? DIS.CN DIS.CO DIS.SID STF.LN BY STU.NM DIS.DT IF DIS.CD # " "</code>",
+          "Newer DIS table — discipline records by student and date: <code>LIST STU DIS STF STU.NM STU.GR DIS.DT DIS.CD? DIS.CN DIS.CO DIS.SID STF.LN BY STU.NM DIS.DT IF DIS.CD # ' '</code>",
           "Students with a discipline flag (DIS table): <code>LIST STU DIS FLG STU.NM STU.GR DIS.CD? DIS.DT FLG.CO IF FLG.TC = DIS</code>",
           "Safe and Supportive Schools Program referrals: <code>LIST STU ADS DSP STU.SC STU.GR STU.ID STU.FN STU.LN ADS.IID ADS.DT ADS.INI? ADS.CD? ADS.CO ADS.SSP ADS.SDT BY STU.SC IF ADS.DT >= 8/16/23 AND ADS.SSP = Y AND STU.TG # *</code>"
         ],
@@ -1440,9 +1440,9 @@
         keywords: ["query", "gradebook", "GBU", "GBK", "GBA", "GBS", "missing assignments", "D", "F", "below 70", "overall mark", "at-risk", "teacher gradebook"],
         content: "Queries to pull gradebook data including students with missing assignments, overall marks below C or 70%, and gradebook term scores. Useful for early intervention and progress monitoring.",
         aeriesSteps: [
-          "Students with missing assignments: <code>LIST STU GBU GBS GBA GBK GBR TCH STU.ID STU.NM GBK.GN GBR.CD GBK.NM TCH.TE GBU.CSC GBU.CMK GBA.AN GBA.AD GBA.DD GBA.GC GBS.MK IF GBA.GC = 1 AND GBS.MK = " " AND GBA.DD >= GBR.SD AND GBA.DD <= GBR.ED AND GBK.SC = TCH.SC</code>",
+          "Students with missing assignments: <code>LIST STU GBU GBS GBA GBK GBR TCH STU.ID STU.NM GBK.GN GBR.CD GBK.NM TCH.TE GBU.CSC GBU.CMK GBA.AN GBA.AD GBA.DD GBA.GC GBS.MK IF GBA.GC = 1 AND GBS.MK = ' ' AND GBA.DD >= GBR.SD AND GBA.DD <= GBR.ED AND GBK.SC = TCH.SC</code>",
           "Students with overall mark of D or F: <code>LIST STU GBU GBK GBR STU.NM GBK.PD GBK.NM GBR.CD GBU.CMK GBU.CSC IF ( GBU.CMK : D OR GBU.CMK : F ) AND ( GBR.CD : F )</code>",
-          "Students with overall grade below C in an active gradebook: <code>LIST STU GBU GBK GBE MST CRS TCH STU.ID STU.LN STU.FN STU.GR GBK.PD CRS.CN GBE.SE CRS.CO GBK.TN TCH.TE GBU.CSC GBU.CMK GBU.D2 IF GBU.D2 > ##/##/20## AND ( GBU.CMK = "C-" OR GBU.CMK : "D" OR GBU.CMK : "F" )</code>",
+          "Students with overall grade below C in an active gradebook: <code>LIST STU GBU GBK GBE MST CRS TCH STU.ID STU.LN STU.FN STU.GR GBK.PD CRS.CN GBE.SE CRS.CO GBK.TN TCH.TE GBU.CSC GBU.CMK GBU.D2 IF GBU.D2 > ##/##/20## AND ( GBU.CMK = 'C-' OR GBU.CMK : 'D' OR GBU.CMK : 'F' )</code>",
           "Students with less than 70% overall in any class: <code>LIST STU GBU GBK GBE MST CRS STU.ID STU.NM GBE.SE CRS.CN GBU.GN GBK.NM GBK.PD GBK.TN GBU.CSC GBU.CMK IF GBU.CSC < 70</code>",
           "Student term scores with teacher's last update timestamp: <code>LIST STU GBV GBU GBK GBE MST TCH STU.SC STU.ID STU.NM STU.GR STU.TG? GBK.GN GBV.CD GBK.NM TCH.TE MST.PD GBE.SE MST.CN GBV.MK GBV.PC (( CAST(GBV.DTS AS DATETIME) )) IF GBK.GN = GBV.GN AND GBK.SC = TCH.SC</code>",
           "Assignment tally by teacher, course, and term: <code>TOTAL TCH GBK GBA GBR TCH.TE GBK.NM GBR.CD GBK.PD BY TCH.TE GBR.CD GBK.NM GBK.PD IF GBK.SC = TCH.SC AND GBA.DD >= GBR.SD AND GBA.DD <= GBR.ED</code>"
@@ -1460,12 +1460,12 @@
         keywords: ["query", "ELPAC", "language fluency", "LAC", "TBD", "IFEP", "EL", "initial fluency", "STU.LF", "language assessment", "reclassification"],
         content: "Queries and CHANGE commands for processing ELPAC Initial Assessment results, updating Language Fluency codes from TBD to EL or IFEP, and verifying Language Assessment (LAC) data.",
         aeriesSteps: [
-          "List students with Language Fluency of TBD with Initial Fluency populated: <code>LIST STU LAC STU.TG STU.ID STU.LN STU.FN STU.GR STU.LF LAC.SD LAC.IFD LAC.ITF LAC.ITD IF STU.LF = "T" AND LAC.ITF # " "</code>",
-          "Review ELPAC results for accuracy: <code>LIST STU LAC STU.TG STU.ID STU.NM STU.GR STU.LF LAC.SD LAC.IFD LAC.ITF LAC.ITD IF LAC.ITF # " "</code>",
-          "CHANGE: Update IFEP Start Date for students designated IFEP: <code>CHANGE STU LAC LAC.IFD TO LAC.ITD IF STU.LF = "T" AND LAC.ITF = "IFEP" AND LAC.ITD # NULL AND LAC.IFD = NULL</code>",
-          "CHANGE: Update Program Start Date for students designated EL: <code>CHANGE STU LAC LAC.SD TO LAC.ITD IF STU.LF = "T" AND LAC.ITF = "EL" AND LAC.ITD # NULL AND LAC.SD = NULL</code>",
-          "CHANGE: Update Language Fluency code to EL (L): <code>CHANGE STU LAC STU.LF TO "L" IF STU.LF = "T" AND LAC.ITF = "EL" AND LAC.ITD # NULL</code>",
-          "CHANGE: Update Language Fluency code to IFEP (I): <code>CHANGE STU LAC STU.LF TO "I" IF STU.LF = "T" AND LAC.ITF = "IFEP" AND LAC.ITD # NULL</code>",
+          "List students with Language Fluency of TBD with Initial Fluency populated: <code>LIST STU LAC STU.TG STU.ID STU.LN STU.FN STU.GR STU.LF LAC.SD LAC.IFD LAC.ITF LAC.ITD IF STU.LF = 'T' AND LAC.ITF # ' '</code>",
+          "Review ELPAC results for accuracy: <code>LIST STU LAC STU.TG STU.ID STU.NM STU.GR STU.LF LAC.SD LAC.IFD LAC.ITF LAC.ITD IF LAC.ITF # ' '</code>",
+          "CHANGE: Update IFEP Start Date for students designated IFEP: <code>CHANGE STU LAC LAC.IFD TO LAC.ITD IF STU.LF = 'T' AND LAC.ITF = 'IFEP' AND LAC.ITD # NULL AND LAC.IFD = NULL</code>",
+          "CHANGE: Update Program Start Date for students designated EL: <code>CHANGE STU LAC LAC.SD TO LAC.ITD IF STU.LF = 'T' AND LAC.ITF = 'EL' AND LAC.ITD # NULL AND LAC.SD = NULL</code>",
+          "CHANGE: Update Language Fluency code to EL (L): <code>CHANGE STU LAC STU.LF TO 'L' IF STU.LF = 'T' AND LAC.ITF = 'EL' AND LAC.ITD # NULL</code>",
+          "CHANGE: Update Language Fluency code to IFEP (I): <code>CHANGE STU LAC STU.LF TO 'I' IF STU.LF = 'T' AND LAC.ITF = 'IFEP' AND LAC.ITD # NULL</code>",
           "<strong>Important:</strong> Always run LIST queries first to verify which records will be affected before running any CHANGE command. Confirm Language Fluency codes (L, I, etc.) match your district's specific code table before running CHANGE queries."
         ],
         wusdProcess: "ELPAC Initial Assessment results must be processed within 30 calendar days of enrollment for new potential EL students. The EL Coordinator must approve all IFEP and EL designations before Language Fluency codes are updated in Aeries. Run LIST queries first, review with the EL Coordinator, then run CHANGE commands.",
@@ -1482,11 +1482,11 @@
         content: "Queries for monitoring parent portal activity, viewing authorization records, tracking email communications, and auditing Parent Data Confirmation responses.",
         aeriesSteps: [
           "Parent and student portal login activity: <code>LIST PWA PWS STU PWA.AID PWA.EM PWA.AST PWA.TY PWA.PID PWA.LC PWA.LDT PWA.CD STU.SC STU.LN STU.FN STU.ID STU.GR</code>",
-          "Email sent to a specific parent email address: <code>LIST EML EID TN UN SCL DT FAD TAD SUB (( DTS )) IF TAD : "parent@example.com"</code> (replace with actual email)",
+          "Email sent to a specific parent email address: <code>LIST EML EID TN UN SCL DT FAD TAD SUB (( DTS )) IF TAD : 'parent@example.com'</code> (replace with actual email)",
           "Authorizations effective on a specific date: <code>LIST STU AUT STU.ID STU.NM AUT.CD AUT.CD? AUT.ST AUT.ST? IF AUT.SDT <= ##/##/20## AND ( AUT.EED = NULL OR AUT.EED >= ##/##/20## )</code>",
           "Authorization records with date and time stamp: <code>LIST AUT SC SN TY CO DT SQ ST (( CAST(SDT AS DATETIME) )) CD TA EED SRC</code>",
           "Parent Data Confirmation income survey responses: <code>LIST STU FRE STU.SC STU.ID STU.NM FRE.CD FRE.SRC FRE.ESD FRE.EED FRE.PIR FRE.PDT FRE.MO IF FRE.SRC = PDC</code>",
-          "Military family pending records from Data Confirmation: <code>LIST STU ICL PRS STU.SC STU.ID STU.NM STU.GR PRS.DT PRS.TY PRS.CD PRS.ST PRS.UN PRS.ID STU.LD STU.TG BY ICL.SC IF PRS.TY = 2 AND PRS.ST = P AND PRS.DT > 07/01/2022 AND ICL.TC = "FinalDataConf" AND ICL.DT > 7/1/2022</code>"
+          "Military family pending records from Data Confirmation: <code>LIST STU ICL PRS STU.SC STU.ID STU.NM STU.GR PRS.DT PRS.TY PRS.CD PRS.ST PRS.UN PRS.ID STU.LD STU.TG BY ICL.SC IF PRS.TY = 2 AND PRS.ST = P AND PRS.DT > 07/01/2022 AND ICL.TC = 'FinalDataConf' AND ICL.DT > 7/1/2022</code>"
         ],
         wusdProcess: "Use the portal activity query to verify that parents have logged in after being issued VPC codes. Use the email query to confirm specific emails were sent and received. Authorization records are critical for custody and FERPA compliance audits. Never share portal access logs externally without administrator authorization.",
         forms: ["Parent Portal Quick Start Guide", "Parent Portal Account Release Authorization Form", "Annual Data Confirmation Instructions"],
@@ -1522,8 +1522,8 @@
         content: "Queries for tracking unpaid student fees, assets checked out to students or staff (Chromebooks, equipment), and locker assignments. Useful for year-end reconciliation.",
         aeriesSteps: [
           "Students with unpaid fees for a specific grade level: <code>LIST STU FEE STU.NM STU.ID STU.GR FEE.DT FEE.CD? (( FEE.AM - FEE.PD )) IF STU.GR = # AND (( FEE.AM - FEE.PD )) # 0.00</code>",
-          "Assets checked out to students — school or district level: <code>LIST DRA DRI DRT STU STU.FN STU.LN DRT.TI DRA.ID DRA.DT DRI.BC IF DRA.RD = NULL AND DRA.ST = "S"</code>",
-          "Assets checked out to staff — district level only: <code>LIST DRT DRI DRA STF STF.FN STF.LN DRT.TI DRA.ID DRA.DT DRI.BC IF DRA.RD = NULL AND DRA.ST = "T"</code>",
+          "Assets checked out to students — school or district level: <code>LIST DRA DRI DRT STU STU.FN STU.LN DRT.TI DRA.ID DRA.DT DRI.BC IF DRA.RD = NULL AND DRA.ST = 'S'</code>",
+          "Assets checked out to staff — district level only: <code>LIST DRT DRI DRA STF STF.FN STF.LN DRT.TI DRA.ID DRA.DT DRI.BC IF DRA.RD = NULL AND DRA.ST = 'T'</code>",
           "All locker information with combinations: <code>LIST LKR LK CM SN C1 C2 C3 C4 C5 SE</code>",
           "Unassigned lockers only: <code>LIST LKR LK CM SN BY LK IF SN = 0</code>",
           "Fix Locker table student numbers to match Demographics (CHANGE — run with caution): <code>CHANGE STU LKR LKR.SN TO STU.SN IF LKR.SN # STU.SN</code>"
@@ -1541,11 +1541,11 @@
         keywords: ["query", "Golden State Seal", "GSS", "State Seal of Biliteracy", "SSB", "RTG", "report tag", "at-risk", "ARC", "ARI", "biliteracy", "diploma", "qualified"],
         content: "Queries using the Report Tag (RTG) feature for Golden State Seal Merit Diploma, State Seal of Biliteracy processing, and At-Risk student identification.",
         aeriesSteps: [
-          "Golden State Seal Merit Diploma — Not Qualified students: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = "GoldenStateSealMeritDiploma" AND RTG.QT = "NQ"</code>",
-          "Golden State Seal Merit Diploma — Qualified students: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = "GoldenStateSealMeritDiploma" AND RTG.QT = "QF"</code>",
-          "State Seal of Biliteracy — Potentially Qualified: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = "StateSealOfBiliteracy" AND RTG.QT = "RQS"</code>",
-          "State Seal of Biliteracy — Qualified students: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = "StateSealOfBiliteracy" AND RTG.QT = "QF"</code>",
-          "Students with immunization non-compliance flagged by Immunization Status Report: <code>LIST STU RTG FN LN GR PG AD CY ST ZC ZX IF RNM = 'PrintStudentImmunizationStatus' AND QT = "V"</code>",
+          "Golden State Seal Merit Diploma — Not Qualified students: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = 'GoldenStateSealMeritDiploma' AND RTG.QT = 'NQ'</code>",
+          "Golden State Seal Merit Diploma — Qualified students: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = 'GoldenStateSealMeritDiploma' AND RTG.QT = 'QF'</code>",
+          "State Seal of Biliteracy — Potentially Qualified: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = 'StateSealOfBiliteracy' AND RTG.QT = 'RQS'</code>",
+          "State Seal of Biliteracy — Qualified students: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = 'StateSealOfBiliteracy' AND RTG.QT = 'QF'</code>",
+          "Students with immunization non-compliance flagged by Immunization Status Report: <code>LIST STU RTG FN LN GR PG AD CY ST ZC ZX IF RNM = 'PrintStudentImmunizationStatus' AND QT = 'V'</code>",
           "At-Risk students with active indicators: <code>LIST STU ARI ARC STU.ID STU.NM ARC.CD ARC.DE ARI.SD IF ARC.CD > 0 AND ARI.ED = NULL</code>"
         ],
         wusdProcess: "Run GSS and SSB queries after the annual processing run to review qualified and not-qualified student lists before generating award letters or certificates. At-Risk indicator queries support MTSS Tier 2 and Tier 3 identification. Coordinate with counselors and the principal before distributing any diploma or award lists.",
@@ -1564,7 +1564,7 @@
           "Course sequence for all career pathways: <code>LIST CCP CRS CCP.SC CCP.CD CCP.CN CRS.CO CRS.C3 CCP.LVL CCP.RQ BY CCP.CD CCP.SC</code>",
           "Career pathways with course info, High Quality status, and State Course ID: <code>LIST CCP CRS MST CCP.CD CCP.CN CRS.CO MST.SE MST.HQC CRS.C3 BY MST.HQC CCP.CD</code>",
           "Students in a career pathway with transcript history: <code>LIST STU CPW CPH HIS CRS STU.TG STU.ID STU.NM CPW.CD?CTE.CD CPW.CM CPH.AY CPH.LVL CRS.CN CRS.CO CRS.C3 IF CRS.C3 > 6999 AND CRS.C3 < 9000 AND CPW.CD # NULL</code>",
-          "Students reported as CTE Completers for a specific year: <code>LIST STU CPW CPH STU.TG STU.ID STU.NM CPW.CD CPW.CM CPH.AY CPH.LVL IF CPH.AY = "20##-20##" AND CPW.CM = 1</code>",
+          "Students reported as CTE Completers for a specific year: <code>LIST STU CPW CPH STU.TG STU.ID STU.NM CPW.CD CPW.CM CPH.AY CPH.LVL IF CPH.AY = '20##-20##' AND CPW.CM = 1</code>",
           "Students who took CTE courses (State Course ID 7000-8999) in transcripts: <code>LIST STU CPW CPH HIS CRS STU.TG STU.ID STU.NM CPW.CD CPW.CM CPH.LVL CPH.AY HIS.CN CRS.C3 IF CRS.C3 > 6999 AND CRS.C3 < 9000</code>",
           "Students who took courses for a specific pathway in a specific year: <code>LIST STU HIS STU.ID STU.NM HIS.CN HIS.YR IF HIS.YR = ## AND ( HIS.CN = #### OR HIS.CN = #### )</code>"
         ],
@@ -1611,8 +1611,6 @@
       });
       ['assistant','guides','training','queries'].forEach(id => {
         document.getElementById(`view-${id}`).classList.toggle('hidden', id !== tabId);
-      });
-    }
       });
     }
 
