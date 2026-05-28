@@ -442,10 +442,10 @@ async function callClaude(msg) {
   const res = await fetch('/.netlify/functions/ask', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ system: SYSTEM_PROMPT, message: msg })
+    body: JSON.stringify({ query: msg, knowledgeContext: SYSTEM_PROMPT })
   });
   const d = await res.json();
-  return d.response || d.content?.[0]?.text || 'No response received.';
+  return d.text || 'No response received.';
 }
 
 function renderMarkdown(t) {
