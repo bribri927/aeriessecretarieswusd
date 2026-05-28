@@ -109,7 +109,7 @@
               <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
               <span>Step-by-Step Guides</span>
             </div>
-            <span id="guidesBadgeCount" class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold">5</span>
+            <span id="guidesBadgeCount" class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold">30</span>
           </button>
 
           <button onclick="switchTab('training')" id="nav-btn-training" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-sm font-semibold transition-all text-slate-600 hover:bg-slate-50 border-l-4 border-transparent">
@@ -537,6 +537,533 @@
         forms: ["Aeries Parent Portal Quick Start Guide", "Parent Portal Account Release Authorization Form"],
         legalCompliance: "FERPA mandates that educational records (including online portal views) are strictly secured. Releasing verification codes to unauthorized adults is a severe breach of student privacy.",
         lastUpdated: "2026-02-15"
+      },
+
+      // ── NEW ENTRIES ──────────────────────────────────────────────
+
+      {
+        id: "imm-001",
+        title: "Immunization Hold & Conditional Enrollment",
+        category: "Health & Immunizations",
+        roles: ["Health Clerk", "Secretary", "Registrar"],
+        keywords: ["immunization", "vaccine", "shot", "hold", "conditional", "tbst", "mmr", "dtap", "varicella", "polio", "hep b", "tdap", "exemption", "medical exemption", "personal belief"],
+        content: "Procedure for enrolling a student whose immunization records are incomplete, expired, or missing. California law allows conditional enrollment with strict follow-up timelines.",
+        aeriesSteps: [
+          "At enrollment, collect any available immunization records and enter doses into <strong>Student Data > Health > Immunizations</strong> in Aeries.",
+          "If records are incomplete, enroll the student conditionally. Navigate to the Health screen and flag the record as <strong>Conditional Enrollment</strong> with today's date.",
+          "Set a <strong>follow-up tickler date</strong> 30 days out in the student's health notes to track compliance.",
+          "If the parent claims a medical exemption, verify the exemption is issued by a California-licensed physician and upload the document. Enter the exemption type in the <strong>Exemption</strong> field.",
+          "Run the <strong>Immunization Compliance Report</strong> monthly from Aeries Reports to identify students still out of compliance.",
+          "After 30 school days, students who remain non-compliant must be excluded from school per CA Health & Safety Code 120365."
+        ],
+        wusdProcess: "WUSD requires the school nurse or health clerk to review all incoming immunization records within 5 school days of enrollment. Conditional students must have a signed parent acknowledgment form on file. Personal belief exemptions are no longer valid in California as of SB 277 (2015).",
+        forms: ["WUSD Conditional Enrollment Immunization Notice", "Physician Medical Exemption Verification Form", "Parent Immunization Compliance Letter"],
+        legalCompliance: "CA Health & Safety Code 120335 and 120365 mandate immunization compliance for school attendance. SB 277 (2015) eliminated the personal belief exemption. Only medical exemptions issued by CA-licensed physicians are accepted. Students may be excluded after 30 school days of non-compliance.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "imm-002",
+        title: "Immunization Exclusion Process",
+        category: "Health & Immunizations",
+        roles: ["Health Clerk", "Secretary"],
+        keywords: ["exclusion", "exclude", "immunization", "non-compliant", "disenroll", "remove", "vaccine overdue", "30 days"],
+        content: "When a conditionally enrolled student has not provided proof of immunization within 30 school days, the district must formally exclude them from campus.",
+        aeriesSteps: [
+          "Run the monthly <strong>Immunization Non-Compliance Report</strong> in Aeries to identify students past the 30-day conditional window.",
+          "Attempt phone and written parent contact at least 3 times and document each attempt in the student's health notes.",
+          "Issue the official <strong>WUSD Exclusion Notice</strong> and set the exclusion date in the student's health record.",
+          "Notify the classroom teacher and site principal in writing on the day of exclusion.",
+          "Do NOT withdraw the student in Aeries — mark attendance as <strong>'S' (Suspended/Excluded)</strong> until immunization compliance is achieved.",
+          "Once compliant records are received, remove the exclusion flag, update immunization records, and restore normal attendance coding."
+        ],
+        wusdProcess: "The health clerk must document all parent contact attempts before exclusion. The principal must be notified before a student is excluded. Students may return the same day proof of immunization is provided or a valid appointment card for missing vaccines is submitted.",
+        forms: ["WUSD Immunization Exclusion Notice", "Immunization Appointment Card Acceptance Form"],
+        legalCompliance: "CA Health & Safety Code 120365 authorizes school exclusion for non-compliant students after 30 school days. An appointment card showing a scheduled vaccine date within 10 days is sufficient to delay exclusion.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "calpads-001",
+        title: "CALPADS Enrollment Corrections & SSID Resolution",
+        category: "CALPADS",
+        roles: ["Registrar"],
+        keywords: ["calpads", "ssid", "state student id", "correction", "duplicate", "mismatch", "enrollment error", "sis sync", "state reporting", "demographics mismatch"],
+        content: "How to resolve common CALPADS errors including duplicate SSIDs, demographic mismatches, and enrollment record corrections in Aeries before the submission window closes.",
+        aeriesSteps: [
+          "Log into <strong>CALPADS (calpads.org)</strong> and navigate to <strong>Online Transactions > Student Enrollment</strong> to review error reports.",
+          "In Aeries, go to <strong>Student Data > Demographics</strong> and compare the student's Legal Name, Birth Date, and Gender against the CALPADS record exactly — even minor spelling differences cause mismatches.",
+          "For duplicate SSID errors: contact the CALPADS helpdesk (1-916-227-0270) to initiate an SSID merge. Do NOT delete or re-enroll the student in Aeries.",
+          "For demographic mismatches: correct the data in Aeries first, then run the <strong>CALPADS Sync</strong> from <strong>Reports > CALPADS > Submit Enrollment</strong>.",
+          "For missing exit records: locate the student, verify their exit date and exit code, and resubmit the record through the CALPADS batch submission.",
+          "After corrections, run the <strong>CALPADS Error Report</strong> again to confirm all errors are resolved before the submission deadline."
+        ],
+        wusdProcess: "WUSD submits CALPADS data during four annual submission windows: Fall 1 (Oct), Fall 2 (Jan), EOY 1 (Apr), and EOY 2 (Jul). The District Registrar coordinates all batch submissions. Site registrars are responsible for resolving site-level errors within 5 business days of notification.",
+        forms: ["CALPADS Error Resolution Log", "SSID Merge Request Form", "WUSD CALPADS Submission Checklist"],
+        legalCompliance: "California Education Code 60900 requires all LEAs to submit accurate student-level data to CALPADS. Errors that result in inaccurate ADA or demographic reporting may trigger a state audit or funding adjustment.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "calpads-002",
+        title: "CALPADS English Learner (EL) Program Reporting",
+        category: "CALPADS",
+        roles: ["Registrar", "Secretary"],
+        keywords: ["calpads", "english learner", "EL", "ELD", "ELPAC", "reclassification", "RFEP", "language", "primary language", "home language survey", "program", "ltel"],
+        content: "Procedure for ensuring English Learner program data is accurately entered in Aeries and submitted to CALPADS, including initial identification, ELPAC results, and reclassification.",
+        aeriesSteps: [
+          "At enrollment, ensure the <strong>Home Language Survey (HLS)</strong> is completed. If any language other than English is listed, the student must be assessed for EL status.",
+          "Enter the Home Language in <strong>Student Data > Demographics > Language</strong> fields in Aeries.",
+          "After ELPAC Initial assessment results are received, enter scores in <strong>Student Data > Programs > English Language Acquisition</strong>.",
+          "Assign the student to the EL program by adding an active program record with the correct <strong>EL Program Code</strong> and start date.",
+          "For reclassification (RFEP): once all four reclassification criteria are met, update the program record with the <strong>RFEP date</strong> and change the EL status to Reclassified.",
+          "Run the <strong>EL Program Compliance Report</strong> in Aeries before each CALPADS submission window to catch missing or incorrect records."
+        ],
+        wusdProcess: "WUSD's EL Coordinator must approve all reclassification decisions before the RFEP date is entered in Aeries. Home Language Surveys must be filed in the student's cumulative folder. ELPAC score entry must be completed within 30 days of receiving results from the test vendor.",
+        forms: ["Home Language Survey (English & Spanish)", "ELPAC Score Entry Log", "RFEP Parent Notification Letter", "EL Program Placement Notice"],
+        legalCompliance: "CA Education Code 313 and 48985 govern English Learner identification and instruction requirements. Title III of ESSA requires annual ELPAC testing for all active EL students. Failure to reclassify eligible students timely may result in federal compliance findings.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "sped-001",
+        title: "Special Education Student Enrollment",
+        category: "Special Education",
+        roles: ["Secretary", "Registrar"],
+        keywords: ["special education", "sped", "IEP", "iep", "disability", "504", "resource", "SDC", "special day class", "RSP", "speech", "OT", "occupational therapy", "psychologist", "eligibility", "placement"],
+        content: "Enrollment procedure for a student who arrives with an active IEP from another district. Requires coordination with the Special Education department before placement is finalized.",
+        aeriesSteps: [
+          "Begin standard enrollment in <strong>Student Data > Demographics</strong> but do NOT finalize school placement without SpEd department clearance.",
+          "Collect the student's most recent IEP document, eligibility report, and prior school records from the parent.",
+          "Immediately contact the <strong>WUSD Special Education Director</strong> or site SpEd Coordinator and forward copies of all IEP documents.",
+          "In Aeries, navigate to <strong>Student Data > Programs</strong> and add a Special Education program entry with the student's disability category and current placement type.",
+          "Once the SpEd team confirms placement, assign the student to the appropriate classroom. Enter the IEP meeting date and next annual review date in the SpEd program record.",
+          "Flag the student's record with the SpEd indicator so teachers and counselors can see the active IEP status on the student summary screen."
+        ],
+        wusdProcess: "WUSD must honor an active IEP from any California public school within 30 days of enrollment. The Special Education team has 5 school days to review an incoming IEP and confirm or schedule a new IEP meeting. The school secretary's role is intake and routing — never make placement decisions independently.",
+        forms: ["WUSD Special Education Intake Routing Form", "IEP Document Receipt Acknowledgment", "SpEd Program Entry Checklist"],
+        legalCompliance: "IDEA (Individuals with Disabilities Education Act) requires that a transferring student's IEP be honored immediately upon enrollment. CA Education Code 56325 requires WUSD to provide comparable services within 5 school days while an IEP review is scheduled.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "sped-002",
+        title: "504 Plan Enrollment & Accommodation Tracking",
+        category: "Special Education",
+        roles: ["Secretary", "Admin Assistant", "Health Clerk"],
+        keywords: ["504", "504 plan", "accommodation", "disability", "ADA", "Section 504", "health plan", "allergy", "epipen", "diabetic", "asthma", "medication plan", "nurse"],
+        content: "Procedure for flagging a student with an active 504 Plan in Aeries and ensuring health-related accommodations are routed to the correct staff.",
+        aeriesSteps: [
+          "When a parent presents a 504 Plan at enrollment or update, make a copy and route the original to the site 504 Coordinator (typically the Assistant Principal or Counselor).",
+          "In Aeries, navigate to <strong>Student Data > Programs</strong> and add a 504 Program entry with the plan start date and annual review date.",
+          "If the 504 includes health accommodations (EpiPen, insulin, inhaler, etc.), immediately notify the <strong>Health Clerk</strong> to set up a corresponding Health Plan.",
+          "Enter any medication protocols in <strong>Student Data > Health > Medications</strong> with physician authorization on file.",
+          "Add a student alert flag in <strong>Student Data > Alerts</strong> visible to all staff: e.g., '504 Active - See Health Office for accommodation details.'",
+          "Confirm the classroom teacher has received a copy of the 504 accommodations from the 504 Coordinator before the student's first day."
+        ],
+        wusdProcess: "WUSD 504 Coordinators are responsible for conducting annual 504 reviews. The school office's role is to ensure the plan is entered in Aeries, health staff are notified, and teacher copies are distributed. 504 documents are confidential and stored separately from the general cum folder.",
+        forms: ["WUSD 504 Program Entry Form", "Student Health Accommodation Plan", "Physician Medication Authorization Form", "Teacher 504 Accommodation Receipt"],
+        legalCompliance: "Section 504 of the Rehabilitation Act of 1973 prohibits discrimination against students with disabilities in federally funded programs. Schools must implement all documented accommodations. Failure to honor a 504 Plan may result in an OCR (Office for Civil Rights) complaint.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "health-001",
+        title: "Daily Medication Administration Procedure",
+        category: "Health Office",
+        roles: ["Health Clerk"],
+        keywords: ["medication", "medicine", "prescription", "pill", "inhaler", "epipen", "epinephrine", "administer", "health office", "nurse", "dose", "daily medication", "log"],
+        content: "Step-by-step procedure for receiving, storing, logging, and administering daily prescription medications to students in the health office.",
+        aeriesSteps: [
+          "Verify a completed <strong>Physician Medication Authorization Form</strong> is on file, signed by both the licensed physician and parent/guardian.",
+          "In Aeries, navigate to <strong>Student Data > Health > Medications</strong> and confirm the medication record is active and matches the prescription label exactly (drug name, dosage, frequency, route).",
+          "When the student arrives for their dose, verify student identity by checking their Aeries photo ID on screen.",
+          "Administer the medication per the physician's instructions and immediately log the administration in <strong>Health > Medication Log</strong>: date, time, dose given, and staff initials.",
+          "Store all medications in a locked cabinet in the health office. Controlled substances (e.g., Ritalin, Adderall) require a double-locked storage system.",
+          "At the end of each school year, contact parents to retrieve unused medications. Medications not retrieved within 5 school days of the last day may be destroyed per district protocol."
+        ],
+        wusdProcess: "Only a credentialed school nurse, licensed health clerk, or trained designee may administer medications. No student may self-administer without a specific self-carry authorization on file (e.g., for inhalers or EpiPens). All medication errors must be reported to the school nurse and site principal within 1 hour.",
+        forms: ["Physician Medication Authorization Form", "Daily Medication Administration Log", "Self-Carry Authorization Form (Inhaler/EpiPen)", "Medication Disposal/Return Receipt"],
+        legalCompliance: "CA Education Code 49423 authorizes trained school personnel to administer medications with physician and parent consent. CA Education Code 49423.1 allows students to self-carry and self-administer emergency medications (asthma inhalers, EpiPens) with physician and parent authorization on file.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "health-002",
+        title: "Health Screening Tracking & Vision/Hearing Referrals",
+        category: "Health Office",
+        roles: ["Health Clerk"],
+        keywords: ["vision", "hearing", "screening", "scoliosis", "health screening", "referral", "failed screening", "audiometer", "snellen", "acuity", "health check"],
+        content: "Procedure for conducting state-mandated health screenings, entering results in Aeries, and following up on students who fail and require parent notification or physician referral.",
+        aeriesSteps: [
+          "Conduct screenings per CA state mandate schedule: Vision and Hearing in grades K, 2, 5, 8; Scoliosis in grade 7 (girls) and 8 (boys).",
+          "Enter screening results for each student in <strong>Student Data > Health > Health Screenings</strong>. Record the date, type of screening, result (Pass/Fail/Referred), and screener's name.",
+          "For students who fail: generate a <strong>Referral Letter</strong> from Aeries Health reports and mail or send home with the student within 5 school days.",
+          "Log parent notification date in the health screening record. Document if the parent confirmed receipt.",
+          "Follow up with families of referred students after 30 days. If no physician follow-up has occurred, document a second outreach attempt.",
+          "At year end, run the <strong>Health Screening Completion Report</strong> to verify all required grade levels were screened and results are on file."
+        ],
+        wusdProcess: "WUSD health screenings are coordinated by the District Nurse. Site health clerks conduct screenings and enter data in Aeries. All referral letters must use the official WUSD template. Students who cannot be screened due to absence must be screened upon return or before the end of the school year.",
+        forms: ["Vision/Hearing Screening Referral Letter", "Scoliosis Screening Referral Form", "Health Screening Completion Roster"],
+        legalCompliance: "CA Education Code 49450-49458 mandate vision, hearing, and scoliosis screenings at specified grade levels. CA Education Code 49455 requires written notification to parents of students who do not pass screenings.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "health-003",
+        title: "Student Illness & Injury Response in the Health Office",
+        category: "Health Office",
+        roles: ["Health Clerk", "Secretary"],
+        keywords: ["sick", "ill", "injury", "accident", "health office", "send home", "first aid", "fever", "vomit", "head injury", "concussion", "incident report", "emergency"],
+        content: "Procedure for assessing, documenting, and responding when a student arrives at the health office ill or injured during the school day.",
+        aeriesSteps: [
+          "When a student arrives, document the visit immediately in <strong>Student Data > Health > Health Log</strong>: date, time, reason for visit, symptoms, and initial assessment.",
+          "Take vital signs as appropriate (temperature, pulse) and record in the health log entry.",
+          "Attempt parent/guardian contact if the student needs to go home. Document all call attempts — time called, number used, and outcome — directly in the health log.",
+          "If sending the student home, mark attendance as <strong>'I' (Illness)</strong> for the remaining periods in <strong>Attendance > Attendance</strong> and note 'Released to [Parent Name] at [Time]'.",
+          "For injuries: complete a <strong>Student Accident/Incident Report</strong> in Aeries and route a copy to the site principal the same day.",
+          "For head injuries or suspected concussions: follow WUSD concussion protocol — the student may NOT return to PE or sports without physician clearance. Flag the student's record with a concussion alert."
+        ],
+        wusdProcess: "Health office staff must document every student visit, even brief ones. If a parent cannot be reached after 3 documented attempts and the student has a fever of 100.4°F or higher, is vomiting, or has a significant injury, escalate to the principal immediately. Students may not be held in the health office for more than 1 hour without parent contact.",
+        forms: ["Student Health Office Visit Log", "Student Accident/Incident Report", "Concussion Symptom Checklist", "Parent Release Authorization"],
+        legalCompliance: "CA Education Code 49400 requires schools to provide basic health services. AB 2127 (Concussion Law) requires all students suspected of concussion to be removed from physical activity immediately and cleared by a licensed healthcare provider before return to play.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "chronic-001",
+        title: "Chronic Absence Monitoring & SARB Referral",
+        category: "Attendance",
+        roles: ["Attendance Clerk", "Secretary", "Admin Assistant"],
+        keywords: ["chronic absence", "chronically absent", "SARB", "SART", "truancy", "10 percent", "18 days", "attendance intervention", "referral", "at-risk", "ADA", "average daily attendance"],
+        content: "Procedure for identifying chronically absent students, escalating through the SART/SARB intervention tiers, and documenting all outreach in Aeries.",
+        aeriesSteps: [
+          "Run the <strong>Chronic Absence Report</strong> in Aeries monthly: navigate to <strong>Reports > Attendance > Chronic Absence</strong>. Students missing 10% or more of school days (approximately 18 days in a 180-day year) are chronically absent.",
+          "At 5 absences (excused or unexcused): document a <strong>Tier 1 outreach call</strong> to the parent in the student's attendance notes.",
+          "At 3 unexcused absences: generate and mail <strong>Truancy Letter 1</strong> per CA Ed Code 48260. Log the letter date in Aeries.",
+          "At 6 unexcused absences: generate <strong>Truancy Letter 2</strong> and schedule a <strong>SART (School Attendance Review Team)</strong> meeting with the parent.",
+          "Document all SART meeting outcomes in the student's attendance notes including the date, attendees, action plan, and parent signature.",
+          "At 10+ unexcused absences: refer the student to the District <strong>SARB (School Attendance Review Board)</strong> using the official WUSD SARB Referral Packet."
+        ],
+        wusdProcess: "WUSD uses a three-tier attendance intervention model. Tier 1 is school-based outreach. Tier 2 is SART. Tier 3 is SARB, which may involve the District Attorney's office for habitual truancy. All interventions must be documented in Aeries with dates, contacts, and outcomes to demonstrate due diligence.",
+        forms: ["WUSD Truancy Letter 1", "WUSD Truancy Letter 2", "SART Meeting Agenda & Action Plan", "SARB Referral Packet", "Chronic Absence Parent Notification Letter"],
+        legalCompliance: "CA Education Code 48260 defines truancy (3+ unexcused absences or tardies over 30 min). Ed Code 48263 defines a habitual truant (previously reported and truant again). Ed Code 48980 requires annual written parent notification of attendance policies. LCFF funding is directly tied to ADA — chronic absence has direct budget consequences.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "records-001",
+        title: "Cumulative Records Request & Release",
+        category: "Student Records",
+        roles: ["Secretary", "Registrar"],
+        keywords: ["records", "cum folder", "cumulative", "records request", "transcript", "release records", "FERPA", "subpoena", "court order", "records transfer", "inspection"],
+        content: "Procedure for processing incoming and outgoing student records requests, including transfer records, parent inspection rights, and third-party releases.",
+        aeriesSteps: [
+          "For outgoing transfers: only release records upon receipt of a written records request from the receiving school or district. Verify the request is on official school letterhead or an official district form.",
+          "Prepare the cumulative folder contents: transcripts, immunization records, attendance history, IEP/504 documents (if applicable), and test score reports.",
+          "In Aeries, print the official <strong>Student Transcript</strong> from <strong>Reports > Transcripts</strong> and the <strong>Attendance History</strong> report.",
+          "Log the records release in the student's cum folder with the date, recipient school, and staff member who processed the release.",
+          "For parent inspection requests: parents have the right to inspect records within 5 business days of a written request. Schedule an appointment and have an administrator present for the review.",
+          "For third-party requests (attorneys, government agencies): require a signed parent release or valid court order/subpoena before releasing any records. Route all legal requests to the principal and district office immediately."
+        ],
+        wusdProcess: "WUSD never releases student records verbally or via email without secure transmission protocols. Cum folders are never mailed before a written request is received. Original documents are never sent — only certified copies. The district retains records for a minimum of 5 years after the student's last enrollment.",
+        forms: ["Official Records Request Form", "FERPA Parent Inspection Request Log", "Third-Party Records Release Authorization", "Records Transmittal Cover Sheet"],
+        legalCompliance: "FERPA (Family Educational Rights and Privacy Act) grants parents the right to inspect and request corrections to educational records. Schools have 45 days to respond to inspection requests. Unauthorized disclosure of student records is a federal FERPA violation that can result in loss of federal funding.",
+        lastUpdated: "2026-05-27"
+      },
+
+      // ── EXTENDED ENTRIES ─────────────────────────────────────────
+
+      {
+        id: "enroll-002",
+        title: "Intra-District & Inter-District Transfer Requests",
+        category: "Enrollment",
+        roles: ["Secretary", "Registrar", "Admin Assistant"],
+        keywords: ["transfer", "intra-district", "inter-district", "open enrollment", "boundary", "permit", "out of area", "school choice", "transfer request", "approve", "deny"],
+        content: "Procedure for processing both intra-district (school to school within WUSD) and inter-district (another district to WUSD) transfer permit requests.",
+        aeriesSteps: [
+          "Receive the completed Transfer Request Form from the parent. Verify all fields are complete and signed.",
+          "For <strong>Intra-District</strong>: log the request in the transfer tracking sheet. Route to the site principal for approval or denial based on space availability and suspension/discipline history.",
+          "For <strong>Inter-District</strong>: verify the parent has obtained a release permit from their district of residence first. Without a release permit, WUSD cannot accept the student.",
+          "Once approved, create or update the student record in Aeries. For new-to-WUSD students, complete full enrollment including residency verification of the home district address.",
+          "Enter the transfer permit number in <strong>Student Data > Demographics > Permit Number</strong> field and set the permit expiration date.",
+          "Notify the receiving school secretary of the incoming transfer with expected start date. Coordinate cum folder transfer if moving from another WUSD site."
+        ],
+        wusdProcess: "WUSD Board Policy 5116 governs open enrollment and transfer requests. Approvals are valid for one school year and must be renewed annually. Transfers may be revoked if a student has 3 or more suspensions or falls below satisfactory attendance at the receiving school.",
+        forms: ["WUSD Intra-District Transfer Request Form", "Inter-District Transfer Permit (from resident district)", "Annual Transfer Renewal Notice"],
+        legalCompliance: "CA Education Code 46600-46611 governs inter-district attendance permits. CA Education Code 48980 requires districts to notify parents annually of their open enrollment rights. Denial of a transfer must be in writing with the specific reason stated.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "enroll-003",
+        title: "Kindergarten Age Verification & Early Entrance",
+        category: "Enrollment",
+        roles: ["Secretary", "Registrar"],
+        keywords: ["kindergarten", "TK", "transitional kindergarten", "age", "birth certificate", "cutoff", "september 1", "early entrance", "age requirement", "kinder"],
+        content: "Procedure for verifying age eligibility for Kindergarten and Transitional Kindergarten enrollment, including early entrance assessment referrals.",
+        aeriesSteps: [
+          "Verify the student's birth certificate or passport. For Kindergarten, the student must turn 5 on or before <strong>September 1</strong> of the enrolling school year.",
+          "For Transitional Kindergarten (TK): the student must turn 5 between <strong>September 2 and April 2</strong> of the enrolling school year.",
+          "Enter the verified birth date in <strong>Student Data > Demographics</strong>. Aeries will calculate grade eligibility automatically.",
+          "If a parent requests early entrance for a child who does not meet the age cutoff, route the request to the site principal. An early entrance assessment by a WUSD psychologist is required.",
+          "Document the grade placement decision in the student's enrollment record with the authorizing administrator's name.",
+          "For TK students turning 5 after April 2: these students are not eligible for TK and must wait for the following year's Kindergarten enrollment."
+        ],
+        wusdProcess: "WUSD follows the state-mandated September 1 cutoff strictly. Early entrance requests are rare and require a formal assessment process — secretaries should never promise early entrance to parents without administrator and psychologist clearance.",
+        forms: ["Kindergarten Age Verification Checklist", "Early Entrance Assessment Referral Form", "TK Eligibility Notification Letter"],
+        legalCompliance: "CA Education Code 48000 sets the Kindergarten age requirement at 5 years old by September 1. CA Education Code 48000(c) established Transitional Kindergarten for students whose 5th birthday falls between September 2 and April 2. SB 70 (2021) phases in universal TK for all 4-year-olds by 2025-26.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "discipline-001",
+        title: "Suspension Entry & Documentation in Aeries",
+        category: "Discipline",
+        roles: ["Secretary", "Admin Assistant"],
+        keywords: ["suspension", "suspend", "discipline", "behavior", "expulsion", "OSS", "out of school", "ISS", "in school suspension", "incident", "infraction", "ED code 48900", "Saturday school"],
+        content: "Procedure for entering a student suspension in Aeries accurately, including the required Ed Code infraction codes, victim data, and attendance coding for suspended days.",
+        aeriesSteps: [
+          "Navigate to <strong>Student Data > Discipline > Suspensions</strong> in Aeries.",
+          "Click <strong>Add New Suspension</strong>. Enter the suspension start and end dates, and the administrator who authorized the suspension.",
+          "Select the correct <strong>CA Ed Code 48900 subsection</strong> that describes the offense (e.g., 48900(a)(1) for physical assault, 48900(b) for possession of dangerous object).",
+          "Enter the <strong>Offense Description</strong> — be factual and objective. Avoid subjective language. Include location (classroom, playground, etc.) and time of incident.",
+          "If there is a victim, enter victim data in the victim fields. For zero-tolerance offenses (weapons, drugs), flag the record for potential expulsion review.",
+          "Update attendance for each suspended day: change the attendance code to <strong>'S' (Suspended)</strong> for all periods on suspended days.",
+          "Generate and print the official <strong>Suspension Notice</strong> from Aeries for parent signature. File the signed copy in the student's discipline folder."
+        ],
+        wusdProcess: "The principal or designee must contact the parent by phone on the day of suspension before the student leaves campus. The written suspension notice must be sent home the same day. Students on suspension may not be on any WUSD campus during the suspension period. Suspended days do not count toward truancy.",
+        forms: ["WUSD Suspension Notice", "Ed Code 48900 Infraction Reference Sheet", "Expulsion Referral Checklist", "Victim Statement Form"],
+        legalCompliance: "CA Education Code 48900 lists all suspendable offenses. Ed Code 48911 limits suspensions to 5 consecutive days and 20 total days per year. Ed Code 48915 lists mandatory expulsion offenses (possession of firearm, brandishing a knife, etc.). Ed Code 48900.5 prohibits suspension for willful defiance in grades K-8.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "discipline-002",
+        title: "Mandatory Reporting & Child Abuse Protocols",
+        category: "Discipline",
+        roles: ["Secretary", "Admin Assistant", "Health Clerk"],
+        keywords: ["mandatory reporting", "child abuse", "neglect", "CPS", "DCFS", "mandated reporter", "suspected abuse", "bruise", "injury", "emotional abuse", "sexual abuse", "hotline", "CANRA"],
+        content: "Every school employee is a mandated reporter under California law. This procedure outlines what to do when abuse or neglect is suspected, including the reporting timeline and Aeries documentation.",
+        aeriesSteps: [
+          "If abuse or neglect is suspected, do NOT investigate independently. Immediately notify the site principal or designee.",
+          "The mandated reporter (any staff member who observed or was told) must make a verbal report to <strong>Sacramento County CPS Hotline: (916) 875-5437</strong> within 24 hours of suspicion.",
+          "A written follow-up report (<strong>SSAR Form SS 8572</strong>) must be submitted to CPS within 36 hours of the initial verbal report.",
+          "In Aeries, document the concern in <strong>Student Data > Health > Health Log</strong> using neutral, factual language: date, what was observed, who reported it, and that a CPS report was made.",
+          "Do NOT note specific CPS case numbers or investigation details in Aeries — that information is confidential.",
+          "Notify the District Office of Student Services the same day the report is made. Keep all documentation strictly confidential."
+        ],
+        wusdProcess: "WUSD mandated reporter training is required annually for all employees. Reporting is an individual legal obligation — a staff member cannot delegate their duty to report to a supervisor. The principal's role is to support and facilitate, not to intercept or delay a report. Failure to report is a misdemeanor.",
+        forms: ["SSAR Form SS 8572 (Suspected Child Abuse Report)", "WUSD Mandated Reporter Incident Log", "Annual Mandated Reporter Training Certificate"],
+        legalCompliance: "CANRA (Child Abuse and Neglect Reporting Act, Penal Code 11164-11174.4) requires all school employees to report known or reasonably suspected child abuse or neglect. Failure to report is a misdemeanor punishable by up to 6 months in jail and a $1,000 fine. Reporters acting in good faith are immune from civil and criminal liability.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "custodial-001",
+        title: "Custody Orders, Restraining Orders & Emergency Contacts",
+        category: "Student Safety",
+        roles: ["Secretary", "Registrar", "Admin Assistant"],
+        keywords: ["custody", "court order", "restraining order", "TRO", "no contact", "parent rights", "divorce", "separated", "non-custodial", "who can pick up", "release student", "emergency contact"],
+        content: "Procedure for handling custody disputes, court-ordered restrictions, and questions about who is authorized to pick up or access information about a student.",
+        aeriesSteps: [
+          "When a parent provides a custody order or restraining order, make a certified copy and file it immediately in the student's legal documents folder (separate from the cum folder).",
+          "In Aeries, navigate to <strong>Student Data > Contacts</strong> and update the contact record for the restricted party: set the <strong>Pickup Authorization</strong> flag to No and add a confidential note referencing the court order on file.",
+          "Add a high-visibility <strong>Student Alert</strong> in <strong>Student Data > Alerts</strong>: e.g., 'CUSTODY ORDER ON FILE — See office before releasing to [Name]. Do not release to [Name] per court order dated [Date].'",
+          "For restraining orders: immediately notify the site principal, all classroom teachers, and yard duty staff. Provide a physical description of the restricted individual.",
+          "If the restricted party arrives on campus: do NOT release the student. Calmly inform the individual that district policy requires you to follow the court order. Contact the principal and call 911 if the individual becomes aggressive.",
+          "Review and update all custody documentation at the start of each school year during re-enrollment verification."
+        ],
+        wusdProcess: "WUSD honors all valid court-issued custody and restraining orders. If no court order is on file, both legal parents have equal rights to their child regardless of marital status. Staff should never make custody determinations based on verbal claims — only court documents on file in the school office govern pickup rights.",
+        forms: ["Custody Order Filing Receipt", "Student Safety Alert Notification Form", "Emergency Release Authorization Log"],
+        legalCompliance: "CA Family Code 3025 grants both parents equal access to school records and the right to authorize emergency medical care unless a court order states otherwise. CA Education Code 49061 defines who may access student records. Schools are protected from liability when acting in good faith on a filed court order.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "custodial-002",
+        title: "Student Release & Early Dismissal Procedures",
+        category: "Student Safety",
+        roles: ["Secretary", "Admin Assistant"],
+        keywords: ["release", "pick up", "early dismissal", "checkout", "sign out", "ID", "identification", "who can pick up", "authorized adult", "stranger", "safe release"],
+        content: "Procedure for safely releasing students during the school day, verifying adult identity, and documenting all early dismissals in Aeries.",
+        aeriesSteps: [
+          "When an adult arrives to pick up a student, ask for a government-issued photo ID before calling the student out of class.",
+          "Verify the adult's name against the <strong>authorized pickup list</strong> in <strong>Student Data > Contacts</strong> in Aeries. If the adult is not on the list, contact the primary parent/guardian for verbal authorization and document the call.",
+          "Check for any custody alerts or restraining orders before releasing. If a flag exists, follow the custody order protocol.",
+          "Call or send a runner to the classroom. Do NOT release the student until the adult is present in the office and identity is verified.",
+          "Log the early dismissal in <strong>Attendance > Attendance</strong>: mark periods after dismissal time as <strong>'E' (Excused Early Dismissal)</strong> with a note listing the authorized adult's name and time of release.",
+          "Have the adult sign the <strong>Early Dismissal Log</strong> with time, student name, and relationship. This is the paper audit trail."
+        ],
+        wusdProcess: "WUSD requires photo ID verification for all non-standard pickups. Office staff should never release a student to an unknown adult based solely on a phone call from a parent. If an adult cannot be verified and a parent cannot be reached, the student remains at school until the end of the day or a verified adult arrives.",
+        forms: ["Daily Early Dismissal Sign-Out Log", "Authorized Pickup Authorization Form", "Visitor ID Log"],
+        legalCompliance: "CA Education Code 44807 holds teachers and school staff responsible for student supervision during school hours. Releasing a student to an unauthorized adult may constitute negligence. Schools have a duty of care for all students while on campus.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "foster-001",
+        title: "Foster Youth & Homeless Student Enrollment Rights",
+        category: "Enrollment",
+        roles: ["Secretary", "Registrar"],
+        keywords: ["foster", "foster youth", "foster care", "homeless", "McKinney-Vento", "AB 490", "caregiver", "group home", "social worker", "immediate enrollment", "school of origin", "best interest"],
+        content: "Immediate enrollment rights for foster youth and students experiencing homelessness. Federal and state law require enrollment without delay regardless of missing documents.",
+        aeriesSteps: [
+          "For foster youth: enroll the student immediately even if records, immunizations, or proof of residency are unavailable. Accept a caregiver's affidavit or social worker authorization in place of standard documents.",
+          "In Aeries, navigate to <strong>Student Data > Demographics > Program Participation</strong> and flag the student as <strong>Foster Youth</strong>. This triggers Title I and AB 490 protections.",
+          "Contact the WUSD Foster Youth Liaison (typically the district counselor or student services coordinator) within 24 hours of enrollment.",
+          "Determine whether the student should remain at their <strong>School of Origin</strong> (previous school) or transfer to the school of current placement. This is a 'best interest' determination made with the social worker — not a unilateral office decision.",
+          "For McKinney-Vento (homeless) students: flag in Aeries under <strong>Program Participation > Homeless</strong>. Waive all standard residency requirements and enroll in the school of the parent's choice.",
+          "Arrange free transportation if the student is remaining at their school of origin and the placement is outside normal attendance boundaries."
+        ],
+        wusdProcess: "WUSD's Foster Youth Liaison must be notified of every foster youth enrollment within 1 school day. The school secretary's role is immediate intake and flagging — never delay enrollment to gather records. All foster youth are automatically eligible for additional academic support services.",
+        forms: ["Foster Youth Enrollment Affidavit", "McKinney-Vento Residency Questionnaire", "School of Origin Best Interest Determination Form", "Foster Youth Services Referral"],
+        legalCompliance: "AB 490 (CA Education Code 48853.5) guarantees foster youth the right to immediate enrollment and school of origin placement. The federal McKinney-Vento Homeless Assistance Act (42 U.S.C. 11431) requires immediate enrollment for homeless students. Both laws prohibit delays based on missing documentation.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "ell-001",
+        title: "Home Language Survey & Initial ELPAC Referral",
+        category: "English Learners",
+        roles: ["Secretary", "Registrar"],
+        keywords: ["home language survey", "HLS", "ELPAC", "English learner", "language assessment", "initial assessment", "primary language", "spanish", "bilingual", "language other than english", "LOTE"],
+        content: "Every new enrollee must complete a Home Language Survey. If any language other than English is indicated, the student must be referred for ELPAC Initial Assessment within 30 days.",
+        aeriesSteps: [
+          "At enrollment, provide the <strong>Home Language Survey</strong> in the family's primary language. The HLS asks 4 questions about which languages are spoken at home and by the student.",
+          "If ALL answers are English-only: no further action needed. File the HLS in the cum folder.",
+          "If ANY answer indicates a language other than English: the student is a <strong>potential English Learner</strong> and must be referred for ELPAC Initial Assessment regardless of how fluent the child appears.",
+          "In Aeries, enter the home language in <strong>Student Data > Demographics > Language fields</strong>: Home Language, Primary Language, and Language Fluency.",
+          "Notify the school's EL Coordinator or District EL Director of the new potential EL student within 2 school days. They will schedule the ELPAC Initial Assessment.",
+          "Until ELPAC results are received and reviewed, the student must be given access to all EL supports. Do NOT place in any language program without the EL Coordinator's direction."
+        ],
+        wusdProcess: "WUSD requires the HLS to be offered in English and Spanish at minimum. For families speaking other languages, contact the District Translation line for additional language support. HLS forms must be filed permanently in the student's cum folder — they cannot be destroyed even after reclassification.",
+        forms: ["Home Language Survey (English)", "Home Language Survey (Spanish)", "ELPAC Initial Assessment Referral Form", "Potential EL Notification to EL Coordinator"],
+        legalCompliance: "CA Education Code 48985 and Title III of ESSA require districts to identify all potential English Learners using a home language survey at enrollment. ELPAC Initial Assessment must be completed within 30 calendar days of enrollment. Failure to identify and assess EL students timely may result in federal OCR findings.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "emergency-001",
+        title: "Emergency Card Annual Verification & Updates",
+        category: "Student Safety",
+        roles: ["Secretary", "Admin Assistant"],
+        keywords: ["emergency card", "emergency contact", "annual update", "back to school", "contact information", "phone number", "medical alert", "allergy", "physician", "hospital", "parent info"],
+        content: "Annual procedure for collecting, verifying, and entering updated emergency contact information for all students at the start of each school year.",
+        aeriesSteps: [
+          "At the start of each school year, generate pre-filled emergency card forms from <strong>Reports > Student Reports > Emergency Cards</strong> in Aeries for all returning students.",
+          "Send the pre-filled form home with students the first week of school requesting parent review, corrections, and signature.",
+          "Upon return, review each card for changes: updated phone numbers, new emergency contacts, changes in medical conditions or allergies, new physician information.",
+          "Enter all changes in <strong>Student Data > Contacts</strong> and <strong>Student Data > Health > Medical Alerts</strong> in Aeries within 5 school days of receipt.",
+          "For any student whose family does not return the card after 2 weeks, make a phone outreach attempt and document it.",
+          "File signed emergency cards in the site's emergency binder organized by classroom/teacher — these are the physical backup used during lockdowns and evacuations when digital systems are unavailable."
+        ],
+        wusdProcess: "WUSD requires updated emergency cards for every enrolled student by the end of the third week of school. Cards must include at least 2 emergency contacts who are not the primary parent. The site secretary is responsible for maintaining both the digital Aeries record and the physical emergency binder.",
+        forms: ["Annual Emergency Card (Pre-Filled from Aeries)", "Medical Alert Update Form", "Emergency Contact Change Request"],
+        legalCompliance: "CA Education Code 49408 requires schools to maintain emergency contact information for every student. This information must be readily accessible during emergencies including fires, earthquakes, and lockdowns. FERPA protects this information from disclosure to unauthorized parties.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "enrollment-audit-001",
+        title: "Beginning of Year Enrollment Audit & Roster Cleanup",
+        category: "Enrollment",
+        roles: ["Registrar", "Secretary"],
+        keywords: ["audit", "roster", "enrollment count", "P1", "P2", "census", "ADA", "average daily attendance", "count day", "CBEDS", "enrollment verification", "beginning of year", "BOY"],
+        content: "Critical beginning-of-year procedure for auditing enrollment counts, cleaning up rosters, and ensuring accurate data before the first state reporting deadline.",
+        aeriesSteps: [
+          "By the end of the first week of school, run the <strong>Enrollment by Grade Report</strong> in Aeries to verify total enrollment by grade level and school.",
+          "Cross-reference against classroom rosters. Every student on a classroom roster must have an active enrollment record in Aeries. Every active Aeries record must correspond to a physically attending student.",
+          "Identify and resolve: No-Shows (exit with N470), students enrolled at two sites simultaneously (coordinate with other site registrar), and students with incomplete enrollment records (missing contacts, immunizations, or residency docs).",
+          "Run the <strong>Duplicate SSID Report</strong> from Aeries to catch any students who may have been enrolled twice under different names or birth dates.",
+          "Update classroom assignments in <strong>Student Data > Scheduling</strong> to match actual teacher rosters — this drives ADA calculation.",
+          "Submit the verified enrollment count to the District Office by the deadline. This count is used for P-1 ADA apportionment, which directly determines district funding."
+        ],
+        wusdProcess: "WUSD's P-1 census period is typically the first school month. Every student counted must have been physically present at least one day during the census period. The District Registrar coordinates the official P-1 submission — site registrars are responsible for site-level data accuracy.",
+        forms: ["WUSD BOY Enrollment Verification Checklist", "P-1 Enrollment Count Submission Form", "Duplicate Student Resolution Log"],
+        legalCompliance: "CA Education Code 41601 governs Average Daily Attendance reporting and apportionment. Inflated or inaccurate enrollment counts used for ADA apportionment may constitute fraud. CBEDS (California Basic Educational Data System) requires accurate enrollment data submitted annually in October.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "grades-001",
+        title: "Grade Reporting, Incomplete Grades & GPA Corrections",
+        category: "Student Data",
+        roles: ["Registrar", "Secretary"],
+        keywords: ["grades", "report card", "GPA", "incomplete", "grade change", "transcript", "final grade", "semester", "grade correction", "honor roll", "academic progress"],
+        content: "Procedure for managing grade reporting periods in Aeries, resolving incomplete grades, and processing authorized grade corrections on student transcripts.",
+        aeriesSteps: [
+          "At each grading period, confirm all teachers have submitted final grades in Aeries by the grade submission deadline communicated by the principal.",
+          "Run the <strong>Missing Grades Report</strong> in Aeries to identify any students with blank grade fields. Contact the teacher immediately — blank grades will generate blank report cards.",
+          "For <strong>Incomplete grades</strong>: enter 'I' in the grade field with a note of the expected resolution date. Incomplete grades must be resolved within 6 weeks of the grading period or convert to an F.",
+          "For <strong>grade corrections</strong> after report cards are issued: the teacher must submit a written Grade Change Request signed by the teacher and principal. Enter the corrected grade in Aeries and note 'Grade Change Authorized by [Admin Name] on [Date]'.",
+          "After all grades are entered, run the <strong>GPA Calculation</strong> from Aeries to verify cumulative GPAs updated correctly. Cross-check honor roll eligibility reports against minimum GPA thresholds.",
+          "Generate and distribute report cards from <strong>Reports > Report Cards</strong>. Keep a log of any report cards returned as undeliverable — attempt re-delivery and document."
+        ],
+        wusdProcess: "Only a teacher can initiate a grade change. A secretary or registrar may not change a grade without written teacher authorization and principal approval. All grade changes must have a paper trail on file. Unauthorized grade changes are a serious integrity violation and may have legal consequences.",
+        forms: ["Teacher Grade Change Request Form", "Incomplete Grade Resolution Notice", "Report Card Distribution Log"],
+        legalCompliance: "CA Education Code 49066 grants teachers the authority to determine student grades and limits the conditions under which a grade may be changed. A grade can only be changed by the teacher who assigned it, except in cases of clerical error, fraud, bad faith, or incompetence as determined by the governing board.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "visitor-001",
+        title: "Campus Visitor & Volunteer Check-In Procedures",
+        category: "Campus Safety",
+        roles: ["Secretary", "Admin Assistant"],
+        keywords: ["visitor", "volunteer", "check in", "sign in", "badge", "sex offender", "raptor", "background check", "campus access", "classroom visit", "parent volunteer"],
+        content: "Procedure for safely screening and processing all campus visitors and parent volunteers, including sex offender database screening and badge issuance.",
+        aeriesSteps: [
+          "All visitors must check in at the main office immediately upon arrival. No visitor may proceed to classrooms or campus areas without a badge.",
+          "Enter the visitor's name and government-issued ID into the <strong>Raptor Visitor Management System</strong> (or WUSD's designated system). The system automatically screens against the national sex offender registry.",
+          "If the system returns a <strong>no match</strong>: print the visitor badge and note the time-in. Remind the visitor to check out before leaving.",
+          "If the system returns a <strong>potential match</strong>: do NOT issue a badge. Calmly ask the visitor to wait and immediately notify the principal. Do not confront the visitor.",
+          "For <strong>parent volunteers</strong> with regular campus access: verify their annual TB clearance (required within the last 4 years) and WUSD volunteer background check are on file before allowing independent access to students.",
+          "At checkout, log the visitor's departure time. At the end of the day, run the visitor log to confirm all visitors have signed out."
+        ],
+        wusdProcess: "WUSD requires all visitors to present photo ID. Classroom observation visits require 24-hour advance notice per Board Policy 1250 and must be scheduled through the principal. A parent's right to visit does not override the school's authority to manage visitor access for safety purposes.",
+        forms: ["WUSD Visitor Sign-In Log", "Parent Volunteer Application & TB Clearance Form", "Volunteer Background Check Authorization"],
+        legalCompliance: "CA Education Code 32211 authorizes school officials to remove disruptive visitors from campus. CA Education Code 45125.1 requires background checks for volunteers with unsupervised access to students. Penal Code 626.8 makes unauthorized loitering on school grounds a misdemeanor.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "section504-health-001",
+        title: "Allergy & Anaphylaxis Emergency Action Plans",
+        category: "Health Office",
+        roles: ["Health Clerk", "Secretary"],
+        keywords: ["allergy", "anaphylaxis", "epipen", "epinephrine", "peanut", "food allergy", "bee sting", "allergic reaction", "emergency action plan", "EAP", "stock epinephrine", "allergy alert"],
+        content: "Procedure for setting up, documenting, and communicating Emergency Action Plans for students with known severe allergies or anaphylaxis risk.",
+        aeriesSteps: [
+          "Upon enrollment of a student with a known severe allergy, collect the physician-signed <strong>Allergy & Anaphylaxis Emergency Action Plan (EAP)</strong> form.",
+          "Enter the allergy details in <strong>Student Data > Health > Medical Alerts</strong> in Aeries: allergen type, reaction symptoms, and emergency treatment instructions.",
+          "Create a <strong>Student Alert</strong> visible to all staff: e.g., 'SEVERE PEANUT ALLERGY — EpiPen in health office AND kept with student per EAP on file.'",
+          "If the student has a prescribed EpiPen: enter the medication in <strong>Health > Medications</strong> with physician authorization. Confirm expiration date is current each semester.",
+          "Distribute a copy of the EAP to: classroom teacher, PE teacher, cafeteria supervisor, and after-school program staff. Document each distribution with date and recipient name.",
+          "Review and update all EAPs at the start of each school year. Expired EAPs or medications must be flagged immediately for parent update."
+        ],
+        wusdProcess: "WUSD maintains a supply of undesignated (stock) epinephrine per AB 1386 for students who do not have a prescribed EpiPen. The health clerk is trained to administer stock epinephrine in an emergency. All staff who work with the student must be briefed annually — this is not optional.",
+        forms: ["Allergy & Anaphylaxis Emergency Action Plan", "EAP Staff Briefing Acknowledgment Log", "Stock Epinephrine Administration Record"],
+        legalCompliance: "CA Education Code 49414 (AB 1386) requires schools to maintain stock epinephrine and train designated staff to administer it. Failure to have an accessible EAP and EpiPen for a known anaphylactic student may constitute negligence. Section 504 of the Rehabilitation Act may apply if the allergy substantially limits a major life activity.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "behavior-001",
+        title: "Behavioral Health Referrals & MTSS Documentation",
+        category: "Student Support",
+        roles: ["Admin Assistant", "Secretary"],
+        keywords: ["MTSS", "SST", "student study team", "counselor", "referral", "behavior", "mental health", "intervention", "tier 2", "tier 3", "support", "counseling", "social emotional", "SEL"],
+        content: "Procedure for routing behavioral or academic concern referrals through the MTSS (Multi-Tiered System of Supports) process and documenting SST meetings in Aeries.",
+        aeriesSteps: [
+          "When a teacher or parent submits a concern referral, log it in <strong>Student Data > Counseling > Referrals</strong> in Aeries with the date, referring staff member, and concern category.",
+          "Route the referral to the school counselor or MTSS coordinator within 2 school days. Document the routing in the referral record.",
+          "For <strong>SST (Student Study Team) meetings</strong>: schedule the meeting within 30 days of referral. Enter the meeting date, attendees, and action plan in <strong>Student Data > Counseling > SST</strong>.",
+          "Document all Tier 2 and Tier 3 interventions assigned to the student: tutoring, counseling sessions, behavior support plans, reading intervention, etc.",
+          "Set review dates in the SST record. MTSS requires data review at regular intervals (typically 6-8 weeks) to assess progress.",
+          "If the SST process does not resolve the concern and a special education evaluation is being considered, route the referral to the Special Education coordinator and document the date of referral."
+        ],
+        wusdProcess: "WUSD uses a three-tier MTSS model. Tier 1 is universal classroom support. Tier 2 is targeted group intervention. Tier 3 is intensive individualized support, often a precursor to special education evaluation. The secretary's role is documentation and scheduling — clinical decisions are made by the counselor and MTSS team.",
+        forms: ["WUSD MTSS Referral Form", "SST Meeting Agenda Template", "Student Intervention Tracking Log", "Parent SST Invitation Letter"],
+        legalCompliance: "CA Education Code 56303 requires a referral for special education assessment when a student fails to respond to MTSS interventions. Documentation of MTSS efforts is legally required before a special education eligibility determination. Under IDEA, failure to identify and serve students with disabilities is an OCR violation.",
+        lastUpdated: "2026-05-27"
+      },
+      {
+        id: "yearend-001",
+        title: "End of Year Closeout Procedures",
+        category: "Enrollment",
+        roles: ["Secretary", "Registrar", "Admin Assistant"],
+        keywords: ["end of year", "EOY", "closeout", "promote", "retain", "retention", "grade promotion", "summer school", "cum folder", "year end", "records", "annual", "rollover"],
+        content: "Critical end-of-year checklist covering grade promotion/retention processing, cum folder preparation, CALPADS EOY submission, and Aeries rollover readiness.",
+        aeriesSteps: [
+          "By May: collect all teacher grade submissions and run a final <strong>Missing Grades Report</strong>. Resolve all incomplete grades before the last day of school.",
+          "Process <strong>grade retention</strong> decisions: for any student being retained, obtain written parent notification signed by the principal. Enter the retained grade in Aeries and document the retention decision date.",
+          "Run the <strong>CALPADS EOY 1 and EOY 2</strong> reports and submit to the District Registrar by the state deadline. EOY includes final enrollment counts, program participation, and course completion data.",
+          "Prepare cum folders: verify each folder contains current immunization records, HLS (if applicable), emergency card, IEP/504 documents, and current transcripts. Flag any incomplete folders.",
+          "For students promoting to middle or high school: coordinate cum folder transfer to the receiving school. Do not transfer folders until enrollment is confirmed at the next school.",
+          "Process all end-of-year withdrawals for students moving, homeschooling, or attending summer programs. Use appropriate exit codes and final attendance dates."
+        ],
+        wusdProcess: "WUSD's EOY closeout checklist is distributed by the District Registrar in April. Site secretaries are responsible for completing all site-level items before the last student day. Aeries must be 'rollover ready' — all enrollment, attendance, and grade data finalized — before the district runs the annual rollover to the next school year.",
+        forms: ["WUSD EOY Closeout Checklist", "Grade Retention Parent Notification Letter", "Cum Folder Transfer Log", "CALPADS EOY Submission Confirmation"],
+        legalCompliance: "CA Education Code 48070 governs grade promotion and retention policies. Districts must have an adopted promotion/retention policy and notify parents in writing before retaining a student. CALPADS EOY submission deadlines are set by CDE — late submissions may result in funding corrections.",
+        lastUpdated: "2026-05-27"
       }
     ];
 
