@@ -548,7 +548,66 @@ const GUIDES = [
    steps:['Open the student record in Aeries','Navigate to GATE (GTE table)','Check Program Placement: Q=Qualified','Review User fields: AO=Academically Outstanding, B=Both, CP=Cluster Program','Check GATE Testing (GTT) section for test codes and scores','GATE status informs differentiation planning'],
    policy:'GATE-identified students are entitled to appropriately differentiated instruction. Contact the WUSD GATE coordinator for program specifics.',
    legal:'California Ed Code §52200 establishes requirements for GATE programs.',
-   forms:[]}
+,
+
+  {id:'gradebook-setup',title:'Set Up a New Aeries Gradebook',category:'Gradebook',role:'Teacher',emoji:'🛠',
+   steps:[
+     'Log in to Aeries at bit.ly/wusdsis using Chrome',
+     'Click Gradebook in the left sidebar, then click Add Gradebook (the + button)',
+     'Select the correct Class/Section from the dropdown — this links the gradebook to your official roster',
+     'Enter a descriptive Gradebook Name (e.g. "Period 2 Math — Fall 2025")',
+     'Set the Term: select the correct semester or trimester matching your reporting period',
+     'Choose your Grading Scale: click Options and select the scale approved by your site (e.g. standard A-F percentage)',
+     'Set up Grade Categories: click Categories and add your weighted categories (e.g. Tests 40%, Homework 30%, Participation 30%). Categories must add up to 100% if using weights',
+     'Configure Options: decide whether to drop lowest scores, round grades, or show scores to students/parents via the portal',
+     'Click Save — your gradebook is now live and linked to your class roster',
+     'Immediately create your first backup: Manage > Backup/Restore > Create Backup'
+   ],
+   policy:'Every teacher must have a gradebook set up in Aeries for each class section by the end of the first week of school. Gradebooks drive grade reporting and are visible to parents via the Aeries Parent Portal. Categories and weights must align with your department or site grading policy.',
+   legal:'California Ed Code §49066 gives parents the right to request grade review. Ed Code §49067 requires teachers to inform students of grading criteria at the start of the course. Your Aeries gradebook is the official grade record.',
+   forms:[{label:'Aeries Teacher Portal (Chrome only)',url:'http://bit.ly/wusdsis'}]},
+
+  {id:'add-grades',title:'Add Assignments and Enter Grades',category:'Gradebook',role:'Teacher',emoji:'✏️',
+   steps:[
+     'Open your Gradebook in Aeries and confirm you are in the correct class section',
+     'Click Add Assignment (the + icon in the assignment column header area)',
+     'Enter the Assignment Name — be descriptive, parents and students can see this',
+     'Select the Category (must match one of your pre-set categories, e.g. Tests, Homework)',
+     'Set the Date Assigned and Date Due, then enter the Total Points Possible',
+     'Click Save to create the assignment column in your gradebook',
+     'To enter scores: click directly in the cell next to each student's name under the assignment column',
+     'Type the score and press Tab to advance to the next student — do not press Enter',
+     'For special situations use score status codes: AM=Absent/Make Up, AN=Absent/No Make Up, EX=Excused, LT=Late, NG=Not Yet Graded, IN=Incomplete',
+     'To enter the same score for multiple students: right-click the column header and choose Mass Assign Score',
+     'Scroll through the full roster to verify all scores are saved — unsaved scores appear highlighted',
+     'Back up immediately after entry: Manage > Backup/Restore > Create Backup'
+   ],
+   policy:'Grades should be entered within one week of the due date so parents and students have timely feedback via the Aeries Portal. Use score status codes correctly — never leave cells blank. Back up after every entry session.',
+   legal:'California Ed Code §49066 gives parents the right to inspect all graded assignments. Ed Code §49070 allows parents to challenge grades. Accurate, timely grade entry protects both students and teachers.',
+   forms:[{label:'Aeries Teacher Portal',url:'http://bit.ly/wusdsis'},{label:'Aeries Gradebook Support',url:'https://support.aeries.com'}]},
+
+  {id:'master-schedule',title:'Create the Master Schedule for the New Year',category:'Scheduling',role:'Principal',emoji:'🗓',
+   steps:[
+     'PHASE 1 — PREPARATION (Jan–Feb): Meet with counselors and department heads to project enrollment by course. Run Reports > Enrollment Projections in Aeries to pull current data',
+     'Confirm staffing allocations with your CBO — sections per department are driven by projected enrollment and FTE',
+     'Collect teacher preference forms and scheduling constraints (credential restrictions, room assignments)',
+     'PHASE 2 — COURSE REQUESTS (Feb–Mar): Navigate to Scheduling > Student Course Requests and open the request window so counselors and students can enter course selections',
+     'Counselors work with students to enter requests in Aeries. Students may also enter via the Aeries Student Portal if enabled at your site',
+     'Run the Course Request Tally report (Scheduling > Reports > Course Request Tally) to see demand by course — this tells you how many sections of each course to build',
+     'PHASE 3 — BUILD THE MASTER SCHEDULE (Mar–Apr): Navigate to Scheduling > Master Schedule (SMS). For each section, select the Course, assign the Teacher, set the Period, assign the Room, and set the Term',
+     'Use Scheduling Groups (SG field) to organize cohorts or houses if applicable',
+     'Set Days Offered (DY field): Daily, A-Days, B-Days, MWF, etc. based on your bell schedule',
+     'Verify teacher loads: run Reports > Teacher Load to confirm no teacher exceeds their contractual limit',
+     'PHASE 4 — RUN THE SCHEDULER (Apr–May): Navigate to Scheduling > Schedule Students. Review parameters and conflict matrix, then run the scheduler',
+     'Review the Scheduling Report for conflicts, unscheduled students, and overloaded sections',
+     'Work with counselors to manually resolve conflicts in Scheduling > Student Schedules',
+     'PHASE 5 — FINALIZE & ROLL OVER (May–Jun): Lock the schedule and notify teachers of their assignments',
+     'Coordinate with District IT and the Registrar for year-end rollover in Aeries — do not initiate rollover without District guidance',
+     'Communicate the final schedule to staff and families before the last day of school'
+   ],
+   policy:'The master schedule drives all of Aeries — attendance, grading, and reporting all depend on accurate section data. Principals are responsible for ensuring every section has a credentialed teacher assigned before the first day of school. Year-end rollover must be coordinated with District IT.',
+   legal:'California Ed Code §35160 gives boards authority over school programs; principals are responsible for implementation. Ed Code §44258.3 requires teachers be assigned only to courses matching their credential. Every section must have a properly credentialed teacher of record.',
+   forms:[{label:'Aeries Scheduling Module',url:'http://bit.ly/wusdsis'},{label:'Aeries Scheduling Documentation',url:'https://support.aeries.com'}]}
 ];
 
 let currentRole_guide = 'All';
