@@ -120,12 +120,12 @@
             <span class="text-[10px] bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded font-mono font-bold">Quiz</span>
           </button>
 
-          <button onclick="switchTab('forms-library')" id="nav-btn-forms" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-sm font-semibold transition-all text-slate-600 hover:bg-slate-50 border-l-4 border-transparent">
+          <button onclick="switchTab('queries')" id="nav-btn-queries" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-sm font-semibold transition-all text-slate-600 hover:bg-slate-50 border-l-4 border-transparent">
             <div class="flex items-center gap-2.5">
-              <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
-              <span>Forms & Regulations</span>
+              <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+              <span>Aeries Query Helper</span>
             </div>
-            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold">WUSD</span>
+            <span class="text-[10px] bg-purple-100 text-purple-900 px-1.5 py-0.5 rounded font-mono font-bold">SQL</span>
           </button>
         </nav>
       </div>
@@ -329,39 +329,14 @@
               <span class="p-1.5 bg-amber-100 text-amber-800 rounded-lg text-sm">🎓</span>
               Aeries Onboarding &amp; Training Coach
             </h3>
-            <p class="text-xs text-slate-500">Practice real scenarios to master daily operations and state laws.</p>
+            <p class="text-xs text-slate-500">Practice real scenarios across 12 units covering every major office responsibility. Select a unit to begin.</p>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-4">
-              <h4 class="text-sm font-extrabold text-slate-800 uppercase tracking-wider">Select Training Unit</h4>
-              <div class="space-y-2.5">
-                <button onclick="selectTrainingScenario('truancy')" class="w-full text-left p-4 bg-white border border-slate-200 hover:border-wusd-blue hover:bg-blue-50/20 rounded-xl transition-all space-y-1">
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-wusd-navy">Unit 1: Attendance &amp; Truancy</span>
-                    <span class="text-[10px] bg-red-100 text-red-800 px-2 py-0.5 rounded font-extrabold">Highly Crucial</span>
-                  </div>
-                  <h5 class="text-sm font-bold text-slate-950">Attendance and Truancy Workflows</h5>
-                  <p class="text-xs text-slate-500">Learn SARB/SART protocols, Letter cycles, and legal definitions of chronic absences.</p>
-                </button>
-                <button onclick="selectTrainingScenario('enrollment_imm')" class="w-full text-left p-4 bg-white border border-slate-200 hover:border-wusd-blue hover:bg-blue-50/20 rounded-xl transition-all space-y-1">
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-wusd-navy">Unit 2: Registration Compliance</span>
-                    <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-extrabold">Standard</span>
-                  </div>
-                  <h5 class="text-sm font-bold text-slate-950">Incomplete Immunizations &amp; McKinney-Vento</h5>
-                  <p class="text-xs text-slate-500">Handle enrollment scenarios where legal guidelines override technical rules.</p>
-                </button>
-                <button onclick="selectTrainingScenario('no_show')" class="w-full text-left p-4 bg-white border border-slate-200 hover:border-wusd-blue hover:bg-blue-50/20 rounded-xl transition-all space-y-1">
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-wusd-navy">Unit 3: Year-Start Auditing</span>
-                    <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-extrabold">Critical Timelines</span>
-                  </div>
-                  <h5 class="text-sm font-bold text-slate-950">Day 1-10 No-Show Cleanup</h5>
-                  <p class="text-xs text-slate-500">Process Day 1 dropouts without destroying CALPADS reporting structures.</p>
-                </button>
-              </div>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-1 bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3 max-h-[680px] overflow-y-auto">
+              <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-widest px-1">Select Training Unit</h4>
+              <div class="space-y-2" id="unitListContainer"></div>
             </div>
-            <div class="border border-slate-200 rounded-2xl p-6 flex flex-col justify-between min-h-[380px] bg-slate-950 text-white shadow-xl relative overflow-hidden">
+            <div class="lg:col-span-2 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between min-h-[480px] bg-slate-950 text-white shadow-xl relative overflow-hidden">
               <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/40 via-transparent to-transparent pointer-events-none"></div>
               <div class="relative z-10 space-y-4 flex-grow flex flex-col justify-between">
                 <div>
@@ -370,58 +345,86 @@
                     <span class="text-[10px] text-amber-300 uppercase tracking-widest font-extrabold">Lead Secretary Mentor Simulator</span>
                   </div>
                   <h4 id="coachScenarioTitle" class="text-lg font-bold tracking-tight">Ready to begin?</h4>
-                  <p id="coachScenarioDescription" class="text-xs text-slate-300 leading-relaxed mt-1">Select a training unit on the left. The onboarding coach will present legal dilemmas and typical office issues to walk you through the correct processes.</p>
+                  <p id="coachScenarioDescription" class="text-xs text-slate-300 leading-relaxed mt-1">Select a training unit on the left. Each unit presents real office scenarios with multiple-choice questions grounded in California law and WUSD policy.</p>
                 </div>
                 <div id="coachInteractivePanel" class="bg-slate-900/90 border border-slate-800 rounded-xl p-4 my-4 space-y-3 hidden">
-                  <p id="coachQuestionText" class="text-xs text-slate-100 leading-relaxed font-semibold"></p>
-                  <div id="coachOptionsContainer" class="space-y-2"></div>
+                  <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1" id="coachQuestionLabel">Question</div>
+                  <p id="coachQuestionText" class="text-sm text-slate-100 leading-relaxed font-semibold"></p>
+                  <div id="coachOptionsContainer" class="space-y-2 mt-3"></div>
                 </div>
                 <div class="flex items-center justify-between border-t border-slate-800 pt-4 text-xs text-slate-400">
-                  <span>Progress: <span id="trainingProgressText">0/3 Challenges</span></span>
-                  <span id="trainingScoreText" class="text-amber-400 font-bold">Grade: N/A</span>
+                  <span>Progress: <span id="trainingProgressText">&#8212;</span></span>
+                  <span id="trainingScoreText" class="text-amber-400 font-bold">Score: &#8212;</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Tab 4: FORMS & REGULATIONS -->
-        <div id="view-forms-library" class="hidden space-y-6">
+        <!-- Tab 4: AERIES QUERY HELPER -->
+        <div id="view-queries" class="hidden space-y-6">
           <div class="border-b border-slate-100 pb-4">
             <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <span class="p-1.5 bg-purple-100 text-purple-800 rounded-lg text-sm">📁</span>
-              Official WUSD Forms &amp; Regulations
+              <span class="p-1.5 bg-purple-100 text-purple-800 rounded-lg text-sm">🔎</span>
+              Aeries Query Helper
             </h3>
-            <p class="text-xs text-slate-500">View and print standard registrar documents directly inside the dashboard.</p>
+            <p class="text-xs text-slate-500">Ask the AI to help you find, build, or explain Aeries queries grounded in your WUSD knowledge base.</p>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="md:col-span-1 space-y-2">
-              <button onclick="previewDigitalForm('residency')" id="form-btn-residency" class="w-full text-left p-3.5 border border-slate-200 rounded-xl text-xs font-bold hover:border-wusd-blue hover:bg-slate-50 transition-all flex items-center justify-between bg-slate-100 text-slate-800">
-                <span>WUSD Affidavit of Residency</span><span class="text-[10px] text-slate-400">PDF</span>
+          <div class="bg-purple-50 border border-purple-200 rounded-2xl p-5 flex items-start gap-4">
+            <div class="p-2 bg-purple-100 rounded-lg shrink-0">
+              <svg class="w-5 h-5 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <div class="space-y-1">
+              <p class="text-xs font-bold text-purple-900">How to get the most out of the Query Helper</p>
+              <p class="text-xs text-purple-700 leading-relaxed">Use the quick buttons below or type your own question. Once you upload your 25 query documents to the knowledge base, all answers will be grounded in your actual WUSD query library.</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Common Query Topics</label>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <button onclick="triggerQuickAction('Show me an Aeries query to find all students with unexcused absences this week.')" class="flex items-center gap-3 w-full p-3 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-purple-50 hover:text-purple-900 hover:border-purple-200 rounded-xl text-left text-xs font-bold transition-all">
+                <span class="p-1.5 bg-purple-100 text-purple-800 rounded-lg">📅</span><span>Unexcused Absences This Week</span>
               </button>
-              <button onclick="previewDigitalForm('mkv')" id="form-btn-mkv" class="w-full text-left p-3.5 border border-slate-200 rounded-xl text-xs font-bold hover:border-wusd-blue hover:bg-slate-50 transition-all flex items-center justify-between">
-                <span>McKinney-Vento Residency Questionnaire</span><span class="text-[10px] text-slate-400">PDF</span>
+              <button onclick="triggerQuickAction('Give me an Aeries query to list all students whose immunizations are out of compliance or conditional.')" class="flex items-center gap-3 w-full p-3 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-purple-50 hover:text-purple-900 hover:border-purple-200 rounded-xl text-left text-xs font-bold transition-all">
+                <span class="p-1.5 bg-emerald-100 text-emerald-800 rounded-lg">💉</span><span>Immunization Non-Compliance List</span>
               </button>
-              <button onclick="previewDigitalForm('truancy')" id="form-btn-truancy" class="w-full text-left p-3.5 border border-slate-200 rounded-xl text-xs font-bold hover:border-wusd-blue hover:bg-slate-50 transition-all flex items-center justify-between">
-                <span>WUSD Official Truancy Letter 1</span><span class="text-[10px] text-slate-400">PDF</span>
+              <button onclick="triggerQuickAction('How do I query Aeries to find all active English Learner students at my school site?')" class="flex items-center gap-3 w-full p-3 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-purple-50 hover:text-purple-900 hover:border-purple-200 rounded-xl text-left text-xs font-bold transition-all">
+                <span class="p-1.5 bg-blue-100 text-blue-800 rounded-lg">🌐</span><span>Active English Learner Students</span>
               </button>
-              <button onclick="previewDigitalForm('meds')" id="form-btn-meds" class="w-full text-left p-3.5 border border-slate-200 rounded-xl text-xs font-bold hover:border-wusd-blue hover:bg-slate-50 transition-all flex items-center justify-between">
-                <span>Physician Medication Authorization</span><span class="text-[10px] text-slate-400">PDF</span>
+              <button onclick="triggerQuickAction('Give me an Aeries query to pull all students flagged as Foster Youth or McKinney-Vento homeless.')" class="flex items-center gap-3 w-full p-3 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-purple-50 hover:text-purple-900 hover:border-purple-200 rounded-xl text-left text-xs font-bold transition-all">
+                <span class="p-1.5 bg-amber-100 text-amber-800 rounded-lg">🏠</span><span>Foster Youth &amp; Homeless Students</span>
+              </button>
+              <button onclick="triggerQuickAction('How do I run a query in Aeries to find all students with an active IEP or 504 plan?')" class="flex items-center gap-3 w-full p-3 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-purple-50 hover:text-purple-900 hover:border-purple-200 rounded-xl text-left text-xs font-bold transition-all">
+                <span class="p-1.5 bg-rose-100 text-rose-800 rounded-lg">📋</span><span>Students with IEP or 504</span>
+              </button>
+              <button onclick="triggerQuickAction('Give me an Aeries query to find all students who were suspended in the last 30 days.')" class="flex items-center gap-3 w-full p-3 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-purple-50 hover:text-purple-900 hover:border-purple-200 rounded-xl text-left text-xs font-bold transition-all">
+                <span class="p-1.5 bg-red-100 text-red-800 rounded-lg">⚠️</span><span>Recent Suspensions Report</span>
+              </button>
+              <button onclick="triggerQuickAction('How do I query Aeries for a list of students missing emergency contact information?')" class="flex items-center gap-3 w-full p-3 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-purple-50 hover:text-purple-900 hover:border-purple-200 rounded-xl text-left text-xs font-bold transition-all">
+                <span class="p-1.5 bg-slate-100 text-slate-800 rounded-lg">📞</span><span>Missing Emergency Contacts</span>
+              </button>
+              <button onclick="triggerQuickAction('Give me an Aeries query to show enrollment counts by grade level for my school.')" class="flex items-center gap-3 w-full p-3 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-purple-50 hover:text-purple-900 hover:border-purple-200 rounded-xl text-left text-xs font-bold transition-all">
+                <span class="p-1.5 bg-teal-100 text-teal-800 rounded-lg">📊</span><span>Enrollment Count by Grade</span>
               </button>
             </div>
-            <div class="md:col-span-2 border border-slate-200 rounded-2xl p-6 bg-slate-50 flex flex-col justify-between min-h-[500px]">
-              <div class="bg-white border border-slate-300 rounded-lg p-6 md:p-8 shadow-sm space-y-6 text-slate-800" id="formsDigitalCanvas"></div>
-              <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-200 mt-4">
-                <span class="text-xs text-slate-500">Need paper copies?</span>
-                <button onclick="window.print()" class="bg-wusd-blue hover:bg-wusd-navy text-white text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 transition-all">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-                  Print Digital Copy
-                </button>
-              </div>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3">
+            <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Ask a Custom Query Question</label>
+            <div class="flex flex-col md:flex-row gap-3">
+              <input id="queryAskInput" type="text" placeholder="Example: How do I find all students with a birthday this month?" class="flex-grow pl-4 pr-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 font-sans" onkeypress="if(event.key==='Enter'){triggerQuickAction(document.getElementById('queryAskInput').value)}" />
+              <button onclick="triggerQuickAction(document.getElementById('queryAskInput').value)" class="bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-sm px-6 py-3 rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                <span>Ask AI</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+            </div>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start gap-4">
+            <span class="text-2xl shrink-0">📂</span>
+            <div class="space-y-1">
+              <p class="text-xs font-extrabold text-amber-900">Ready to upload your 25 Aeries query documents?</p>
+              <p class="text-xs text-amber-700 leading-relaxed">Share them in this chat and the query answers will be grounded in your actual WUSD query library — making the Query Helper dramatically more accurate for your secretaries.</p>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   </main>
@@ -1082,25 +1085,27 @@
 
     window.onload = () => {
       renderGuides();
-      previewDigitalForm('residency');
+      renderUnitList();
     };
 
     // ============================================================
     // TAB SWITCHING
     // ============================================================
     const NAV_MAP = {
-      'assistant':     'nav-btn-assistant',
-      'guides':        'nav-btn-guides',
-      'training':      'nav-btn-training',
-      'forms-library': 'nav-btn-forms',
+      'assistant': 'nav-btn-assistant',
+      'guides':    'nav-btn-guides',
+      'training':  'nav-btn-training',
+      'queries':   'nav-btn-queries',
     };
 
     function switchTab(tabId) {
       Object.entries(NAV_MAP).forEach(([id, btnId]) => {
         document.getElementById(btnId).className = id === tabId ? NAV_ACTIVE : NAV_INACTIVE;
       });
-      ['assistant','guides','training','forms-library'].forEach(id => {
+      ['assistant','guides','training','queries'].forEach(id => {
         document.getElementById(`view-${id}`).classList.toggle('hidden', id !== tabId);
+      });
+    }
       });
     }
 
@@ -1341,185 +1346,107 @@ CA Compliance: ${item.legalCompliance}
     // ============================================================
     // TRAINING COACH
     // ============================================================
+    // ============================================================
+    // TRAINING SCENARIOS (12 UNITS)
+    // ============================================================
     const scenarios = {
       truancy: {
-        title: "Attendance Audits & Truancy Process",
-        description: "Practice the workflow for Uncleared Absences and the legal cycles of truancy letters based on CA Ed Code.",
+        title: "Attendance & Truancy",
+        badge: "Highly Crucial", badgeColor: "bg-red-100 text-red-800",
+        description: "Master attendance intervention tiers, truancy letter cycles, and SARB/SART referrals under California Ed Code.",
         steps: [
-          {
-            question: "A parent delivers a physician's note explaining their child was absent for 4 days due to dental surgery. The teacher marked the student as 'A' (Unexcused). How do you adjust this in Aeries?",
+          { question: "A parent delivers a physician's note for 4 days of dental surgery. The teacher marked 'A' (Unexcused). What is the correct Aeries correction?",
             options: [
-              { text: "Change codes to 'I' (Illness) immediately and file the note in the cum record.", correct: false, feedback: "Incorrect. Dental visits require 'M' (Medical) code, not 'I' (Illness). Medical documentation needs specific medical mapping for ADA funding." },
-              { text: "Navigate to Attendance > Attendance, change 'A' codes to 'M' (Medical), click the note icon, document the physician note details, and archive the paper copy.", correct: true, feedback: "Perfect! The 'M' Medical code secures school ADA state funding and creates a precise audit trail." },
-              { text: "Delete the records entirely for those days to reset the system.", correct: false, feedback: "Never delete classroom attendance records. Modifying them requires using documented codes for legal verification." }
+              { text: "Change to 'I' (Illness) immediately.", correct: false, feedback: "Dental visits are medical appointments — use 'M' (Medical), not 'I' (Illness). The distinction matters for ADA funding audits." },
+              { text: "Navigate to Attendance > Attendance, change 'A' to 'M' (Medical), click the note icon, document physician note details, and file the paper copy.", correct: true, feedback: "Perfect! 'M' Medical code secures ADA funding and creates a full audit trail. Always document the note source and date." },
+              { text: "Delete the records for those days.", correct: false, feedback: "Never delete attendance records. Corrections require documented code changes, never deletion." }
             ]
           },
-          {
-            question: "A student has logged 3 unexcused absences without parent contact. According to California Education Code 48260, what milestone is triggered?",
+          { question: "A student has 3 unexcused absences. What does California Education Code 48260 require?",
             options: [
-              { text: "The student is classified as a habitual truant and the SARB panel process immediately starts.", correct: false, feedback: "No. Habitual truant classification requires further escalation. 3 absences trigger Letter 1 only." },
-              { text: "The student is legally truant. This triggers Truancy Notification Letter 1, which WUSD must mail to parents.", correct: true, feedback: "Spot on! 3 unexcused absences trigger the legal definition of Truancy under Ed Code 48260. Letter 1 is generated and sent." }
+              { text: "Refer the student to SARB immediately.", correct: false, feedback: "SARB is Tier 3. Three absences trigger truancy classification and Letter 1 only." },
+              { text: "The student is legally truant. Generate and mail Truancy Letter 1 to the parent.", correct: true, feedback: "Correct! 3 unexcused absences trigger legal truancy under Ed Code 48260. Letter 1 is the required first action." },
+              { text: "Call the parent and take no further action if they respond.", correct: false, feedback: "A phone call does not satisfy the legal requirement. Truancy Letter 1 must be generated and mailed regardless of parent contact." }
+            ]
+          },
+          { question: "A student now has 6 unexcused absences. What is the next required intervention?",
+            options: [
+              { text: "Send Truancy Letter 2 and schedule a SART meeting with the parent.", correct: true, feedback: "Correct! 6 unexcused absences trigger Letter 2 and the School Attendance Review Team (SART) process — a formal meeting with the parent." },
+              { text: "Send Letter 1 again since the parent may not have received it.", correct: false, feedback: "Letter 1 was already sent at 3 absences. 6 absences escalate to Letter 2 and SART." },
+              { text: "File a police report for educational neglect.", correct: false, feedback: "Police involvement happens at the SARB level after school-based interventions are exhausted." }
+            ]
+          },
+          { question: "At what unexcused absence count should you refer a student to the District SARB panel?",
+            options: [
+              { text: "7 unexcused absences.", correct: false, feedback: "SARB referral threshold is 10 or more unexcused absences after SART intervention has been attempted." },
+              { text: "10 or more unexcused absences after SART has been completed.", correct: true, feedback: "Correct! 10+ unexcused absences with documented SART triggers the SARB referral packet, which may involve the District Attorney's office." },
+              { text: "5 unexcused absences if the parent hasn't responded to calls.", correct: false, feedback: "Lack of parent response doesn't skip intervention tiers. SARB requires 10+ unexcused absences and completed SART documentation." }
             ]
           }
         ]
       },
-      enrollment_imm: {
-        title: "Registration & Immunization Legal Compliance",
-        description: "Handle the enrollment desk when standard state requirements conflict with federal laws.",
+      immunizations: {
+        title: "Immunizations & Health Compliance",
+        badge: "Health Critical", badgeColor: "bg-emerald-100 text-emerald-800",
+        description: "Navigate California's immunization laws, conditional enrollment windows, exclusion protocols, and SB 277.",
         steps: [
-          {
-            question: "A mother wishes to register her 1st-grade child today, but has zero proof of residency because they are currently living in a temporary emergency hotel. How do you process this?",
+          { question: "A parent enrolls their child with only 2 of 4 required DTaP doses. What do you do?",
             options: [
-              { text: "Decline registration. Tell the parent they must return only after they have secured a utility bill and permanent lease inside WUSD boundaries.", correct: false, feedback: "Wrong. Under the federal McKinney-Vento Homeless Assistance Act, students experiencing unstable housing must be registered immediately, regardless of missing paperwork." },
-              { text: "Register the child immediately under McKinney-Vento. Enter appropriate state indicators, wave standard address requirements, and assist with the WUSD Residency Questionnaire.", correct: true, feedback: "Correct! Federal McKinney-Vento rules override any standard local documentation policies. Registrations must be done instantly." }
+              { text: "Deny enrollment until all immunizations are complete.", correct: false, feedback: "California allows conditional enrollment for students in progress on required vaccines. Denial without the 30-day window violates the student's right to education." },
+              { text: "Enroll conditionally. Flag the record, get a signed parent acknowledgment, and set a 30-day follow-up tickler.", correct: true, feedback: "Correct! Conditional enrollment is the legal pathway. The student has 30 school days to complete vaccines or provide an appointment card." },
+              { text: "Enroll normally and don't flag anything.", correct: false, feedback: "Unflagged non-compliance creates audit liability. All conditional students must be tracked and followed up within 30 school days." }
+            ]
+          },
+          { question: "A parent claims a religious belief exemption from vaccines. What does SB 277 (2015) mean for this?",
+            options: [
+              { text: "The district must honor the religious exemption.", correct: false, feedback: "SB 277 (2015) eliminated personal belief exemptions including religious exemptions in California." },
+              { text: "Personal belief and religious exemptions are no longer valid. Only physician-signed medical exemptions are accepted.", correct: true, feedback: "Correct! SB 277 eliminated all non-medical exemptions. Only medical exemptions signed by a CA-licensed physician are accepted." },
+              { text: "Refer them to the district nurse to decide.", correct: false, feedback: "The answer is clear in law — there are no religious exemptions in California. The nurse doesn't decide; the law does." }
+            ]
+          },
+          { question: "A student has been conditionally enrolled for 32 school days with no updated immunization records. What must happen?",
+            options: [
+              { text: "Give the family another 30 days before taking action.", correct: false, feedback: "The 30-day window is the legal maximum. At day 30, the student must be excluded unless they have a valid vaccine appointment card." },
+              { text: "Exclude the student from school per CA Health & Safety Code 120365 after documenting parent contact attempts.", correct: true, feedback: "Correct! After 30 school days, exclusion is legally required. Document all contact attempts. Students may return the same day proof is provided." },
+              { text: "Withdraw the student in Aeries using a standard exit code.", correct: false, feedback: "Do NOT withdraw — use the excluded attendance code instead. Withdrawal would create a CALPADS reporting issue." }
             ]
           }
         ]
       },
-      no_show: {
-        title: "Day 1-10 No-Show Cleanup Procedures",
-        description: "Learn how to clean rosters during the crucial start of the academic year without corrupting state reporting.",
+      foster_mkv: {
+        title: "Foster Youth & McKinney-Vento",
+        badge: "Federal Law", badgeColor: "bg-blue-100 text-blue-800",
+        description: "Immediate enrollment rights for foster youth under AB 490 and homeless students under the federal McKinney-Vento Act.",
         steps: [
-          {
-            question: "On Day 1 of school, a student on your active roster does not show up. What is the correct protocol?",
+          { question: "A parent and child arrive at the desk. They are living in a hotel with no utility bill, no lease, and no prior school records. What do you do?",
             options: [
-              { text: "Leave them as active in Aeries for 10 days to see if they eventually arrive.", correct: false, feedback: "Incorrect. Leaving them active yields unearned attendance days. No-show guidelines require immediate action." },
-              { text: "Open Aeries Demographics, drop the student on Day 1, use exit code N470 (No Show), and set the exit date to the first scheduled school day.", correct: true, feedback: "Exactly. The N470 exit code correctly notifies CALPADS the student never arrived, preventing incorrect auditing of active rosters." }
+              { text: "Tell her to return once she has a utility bill showing a WUSD address.", correct: false, feedback: "This is a McKinney-Vento violation. Requiring residency documents from a homeless family before enrollment is a federal law violation." },
+              { text: "Enroll immediately under McKinney-Vento. Flag the student as homeless, waive residency requirements, and contact the district's McKinney-Vento Liaison.", correct: true, feedback: "Correct! Federal law requires immediate enrollment without delay. The parent chooses the school. Residency documentation is waived entirely." },
+              { text: "Enroll provisionally but restrict program access until records are provided.", correct: false, feedback: "McKinney-Vento students have full rights to all school programs immediately. Restricting access is a violation." }
+            ]
+          },
+          { question: "A foster youth transfers in with an active IEP. The social worker doesn't have the documents today. What is your obligation?",
+            options: [
+              { text: "Enroll in general education and wait for IEP documents before providing services.", correct: false, feedback: "IDEA requires comparable services within 5 school days of enrollment. Enroll immediately and notify your SpEd coordinator today." },
+              { text: "Enroll immediately, flag as Foster Youth, notify the Special Education coordinator, and provide comparable IEP services within 5 school days.", correct: true, feedback: "Correct! AB 490 + IDEA: enroll immediately, preserve SpEd rights, notify SpEd coordinator same day." },
+              { text: "Decline enrollment until the social worker returns with all documents.", correct: false, feedback: "Declining enrollment is never correct for foster youth. AB 490 mandates immediate enrollment regardless of missing documents." }
+            ]
+          },
+          { question: "A foster youth is being placed with a new family in a different attendance area. The student wants to stay at their current school. What determines placement?",
+            options: [
+              { text: "The new foster family's address automatically determines the school.", correct: false, feedback: "Address alone does not determine placement for foster youth. A Best Interest Determination must be made." },
+              { text: "A Best Interest Determination involving the student, foster family, and social worker determines whether the student stays at school of origin or transfers.", correct: true, feedback: "Correct! AB 490 requires a Best Interest Determination. The student has the right to remain at school of origin with district-provided transportation if needed." },
+              { text: "The district decides based on space availability.", correct: false, feedback: "Space availability is not a valid reason to deny school of origin placement for foster youth." }
             ]
           }
         ]
-      }
-    };
-
-    function selectTrainingScenario(key) {
-      activeScenarioId   = key;
-      activeScenarioStep = 0;
-      trainingScore      = 0;
-      const s = scenarios[key];
-      document.getElementById('coachScenarioTitle').textContent       = s.title;
-      document.getElementById('coachScenarioDescription').textContent  = s.description;
-      document.getElementById('coachInteractivePanel').classList.remove('hidden');
-      loadTrainingStep();
-    }
-
-    function loadTrainingStep() {
-      const s    = scenarios[activeScenarioId];
-      const step = s.steps[activeScenarioStep];
-      document.getElementById('trainingProgressText').textContent = `${activeScenarioStep+1} / ${s.steps.length} Challenges`;
-      document.getElementById('trainingScoreText').textContent    = `Score: ${trainingScore}`;
-      document.getElementById('coachQuestionText').textContent    = step.question;
-      document.getElementById('coachOptionsContainer').innerHTML  = step.options.map((opt, i) =>
-        `<button onclick="submitTrainingAnswer(${i})" class="w-full text-left p-3 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-500 transition-all">${opt.text}</button>`
-      ).join('');
-    }
-
-    function submitTrainingAnswer(idx) {
-      const step   = scenarios[activeScenarioId].steps[activeScenarioStep];
-      const choice = step.options[idx];
-      if (choice.correct) trainingScore += 10;
-      document.getElementById('trainingScoreText').textContent = `Score: ${trainingScore}`;
-      document.getElementById('coachOptionsContainer').innerHTML = `
-        <div class="${choice.correct ? 'bg-emerald-950/80 border-emerald-500 text-emerald-200' : 'bg-rose-950/80 border-rose-500 text-rose-200'} border text-xs p-3 rounded-lg leading-relaxed">
-          <strong>${choice.correct ? '✅ Outstanding' : '❌ Error'}:</strong> ${choice.feedback}
-        </div>
-        <button onclick="nextTrainingStep()" class="mt-3 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all">
-          ${choice.correct ? 'Continue Workflow' : 'Understood, Continue'}
-        </button>`;
-    }
-
-    function nextTrainingStep() {
-      const s = scenarios[activeScenarioId];
-      activeScenarioStep++;
-      if (activeScenarioStep < s.steps.length) {
-        loadTrainingStep();
-      } else {
-        const grade = trainingScore >= 20 ? 'A+ Excellent' : 'B Satisfactory';
-        document.getElementById('coachQuestionText').textContent = '🎉 Unit Competency Verification Complete!';
-        document.getElementById('trainingScoreText').textContent  = `Final Grade: ${grade}`;
-        document.getElementById('coachOptionsContainer').innerHTML = `
-          <p class="text-xs text-slate-300 leading-relaxed">You have completed all compliance challenges for this unit. Export your summary to your site principal.</p>
-          <button onclick="resetTraining()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all">Start New Onboarding Unit</button>`;
-      }
-    }
-
-    function resetTraining() {
-      document.getElementById('coachInteractivePanel').classList.add('hidden');
-      document.getElementById('coachScenarioTitle').textContent      = 'Ready to begin?';
-      document.getElementById('coachScenarioDescription').textContent = 'Select a training unit on the left.';
-      document.getElementById('trainingProgressText').textContent = '0/3 Challenges';
-      document.getElementById('trainingScoreText').textContent    = 'Grade: N/A';
-    }
-
-    // ============================================================
-    // FORMS CANVAS
-    // ============================================================
-    const formsDB = {
-      residency: {
-        title: "Affidavit of Joint Residency",
-        dept: "Administrative Office of Student Services",
-        body: "This document serves as proof of student joint occupancy for enrollment purposes when a standard utility bill cannot be provided solely in the parent/legal guardian's name. Both the parent/guardian and the primary homeowner/tenant must sign this form under penalty of California perjury laws.",
-        fields: ["Student Name", "WUSD Assigned School", "Primary Homeowner/Tenant", "Parent/Legal Guardian"],
-        notice: "The district requires two forms of alternate address evidence, such as a state ID with the registered address or a current bank statement showing current WUSD boundaries."
       },
-      mkv: {
-        title: "McKinney-Vento Residency Questionnaire",
-        dept: "Title IX and Homeless Services Department",
-        body: "WUSD federal housing survey. This questionnaire identifies students experiencing temporary shelter challenges under federal regulations to determine special rights, transportation options, and waivers.",
-        fields: ["Child's Name", "Primary Emergency Contact Number", "Current Shelter Arrangement Type", "Previous School Enrolled"],
-        notice: "Under federal McKinney-Vento provisions, this student must be enrolled in classes IMMEDIATELY. They cannot be held back from academic courses due to missing documents or immunizations."
-      },
-      truancy: {
-        title: "WUSD Official Truancy Letter 1",
-        dept: "School Attendance Review Team (SART)",
-        body: "Dear Parent/Guardian, This notification serves as official notice that your student has recorded three (3) or more unexcused absences. Under California Education Code Section 48260, your child is legally designated a 'Truant'.",
-        fields: ["Student Legal Name", "Total Absences Count", "Excused Percentage Indicator", "Mandatory Parent Conference Date"],
-        notice: "Please contact the site attendance clerk within forty-eight (48) hours of receipt to clear scheduling errors or arrange a parent counseling conference."
-      },
-      meds: {
-        title: "Physician Medication Administration Consent",
-        dept: "Student Health and Clinic Services Department",
-        body: "Official parent and physician authorization for the administration of emergency medication or prescribed daily dosages on school premises, verified by a licensed nurse or credentialed health clerk.",
-        fields: ["Student Medical ID", "Prescribed Dosage Parameters", "Authorized Physician Signature", "Daily Medication Timing Schedule"],
-        notice: "Medications must be brought to school premises exclusively in their original pharmacy containers. Under no conditions may students hold prescription drugs."
-      }
-    };
-
-    function previewDigitalForm(key) {
-      const doc = formsDB[key];
-      ['residency','mkv','truancy','meds'].forEach(id => {
-        document.getElementById(`form-btn-${id}`).className = id === key
-          ? "w-full text-left p-3.5 border border-slate-200 rounded-xl text-xs font-bold transition-all flex items-center justify-between bg-slate-100 text-slate-800"
-          : "w-full text-left p-3.5 border border-slate-200 rounded-xl text-xs font-bold hover:border-wusd-blue hover:bg-slate-50 transition-all flex items-center justify-between bg-white text-slate-600";
-      });
-      document.getElementById('formsDigitalCanvas').innerHTML = `
-        <div class="text-center space-y-1 pb-4 border-b border-slate-300">
-          <h4 class="text-sm font-extrabold uppercase tracking-widest text-slate-900">Washington Unified School District</h4>
-          <h5 class="text-xs font-bold text-slate-600">${doc.dept}</h5>
-          <div class="text-[10px] text-slate-400">West Sacramento, California</div>
-        </div>
-        <div class="space-y-4">
-          <h3 class="text-base font-bold text-center text-slate-900 uppercase">${doc.title}</h3>
-          <p class="text-[11px] text-slate-600 leading-relaxed">${doc.body}</p>
-          <div class="grid grid-cols-2 gap-4 text-xs">
-            ${doc.fields.map(f => `
-              <div class="space-y-1">
-                <label class="block font-bold text-slate-500 uppercase text-[9px]">${f}</label>
-                <div class="border-b border-slate-300 py-1 font-semibold text-slate-800">[Enter ${f}]</div>
-              </div>`).join('')}
-          </div>
-        </div>
-        <div class="text-[10px] text-slate-500 leading-relaxed bg-slate-50 border border-slate-200 p-3 rounded-lg">
-          <strong>Notice:</strong> ${doc.notice}
-        </div>`;
-    }
-
-    function previewDigitalFormByTitle(title) {
-      switchTab('forms-library');
-      if (title.includes('McKinney-Vento')) previewDigitalForm('mkv');
-      else if (title.includes('Truancy'))    previewDigitalForm('truancy');
-      else if (title.includes('Medication')) previewDigitalForm('meds');
-      else                                   previewDigitalForm('residency');
-    }
-  </script>
-</body>
-</html>
+      custody_safety: {
+        title: "Custody Orders & Student Safety",
+        badge: "Safety Critical", badgeColor: "bg-red-100 text-red-800",
+        description: "Custody disputes, restraining orders, unauthorized pickup attempts, and proper student release protocols.",
+        steps: [
+          { question: "A parent arrives and says 'I'm the dad, I need to pick up my son.' No custody order is on file. Mom is the primary contact. What do you do?",
+            options: [
+              { text: "Release the student — both parents have equal rights.", correct: false, feedback: "While both parents have equal rights without a court order, you must still verify photo ID and confirm he is on the authorized contact list in Aeries before releasing." },
+              { text: "Verify photo ID, check he i
