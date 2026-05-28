@@ -1449,4 +1449,299 @@ CA Compliance: ${item.legalCompliance}
           { question: "A parent arrives and says 'I'm the dad, I need to pick up my son.' No custody order is on file. Mom is the primary contact. What do you do?",
             options: [
               { text: "Release the student — both parents have equal rights.", correct: false, feedback: "While both parents have equal rights without a court order, you must still verify photo ID and confirm he is on the authorized contact list in Aeries before releasing." },
-              { text: "Verify photo ID, check he i
+              { text: "Verify photo ID, check he is listed as an authorized contact in Aeries, check for custody flags, then release if all checks clear.", correct: true, feedback: "Correct process. Photo ID + Aeries contact verification + custody flag check before any release. Document the pickup time and adult's name." },
+              { text: "Call mom first to get permission before releasing to dad.", correct: false, feedback: "If no court order restricts dad's rights, you don't need mom's permission. Requiring it could violate dad's parental rights." }
+            ]
+          },
+          { question: "A restraining order on file prohibits the biological father from campus. He arrives and demands to see his child. How do you handle this?",
+            options: [
+              { text: "Calmly say the student is unavailable, do NOT release the student, contact the principal immediately, and call 911 if he becomes aggressive.", correct: true, feedback: "Correct. Never argue about the order. Calm de-escalation, principal notification, and 911 if needed. The court order protects you legally." },
+              { text: "Show him the restraining order and ask him to leave.", correct: false, feedback: "Do not confront or present legal documents to a potentially dangerous individual. Calmly say the student is unavailable and immediately notify the principal." },
+              { text: "Release the student to avoid a confrontation.", correct: false, feedback: "Never release a student to a restricted party. Doing so violates the court order and exposes the district to serious liability." }
+            ]
+          },
+          { question: "An unknown adult claims 'Mom called me, I'm her coworker.' The coworker is not on the Aeries contact list and mom can't be reached. What do you do?",
+            options: [
+              { text: "Release the student since the claim seems reasonable.", correct: false, feedback: "Never release a student to an unverified individual. 'Seems reasonable' is not a legally defensible standard." },
+              { text: "Do not release the student. The adult is not on the authorized contact list and authorization cannot be verified. Student stays at school.", correct: true, feedback: "Correct. Without verified authorization, the student remains at school until a verified contact arrives or end of day. Document the incident." },
+              { text: "Have the student decide if they know the adult.", correct: false, feedback: "A student's recognition of an adult is never sufficient basis for release. Only verified adult authorization authorizes pickup." }
+            ]
+          }
+        ]
+      },
+      sped_504: {
+        title: "Special Education & 504 Plans",
+        badge: "Legal Compliance", badgeColor: "bg-purple-100 text-purple-800",
+        description: "Intake requirements for students with IEPs and 504 Plans, including timelines and office staff responsibilities.",
+        steps: [
+          { question: "A student transfers in with a current IEP. The SpEd coordinator is out sick. What is your immediate responsibility?",
+            options: [
+              { text: "Wait until the SpEd coordinator returns before completing enrollment.", correct: false, feedback: "Enrollment cannot be delayed. Enroll the student, flag SpEd status in Aeries, and leave documented notice for the coordinator and principal today." },
+              { text: "Enroll the student immediately, flag SpEd in Aeries Programs, notify the principal, and document that the SpEd coordinator must follow up within 5 school days.", correct: true, feedback: "Correct. IDEA gives 5 school days for comparable services — the clock starts at enrollment. Your job is intake and routing, not clinical placement." },
+              { text: "Make a placement decision based on the IEP document you have.", correct: false, feedback: "Never make placement decisions independently. That is the SpEd team's responsibility. Your role is enrollment and notification only." }
+            ]
+          },
+          { question: "A parent presents a 504 Plan including an EpiPen protocol. After entering it in Aeries, who else must be notified?",
+            options: [
+              { text: "The classroom teacher only.", correct: false, feedback: "The classroom teacher must know — but so must the PE teacher, cafeteria supervisor, health clerk, and any other staff who work directly with the student." },
+              { text: "Health clerk, classroom teacher, PE teacher, cafeteria supervisor, and any other staff who work directly with the student.", correct: true, feedback: "Correct! All staff who interact with the student must be briefed before the first day. Document each briefing with name, date, and signature." },
+              { text: "No one — FERPA prohibits sharing health information.", correct: false, feedback: "FERPA has a safety exception allowing necessary health information to be shared with school staff who need it to protect the student's safety." }
+            ]
+          }
+        ]
+      },
+      calpads: {
+        title: "CALPADS & State Reporting",
+        badge: "Data Compliance", badgeColor: "bg-slate-100 text-slate-800",
+        description: "Resolving CALPADS errors, understanding submission windows, and correctly coding enrollment data.",
+        steps: [
+          { question: "CALPADS shows a 'duplicate SSID' error for a new student. What is the correct action?",
+            options: [
+              { text: "Delete the student in Aeries and re-enroll them with a new record.", correct: false, feedback: "Never delete and re-enroll. Contact the CALPADS helpdesk to initiate an SSID merge." },
+              { text: "Contact the CALPADS helpdesk to initiate an SSID merge. Do not delete or re-enroll the student.", correct: true, feedback: "Correct. Duplicate SSIDs must be resolved through the official CALPADS merge process. Helpdesk: 1-916-227-0270." },
+              { text: "Assign a new local student ID and ignore the CALPADS error.", correct: false, feedback: "Ignoring a duplicate SSID will cause reporting errors and may affect ADA funding for both districts." }
+            ]
+          },
+          { question: "Which CALPADS submission window is most critical for ADA funding?",
+            options: [
+              { text: "EOY 2 (July).", correct: false, feedback: "EOY 2 is important for final year-end data, but not the primary ADA funding driver." },
+              { text: "Fall 1 (October) — the P-1 Census period that determines the district's base ADA apportionment funding.", correct: true, feedback: "Correct! The Fall 1/P-1 submission is the most financially critical. Every enrolled student counted must have been physically present at least one day during the census period." },
+              { text: "Fall 2 (January).", correct: false, feedback: "Fall 2 is the P-2 count, but Fall 1/P-1 establishes the base apportionment for the year." }
+            ]
+          },
+          { question: "A student who withdrew in October was never given an exit code. It's now January. What is the likely CALPADS consequence?",
+            options: [
+              { text: "No consequence — CALPADS only looks at current enrollment.", correct: false, feedback: "CALPADS tracks all enrollment movements. An undocumented withdrawal may be flagged as a dropout." },
+              { text: "The student may be classified as a dropout in CALPADS, affecting accountability data and potentially triggering an audit.", correct: true, feedback: "Correct. Missing exit codes cause CALPADS to treat the student as a dropout. Correct the exit code immediately and resubmit." },
+              { text: "The district loses one day of ADA funding for that student.", correct: false, feedback: "The funding impact is much larger — undocumented exits cause ongoing ADA calculation errors." }
+            ]
+          }
+        ]
+      },
+      discipline: {
+        title: "Discipline & Mandatory Reporting",
+        badge: "Legal & Safety", badgeColor: "bg-orange-100 text-orange-800",
+        description: "Suspension documentation, Ed Code infraction coding, and mandatory child abuse reporting under CANRA.",
+        steps: [
+          { question: "A 7th-grade student was suspended for pushing another student causing injury. Which Ed Code section applies?",
+            options: [
+              { text: "Ed Code 48900(b) — possession of dangerous objects.", correct: false, feedback: "48900(b) covers dangerous objects. Physical assault causing injury is a different subsection." },
+              { text: "Ed Code 48900(a)(1) — intentionally causing physical injury to another person.", correct: true, feedback: "Correct! 48900(a)(1) covers intentional physical injury. Always use the exact Ed Code subsection — imprecise coding creates CALPADS reporting errors." },
+              { text: "Ed Code 48900(k) — disruption of school activities.", correct: false, feedback: "48900(k) is for disruption. A physical push causing injury is coded under 48900(a)(1)." }
+            ]
+          },
+          { question: "A teacher tells you a student has unexplained bruising and said 'my dad did it.' What is YOUR legal obligation?",
+            options: [
+              { text: "Tell the principal and let them handle the report.", correct: false, feedback: "Mandatory reporting is an INDIVIDUAL legal obligation. You cannot delegate it. Every employee who receives information of suspected abuse must report independently." },
+              { text: "As a mandated reporter, call Sacramento County CPS (916-875-5437) within 24 hours and submit Form SS 8572 within 36 hours, regardless of what others do.", correct: true, feedback: "Correct. CANRA makes every school employee a mandated reporter. Failure to report is a misdemeanor. You report — you don't wait for the principal." },
+              { text: "Investigate further to confirm abuse before making a report.", correct: false, feedback: "Never investigate independently. Mandated reporters report suspicion — not confirmed abuse. Any reasonable suspicion triggers the legal obligation." }
+            ]
+          },
+          { question: "Can a student in grades K-8 be suspended for 'willful defiance' in California?",
+            options: [
+              { text: "Yes — willful defiance is a valid suspendable offense at all grade levels.", correct: false, feedback: "Incorrect. California prohibits suspension for willful defiance (Ed Code 48900(k)) in grades K-8." },
+              { text: "No — Ed Code 48900.5 prohibits suspension for willful defiance in grades K-8.", correct: true, feedback: "Correct! California law specifically prohibits K-8 suspensions for willful defiance. If a principal requests this, flag it — it is legally invalid." },
+              { text: "Only if the student has a prior suspension on record.", correct: false, feedback: "Prior suspensions don't change the prohibition. Willful defiance suspensions for K-8 are prohibited regardless of discipline history." }
+            ]
+          }
+        ]
+      },
+      records_ferpa: {
+        title: "Student Records & FERPA",
+        badge: "Privacy Law", badgeColor: "bg-indigo-100 text-indigo-800",
+        description: "FERPA rights, records release protocols, parent inspection requests, and subpoena handling.",
+        steps: [
+          { question: "A parent calls asking you to email their child's transcript to the new school. What is the correct response?",
+            options: [
+              { text: "Email it immediately — the parent has every right to their child's records.", correct: false, feedback: "Even with parental rights, records cannot be emailed without secure transmission protocols. A written request from the receiving school is the standard." },
+              { text: "Explain that records are released only upon a written request from the receiving school, and that email is not a secure transmission method. Offer to mail or fax certified copies.", correct: true, feedback: "Correct. FERPA requires secure handling. Never email sensitive student records without district-approved secure transmission." },
+              { text: "Tell the parent only the receiving school can request records, not them.", correct: false, feedback: "Parents DO have the right to request records — but the proper channel for a transfer is a receiving school's written request. Explain both options." }
+            ]
+          },
+          { question: "An attorney presents a subpoena for a student's complete academic records. What do you do?",
+            options: [
+              { text: "Provide the records immediately — a subpoena is a court order.", correct: false, feedback: "Do NOT release records immediately. Route all legal requests to the principal and district office first for legal review." },
+              { text: "Accept the subpoena, do not release records on the spot, and immediately route it to the site principal and district office for legal review.", correct: true, feedback: "Correct. A subpoena requires legal review before compliance. Your role is intake and routing, not release." },
+              { text: "Refuse to accept the subpoena — it must go to the district office directly.", correct: false, feedback: "Accept the subpoena document, but immediately route it up. Refusing to accept it could create legal complications." }
+            ]
+          }
+        ]
+      },
+      enrollment_process: {
+        title: "Enrollment Procedures & Edge Cases",
+        badge: "Core Workflow", badgeColor: "bg-teal-100 text-teal-800",
+        description: "Age eligibility, inter-district transfers, and incomplete documentation scenarios.",
+        steps: [
+          { question: "A parent wants to enroll their child in Kindergarten. The child's birthday is October 15th. Is this child eligible for Kindergarten this year?",
+            options: [
+              { text: "Yes — they are 5 years old before December 1st.", correct: false, feedback: "The California cutoff is September 1, not December 1. October 15 is after the cutoff." },
+              { text: "No — the California Kindergarten cutoff requires the child to turn 5 on or before September 1. Check if they qualify for TK instead.", correct: true, feedback: "Correct. September 1 cutoff is strict. However, children with birthdays September 2 through April 2 may be TK eligible — check this for the parent." },
+              { text: "Yes — if the parent requests early entrance, you must enroll them.", correct: false, feedback: "Early entrance is not a parental right. It requires a formal psychologist assessment and administrator approval." }
+            ]
+          },
+          { question: "A family wants to transfer their child from Woodland Joint Unified to WUSD. What must they provide?",
+            options: [
+              { text: "Just proof of residency inside WUSD boundaries.", correct: false, feedback: "Residency proof is needed, but an inter-district transfer also requires a release permit from Woodland Joint Unified before WUSD can enroll the student." },
+              { text: "An inter-district release permit from Woodland Joint Unified, plus standard WUSD enrollment documents.", correct: true, feedback: "Correct! Without a release permit from the resident district, WUSD cannot enroll the student. The family obtains it from Woodland." },
+              { text: "Nothing special — California open enrollment means any student can attend any district.", correct: false, feedback: "Open enrollment allows requests but doesn't guarantee acceptance. Inter-district permits are required." }
+            ]
+          }
+        ]
+      },
+      health_office: {
+        title: "Health Office Daily Operations",
+        badge: "Health Clerk", badgeColor: "bg-green-100 text-green-800",
+        description: "Medication administration, illness response, screening referrals, and emergency health protocols.",
+        steps: [
+          { question: "A student comes to the health office with a headache and a temperature of 99.2°F. They want to go back to class. What do you do?",
+            options: [
+              { text: "Send them back to class — 99.2°F is not a fever.", correct: false, feedback: "You must document the visit in the health log first — every visit, even minor ones. Log before they leave." },
+              { text: "Document the visit in the health log (date, time, complaint, temp, disposition), offer water and a brief rest, then return to class if ready.", correct: true, feedback: "Correct! Every health office visit must be logged. This protects both the student and the school if symptoms worsen later." },
+              { text: "Call the parent — any temperature above 98.6°F requires parent notification.", correct: false, feedback: "Parent notification is required at 100.4°F or higher. 99.2°F with only a headache does not require a parent call." }
+            ]
+          },
+          { question: "A student self-administers their rescue inhaler during PE. What do you verify in Aeries first?",
+            options: [
+              { text: "That the student has a current Self-Carry Authorization Form signed by the physician and parent.", correct: true, feedback: "Correct! Ed Code 49423.1 allows self-carry of rescue inhalers — but only with a physician-signed authorization AND parent consent on file." },
+              { text: "That the inhaler is in the health office — students cannot carry medications.", correct: false, feedback: "Students CAN self-carry rescue inhalers under Ed Code 49423.1 with proper authorization. This is a specific legal exception." },
+              { text: "Whether the student has health insurance on file.", correct: false, feedback: "Insurance status is not relevant here. The immediate priority is verifying the self-carry authorization is current and on file." }
+            ]
+          }
+        ]
+      },
+      emergency_procedures: {
+        title: "Emergency & Crisis Response",
+        badge: "Safety", badgeColor: "bg-red-100 text-red-800",
+        description: "Lockdowns, medical emergencies, and disaster response as it relates to the school office role.",
+        steps: [
+          { question: "A lockdown is called over the PA. You are at the front desk with a parent waiting. What do you do?",
+            options: [
+              { text: "Continue helping the parent — office staff are the exception to lockdown.", correct: false, feedback: "There are no exceptions during an active lockdown. Lock the front door, move to a secure interior area, and follow the site emergency plan." },
+              { text: "Lock the front door, move the parent and yourself to a secure interior area, and follow the site emergency plan. Do not release or accept any students.", correct: true, feedback: "Correct. The office locks down like everywhere else. No releases, no entrances, no exceptions until an all-clear from law enforcement or administration." },
+              { text: "Go outside to direct parents who may be arriving.", correct: false, feedback: "Never go outside during a lockdown. Parents who arrive must shelter in their vehicles. No movement in or out." }
+            ]
+          },
+          { question: "A student collapses in the office and is unresponsive. What is the immediate first step?",
+            options: [
+              { text: "Call the parent before doing anything else.", correct: false, feedback: "In a medical emergency, call 911 first. Parents are notified after initiating emergency response." },
+              { text: "Call 911 immediately, send someone to get the AED, begin CPR if trained and the student is not breathing, and send someone to flag down paramedics at the street.", correct: true, feedback: "Correct. Emergency chain: 911 first, AED, CPR if needed, runner to the street. Notify parents and administration while emergency responders are en route." },
+              { text: "Move the student to a more comfortable position and wait for the nurse.", correct: false, feedback: "Do not move an unresponsive student unless there is immediate danger. Call 911 first — time is critical." }
+            ]
+          }
+        ]
+      },
+      yearend_boy: {
+        title: "Year-End & Beginning-of-Year Procedures",
+        badge: "Timelines", badgeColor: "bg-yellow-100 text-yellow-800",
+        description: "Critical year-start and year-end workflows including enrollment audits, grade retention, and CALPADS EOY submissions.",
+        steps: [
+          { question: "It is Day 5 of school. A student is on the Aeries roster but never appeared and there has been no parent contact. What do you do?",
+            options: [
+              { text: "Leave them active — they may show up after a late vacation.", correct: false, feedback: "Leaving a no-show active generates unearned ADA. After documented contact attempts, no-shows must be exited with code N470." },
+              { text: "After documented contact attempts, exit the student using exit code N470 (No Show) with the first day of school as the exit date.", correct: true, feedback: "Correct. N470 is the CALPADS-compliant code for students who never arrived. Document contact attempts first, then exit." },
+              { text: "Transfer the student to independent study to preserve enrollment.", correct: false, feedback: "A student who never showed up cannot be placed in independent study. Exit with N470 and document the no-show." }
+            ]
+          },
+          { question: "A teacher recommends retaining a 2nd-grade student. What must happen before entering the retention in Aeries?",
+            options: [
+              { text: "The teacher's recommendation is sufficient. Enter the retention immediately.", correct: false, feedback: "Teacher recommendation alone is not enough. Written parent notification signed by the principal is required before the retention is finalized." },
+              { text: "Parent must be notified in writing, the principal must approve, and documentation must be placed in the student's file before entry in Aeries.", correct: true, feedback: "Correct. Ed Code 48070 requires written parent notification and a documented decision process. Enter the retained grade in Aeries only after all documentation is complete." },
+              { text: "Hold a SART meeting and let the team decide.", correct: false, feedback: "SART is an attendance intervention — not a grade retention process. Retention follows the Ed Code 48070 process." }
+            ]
+          }
+        ]
+      }
+    };
+
+    // ── Unit List Renderer ─────────────────────────────────────────
+    function renderUnitList() {
+      const container = document.getElementById('unitListContainer');
+      if (!container) return;
+      const keys = Object.keys(scenarios);
+      container.innerHTML = keys.map((key, i) => {
+        const s = scenarios[key];
+        return `<button onclick="selectTrainingScenario('${key}')" class="w-full text-left p-3 bg-white border border-slate-200 hover:border-wusd-blue hover:bg-blue-50/20 rounded-xl transition-all space-y-0.5">
+          <div class="flex items-center justify-between gap-1">
+            <span class="text-[10px] font-bold text-wusd-navy">Unit ${i+1}</span>
+            <span class="text-[9px] ${s.badgeColor} px-1.5 py-0.5 rounded font-extrabold shrink-0">${s.badge}</span>
+          </div>
+          <h5 class="text-xs font-bold text-slate-900 leading-tight">${s.title}</h5>
+          <p class="text-[10px] text-slate-400 leading-snug line-clamp-2">${s.description}</p>
+        </button>`;
+      }).join('');
+    }
+
+    function selectTrainingScenario(key) {
+      activeScenarioId   = key;
+      activeScenarioStep = 0;
+      trainingScore      = 0;
+      const s = scenarios[key];
+      document.getElementById('coachScenarioTitle').textContent      = s.title;
+      document.getElementById('coachScenarioDescription').textContent = s.description;
+      document.getElementById('coachInteractivePanel').classList.remove('hidden');
+      loadTrainingStep();
+    }
+
+    function loadTrainingStep() {
+      const s    = scenarios[activeScenarioId];
+      const step = s.steps[activeScenarioStep];
+      document.getElementById('trainingProgressText').textContent = `${activeScenarioStep+1} / ${s.steps.length} Questions`;
+      document.getElementById('trainingScoreText').textContent    = `Score: ${trainingScore}`;
+      document.getElementById('coachQuestionLabel').textContent   = `Question ${activeScenarioStep+1} of ${s.steps.length}`;
+      document.getElementById('coachQuestionText').textContent    = step.question;
+      document.getElementById('coachOptionsContainer').innerHTML  = step.options.map((opt, i) =>
+        `<button onclick="submitTrainingAnswer(${i})" class="w-full text-left p-3 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-500 transition-all leading-relaxed">${opt.text}</button>`
+      ).join('');
+    }
+
+    function submitTrainingAnswer(idx) {
+      const step   = scenarios[activeScenarioId].steps[activeScenarioStep];
+      const choice = step.options[idx];
+      if (choice.correct) trainingScore += 10;
+      document.getElementById('trainingScoreText').textContent = `Score: ${trainingScore}`;
+      document.getElementById('coachOptionsContainer').innerHTML = `
+        <div class="${choice.correct ? 'bg-emerald-950/80 border-emerald-500 text-emerald-200' : 'bg-rose-950/80 border-rose-500 text-rose-200'} border text-xs p-3 rounded-lg leading-relaxed">
+          <strong>${choice.correct ? '✅ Correct!' : '❌ Not quite'}:</strong> ${choice.feedback}
+        </div>
+        <button onclick="nextTrainingStep()" class="mt-3 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all">
+          ${choice.correct ? 'Next Question →' : 'Got it — Continue →'}
+        </button>`;
+    }
+
+    function nextTrainingStep() {
+      const s = scenarios[activeScenarioId];
+      activeScenarioStep++;
+      if (activeScenarioStep < s.steps.length) {
+        loadTrainingStep();
+      } else {
+        const pct = Math.round((trainingScore / (s.steps.length * 10)) * 100);
+        const grade = pct >= 90 ? 'A — Outstanding' : pct >= 70 ? 'B — Proficient' : pct >= 50 ? 'C — Developing' : 'Needs Review';
+        document.getElementById('coachQuestionLabel').textContent = 'Unit Complete';
+        document.getElementById('coachQuestionText').textContent  = `🎉 You finished "${s.title}"!`;
+        document.getElementById('trainingScoreText').textContent  = `${pct}% — ${grade}`;
+        document.getElementById('coachOptionsContainer').innerHTML = `
+          <p class="text-xs text-slate-300 leading-relaxed">Score: ${trainingScore} / ${s.steps.length * 10} points (${pct}%). Share your result with your site principal or use it to guide further study.</p>
+          <div class="flex gap-2 mt-4 flex-wrap">
+            <button onclick="resetTraining()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all">Choose Another Unit</button>
+            <button onclick="selectTrainingScenario('${activeScenarioId}')" class="bg-slate-700 hover:bg-slate-600 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all">Retry This Unit</button>
+          </div>`;
+      }
+    }
+
+    function resetTraining() {
+      document.getElementById('coachInteractivePanel').classList.add('hidden');
+      document.getElementById('coachScenarioTitle').textContent      = 'Ready to begin?';
+      document.getElementById('coachScenarioDescription').textContent = 'Select a training unit on the left. Each unit presents real office scenarios grounded in California law and WUSD policy.';
+      document.getElementById('trainingProgressText').textContent = '\u2014';
+      document.getElementById('trainingScoreText').textContent    = 'Score: \u2014';
+    }
+
+    // Stub for wizard form links — redirects to Smart Assistant
+    function previewDigitalFormByTitle(title) {
+      switchTab('assistant');
+      document.getElementById('assistantQueryInput').value = 'Tell me about the WUSD form: ' + title;
+      submitAssistantQuery();
+    }
+  </script>
+</body>
+</html>
