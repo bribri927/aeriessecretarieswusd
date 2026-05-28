@@ -43,7 +43,7 @@ body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at
 <aside class="space-y-5">
   <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-3">Quick Actions</h3><div id="quickActions" class="space-y-2"></div></div>
   <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">Search Guides</h3><input id="searchBox" class="w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-100" placeholder="Try: master schedule, transcript, gradebook" oninput="renderGuides()"><p class="text-xs text-slate-500 mt-3">Search is role-aware and scans titles, categories, summaries, and guide content.</p></div>
-  <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">AI Assistant</h3><textarea id="askBox" class="w-full min-h-28 rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-100" placeholder="Ask an Aeries question..."></textarea><button onclick="askAssistant()" class="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl py-3">Ask the Hub</button><div id="answerBox" class="mt-3 text-sm bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-700">Select a role and ask a question. This local assistant uses the built-in guide library.</div></div>
+  <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">AI Assistant</h3><textarea id="askBox" class="w-full min-h-28 rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-100" placeholder="Ask an Aeries question..."></textarea><button id="askHubBtn" type="button" onclick="askAssistant()" class="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl py-3">Ask the Hub</button><div id="answerBox" class="mt-3 text-sm bg-slate-50 border border-slate-200 rounded-2xl p-4 text-slate-700">Select a role and ask a question. This local assistant uses the built-in guide library.</div></div>
 </aside>
 <section class="space-y-5">
   <div class="glass border border-white/70 rounded-3xl p-5"><div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3"><div><p class="badge text-blue-700">Current Role</p><h2 id="roleTitle" class="text-3xl font-black"></h2><p id="roleSubtitle" class="text-slate-500 font-medium"></p></div><button onclick="showTraining()" class="bg-amber-500 hover:bg-amber-600 text-white font-black rounded-2xl px-5 py-3">Open Training Coach</button></div></div>
@@ -85,18 +85,33 @@ function openGuide(title){
  box.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function askAssistant(){
- const query=document.getElementById('askBox').value.trim().toLowerCase();
+ const raw=document.getElementById('askBox').value.trim();
+ const query=raw.toLowerCase();
  const box=document.getElementById('answerBox');
- if(!query){box.innerHTML='Type a question first.';return;}
+ if(!query){box.innerHTML='<strong>Ask the Hub:</strong> Type a question first, then click the button again.';return;}
+ box.innerHTML='<strong>Searching the '+currentRole+' guide library...</strong>';
+ const words=query.split(/\s+/).map(w=>w.replace(/[^a-z0-9]/g,'')).filter(w=>w.length>2);
  const matches=guides.filter(g=>g.role===currentRole).map(g=>{
   const hay=(g.title+' '+g.category+' '+g.summary+' '+g.content).toLowerCase();
-  let score=0; query.split(/\s+/).forEach(w=>{if(w.length>2 && hay.includes(w)) score++;});
+  let score=0;
+  words.forEach(w=>{if(hay.includes(w)) score++;});
+  if(hay.includes(query)) score+=5;
   return {g,score};
- }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,2);
- if(matches.length===0){box.innerHTML=`<strong>${currentRole} assistant:</strong> I do not have a direct guide match yet. Try searching the guide library, or add this as a future guide topic.`;return;}
+ }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
+ if(matches.length===0){
+  box.innerHTML=`<strong>${currentRole} assistant:</strong> I do not have a direct guide match for <strong>${raw}</strong> yet. Try the Search Guides box, or add this as a future guide topic.`;
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+  return;
+ }
  const top=matches[0].g;
- box.innerHTML=`<strong>${currentRole} assistant:</strong> The closest guide is <button class="text-blue-700 font-black underline" onclick="openGuide('${top.title.replace(/'/g,"\'")}')">${top.title}</button>.<br><br>${top.summary}<br><br><strong>Suggested next step:</strong> Open the guide and follow the checklist. Related match${matches.length>1?'es':''}: ${matches.map(m=>m.g.title).join(', ')}.`;
+ const safeTitle=top.title.replace(/'/g,"&#39;");
+ box.innerHTML=`<strong>${currentRole} assistant:</strong> I found a guide for <strong>${raw}</strong>.<br><br><button class="text-blue-700 font-black underline" onclick="openGuide('${safeTitle}')">Open: ${top.title}</button><br><br>${top.summary}<br><br><strong>Related:</strong> ${matches.map(m=>m.g.title).join(', ')}.`;
+ box.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
+
+// Make the button work even if a browser blocks inline handlers or the page is embedded.
+const askButton=document.getElementById('askHubBtn');
+if(askButton){askButton.addEventListener('click', askAssistant);}
 function showTraining(){
  const scenarios=training[currentRole];
  const box=document.getElementById('trainingBox'); box.classList.remove('hidden');
