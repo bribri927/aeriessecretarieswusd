@@ -109,7 +109,7 @@
               <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
               <span>Step-by-Step Guides</span>
             </div>
-            <span id="guidesBadgeCount" class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold">30</span>
+            <span id="guidesBadgeCount" class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold">45</span>
           </button>
 
           <button onclick="switchTab('training')" id="nav-btn-training" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-sm font-semibold transition-all text-slate-600 hover:bg-slate-50 border-l-4 border-transparent">
@@ -1067,7 +1067,286 @@
         forms: ["WUSD EOY Closeout Checklist", "Grade Retention Parent Notification Letter", "Cum Folder Transfer Log", "CALPADS EOY Submission Confirmation"],
         legalCompliance: "CA Education Code 48070 governs grade promotion and retention policies. Districts must have an adopted promotion/retention policy and notify parents in writing before retaining a student. CALPADS EOY submission deadlines are set by CDE — late submissions may result in funding corrections.",
         lastUpdated: "2026-05-27"
+      },
+      // ── AERIES QUERY LIBRARY (from official Aeries Software documentation) ──
+
+      {
+        id: "query-att-001",
+        title: "Attendance Percentage Report by Student",
+        category: "Aeries Queries",
+        roles: ["Attendance Clerk", "Secretary", "Registrar"],
+        keywords: ["query", "attendance", "percentage", "absentee", "ADA", "AHS", "attendance history", "present", "enrolled", "absent"],
+        content: "Query to calculate each student's attendance percentage using the Attendance History (AHS) table. Shows days enrolled, absent, and present with a calculated percentage. Must run Attendance History Configuration nightly for accurate data.",
+        aeriesSteps: [
+          "Navigate to <strong>Query</strong> in Aeries Web.",
+          "Enter the following query, replacing 20##-20## with the current school year (e.g. 2025-2026):",
+          "<code>LIST STU AHS STU.ID STU.GR STU.NM AHS.EN AHS.AB AHS.PR (( LEFT ( (( 100 * AHS.PR / AHS.EN )) , 5 ) + "%" )) AHS.YR IF AHS.YR = "2025-2026" AND AHS.EN > 0</code>",
+          "Click <strong>Excel</strong> to export results for further analysis or reporting.",
+          "To sort by lowest attendance, click the percentage column header in the results.",
+          "<strong>Flex version (elementary):</strong> <code>LIST STU AHS STU.ID STU.SC STU.NM STU.CU AHS.SP AHS.EN AHS.AB AHS.PR (( 1.0 * AHS.PR/AHS.EN * 100 )) BY AHS.SCL IF AHS.EN # 0 AND AHS.YR = "2025-2026" AND AHS.SCL = STU.SC AND LOC.U = 0</code>"
+        ],
+        wusdProcess: "Run this report monthly to identify chronically absent students (missing 10% or more of school days). Export to Excel and share with site principals. Ensure Attendance History Configuration is run nightly for accurate data — check with your Aeries administrator if data appears stale.",
+        forms: ["Chronic Absence Monitoring Log", "Parent Attendance Notification Letter"],
+        legalCompliance: "California Ed Code 48980 requires annual parent notification of attendance policies. LCFF funding is directly tied to ADA — chronic absence directly affects district revenue. Title I schools must monitor chronic absence rates as a federal accountability metric.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-att-002",
+        title: "Absence Code List for a Specific Date Range",
+        category: "Aeries Queries",
+        roles: ["Attendance Clerk", "Secretary"],
+        keywords: ["query", "absence code", "date range", "ATT", "AL", "unexcused", "excused", "absence list"],
+        content: "Lists all students with absence codes for each day of absence within a specific time period, sorted by absence code. Useful for auditing or reviewing absences by type.",
+        aeriesSteps: [
+          "Navigate to <strong>Query</strong> in Aeries Web.",
+          "Enter the following query, replacing the ## date placeholders with your date range:",
+          "<code>LIST STU ATT STU.ID STU.NM STU.GR ATT.AL ATT.DT BY ATT.AL IF ATT.AL # " " AND ATT.DT > ##/##/20## AND ATT.DT < ##/##/20##</code>",
+          "Results are sorted by absence code (ATT.AL), making it easy to see all unexcused absences together.",
+          "Click <strong>Excel</strong> to export for a parent notification mail merge."
+        ],
+        wusdProcess: "Use this query when preparing for SARB referrals, SART meetings, or audits. Filter by unexcused codes (A) to identify truancy candidates. Always verify results against classroom rosters before sending parent notifications.",
+        forms: ["Truancy Letter 1", "Parent Notification Log"],
+        legalCompliance: "CA Ed Code 48260 defines truancy as 3+ unexcused absences or tardies over 30 minutes. Accurate absence code documentation is required for CALPADS ADA reporting and state financial audits.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-att-003",
+        title: "Students Absent Within First 20 School Days",
+        category: "Aeries Queries",
+        roles: ["Attendance Clerk", "Registrar", "Secretary"],
+        keywords: ["query", "first 20 days", "absence", "ATT", "beginning of year", "BOY", "P1", "census", "ADA"],
+        content: "Critical beginning-of-year query listing students who were absent within the first 20 days of school, sorted by absence code and day. Essential for P-1 census period accuracy.",
+        aeriesSteps: [
+          "Navigate to <strong>Query</strong> in Aeries Web.",
+          "Enter the following query, replacing # in STU.GR = # with the grade level (or remove that condition for all grades):",
+          "<code>LIST STU ATT STU.ID STU.NM STU.SP STU.GR ATT.DY ATT.AL BY STU.SP ATT.DY ATT.AL IF ATT.DY < 21 AND ATT.AL # " " AND STU.GR = #</code>",
+          "Remove the <code>AND STU.GR = #</code> condition to pull all grade levels at once.",
+          "Cross-reference this list with teacher rosters to confirm all absences are accurately coded."
+        ],
+        wusdProcess: "Run this query during the first 3 weeks of school. Students with multiple early absences may need outreach before the P-1 count date. Unresolved no-shows from Day 1 should be exited using exit code N470 — do not leave them as active with absences.",
+        forms: ["P-1 Enrollment Verification Checklist", "Day 1 No-Show Exit Log"],
+        legalCompliance: "CA Ed Code 41601 governs ADA apportionment. The P-1 census period enrollment count determines base district funding. Every absence during the census period reduces ADA revenue. Accuracy during the first 20 days is financially critical.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-att-004",
+        title: "Students Entering and Leaving on the Same Date",
+        category: "Aeries Queries",
+        roles: ["Registrar", "Attendance Clerk"],
+        keywords: ["query", "same day", "enter leave", "ATT", "B code", "enrollment error", "audit"],
+        content: "Finds students who appear as both entering and leaving on the same date — a data anomaly that can corrupt ADA reporting and CALPADS enrollment records.",
+        aeriesSteps: [
+          "Navigate to <strong>Query</strong> in Aeries Web.",
+          "Enter the following query:",
+          "<code>LIST STU ATT STU.ID STU.NM STU.TG ATT.DT ATT.CD IF ATT.CD = B</code>",
+          "Review each result carefully. Code 'B' in ATT.CD indicates a student entered and left on the same date.",
+          "Correct errors by adjusting the enrollment or exit dates in <strong>Student Data > Demographics > Enrollment History</strong>."
+        ],
+        wusdProcess: "Run this query at the start and end of each semester, and before each CALPADS submission window. Same-day enter/leave records typically indicate a data entry error during enrollment or withdrawal processing. Do not delete — correct the record.",
+        forms: ["Enrollment Correction Log", "CALPADS Error Resolution Form"],
+        legalCompliance: "CALPADS submission accuracy is required under CA Ed Code 60900. Same-day enter/leave records will generate CALPADS errors during Fall 1 and EOY submissions if not corrected.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-imm-001",
+        title: "Students Without Immunization Records",
+        category: "Aeries Queries",
+        roles: ["Health Clerk", "Registrar"],
+        keywords: ["query", "immunization", "missing", "IMM", "no records", "blank", "P1", "polio", "NULL"],
+        content: "Identifies students who have no immunization records entered in Aeries at all — neither a first Polio dose nor a first exemption code. Used for immunization compliance audits.",
+        aeriesSteps: [
+          "Navigate to <strong>Query</strong> in Aeries Web.",
+          "Enter the following query:",
+          "<code>LIST STU IMM STU.ID STU.NM STU.BD STU.ED STU.GR BY STU.GR IF IMM.P1 = NULL AND IMM.PE = NULL</code>",
+          "Results show students with completely empty immunization records — no doses and no exemptions on file.",
+          "For students missing only the 1st Polio specifically: <code>LIST STU IMM STU.SN STU.NM IF IMM.P1 = NULL</code>"
+        ],
+        wusdProcess: "Run this query at enrollment and monthly during the year. Students with no records at all may have been enrolled without their immunization documentation being collected. Contact the family immediately and flag the student as conditionally enrolled in Aeries.",
+        forms: ["Conditional Enrollment Immunization Notice", "Parent Immunization Request Letter"],
+        legalCompliance: "CA Health & Safety Code 120335 requires immunization compliance before enrollment. Students with no records must be enrolled conditionally and given 30 school days to provide documentation. After 30 school days, exclusion is legally required per H&S Code 120365.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-imm-002",
+        title: "KG/TK Immunization Status Query",
+        category: "Aeries Queries",
+        roles: ["Health Clerk", "Secretary"],
+        keywords: ["query", "kindergarten", "TK", "transitional kindergarten", "immunization", "IMM", "vaccine", "kinder"],
+        content: "Pulls complete immunization data for all Kindergarten and Transitional Kindergarten students. Use at the start of the year to identify non-compliant incoming students.",
+        aeriesSteps: [
+          "Navigate to <strong>Query</strong> in Aeries Web.",
+          "Enter the following query (GR = 0 is Kindergarten, GR = -1 is Transitional Kindergarten):",
+          "<code>LIST STU IMM STU.ID STU.NM STU.GR STU.BD IMM.S1 IMM.E1 IMM.E3 IMM.E2 IMM.PE IMM.DE IMM.AE IMM.IE IMM.VE IMM.PC IMM.DC IMM.AC IMM.IC IMM.VC IF GR = 0 OR GR = -1</code>",
+          "Review each column: NULL values indicate missing required doses.",
+          "Cross-reference with the California School Immunization Law chart for required vaccines by grade."
+        ],
+        wusdProcess: "Run this query the first week of school for all incoming KG/TK students. Highlight any students with NULL values in required dose fields and initiate the conditional enrollment process immediately. Share results with the district nurse.",
+        forms: ["KG/TK Immunization Compliance Checklist", "Conditional Enrollment Notice"],
+        legalCompliance: "California requires DTaP, Polio, MMR, Hep B, and Varicella vaccines for Kindergarten entry. SB 277 (2015) eliminated personal belief exemptions — only physician-signed medical exemptions are accepted. Non-compliant students must be excluded after 30 school days.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-imm-003",
+        title: "Students with Medication Records and Expiration Dates",
+        category: "Aeries Queries",
+        roles: ["Health Clerk"],
+        keywords: ["query", "medication", "MLM", "expiration", "EpiPen", "inhaler", "prescription", "expired"],
+        content: "Lists all students with medications on file in Aeries along with their start dates and expiration dates. Critical for identifying expired medications that need renewal before the school year.",
+        aeriesSteps: [
+          "Navigate to <strong>Query</strong> in Aeries Web.",
+          "To list by grade level: <code>LIST STU MLM STU.LN STU.FN STU.GR MLM.CD MLM.SD MLM.EX MLM.CO BY STU.GR IF MLM.CD > " "</code>",
+          "To list by expiration date (most useful for catching expired meds): <code>LIST STU MLM STU.LN STU.FN STU.GR MLM.CD MLM.SD MLM.EX MLM.CO BY MLM.EX IF MLM.CD > " "</code>",
+          "Review the MLM.EX (expiration) column — any date in the past requires immediate parent and physician follow-up.",
+          "Contact families with expired medications to obtain updated physician authorization before the student returns."
+        ],
+        wusdProcess: "Run the expiration date version of this query in August before school starts and again in January. Expired medications cannot legally be administered. Remove expired meds from the health office immediately and notify parents. EpiPens expire annually — check every student with an anaphylaxis plan.",
+        forms: ["Physician Medication Authorization Form", "Medication Expiration Notification Letter"],
+        legalCompliance: "CA Ed Code 49423 requires valid physician authorization for all school-administered medications. Administering medication without a current physician order is a liability issue. CA Ed Code 49423.1 covers self-carry authorizations for inhalers and EpiPens.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-imm-004",
+        title: "Vision and Hearing Screening Results Query",
+        category: "Aeries Queries",
+        roles: ["Health Clerk"],
+        keywords: ["query", "vision", "VSN", "hearing", "HRN", "screening", "pass", "fail", "referral", "scoliosis", "SCO"],
+        content: "Queries to pull vision, hearing, and scoliosis screening results including pass/fail status, referrals, and follow-up data. Use for state-mandated screening tracking and parent notification.",
+        aeriesSteps: [
+          "Students who failed hearing screening after a specific date: <code>LIST STU HRN STU.ID STU.NM HRN.TD HRN.SCN HRN.PF STU.GR BY STU.GR IF HRN.PF = F AND HRN.TD > ##/##/20##</code>",
+          "Students with hearing or vision follow-up data by teacher: <code>LIST STU HRN VSN TCH STU.ID STU.NM STU.GR HRN.FO VSN.FO TCH.TE BY TCH.TE IF VSN.FO # " " OR HRN.FO # " "</code>",
+          "Scoliosis referrals (7th grade girls / 8th grade boys): <code>LIST STU SCO STU.ID STU.NM SCO.TD SCO.SCN SCO.DR SCO.CO IF SCO.DR = "R"</code>",
+          "Students not screened or who failed scoliosis: <code>LIST STU SCO STU.ID STU.NM STU.GR SCO.TD SCO.SCN SCO.PF SCO.CO IF SCO.PF = F OR SCO.PF = NULL</code>",
+          "Generate parent mailing labels for students needing referrals: <code>LIST STU SCO "To the parent of:" \ STU.FN STU.LN \ STU.AD \ STU.CY STU.ZC IF SCO.DR = "R"</code>"
+        ],
+        wusdProcess: "WUSD requires vision and hearing screening in grades K, 2, 5, and 8; scoliosis in grade 7 (females) and grade 8 (males). After screenings, run these queries to generate referral letters within 5 school days. Document all parent notifications in the student health record.",
+        forms: ["Vision/Hearing Referral Letter", "Scoliosis Referral Form", "Health Screening Completion Roster"],
+        legalCompliance: "CA Ed Code 49450-49458 mandate health screenings at specific grade levels. Ed Code 49455 requires written parent notification for students who do not pass. Failure to notify parents of failed screenings is a compliance violation.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-stu-001",
+        title: "Student Roster Queries — Basic Lists and Class Lists",
+        category: "Aeries Queries",
+        roles: ["Secretary", "Registrar", "Admin Assistant", "Attendance Clerk"],
+        keywords: ["query", "roster", "class list", "student list", "all students", "teacher", "grade", "elementary", "STU", "TCH"],
+        content: "Essential everyday queries for generating class lists, student directories, birthday lists, and basic student rosters for elementary and secondary schools.",
+        aeriesSteps: [
+          "All students by school and grade: <code>LIST STU SC ID FN LN GR</code>",
+          "Elementary class list by teacher (sorted by teacher name): <code>LIST STU TCH STU.NM STU.GR STU.GN STU.PG STU.TL STU.FW STU.MW TCH.TE BY TCH.TE</code>",
+          "Student directory with address and parent: <code>LIST STU TCH STU.NM STU.AD STU.CY STU.ZC STU.TL STU.PG TCH.TE BY TCH.TE</code>",
+          "Student birthdays for a specific month (replace # with month number 1-12): <code>LIST STU TCH STU.NM STU.BD TCH.TE BY TCH.TE IF BD.MONTH = #</code>",
+          "Students missing birthdate: <code>LIST STU ID NM BD IF BD = NULL</code>",
+          "Students with birthdate and calculated age: <code>LIST STU NM BD BD?</code>",
+          "Students not assigned to a teacher/counselor: <code>LIST STU ID NM IF CU = 0</code>"
+        ],
+        wusdProcess: "These queries are the bread-and-butter of daily office work. Run the class list query at the start of the year and after each schedule change. Birthday reports can be exported and shared with teachers monthly. Always verify that student count matches official enrollment numbers.",
+        forms: ["Emergency Card Distribution Log", "Teacher Roster Verification Form"],
+        legalCompliance: "FERPA protects all student directory information. Class lists and rosters may only be shared with school staff who have a legitimate educational need. Never share student address or contact information with outside parties without written parent consent.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-stu-002",
+        title: "Enrollment Date Queries — New, Exited, and No-Show Students",
+        category: "Aeries Queries",
+        roles: ["Registrar", "Secretary", "Attendance Clerk"],
+        keywords: ["query", "enrollment date", "new student", "exit", "no show", "N470", "STU.ED", "STU.LD", "TG", "withdraw", "enrolled after"],
+        content: "Queries for tracking students who enrolled after a specific date, students who exited during the year, and students tagged as no-shows. Critical for BOY and EOY audits.",
+        aeriesSteps: [
+          "Students enrolled after a specific date: <code>LIST STU ID NM STU.GR STU.ED IF STU.ED > ##/##/20##</code>",
+          "Students enrolled after a specific date with teacher: <code>LIST STU TCH STU.NM TCH.TE STU.GR STU.ED IF STU.ED > 08/20/2026</code>",
+          "Students exited after a specific date (check 'Include Inactive Students'): <code>LIST STU TCH STU.NM TCH.TE STU.GR STU.LD IF STU.TG # " " AND STU.LD > ##/##/20##</code>",
+          "Students exited with No-Show tag (N470): <code>LIST STU ID NM LD TG IF TG = N</code>",
+          "Students where Next Grade = Current Grade (likely a retention or rollover error): <code>LIST STU NM ID GR NG IF NG = GR</code>",
+          "Students with Next School, Grade, and Teacher pre-populated: <code>LIST STU ID NM NS NG NT</code>"
+        ],
+        wusdProcess: "Run the new enrollment query weekly during the first month of school to catch any students added after BOY rosters were printed. Run the exit query before CALPADS submissions to ensure all leavers have proper exit codes. Always check 'Include Inactive Students' when running exit queries.",
+        forms: ["Enrollment Change Log", "CALPADS Exit Code Reference Sheet"],
+        legalCompliance: "CALPADS requires accurate enrollment and exit dates for all students. Missing exit records default students to dropout status in state reporting. CA Ed Code 41601 governs ADA calculation — enrollment date accuracy directly affects funding.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-stu-003",
+        title: "CALPADS Demographic & Race/Ethnicity Queries",
+        category: "Aeries Queries",
+        roles: ["Registrar"],
+        keywords: ["query", "CALPADS", "race", "ethnicity", "ETH", "RC1", "demographics", "home language", "EL", "Hispanic", "missing race"],
+        content: "Queries to identify students with missing or incomplete race and ethnicity data required for CALPADS Fall 1 submission. Also includes home language code lookup.",
+        aeriesSteps: [
+          "Students missing Ethnicity or Race Code: <code>LIST STU ID NM GR ETH RC1 IF ETH = " " OR RC1 = " "</code>",
+          "Students by Race Code sorted by grade: <code>LIST STU ID FN LN GR RC1 BY GR RC1</code>",
+          "Non-Hispanic students to check for missing Race Codes: <code>LIST STU ID NM ETH RC1 GR GN BY RC1 IF ETH = "N"</code>",
+          "Total students by Ethnicity and Gender: <code>TOTAL STU ETH GN BY ETH GN</code>",
+          "Total students by Race and Grade: <code>TOTAL STU RC1 GR BY RC1 GR</code>",
+          "Home Language codes lookup: <code>LIST COD CD DE IF TC = STU AND FC = HL</code> (run at district level)",
+          "Students with corresponding language field: <code>LIST STU ID NM CL CL?HL</code>"
+        ],
+        wusdProcess: "Run these queries before every CALPADS submission window. Missing race/ethnicity data will generate CALPADS errors. Students with ETH = blank must have their family contacted to collect this information — it cannot be assumed. Coordinate with the District Registrar for district-level race/ethnicity totals.",
+        forms: ["CALPADS Fall 1 Checklist", "Race/Ethnicity Data Collection Form"],
+        legalCompliance: "CALPADS requires race and ethnicity data for all enrolled students under federal ESSA reporting requirements. Missing demographic data may result in a state audit or a deficiency notice. CA Ed Code 60900 mandates accurate data submission.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-stu-004",
+        title: "Advanced Query Techniques — Math, IIF, and Date Functions",
+        category: "Aeries Queries",
+        roles: ["Registrar"],
+        keywords: ["query", "advanced", "math", "IIF", "concatenate", "LEFT", "RIGHT", "ROUND", "calculate", "GPA", "graduation year", "date format", "NULL vs blank"],
+        content: "Advanced Aeries query techniques including math operations, IIF conditional logic, date formatting, and field concatenation. From the official Aeries Advanced Query training (Session 270).",
+        aeriesSteps: [
+          "Calculate graduation year: <code>LIST STU ID NM GR (( 2026 + 12 - GR ))</code>",
+          "Round GPA to 2 decimal places: <code>LIST STU FN LN ID TP (( ROUND ( TP, 2 ) ))</code>",
+          "Attendance percentage with formatting: <code>LIST STU AHS STU.SC STU.ID STU.NM AHS.SP AHS.EN AHS.AB AHS.PR (( LEFT ( (( 100 * AHS.PR / AHS.EN )) , 5 ) + "%" )) BY AHS.SCL IF AHS.EN > 0 AND AHS.YR = "2025-2026" AND AHS.SCL = STU.SC</code>",
+          "IIF to label GPA performance: <code>LIST STU ID NM GR TP (( IIF(TP>=3,"Doing Well", IIF(TP>2,"Need to do more","At Risk" ) ) ))</code>",
+          "Create network username from name + last 4 of ID: <code>LIST STU LN FN ID (( LEFT(FN,1) + LN + RIGHT(ID,4) )) IF GR = 1</code>",
+          "Format birth date as text: <code>LIST STU ID BD (( CONVERT(VARCHAR,BD,107) ))</code>",
+          "<strong>NULL vs Blank rule:</strong> Use NULL for date fields with no data (e.g., <code>IF BD = NULL</code>). Use " " (quote space quote) for text/code fields with no data (e.g., <code>IF MHS.CD = " "</code>)."
+        ],
+        wusdProcess: "Advanced queries are typically run by the District Registrar or Technology Department. Before running a CHANGE query, always run the corresponding LIST query first to verify which records will be affected. Never run a CHANGE query without administrator approval.",
+        forms: ["Query Results Documentation Log"],
+        legalCompliance: "CHANGE queries modify live student data in Aeries and cannot be easily undone. Always back up or document the current state of data before running any CHANGE command. Unauthorized data changes may violate FERPA and district data governance policies.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-health-001",
+        title: "Medical History and Health Flag Queries",
+        category: "Aeries Queries",
+        roles: ["Health Clerk", "Secretary"],
+        keywords: ["query", "medical history", "MHS", "FLG", "flag", "health", "medical alert", "medical log", "MED", "health visit"],
+        content: "Queries to pull student medical history codes, active health flags, and medical log visit records. Essential for health office compliance and teacher notification.",
+        aeriesSteps: [
+          "Students with any Medical History Code: <code>LIST STU MHS STU.ID STU.NM STU.GR MHS.CD MHS.CD? MHS.CO IF MHS.CD # " "</code>",
+          "Students with medical flags (MHS, MED, MNO, IMM tables) active since 07/01/2024: <code>LIST STU FLG MHS STU.ID STU.NM STU.GR STU.BD MHS.SD MHS.ED MHS.CD MHS.TG MHS.CO MHS.PC FLG.CO BY STU.GR STU.LN IF FLG.TC = 'MHS' OR FLG.TC = 'MNO' OR FLG.TC = 'MED' OR FLG.TC = 'IMM' AND MHS.CD # NULL AND MHS.SD >= '07/01/2024'</code>",
+          "Medical log visits after a specific date: <code>LIST STU LN FN STU.ID MED MED.CD MED.CD? MED.DT IF MED.DT >= "8/21/2025"</code>",
+          "For elementary schools with master schedule — students with medical codes by teacher: <code>LIST STU MHS SEC MST TCH TCH.TE MST.PD STU.NM STU.GR MHS.CD? MHS.CO BY TCH.TE IF MHS.CD # " " OR MHS.CO # " "</code>",
+          "All flags for a specific table (e.g., MED for medical): <code>LIST STU FLG STU.NM STU.GR FLG.TC FLG.CO IF FLG.TC = MED</code>"
+        ],
+        wusdProcess: "Run the medical history query at the start of each year to generate teacher notification lists. Every teacher needs to know which students in their class have active medical alerts before the first day. The health clerk distributes this list — never post it publicly. Store the export in a password-protected folder.",
+        forms: ["Teacher Medical Alert Notification Form", "Health Office Student Flag List"],
+        legalCompliance: "FERPA and HIPAA govern the sharing of student health information. Medical history data may only be shared with staff who have a direct need to know for student safety purposes. Sharing health records more broadly without parent consent is a FERPA violation.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-sched-001",
+        title: "Scheduling and Master Schedule Queries",
+        category: "Aeries Queries",
+        roles: ["Registrar", "Admin Assistant"],
+        keywords: ["query", "scheduling", "master schedule", "MST", "SMS", "section", "course", "teacher", "period", "class size", "SSS"],
+        content: "Common scheduling queries for verifying master schedule data, finding students in specific courses, and checking course compliance. Includes both traditional and Flex scheduling versions.",
+        aeriesSteps: [
+          "List of teachers and sections for a specific period: <code>LIST MST CRS TCH MST.SE MST.PD MST.CN CRS.CO TCH.TE MST.ST MST.TS MST.CR BY TCH.TE IF MST.PD = #</code>",
+          "Students not scheduled in a specific course (replace #### with course number): <code>LIST STU SEC MST STU.ID STU.NM STU.GR BY STU.GR IF MST.CN = ####</code>",
+          "Students in a specific section: <code>KEEP STU SEC MST IF MST.SE = ###</code>",
+          "Courses by course number with subject area codes: <code>LIST CRS CN CO NA S1 S2 S3 CP BY CN</code>",
+          "Courses currently matched to CALPADS state codes: <code>LIST CRS CN CO C3 C3? IF C3 > " " AND C3 # 6012</code>",
+          "Flex schools — primary teacher for each student: <code>LIST STU ID LN FN GR PRIMARYTEACHERNAME BY PRIMARYTEACHERNAME</code>",
+          "Students with a specific course request in Scheduling: <code>LIST STU SSS CRS STU.ID STU.NM STU.GR SSS.CN CRS.CO IF SSS.CN = XXXX</code>"
+        ],
+        wusdProcess: "Scheduling queries are primarily run by the registrar and district scheduling coordinator. Before running CHANGE queries that affect scheduling data, always check with the principal and counselor to confirm the intended changes. Scheduling errors can affect student transcripts and graduation requirements.",
+        forms: ["Master Schedule Verification Checklist", "Course Request Audit Form"],
+        legalCompliance: "CA Ed Code requires districts to offer all required courses for graduation. CALPADS course-level reporting requires accurate CALPADS State Course Codes on all sections. Missing or incorrect course codes will generate errors in EOY CALPADS submissions.",
+        lastUpdated: "2026-05-28"
       }
+
     ];
 
     // ============================================================
