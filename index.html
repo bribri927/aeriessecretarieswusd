@@ -109,7 +109,7 @@
               <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
               <span>Step-by-Step Guides</span>
             </div>
-            <span id="guidesBadgeCount" class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold">45</span>
+            <span id="guidesBadgeCount" class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold">56</span>
           </button>
 
           <button onclick="switchTab('training')" id="nav-btn-training" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-sm font-semibold transition-all text-slate-600 hover:bg-slate-50 border-l-4 border-transparent">
@@ -1345,7 +1345,235 @@
         forms: ["Master Schedule Verification Checklist", "Course Request Audit Form"],
         legalCompliance: "CA Ed Code requires districts to offer all required courses for graduation. CALPADS course-level reporting requires accurate CALPADS State Course Codes on all sections. Missing or incorrect course codes will generate errors in EOY CALPADS submissions.",
         lastUpdated: "2026-05-28"
+      },
+      // ── ADDITIONAL QUERY LIBRARY ENTRIES (from remaining Aeries docs) ──
+
+      {
+        id: "query-calpads-001",
+        title: "CALPADS Special Education & EL Program Queries",
+        category: "Aeries Queries",
+        roles: ["Registrar"],
+        keywords: ["query", "CALPADS", "special education", "IEP", "CSE", "EL", "language acquisition", "LAC", "SELA", "SINF", "migrant", "SSD", "SPRG"],
+        content: "Key CALPADS reconciliation queries for Special Education, English Learner, and student information (SINF) data. Essential before each CALPADS submission window to catch anomalies.",
+        aeriesSteps: [
+          "Active Special Education students with IEP (no exit date): <code>LIST STU IDN CSE TCH STU.ID STU.NM STU.GR TCH.TE CSE.DI CSE.ED CSE.XD IF CSE.DI > 0 AND CSE.XD = NULL</code>",
+          "Student Information (SINF) — birthdate, enter dates, US enrollment: <code>LIST STU LAC STU.CID STU.ID STU.NM STU.GR STU.BD STU.DD STU.ED LAC.USS</code>",
+          "Students not born in US — birth city/state/country and language fluency: <code>LIST STU SSD STU.NM STU.BCY STU.BST STU.BCU STU.LF SSD.SUS IF STU.BCU # US</code>",
+          "English Language Acquisition (SELA) fields for CALPADS verification: <code>LIST STU LAC STU.SC STU.ID STU.NM STU.GR STU.LF LAC.STS LAC.USS LAC.EAC LAC.EAD STU.DD STU.ED BY STU.SC STU.LF</code>",
+          "Migrant students who are active: <code>LIST STU SSD STU.HL? STU.SC? STU.CID STU.NM STU.AD STU.CY STU.ST STU.ZC STU.PG STU.TL STU.BST IF SSD.MID # " " AND STU.TG = " "</code>",
+          "Teachers missing a Staff ID (SCSE compliance): <code>LIST TCH TE ID IF ID = " "</code>",
+          "Teachers missing a SEID — run at district level: <code>LIST STF LN FN SID IF TG # I AND SID = " "</code>"
+        ],
+        wusdProcess: "Run CALPADS reconciliation queries before each submission window: Fall 1 (October), Fall 2 (January), EOY 1 (April), EOY 2 (July). The District Registrar coordinates batch submissions. Site registrars resolve site-level errors within 5 business days of notification. Never run CHANGE queries without administrator approval.",
+        forms: ["CALPADS Submission Checklist", "CALPADS Error Resolution Log", "SSID Merge Request Form"],
+        legalCompliance: "CA Education Code 60900 requires accurate CALPADS data submission. IDEA requires accurate SpEd enrollment tracking. Missing SEID codes for teachers cause CALPADS CRSE submission errors. Late or inaccurate submissions may trigger a state audit.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-calpads-002",
+        title: "CALPADS Course Enrollment & Graduation Queries",
+        category: "Aeries Queries",
+        roles: ["Registrar"],
+        keywords: ["query", "CALPADS", "SENR", "SCSE", "course enrollment", "CAR", "graduation", "12th grade", "completion status", "HSG", "Ed Services", "EL", "ESR"],
+        content: "CALPADS course section enrollment (SENR/SCSE) queries for verifying EL students in courses, teachers' Ed Service codes, and graduation field updates for 12th graders.",
+        aeriesSteps: [
+          "EL students enrolled in a section with Ed Service codes (SCSE): <code>LIST STU CAR SEC MST CRS STU.ID STU.NM STU.ED CAR.SE CRS.CN CRS.CO STU.LF MST.ESR CAR.DS CAR.DE BY CAR.SE IF STU.LF = L</code>",
+          "Students enrolled in a specific course on Information Day (replace ## with date, #### with course): <code>LIST STU CAR TCH CRS STU.CID STU.NM CAR.CN CRS.CO CAR.PD CAR.SE TCH.TE BY STU.NM CAR.PD IF CAR.DS < ##/##/20## AND CAR.DE > ##/##/20## AND CRS.CN = ####</code>",
+          "Teacher Ed Service, Language of Instruction, Instructional Strategy — elementary: <code>LIST TCH TE ESR LI INS</code>",
+          "Teacher Ed Service codes — secondary (from master schedule): <code>LIST MST TCH MST.SE TCH.TE MST.ESR MST.LI MST.INS</code>",
+          "CHANGE: Populate 12th grade Completion Status (run only after administrator approval): <code>CHANGE STU STU.HSG TO 100 IF GR = 12 AND STU.HSG = " "</code>",
+          "CHANGE: Populate 12th grade Completion Date: <code>CHANGE STU DG TO MM/DD/20YY IF GR = 12 AND DG = NULL</code>",
+          "CHANGE: Fix Language of Instruction erroneously coded 00 or 37 for ELD teachers: <code>CHANGE MST LI TO " " IF LI = 00 OR LI = 37 AND ESR = 4</code>"
+        ],
+        wusdProcess: "SENR submission requires every active course enrollment to have accurate start and end dates. SCSE requires Ed Service codes on every section with EL students. Graduation fields (HSG and DG) must be populated for all 12th graders before EOY submissions. Always LIST before running any CHANGE query.",
+        forms: ["CALPADS SENR Checklist", "CALPADS SCSE Verification Form", "12th Grade Graduation Completion Log"],
+        legalCompliance: "CALPADS SENR and SCSE submissions are required for all LEAs under CA Ed Code 60900. Accurate Ed Service (ESR) codes are required for Title III EL compliance reporting. Completion Status and Completion Date errors prevent accurate graduation rate calculation in state accountability systems.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-grade-001",
+        title: "Grade Reporting & GPA Queries",
+        category: "Aeries Queries",
+        roles: ["Registrar", "Admin Assistant"],
+        keywords: ["query", "grades", "GPA", "GRD", "HIS", "transcript", "marks", "D", "F", "incomplete", "missing grades", "class rank", "credits", "marking period"],
+        content: "Queries for pulling student grades, finding missing marks, identifying D/F students, and working with GPA and transcript data. From the official Aeries Grade Reporting query library.",
+        aeriesSteps: [
+          "Students with D, F, or Incomplete grades for specific courses in a marking period: <code>LIST STU GRD STU.ID STU.NM STU.GR GRD.PD GRD.CN GRD.TN GRD.M1 BY GRD.CN IF ( GRD.CN = #### OR GRD.CN = #### ) AND ( GRD.M1 : D OR GRD.M1 : F OR GRD.M1 : I )</code>",
+          "Students with missing grades, citizenship, work habits, or comments for M2: <code>LIST STU GRD TCH STU.NM STU.GR TCH.TE GRD.PD GRD.M2 GRD.CI GRD.WH GRD.C1 BY TCH.TE IF GRD.M2 = " " OR GRD.CI = " " OR GRD.WH = " " OR GRD.C1 = " " AND STU.TG = " "</code>",
+          "All grades by specific teachers sorted by teacher and course: <code>LIST STU GRD CRS TCH STU.ID STU.NM GRD.CN CRS.CO GRD.M1 GRD.M2 GRD.M3 GRD.M4 TCH.TE BY TCH.TE GRD.CN IF GRD.TN = ### OR GRD.TN = ###</code>",
+          "Student GPA list with class rank sorted by GPA descending for a specific grade: <code>LIST STU SEC MST CRS STU.NM STU.GR STU.GP MST.PD CRS.CO BY STU.GP ^ IF STU.GR = ##</code>",
+          "Various built-in GPAs with credits and class rank: <code>LIST STU ID NM GR TP CR CS GP CP UR CA CC GG GT GK GS BY GR CR</code>",
+          "Transcript grades for all courses from a specific term and year: <code>LIST STU HIS CRS STU.ID STU.NM STU.GR HIS.CN CRS.CO HIS.TE HIS.YR HIS.MK IF HIS.TE = # AND HIS.YR = ##</code>",
+          "CHANGE: Fix Credits Completed to match Credits Attempted for passing grades: <code>CHANGE HIS CC TO CR IF MK : A OR MK : B OR MK : C OR MK : D OR MK : P</code>"
+        ],
+        wusdProcess: "Run the missing grades query after each grade submission deadline to catch teachers who have not submitted. Only a teacher can change a grade — never alter grade data without written teacher authorization and principal approval. All grade changes require a paper trail.",
+        forms: ["Teacher Grade Change Request Form", "Missing Grades Report", "Honor Roll Eligibility List"],
+        legalCompliance: "CA Education Code 49066 grants teachers authority over grades. Grades may only be changed by the assigning teacher except in cases of clerical error, fraud, or incompetence determined by the governing board. Unauthorized grade changes are a serious integrity violation.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-discipline-001",
+        title: "Discipline & Suspension Queries",
+        category: "Aeries Queries",
+        roles: ["Admin Assistant", "Secretary", "Registrar"],
+        keywords: ["query", "discipline", "suspension", "ADS", "DSP", "DIS", "assertive discipline", "expulsion", "suspension list", "current year", "CALPADS", "EOY3"],
+        content: "Queries for pulling discipline records, suspension lists, and demographic data for CALPADS EOY3 discipline reporting. Includes both Assertive Discipline (ADS/DSP) and newer Discipline (DIS) table queries.",
+        aeriesSteps: [
+          "All suspensions for current school year sorted by name and date: <code>LIST STU ADS DSP STU.ID STU.NM ADS.DT ADS.CD DSP.DS BY STU.NM ADS.DT IF DSP.DS : SUS AND DSP.DD > 06/30/20##</code>",
+          "Students with suspension, in-house suspension, or expulsion this year: <code>LIST STU ADS DSP STU.SC STU.ID STU.CID STU.NM DSP.DS DSP.DY ADS.DT ADS.CD ADS.CD? IF ADS.DT > 06/30/20## AND DSP.DS = SUS OR DSP.DS = SUS-H OR DSP.DS = SUS-P OR DSP.DS = EXP</code>",
+          "Full demographic data with discipline records for CALPADS EOY3: <code>LIST STU ADS DSP STU.ID STU.NM STU.GR STU.SX STU.ETH STU.RC1 ADS.CD ADS.CD? ADS.DT DSP.DS DSP.DY DSP.DD DSP.ED DSP.AA DSP.PL DSP.RS IF ADS.DT > 06/30/20##</code>",
+          "All discipline records with SpEd status for Fall 2 reconciliation: <code>LIST STU IDN CSE ADS DSP STU.SC STU.NM DSP.SC ADS.IID ADS.DT ADS.CD ADS.CD? DSP.DS DSP.DD DSP.ED DSP.DY ADS.CO CSE.DI CSE.XD BY STU.SC STU.NM IF DSP.DD > 06/30/####</code>",
+          "Newer DIS table — discipline records by student and date: <code>LIST STU DIS STF STU.NM STU.GR DIS.DT DIS.CD? DIS.CN DIS.CO DIS.SID STF.LN BY STU.NM DIS.DT IF DIS.CD # " "</code>",
+          "Students with a discipline flag (DIS table): <code>LIST STU DIS FLG STU.NM STU.GR DIS.CD? DIS.DT FLG.CO IF FLG.TC = DIS</code>",
+          "Safe and Supportive Schools Program referrals: <code>LIST STU ADS DSP STU.SC STU.GR STU.ID STU.FN STU.LN ADS.IID ADS.DT ADS.INI? ADS.CD? ADS.CO ADS.SSP ADS.SDT BY STU.SC IF ADS.DT >= 8/16/23 AND ADS.SSP = Y AND STU.TG # *</code>"
+        ],
+        wusdProcess: "Run discipline queries monthly and before each CALPADS submission. EOY3 discipline submission requires all suspension records to have complete Ed Code infraction codes, disposition codes, and dates. Coordinate with the principal to verify all suspension records are complete before submission.",
+        forms: ["WUSD Suspension Notice", "CALPADS EOY3 Discipline Checklist", "Ed Code 48900 Infraction Reference Sheet"],
+        legalCompliance: "CALPADS EOY3 requires all suspension and expulsion data submitted annually. Ed Code 48900 lists all suspendable offenses. Ed Code 48915 lists mandatory expulsion offenses. Ed Code 48900.5 prohibits K-8 suspension for willful defiance. Inaccurate discipline data affects state accountability metrics.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-gradebook-001",
+        title: "Gradebook Queries — Missing Assignments & At-Risk Grades",
+        category: "Aeries Queries",
+        roles: ["Admin Assistant", "Registrar"],
+        keywords: ["query", "gradebook", "GBU", "GBK", "GBA", "GBS", "missing assignments", "D", "F", "below 70", "overall mark", "at-risk", "teacher gradebook"],
+        content: "Queries to pull gradebook data including students with missing assignments, overall marks below C or 70%, and gradebook term scores. Useful for early intervention and progress monitoring.",
+        aeriesSteps: [
+          "Students with missing assignments: <code>LIST STU GBU GBS GBA GBK GBR TCH STU.ID STU.NM GBK.GN GBR.CD GBK.NM TCH.TE GBU.CSC GBU.CMK GBA.AN GBA.AD GBA.DD GBA.GC GBS.MK IF GBA.GC = 1 AND GBS.MK = " " AND GBA.DD >= GBR.SD AND GBA.DD <= GBR.ED AND GBK.SC = TCH.SC</code>",
+          "Students with overall mark of D or F: <code>LIST STU GBU GBK GBR STU.NM GBK.PD GBK.NM GBR.CD GBU.CMK GBU.CSC IF ( GBU.CMK : D OR GBU.CMK : F ) AND ( GBR.CD : F )</code>",
+          "Students with overall grade below C in an active gradebook: <code>LIST STU GBU GBK GBE MST CRS TCH STU.ID STU.LN STU.FN STU.GR GBK.PD CRS.CN GBE.SE CRS.CO GBK.TN TCH.TE GBU.CSC GBU.CMK GBU.D2 IF GBU.D2 > ##/##/20## AND ( GBU.CMK = "C-" OR GBU.CMK : "D" OR GBU.CMK : "F" )</code>",
+          "Students with less than 70% overall in any class: <code>LIST STU GBU GBK GBE MST CRS STU.ID STU.NM GBE.SE CRS.CN GBU.GN GBK.NM GBK.PD GBK.TN GBU.CSC GBU.CMK IF GBU.CSC < 70</code>",
+          "Student term scores with teacher's last update timestamp: <code>LIST STU GBV GBU GBK GBE MST TCH STU.SC STU.ID STU.NM STU.GR STU.TG? GBK.GN GBV.CD GBK.NM TCH.TE MST.PD GBE.SE MST.CN GBV.MK GBV.PC (( CAST(GBV.DTS AS DATETIME) )) IF GBK.GN = GBV.GN AND GBK.SC = TCH.SC</code>",
+          "Assignment tally by teacher, course, and term: <code>TOTAL TCH GBK GBA GBR TCH.TE GBK.NM GBR.CD GBK.PD BY TCH.TE GBR.CD GBK.NM GBK.PD IF GBK.SC = TCH.SC AND GBA.DD >= GBR.SD AND GBA.DD <= GBR.ED</code>"
+        ],
+        wusdProcess: "Gradebook queries are typically run by site principals or counselors for academic early intervention. The registrar or admin assistant may be asked to pull these reports. Results should be shared with the counselor — do not share raw gradebook data directly with parents without administrator direction.",
+        forms: ["Academic Early Warning Report", "Parent Progress Notification Form"],
+        legalCompliance: "FERPA protects gradebook data. Only staff with a legitimate educational interest may access student grade records. Gradebook data shared with parents must go through official channels (parent portal or printed report card) — raw query exports should not be emailed externally.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-elpac-001",
+        title: "ELPAC & Language Fluency Update Queries",
+        category: "Aeries Queries",
+        roles: ["Registrar"],
+        keywords: ["query", "ELPAC", "language fluency", "LAC", "TBD", "IFEP", "EL", "initial fluency", "STU.LF", "language assessment", "reclassification"],
+        content: "Queries and CHANGE commands for processing ELPAC Initial Assessment results, updating Language Fluency codes from TBD to EL or IFEP, and verifying Language Assessment (LAC) data.",
+        aeriesSteps: [
+          "List students with Language Fluency of TBD with Initial Fluency populated: <code>LIST STU LAC STU.TG STU.ID STU.LN STU.FN STU.GR STU.LF LAC.SD LAC.IFD LAC.ITF LAC.ITD IF STU.LF = "T" AND LAC.ITF # " "</code>",
+          "Review ELPAC results for accuracy: <code>LIST STU LAC STU.TG STU.ID STU.NM STU.GR STU.LF LAC.SD LAC.IFD LAC.ITF LAC.ITD IF LAC.ITF # " "</code>",
+          "CHANGE: Update IFEP Start Date for students designated IFEP: <code>CHANGE STU LAC LAC.IFD TO LAC.ITD IF STU.LF = "T" AND LAC.ITF = "IFEP" AND LAC.ITD # NULL AND LAC.IFD = NULL</code>",
+          "CHANGE: Update Program Start Date for students designated EL: <code>CHANGE STU LAC LAC.SD TO LAC.ITD IF STU.LF = "T" AND LAC.ITF = "EL" AND LAC.ITD # NULL AND LAC.SD = NULL</code>",
+          "CHANGE: Update Language Fluency code to EL (L): <code>CHANGE STU LAC STU.LF TO "L" IF STU.LF = "T" AND LAC.ITF = "EL" AND LAC.ITD # NULL</code>",
+          "CHANGE: Update Language Fluency code to IFEP (I): <code>CHANGE STU LAC STU.LF TO "I" IF STU.LF = "T" AND LAC.ITF = "IFEP" AND LAC.ITD # NULL</code>",
+          "<strong>Important:</strong> Always run LIST queries first to verify which records will be affected before running any CHANGE command. Confirm Language Fluency codes (L, I, etc.) match your district's specific code table before running CHANGE queries."
+        ],
+        wusdProcess: "ELPAC Initial Assessment results must be processed within 30 calendar days of enrollment for new potential EL students. The EL Coordinator must approve all IFEP and EL designations before Language Fluency codes are updated in Aeries. Run LIST queries first, review with the EL Coordinator, then run CHANGE commands.",
+        forms: ["ELPAC Initial Assessment Referral Form", "EL Program Placement Notice", "RFEP Parent Notification Letter"],
+        legalCompliance: "CA Ed Code 313 and Title III of ESSA require ELPAC Initial Assessment within 30 calendar days of enrollment for potential EL students. CALPADS SELA submission requires accurate Language Fluency codes. Incorrect LF codes affect Title III funding and EL accountability reporting.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-portal-001",
+        title: "Parent Portal & Authorization Queries",
+        category: "Aeries Queries",
+        roles: ["Secretary", "Admin Assistant", "Registrar"],
+        keywords: ["query", "parent portal", "PWA", "portal activity", "login", "authorization", "AUT", "email", "EML", "income survey", "FRE", "data confirmation"],
+        content: "Queries for monitoring parent portal activity, viewing authorization records, tracking email communications, and auditing Parent Data Confirmation responses.",
+        aeriesSteps: [
+          "Parent and student portal login activity: <code>LIST PWA PWS STU PWA.AID PWA.EM PWA.AST PWA.TY PWA.PID PWA.LC PWA.LDT PWA.CD STU.SC STU.LN STU.FN STU.ID STU.GR</code>",
+          "Email sent to a specific parent email address: <code>LIST EML EID TN UN SCL DT FAD TAD SUB (( DTS )) IF TAD : "parent@example.com"</code> (replace with actual email)",
+          "Authorizations effective on a specific date: <code>LIST STU AUT STU.ID STU.NM AUT.CD AUT.CD? AUT.ST AUT.ST? IF AUT.SDT <= ##/##/20## AND ( AUT.EED = NULL OR AUT.EED >= ##/##/20## )</code>",
+          "Authorization records with date and time stamp: <code>LIST AUT SC SN TY CO DT SQ ST (( CAST(SDT AS DATETIME) )) CD TA EED SRC</code>",
+          "Parent Data Confirmation income survey responses: <code>LIST STU FRE STU.SC STU.ID STU.NM FRE.CD FRE.SRC FRE.ESD FRE.EED FRE.PIR FRE.PDT FRE.MO IF FRE.SRC = PDC</code>",
+          "Military family pending records from Data Confirmation: <code>LIST STU ICL PRS STU.SC STU.ID STU.NM STU.GR PRS.DT PRS.TY PRS.CD PRS.ST PRS.UN PRS.ID STU.LD STU.TG BY ICL.SC IF PRS.TY = 2 AND PRS.ST = P AND PRS.DT > 07/01/2022 AND ICL.TC = "FinalDataConf" AND ICL.DT > 7/1/2022</code>"
+        ],
+        wusdProcess: "Use the portal activity query to verify that parents have logged in after being issued VPC codes. Use the email query to confirm specific emails were sent and received. Authorization records are critical for custody and FERPA compliance audits. Never share portal access logs externally without administrator authorization.",
+        forms: ["Parent Portal Quick Start Guide", "Parent Portal Account Release Authorization Form", "Annual Data Confirmation Instructions"],
+        legalCompliance: "FERPA protects portal access logs and authorization records. PWA login data may only be accessed by authorized staff for legitimate educational purposes. Email logs should be retained per district records retention policy.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-sped-001",
+        title: "Special Education & 504 Queries",
+        category: "Aeries Queries",
+        roles: ["Registrar", "Admin Assistant"],
+        keywords: ["query", "special education", "IEP", "CSE", "504", "FOF", "FAP", "disability", "accommodation", "review date", "active IEP"],
+        content: "Queries for pulling active IEP records, 504 plan data, review dates, and accommodation details. Essential for compliance monitoring and annual review scheduling.",
+        aeriesSteps: [
+          "Active IEP students (no exit date) with teacher and disability: <code>LIST STU TCH IDN CSE STU.ID STU.NM STU.GR TCH.TE CSE.DI CSE.ED CSE.XD IF CSE.DI > 0 AND CSE.XD = NULL</code>",
+          "Active 504 students with meeting type and effective date: <code>LIST STU FOF STU.ID STU.NM STU.GR FOF.MT FOF.SD FOF.ED IF FOF.SD # NULL AND FOF.ED = NULL</code>",
+          "Active 504 students with next review date: <code>LIST STU FOF STU.ID STU.NM STU.GR FOF.SD FOF.MD FOF.RD IF FOF.SD # NULL AND FOF.ED = NULL</code>",
+          "Active 504 student accommodations by student: <code>LIST STU FOF FAP STU.ID STU.NM STU.GR FAP.CD FAP.CD? FAP.AC IF FOF.SD # NULL AND FOF.ED = NULL</code>",
+          "For scheduling annual reviews: export the 504 review date list and sort by FOF.RD to see which reviews are coming up soonest.",
+          "Cross-reference IEP list (CSE query) with the SpEd coordinator to confirm all active IEPs match current service records."
+        ],
+        wusdProcess: "Run the active IEP query quarterly to ensure all students receiving services have current IEP records in Aeries. Run the 504 review date query at the start of each semester to proactively schedule upcoming annual reviews. Always coordinate with the SpEd Coordinator and 504 Coordinator before modifying any SpEd or 504 records.",
+        forms: ["IEP Annual Review Scheduling Log", "504 Annual Review Notice", "SpEd Program Entry Checklist"],
+        legalCompliance: "IDEA requires IEP annual reviews within 365 days of the previous IEP. Section 504 of the Rehabilitation Act requires annual reviews. Missing or lapsed IEPs expose the district to OCR complaints and due process hearings. Accurate Aeries records are the legal record of services provided.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-fees-assets-001",
+        title: "Fees, Assets & Locker Queries",
+        category: "Aeries Queries",
+        roles: ["Secretary", "Admin Assistant"],
+        keywords: ["query", "fees", "FEE", "unpaid", "outstanding", "assets", "DRI", "Chromebook", "locker", "LKR", "checked out", "inventory"],
+        content: "Queries for tracking unpaid student fees, assets checked out to students or staff (Chromebooks, equipment), and locker assignments. Useful for year-end reconciliation.",
+        aeriesSteps: [
+          "Students with unpaid fees for a specific grade level: <code>LIST STU FEE STU.NM STU.ID STU.GR FEE.DT FEE.CD? (( FEE.AM - FEE.PD )) IF STU.GR = # AND (( FEE.AM - FEE.PD )) # 0.00</code>",
+          "Assets checked out to students — school or district level: <code>LIST DRA DRI DRT STU STU.FN STU.LN DRT.TI DRA.ID DRA.DT DRI.BC IF DRA.RD = NULL AND DRA.ST = "S"</code>",
+          "Assets checked out to staff — district level only: <code>LIST DRT DRI DRA STF STF.FN STF.LN DRT.TI DRA.ID DRA.DT DRI.BC IF DRA.RD = NULL AND DRA.ST = "T"</code>",
+          "All locker information with combinations: <code>LIST LKR LK CM SN C1 C2 C3 C4 C5 SE</code>",
+          "Unassigned lockers only: <code>LIST LKR LK CM SN BY LK IF SN = 0</code>",
+          "Fix Locker table student numbers to match Demographics (CHANGE — run with caution): <code>CHANGE STU LKR LKR.SN TO STU.SN IF LKR.SN # STU.SN</code>"
+        ],
+        wusdProcess: "Run the assets query at the end of the school year to identify all unreturned Chromebooks and equipment before students withdraw. Run the fees query to generate a list for the office manager. Locker data should be verified at the start and end of each year. Always LIST before CHANGE on locker records.",
+        forms: ["Technology Check-In Ledger", "Student Fee Balance Report", "Year-End Asset Reconciliation Form"],
+        legalCompliance: "Districts are required to maintain accurate asset inventories for audit purposes. Fee collection policies are governed by Board Policy and CA Ed Code 49013 (prohibition of fees for mandatory activities). Locker combination data is confidential student information protected under FERPA.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-state-001",
+        title: "State & Federal Reporting Queries (GSS, SSB, At-Risk)",
+        category: "Aeries Queries",
+        roles: ["Registrar"],
+        keywords: ["query", "Golden State Seal", "GSS", "State Seal of Biliteracy", "SSB", "RTG", "report tag", "at-risk", "ARC", "ARI", "biliteracy", "diploma", "qualified"],
+        content: "Queries using the Report Tag (RTG) feature for Golden State Seal Merit Diploma, State Seal of Biliteracy processing, and At-Risk student identification.",
+        aeriesSteps: [
+          "Golden State Seal Merit Diploma — Not Qualified students: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = "GoldenStateSealMeritDiploma" AND RTG.QT = "NQ"</code>",
+          "Golden State Seal Merit Diploma — Qualified students: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = "GoldenStateSealMeritDiploma" AND RTG.QT = "QF"</code>",
+          "State Seal of Biliteracy — Potentially Qualified: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = "StateSealOfBiliteracy" AND RTG.QT = "RQS"</code>",
+          "State Seal of Biliteracy — Qualified students: <code>LIST STU RTG STU.TG STU.SC STU.SN STU.ID STU.LN STU.FN STU.GR STU.HSG STU.DG RTG.RNM RTG.QT IF RTG.RNM = "StateSealOfBiliteracy" AND RTG.QT = "QF"</code>",
+          "Students with immunization non-compliance flagged by Immunization Status Report: <code>LIST STU RTG FN LN GR PG AD CY ST ZC ZX IF RNM = 'PrintStudentImmunizationStatus' AND QT = "V"</code>",
+          "At-Risk students with active indicators: <code>LIST STU ARI ARC STU.ID STU.NM ARC.CD ARC.DE ARI.SD IF ARC.CD > 0 AND ARI.ED = NULL</code>"
+        ],
+        wusdProcess: "Run GSS and SSB queries after the annual processing run to review qualified and not-qualified student lists before generating award letters or certificates. At-Risk indicator queries support MTSS Tier 2 and Tier 3 identification. Coordinate with counselors and the principal before distributing any diploma or award lists.",
+        forms: ["Golden State Seal Merit Diploma Certificate", "State Seal of Biliteracy Award Letter", "At-Risk Student Referral Form"],
+        legalCompliance: "The Golden State Seal Merit Diploma and State Seal of Biliteracy are governed by CA Ed Code 51460 and 51470 respectively. At-Risk indicators (ARC) support ESSA requirements for identifying and serving at-risk student populations. Immunization RTG tags support CA Health & Safety Code 120365 exclusion tracking.",
+        lastUpdated: "2026-05-28"
+      },
+      {
+        id: "query-career-001",
+        title: "Career Technical Education (CTE) & Pathway Queries",
+        category: "Aeries Queries",
+        roles: ["Registrar", "Admin Assistant"],
+        keywords: ["query", "career pathway", "CTE", "CPW", "CPH", "CCP", "vocational", "completer", "EOY1", "state course ID", "pathway code"],
+        content: "Queries for managing CTE Career Pathway data including course sequences, student pathway enrollment, completers, and CALPADS EOY1 reporting.",
+        aeriesSteps: [
+          "Course sequence for all career pathways: <code>LIST CCP CRS CCP.SC CCP.CD CCP.CN CRS.CO CRS.C3 CCP.LVL CCP.RQ BY CCP.CD CCP.SC</code>",
+          "Career pathways with course info, High Quality status, and State Course ID: <code>LIST CCP CRS MST CCP.CD CCP.CN CRS.CO MST.SE MST.HQC CRS.C3 BY MST.HQC CCP.CD</code>",
+          "Students in a career pathway with transcript history: <code>LIST STU CPW CPH HIS CRS STU.TG STU.ID STU.NM CPW.CD?CTE.CD CPW.CM CPH.AY CPH.LVL CRS.CN CRS.CO CRS.C3 IF CRS.C3 > 6999 AND CRS.C3 < 9000 AND CPW.CD # NULL</code>",
+          "Students reported as CTE Completers for a specific year: <code>LIST STU CPW CPH STU.TG STU.ID STU.NM CPW.CD CPW.CM CPH.AY CPH.LVL IF CPH.AY = "20##-20##" AND CPW.CM = 1</code>",
+          "Students who took CTE courses (State Course ID 7000-8999) in transcripts: <code>LIST STU CPW CPH HIS CRS STU.TG STU.ID STU.NM CPW.CD CPW.CM CPH.LVL CPH.AY HIS.CN CRS.C3 IF CRS.C3 > 6999 AND CRS.C3 < 9000</code>",
+          "Students who took courses for a specific pathway in a specific year: <code>LIST STU HIS STU.ID STU.NM HIS.CN HIS.YR IF HIS.YR = ## AND ( HIS.CN = #### OR HIS.CN = #### )</code>"
+        ],
+        wusdProcess: "CTE pathway data is submitted to CALPADS during EOY1. The registrar coordinates with the CTE coordinator and counselors to verify completer designations before submission. Pathway data errors can affect Perkins grant funding and CALPADS accountability metrics. Always verify completer status with the CTE coordinator.",
+        forms: ["CTE Completer Verification List", "CALPADS EOY1 Course and Career Pathway Checklist"],
+        legalCompliance: "CTE pathway data is required for CALPADS EOY1 submission under CA Ed Code 60900. Perkins V (Carl D. Perkins Career and Technical Education Act) requires accurate CTE enrollment and completer data for federal funding. High Quality CTE course designation affects district Perkins funding calculations.",
+        lastUpdated: "2026-05-28"
       }
+
 
     ];
 
