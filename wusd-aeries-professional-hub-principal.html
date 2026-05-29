@@ -3,203 +3,163 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WUSD Aeries Professional Hub V3</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<title>WUSD Aeries Professional Hub V4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#153e75;--blue:#2563eb;--gold:#f59e0b;--ink:#0f172a;}
-body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at top left,#dbeafe 0,#f8fafc 32%,#fff7ed 100%);}
-.glass{background:rgba(255,255,255,.82);backdrop-filter:blur(16px);box-shadow:0 24px 70px rgba(15,23,42,.10);}
-.hero{background:linear-gradient(135deg,#153e75,#2563eb 58%,#f59e0b);}
-.role-card.active{outline:4px solid rgba(37,99,235,.25);border-color:#2563eb;transform:translateY(-2px);}
-.guide-card:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(15,23,42,.12);}
-.md h3{font-weight:900;color:#0f172a;font-size:1rem;margin-top:1rem;margin-bottom:.45rem}
-.md p{color:#475569;line-height:1.65;margin:.4rem 0;font-size:.93rem}
-.md ol,.md ul{padding-left:1.35rem;margin:.5rem 0;color:#475569;font-size:.93rem;line-height:1.65}
-.md ol{list-style:decimal} .md ul{list-style:disc}
-.md blockquote{border-left:5px solid #f59e0b;background:#fffbeb;color:#92400e;border-radius:.6rem;padding:.8rem 1rem;margin:1rem 0;font-weight:700}
-.badge{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em}
-.ai-hero{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(248,250,252,.92));}
-.prompt-chip{transition:all .18s ease}
-.prompt-chip:hover{transform:translateY(-1px);}
-.answer-prose pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;}
+:root{--navy:#0f172a;--slate:#475569;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc;--blue:#2563eb;--cyan:#06b6d4;--purple:#7c3aed;--green:#10b981;--gold:#f59e0b;--red:#ef4444;--white:#fff;--shadow:0 18px 50px rgba(15,23,42,.10)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top left,#dbeafe,transparent 35%),linear-gradient(180deg,#f8fafc,#eef2ff);color:var(--navy)}
+a{color:inherit}.app{max-width:1440px;margin:0 auto;padding:22px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:14px}.logo{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--purple));display:grid;place-items:center;color:white;font-weight:900;font-size:24px;box-shadow:var(--shadow)}h1{font-size:27px;margin:0;font-weight:900;letter-spacing:-.04em}.sub{color:var(--slate);font-size:13px;margin-top:4px}.badge{background:white;border:1px solid var(--line);padding:9px 12px;border-radius:999px;font-size:12px;font-weight:800;color:var(--slate);box-shadow:0 6px 20px rgba(15,23,42,.05)}.rolebar{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}.role{cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.86);padding:18px;border-radius:24px;box-shadow:0 12px 35px rgba(15,23,42,.06);transition:.2s}.role:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.role.active{border:2px solid var(--blue);background:linear-gradient(180deg,#fff,#eff6ff)}.role b{display:block;font-size:18px}.role span{display:block;margin-top:5px;color:var(--muted);font-size:13px;line-height:1.35}.hero{background:white;border:1px solid var(--line);border-radius:34px;padding:26px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.08fr .92fr;gap:22px;align-items:stretch}.hero h2{font-size:34px;line-height:1.03;margin:0 0 8px;letter-spacing:-.05em}.hero p{color:var(--slate);line-height:1.55;margin:0 0 16px}.assistant{background:linear-gradient(180deg,#f8fafc,#fff);border:1px solid var(--line);border-radius:28px;padding:20px}.assistant-title{display:flex;gap:10px;align-items:center;font-size:19px;font-weight:900;margin-bottom:10px}.bot{width:38px;height:38px;border-radius:13px;background:#dbeafe;display:grid;place-items:center}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.chip{border:0;background:#eef2ff;color:#1e3a8a;font-weight:800;border-radius:999px;padding:9px 12px;cursor:pointer;font-size:12px}.chip:hover{background:#dbeafe}.askrow{display:flex;gap:10px}textarea{width:100%;min-height:88px;border:1px solid #cbd5e1;border-radius:18px;padding:14px;font:500 15px Inter;resize:vertical;color:var(--navy)}.btn{border:0;border-radius:18px;background:linear-gradient(135deg,var(--blue),#1d4ed8);color:white;font-weight:900;padding:14px 18px;cursor:pointer;box-shadow:0 10px 24px rgba(37,99,235,.25)}.btn.secondary{background:white;color:var(--blue);border:1px solid #bfdbfe;box-shadow:none}.btn.green{background:linear-gradient(135deg,var(--green),#059669)}.answer{display:none;margin-top:14px;padding:18px;border:1px solid var(--line);border-radius:20px;background:white;line-height:1.55;color:#1e293b}.answer h3{margin:0 0 8px}.answer ol,.answer ul{margin:8px 0 8px 22px}.answer code,.code{display:block;background:#0f172a;color:#e2e8f0;border-radius:14px;padding:12px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;white-space:pre-wrap;overflow:auto}.layout{display:grid;grid-template-columns:360px 1fr;gap:18px;margin-top:18px}.panel{background:white;border:1px solid var(--line);border-radius:28px;padding:20px;box-shadow:0 12px 35px rgba(15,23,42,.06)}.panel h3{font-size:18px;margin:0 0 12px;letter-spacing:-.02em}.qa{display:grid;gap:10px}.qa button{border:1px solid var(--line);background:#f8fafc;text-align:left;border-radius:16px;padding:12px;font-weight:800;color:#334155;cursor:pointer}.qa button:hover{background:#eff6ff;border-color:#bfdbfe;color:#1d4ed8}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.section-title h2{margin:0;font-size:23px;letter-spacing:-.04em}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,#fff,#f8fafc);padding:16px;min-height:150px}.card .icon{font-size:26px}.card h4{font-size:16px;margin:8px 0 6px}.card p{font-size:13px;line-height:1.45;color:var(--slate);margin:0 0 12px}.tag{display:inline-block;background:#f1f5f9;color:#475569;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800}.search{width:100%;padding:14px 16px;border-radius:18px;border:1px solid #cbd5e1;font:500 14px Inter;margin-bottom:12px}.guide{border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0;background:#fff}.guide h4{margin:0 0 6px}.guide p{color:var(--slate);font-size:13px;line-height:1.45}.steps{counter-reset:step}.step{position:relative;border-left:4px solid #dbeafe;background:#f8fafc;border-radius:18px;padding:14px 14px 14px 18px;margin:10px 0}.step b{color:#1d4ed8}.warn{background:#fff7ed;border:1px solid #fed7aa;border-radius:18px;padding:14px;margin:10px 0}.ok{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:18px;padding:14px;margin:10px 0}.hidden{display:none}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.playbook{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:white;border-radius:26px;padding:22px;box-shadow:var(--shadow)}.playbook p{color:#cbd5e1}.playbook .btn{background:white;color:#1d4ed8}.small{font-size:12px;color:var(--muted)}@media(max-width:1000px){.hero,.layout,.two{grid-template-columns:1fr}.grid,.rolebar{grid-template-columns:1fr}.askrow{flex-direction:column}.topbar{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
-<body class="min-h-screen text-slate-900">
-<header class="sticky top-0 z-40 border-b border-white/60 glass">
-  <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-    <div class="flex items-center gap-3">
-      <div class="w-12 h-12 rounded-2xl hero text-white font-black text-2xl grid place-items-center shadow-lg">W</div>
-      <div><h1 class="text-2xl md:text-3xl font-black tracking-tight">WUSD Aeries Professional Hub <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full align-middle">V3</span></h1><p class="text-sm text-slate-500 font-semibold">Role-based Aeries support for Principals, Counselors, and Teachers</p></div>
-    </div>
-    <div class="flex gap-2 flex-wrap"><span class="badge bg-emerald-100 text-emerald-800 px-3 py-2 rounded-full">AI Assistant + Search</span><span class="badge bg-amber-100 text-amber-800 px-3 py-2 rounded-full">Training Coach</span></div>
-  </div>
-</header>
-<main class="max-w-7xl mx-auto p-5 space-y-6">
-<section class="hero rounded-[2rem] p-7 md:p-10 text-white overflow-hidden relative shadow-2xl">
-  <div class="max-w-3xl relative z-10"><p class="badge bg-white/20 border border-white/30 inline-block px-3 py-1 rounded-full mb-4">V3 • Smart Office Assistant First</p><h2 class="text-4xl md:text-6xl font-black leading-tight">Ask first. Learn next. Practice when ready.</h2><p class="mt-4 text-blue-50 text-lg font-medium">A polished WUSD Aeries support hub for Principals, Counselors, and Teachers with the AI-style assistant moved front and center.</p></div>
-  <div class="absolute -right-12 -bottom-16 w-72 h-72 rounded-full bg-white/10"></div>
-</section>
+<body>
+<div class="app">
+<header class="topbar"><div class="brand"><div class="logo">W</div><div><h1>WUSD Aeries Professional Hub V4</h1><div class="sub">Role-based Aeries support for principals, counselors, and teachers</div></div></div><div class="badge">🧠 AI Assistant + 📘 Master Scheduling Center</div></header>
 
-<section class="ai-hero glass border border-white/80 rounded-[2rem] p-5 md:p-7 shadow-2xl" id="assistantTop">
-  <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
-    <div class="max-w-2xl">
-      <div class="flex items-center gap-3 mb-2"><div class="h-12 w-12 rounded-2xl bg-blue-100 grid place-items-center text-2xl">🤖</div><div><p class="badge text-blue-700">District Smart Office Assistant</p><h2 class="text-3xl md:text-4xl font-black tracking-tight">Ask the Hub</h2></div></div>
-      <p class="text-slate-600 font-medium leading-relaxed">Ask any Aeries, workflow, or starter query question. The assistant checks role-specific guides and provides step-by-step help, including sample Aeries queries when available.</p>
-    </div>
-    <div class="flex gap-2 flex-wrap lg:justify-end"><span class="badge bg-blue-100 text-blue-800 px-3 py-2 rounded-full">Role-aware</span><span class="badge bg-indigo-100 text-indigo-800 px-3 py-2 rounded-full">Query Helper</span><span class="badge bg-emerald-100 text-emerald-800 px-3 py-2 rounded-full">Guide-grounded</span></div>
-  </div>
+<div class="rolebar">
+  <div class="role active" data-role="Principal" onclick="setRole('Principal')"><b>🏫 Principal</b><span>Master scheduling, attendance trends, discipline, grade oversight, reports.</span></div>
+  <div class="role" data-role="Counselor" onclick="setRole('Counselor')"><b>🎓 Counselor</b><span>Transcripts, schedule changes, credit audits, graduation progress.</span></div>
+  <div class="role" data-role="Teacher" onclick="setRole('Teacher')"><b>🍎 Teacher</b><span>Gradebook, attendance, parent communication, class reports.</span></div>
+</div>
 
-  <div class="mt-5 grid lg:grid-cols-[1fr_220px] gap-4">
-    <div>
-      <textarea id="askBox" class="w-full min-h-28 rounded-3xl border border-slate-200 bg-white px-5 py-4 text-lg focus:outline-none focus:ring-4 focus:ring-blue-100 shadow-sm" placeholder="Ask a question, like: How do I create a master schedule? What query shows EL status? How do I fix gradebook N/A?"></textarea>
-      <div class="mt-3 flex flex-wrap gap-2" id="smartChips"></div>
-    </div>
-    <div class="flex flex-col gap-3">
-      <button id="askHubBtn" type="button" onclick="askAssistant()" class="h-16 lg:h-full min-h-16 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-3xl px-6 text-xl shadow-lg shadow-blue-200 transition">Ask the Hub →</button>
-      <button onclick="document.getElementById('askBox').value='';document.getElementById('answerBox').innerHTML='Ask a question above or choose a smart prompt chip.'" class="bg-white hover:bg-slate-50 border border-slate-200 text-slate-600 font-black rounded-2xl px-4 py-3 transition">Clear</button>
+<section class="hero">
+  <div>
+    <h2 id="heroTitle">Ask the Hub first.</h2>
+    <p id="heroText">Use the role selector, ask an Aeries question, or jump into the Master Scheduling Center. V4 moves the AI assistant to the top so users can get help before hunting through guides.</p>
+    <div class="playbook" id="playbookCard">
+      <h3>📘 Master Scheduling Playbook</h3>
+      <p>A printable, generic district resource for elementary, middle, and high school master scheduling in Aeries. Includes flex scheduling, troubleshooting, tips, and checklists.</p>
+      <a href="Master_Scheduling_Playbook_V1.pdf" target="_blank"><button class="btn">Open / Download / Print PDF</button></a>
     </div>
   </div>
-  <div id="answerBox" class="answer-prose mt-5 text-sm md:text-base bg-white border border-slate-200 rounded-3xl p-5 text-slate-700 shadow-sm">Ask a question above or choose a smart prompt chip.</div>
+  <div class="assistant">
+    <div class="assistant-title"><div class="bot">🤖</div><div>District Smart Office Assistant</div></div>
+    <p class="small">Ask about Aeries workflows, master scheduling, gradebooks, attendance, transcripts, or sample Aeries queries.</p>
+    <div class="chips" id="chips"></div>
+    <div class="askrow"><textarea id="question" placeholder="Ask a question... Example: How do I create a middle school master schedule?"></textarea><button class="btn" onclick="askHub()">Ask the Hub →</button></div>
+    <div id="answer" class="answer"></div>
+  </div>
 </section>
 
-<section class="grid md:grid-cols-3 gap-4" id="roleCards"></section>
+<div class="layout">
+  <aside class="panel">
+    <h3 id="quickTitle">Principal Quick Actions</h3>
+    <div class="qa" id="quickActions"></div>
+    <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+    <h3>Training Coach</h3>
+    <div id="training" class="guide"></div>
+  </aside>
 
-<section class="grid lg:grid-cols-[330px_1fr] gap-5">
-<aside class="space-y-5">
-  <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-3">Quick Actions</h3><div id="quickActions" class="space-y-2"></div></div>
-  <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">Search Guides</h3><input id="searchBox" class="w-full rounded-2xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-blue-100" placeholder="Try: master schedule, transcript, gradebook" oninput="renderGuides()"><p class="text-xs text-slate-500 mt-3">Search is role-aware and scans titles, categories, summaries, and guide content.</p></div>
-  <div class="glass border border-white/70 rounded-3xl p-5"><h3 class="font-black text-lg mb-2">Training Coach</h3><p class="text-sm text-slate-500 mb-3">Practice realistic scenarios after reviewing the guides.</p><button onclick="showTraining()" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-black rounded-2xl px-5 py-3">Open Training Coach</button></div>
-</aside>
-<section class="space-y-5">
-  <div class="glass border border-white/70 rounded-3xl p-5"><div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3"><div><p class="badge text-blue-700">Current Role</p><h2 id="roleTitle" class="text-3xl font-black"></h2><p id="roleSubtitle" class="text-slate-500 font-medium"></p></div><a href="#assistantTop" class="bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl px-5 py-3 text-center">Ask a Question</a></div></div>
-  <div id="trainingBox" class="hidden glass border border-amber-200 rounded-3xl p-5"></div>
-  <div id="guideResults" class="grid md:grid-cols-2 gap-4"></div>
-  <div id="guideDetail" class="glass border border-white/70 rounded-3xl p-6 hidden"></div>
-</section>
-</section>
-</main>
+  <main>
+    <section class="panel" id="masterCenter">
+      <div class="section-title"><h2>🏗️ Master Scheduling Center</h2><span class="tag">Principal / Counselor Resource</span></div>
+      <div class="grid">
+        <div class="card"><div class="icon">📘</div><h4>Playbook PDF</h4><p>Printable guide with elementary, middle, high school, flex models, troubleshooting, and checklists.</p><a href="Master_Scheduling_Playbook_V1.pdf" target="_blank"><button class="btn secondary">Open PDF</button></a></div>
+        <div class="card"><div class="icon">🛠️</div><h4>Interactive Walkthrough</h4><p>Follow the scheduling process from projections to final readiness checks.</p><button class="btn secondary" onclick="scrollToId('walkthrough')">Start</button></div>
+        <div class="card"><div class="icon">🚨</div><h4>Troubleshooting</h4><p>Use quick fixes for unscheduled students, singleton conflicts, overloaded classes, and flex confusion.</p><button class="btn secondary" onclick="scrollToId('troubleshooting')">Review</button></div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:18px" id="guidesPanel">
+      <div class="section-title"><h2 id="guidesTitle">Principal Guides</h2><span class="tag" id="guideCount"></span></div>
+      <input class="search" id="search" placeholder="Search guides... try master schedule, transcript, gradebook, query" oninput="renderGuides()">
+      <div id="guides"></div>
+    </section>
+
+    <section class="panel" style="margin-top:18px" id="walkthrough">
+      <div class="section-title"><h2>🧭 Interactive Scheduling Walkthrough</h2><span class="tag">Start Here</span></div>
+      <div class="steps">
+        <div class="step"><b>1. Prepare inputs.</b><br>Verify enrollment projections, staffing, bell schedule, rooms, course offerings, and program needs before opening Aeries.</div>
+        <div class="step"><b>2. Collect and verify requests.</b><br>Confirm student requests and alternates. For secondary schools, check required courses before electives.</div>
+        <div class="step"><b>3. Build sections.</b><br>Create sections with teacher, room, period, term, seat count, and scheduling attributes. Schedule singletons early.</div>
+        <div class="step"><b>4. Run scheduling.</b><br>Mass schedule students, then review unscheduled students, conflicts, teacher loads, and rooms.</div>
+        <div class="step"><b>5. Adjust and re-run.</b><br>Fix patterns, not just individual students. Add/move sections, adjust singletons, and re-run.</div>
+        <div class="step"><b>6. Validate and submit.</b><br>Principal/counselor review, checklist completion, documented exceptions, and local approval process.</div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:18px" id="troubleshooting">
+      <div class="section-title"><h2>🚨 Scheduling Troubleshooting</h2><span class="tag">Fast Fixes</span></div>
+      <div class="two">
+        <div class="warn"><b>Too many students unscheduled</b><br>Check section availability, singleton conflicts, missing alternates, required courses offered in too few periods, and teacher/room restrictions.</div>
+        <div class="warn"><b>Flex schedule confusion</b><br>Confirm the flex purpose, attendance process, assignment process, supervision plan, and service conflicts.</div>
+        <div class="warn"><b>Teacher overloads</b><br>Run teacher schedule/load reports. Check duplicate sections, wrong terms, and incorrect assignments.</div>
+        <div class="warn"><b>Electives disappeared</b><br>Review course priorities, alternate requests, and whether required singletons are blocking electives.</div>
+      </div>
+      <div class="ok"><b>Submission readiness:</b> enrollment verified, course requests complete, sections built, teachers/rooms assigned, conflicts reviewed, unscheduled students documented, counselor/admin review complete.</div>
+    </section>
+  </main>
+</div>
+</div>
+
 <script>
-const guides = [{"role": "Principal", "category": "Master Scheduling", "title": "Master Schedule for Beginners", "tag": "New Principal Friendly", "time": "45-60 min", "summary": "A plain-language, start-to-finish walkthrough for a principal or AP creating a master schedule for the first time.", "content": "\n<h3>Purpose</h3><p>A master schedule is the blueprint for the school day. It determines which courses are offered, when they are offered, who teaches them, where they meet, and whether students can actually get the classes they need.</p>\n<h3>Beginner Mindset</h3><p>You are not just building sections. You are protecting student access. Every decision affects graduation, interventions, electives, staffing, class size, and student belonging.</p>\n<h3>Phase 1: Before You Touch Aeries</h3><ol><li><strong>Confirm the bell schedule.</strong> Know the number of periods, minutes, lunch structure, advisory, intervention blocks, and special programs.</li><li><strong>Confirm staffing.</strong> List teachers, credentials, FTE, prep periods, shared staff, and course limitations.</li><li><strong>Confirm rooms.</strong> Identify specialized rooms first: science labs, PE spaces, CTE rooms, music, art, intervention, SPED, and shared spaces.</li><li><strong>Confirm course offerings.</strong> Remove courses you will not offer and flag courses that require prerequisites or approval.</li><li><strong>Review enrollment projections.</strong> Estimate sections by grade level, required courses, electives, and intervention needs.</li><li><strong>Collect course requests.</strong> The schedule is only as accurate as the requests that feed it.</li></ol>\n<h3>Phase 2: Build Your Planning Sheet</h3><ol><li>Create a list of all courses offered.</li><li>Add projected requests for each course.</li><li>Divide requests by target class size to estimate sections.</li><li>Highlight singleton courses, such as band, AP courses, specialized programs, CTE pathways, or advanced electives.</li><li>Protect singleton courses by placing them first so they do not block student access later.</li></ol>\n<blockquote>If Algebra 1, Band, and an intervention class all exist only during the same period, students who need more than one may become unschedulable.</blockquote>\n<h3>Phase 3: Prepare Aeries</h3><ol><li>Open the Aeries scheduling area used by your district.</li><li>Review the course table and confirm active courses.</li><li>Check terms, periods, bell schedule, teacher records, room records, and section limits.</li><li>Verify that courses with prerequisites, grade restrictions, or linked sections are configured correctly.</li><li>Confirm that student course requests have been entered or imported.</li></ol>\n<h3>Phase 4: Build Sections</h3><ol><li>Start with singleton and protected courses.</li><li>Add required core courses by grade level.</li><li>Add intervention/support sections.</li><li>Add electives and pathway courses.</li><li>Assign teachers based on credential, availability, and load.</li><li>Assign rooms based on instructional need.</li><li>Set maximum seat counts.</li></ol>\n<h3>Phase 5: Analyze Balance</h3><ul><li>Are sections balanced by period?</li><li>Are teacher loads reasonable?</li><li>Are required courses available in enough periods?</li><li>Are special programs protected?</li><li>Are lunch, prep, and shared teacher constraints honored?</li><li>Are electives spread out enough to avoid conflicts?</li></ul>\n<h3>Phase 6: Mass Schedule Students</h3><ol><li>Run or simulate scheduling.</li><li>Review the conflict report.</li><li>Identify students with missing required courses first.</li><li>Look for patterns: one course blocking many students, too few sections, sections only offered one period, or overloaded classes.</li><li>Adjust sections, periods, or teacher assignments.</li><li>Run scheduling again.</li><li>Repeat until conflicts are manageable.</li></ol>\n<h3>Phase 7: Troubleshooting</h3><p><strong>Problem:</strong> Many students are unscheduled.<br><strong>Check:</strong> Course request accuracy, section capacity, singleton conflicts, required courses offered only one period, and grade-level restrictions.</p><p><strong>Problem:</strong> One teacher has too many students.<br><strong>Check:</strong> Max seats, duplicate sections, balancing rules, and course distribution.</p><p><strong>Problem:</strong> Counselors say electives disappeared.<br><strong>Check:</strong> Whether electives were overwritten, hidden, not active, not connected to requests, or conflicting with required courses.</p>\n<h3>Final Readiness Checklist</h3><ul><li>All required courses have enough seats.</li><li>All teachers have correct assignments.</li><li>Rooms are assigned and realistic.</li><li>Student conflicts have been reviewed.</li><li>Counselors have reviewed sample student schedules.</li><li>Special programs have verified placements.</li><li>Office staff know the change process.</li><li>The site has a first-week schedule correction plan.</li></ul>\n"}, {"role": "Principal", "category": "Master Scheduling", "title": "Resolve Scheduling Conflicts", "tag": "Scheduling", "time": "20 min", "summary": "Use conflict reports to identify patterns and adjust sections before schedules are published.", "content": "<ol><li>Run the conflict or unscheduled students report.</li><li>Group conflicts by course, not just by student.</li><li>Look for high-frequency conflicts first.</li><li>Check whether a required course and a singleton elective are offered in the same period.</li><li>Add or move sections where capacity or access is blocking students.</li><li>Re-run scheduling after each major adjustment.</li><li>Document final unresolved conflicts for counselor follow-up.</li></ol>"}, {"role": "Principal", "category": "Discipline", "title": "Review Suspension Data", "tag": "Compliance", "time": "15 min", "summary": "Review suspension data and check that discipline and attendance entries align.", "content": "<ol><li>Run suspension or assertive discipline reports for the target date range.</li><li>Check off-campus and in-school suspension entries.</li><li>Verify start date, end date, days, disposition, and authority fields.</li><li>Confirm attendance is marked correctly for suspension days.</li><li>Review disproportionality patterns by grade level, student group, location, and incident type.</li><li>Follow up with office staff if discipline and attendance do not match.</li></ol><blockquote>Discipline and attendance must align or reporting may be inaccurate.</blockquote>"}, {"role": "Principal", "category": "Attendance & Enrollment", "title": "Monitor Attendance Trends", "tag": "Leadership", "time": "15 min", "summary": "Use attendance reports to identify patterns early and coordinate intervention.", "content": "<ol><li>Select the attendance date range.</li><li>Review daily absence trends by grade level.</li><li>Identify students approaching chronic absenteeism thresholds.</li><li>Look for patterns by day of week, course period, teacher, or program.</li><li>Coordinate follow-up with office staff, counselors, and attendance teams.</li><li>Document interventions and next steps.</li></ol>"}, {"role": "Principal", "category": "Grade Reporting Oversight", "title": "Check Missing Grades", "tag": "Grades", "time": "10 min", "summary": "Monitor grade submission progress and support teachers before grade deadlines.", "content": "<ol><li>Run missing grades or grade submission reports.</li><li>Sort by teacher, section, and grade level.</li><li>Identify gradebooks or sections still incomplete.</li><li>Notify teachers with clear deadline language.</li><li>Escalate repeated issues to site leadership.</li><li>Confirm final completion before the reporting window closes.</li></ol>"}, {"role": "Counselor", "category": "Transcripts & Credits", "title": "Run a Student Transcript", "tag": "Transcript", "time": "10 min", "summary": "Generate and review a transcript for student placement, graduation, or family meetings.", "content": "<ol><li>Search for the student in Aeries.</li><li>Open the transcript or reports area used by your site.</li><li>Select the transcript format needed for your purpose.</li><li>Run the report and review course history, credits, marks, GPA, and repeated courses.</li><li>Check for missing transfer records or unusual credit values.</li><li>Save or print according to district practice.</li></ol>"}, {"role": "Counselor", "category": "Transcripts & Credits", "title": "Graduation Credit Audit", "tag": "Graduation", "time": "20 min", "summary": "Review whether a student is on track to meet graduation requirements.", "content": "<ol><li>Open the student's transcript and graduation status tools.</li><li>Compare completed credits to district requirements.</li><li>Check required subject areas first.</li><li>Identify credit deficiencies by category.</li><li>Review current schedule to see whether missing credits are in progress.</li><li>Document needed recovery, summer school, or schedule adjustments.</li><li>Communicate the plan to student, family, and site team as appropriate.</li></ol>"}, {"role": "Counselor", "category": "Scheduling", "title": "Change a Student Schedule", "tag": "Scheduling", "time": "15 min", "summary": "Process a schedule change while protecting graduation progress and class balance.", "content": "<ol><li>Confirm the reason for the schedule change.</li><li>Review graduation requirements, current credits, prerequisites, and program needs.</li><li>Check available sections and seat counts.</li><li>Confirm the change does not create a conflict.</li><li>Drop the existing course using the appropriate effective date.</li><li>Add the new course and confirm teacher, room, period, and term.</li><li>Review the student's full schedule before saving or printing.</li><li>Notify the student and teacher according to site practice.</li></ol>"}, {"role": "Counselor", "category": "Scheduling", "title": "Resolve a Schedule Conflict", "tag": "Scheduling", "time": "15 min", "summary": "Find the root cause of conflicts and identify workable schedule options.", "content": "<ol><li>Identify the courses in conflict.</li><li>Determine which course is required and which has flexibility.</li><li>Check alternate periods and available seats.</li><li>Review prerequisites, program placement, and graduation needs.</li><li>Use alternate electives when appropriate.</li><li>Escalate master schedule conflicts that affect many students.</li></ol>"}, {"role": "Counselor", "category": "Student Support", "title": "Document Student Intervention Notes", "tag": "Support", "time": "10 min", "summary": "Create consistent notes for academic support and intervention follow-up.", "content": "<ol><li>Open the student record.</li><li>Navigate to the notes, intervention, or counseling area used by your site.</li><li>Enter date, concern, action taken, and next step.</li><li>Use objective language.</li><li>Avoid unnecessary sensitive details.</li><li>Set a follow-up reminder or document who is responsible for next action.</li></ol>"}, {"role": "Teacher", "category": "Gradebook", "title": "Create a Gradebook", "tag": "Gradebook", "time": "15 min", "summary": "Create a new gradebook, set categories, add students, and prepare final marks.", "content": "<ol><li>Click Gradebook from the navigation menu.</li><li>Click <strong>+ Add Gradebook</strong>.</li><li>Select the correct term such as trimester, semester, or single term.</li><li>Select <strong>Primary Gradebook</strong>.</li><li>Name the gradebook clearly.</li><li>Click Save.</li><li>Open Categories and create categories such as Homework, Tests, or Participation.</li><li>Set weights and descriptions, then Save.</li><li>Open Manage Students, click Add Students, then Add All Students.</li><li>Review Final Marks and align with your site or department expectations.</li></ol>"}, {"role": "Teacher", "category": "Gradebook", "title": "Add Assignments", "tag": "Gradebook", "time": "10 min", "summary": "Add assignments to an existing Aeries gradebook.", "content": "<ol><li>Open your Gradebook.</li><li>Click Assignments.</li><li>Click Add Assignment.</li><li>Complete the name, category, due date, points, visibility, and standards fields as needed.</li><li>Click Save.</li><li>Confirm the assignment appears in the correct gradebook and category.</li></ol>"}, {"role": "Teacher", "category": "Gradebook", "title": "Backup and Restore Gradebooks", "tag": "Safety", "time": "10 min", "summary": "Back up gradebooks after changes and restore if needed.", "content": "<ol><li>Open any class and click Manage Gradebook.</li><li>From the toolbar, choose Manage.</li><li>Select Backups.</li><li>Check the classes you want to back up.</li><li>Click Backup Gradebooks.</li><li>To restore, choose Manage, then Restore.</li><li>Select the gradebook and follow the restore prompts.</li></ol><blockquote>Back up gradebooks after you enter or update information. Backups are not automatic.</blockquote>"}, {"role": "Teacher", "category": "Gradebook", "title": "Fix Student Showing N/A in Gradebook", "tag": "Troubleshooting", "time": "8 min", "summary": "Correct incorrect gradebook dates that can cause a student to show N/A.", "content": "<ol><li>Open your gradebook.</li><li>Go to Manage in the upper right corner.</li><li>Click Students.</li><li>Check the dates for students showing N/A.</li><li>Click the incorrect date and use the calendar to correct it.</li><li>Click Save at the bottom of the screen.</li></ol>"}, {"role": "Teacher", "category": "Gradebook", "title": "Add a Missing Student to Gradebook", "tag": "Troubleshooting", "time": "8 min", "summary": "Find and add students missing from your gradebook.", "content": "<ol><li>Go to Gradebook in the teacher portal.</li><li>Click Details on the gradebook with the missing student.</li><li>Choose Manage Gradebook.</li><li>Click Manage Students.</li><li>Review Add/Drops first.</li><li>If the student is not listed, click Add Students Not In Your Class.</li><li>Search for the student and add them.</li></ol>"}, {"role": "Teacher", "category": "Attendance", "title": "Take Attendance", "tag": "Attendance", "time": "5 min", "summary": "Enter daily attendance in Aeries Teacher Portal.", "content": "<ol><li>Log into Aeries Teacher Portal.</li><li>From Pages, click Attendance.</li><li>Confirm the date.</li><li>Leave the box blank if the student is present.</li><li>Enter A for absent.</li><li>Enter T for tardy.</li><li>Attendance saves automatically.</li><li>Use attendance notes when context is needed.</li></ol>"}, {"role": "Teacher", "category": "Communication", "title": "Email Students or Parents", "tag": "Communication", "time": "10 min", "summary": "Send a message to an individual student/parent or a group.", "content": "<ol><li>Search for the student.</li><li>Select the student record.</li><li>Click Contact.</li><li>Select student or parent email.</li><li>Draft the message.</li><li>Choose Send Now or Schedule.</li><li>For class messages, go to Teacher Misc, then Send Emails.</li><li>Add recipients by class, select recipients, draft, and send.</li></ol>"}, {"role": "Teacher", "category": "Reports", "title": "Add EL Status to Class Roster", "tag": "Reports", "time": "8 min", "summary": "Add Language Fluency information to a class roster.", "content": "<ol><li>On the classroom attendance page, click Class Roster.</li><li>Click Add fields to the printout.</li><li>Search for LF or select Language Fluency.</li><li>Select your class.</li><li>Click Run Report.</li></ol>"}];
-const quick = {"Principal": ["Create Master Schedule", "Resolve Scheduling Conflicts", "Review Suspension Data", "Monitor Attendance Trends", "Check Missing Grades"], "Counselor": ["Run Transcript", "Change Student Schedule", "Check Graduation Credits", "Resolve Schedule Conflict", "Document Intervention"], "Teacher": ["Create Gradebook", "Backup Gradebook", "Fix N/A in Gradebook", "Take Attendance", "Email Parents"]};
-const training = {"Principal": [{"q": "After mass scheduling, 84 students are unscheduled. What should you do first?", "choices": ["Publish schedules and fix later", "Review conflict reports and look for pattern conflicts", "Delete electives from requests"], "a": 1, "why": "Start by finding patterns. If the same course or period blocks many students, section changes may solve dozens of conflicts at once."}, {"q": "Discipline reports and attendance totals do not match for suspended students. What should be checked?", "choices": ["Teacher gradebooks", "Attendance codes for suspension dates", "Parent portal settings"], "a": 1, "why": "Suspension data must align with attendance dates and codes to support accurate reporting."}, {"q": "A singleton course is causing many conflicts. What is the best next step?", "choices": ["Move or protect the singleton earlier in schedule planning", "Cancel the course immediately", "Ignore the conflicts"], "a": 0, "why": "Singletons need intentional placement because they create access barriers when they overlap with required courses."}], "Counselor": [{"q": "A senior is missing 15 credits. What should you review first?", "choices": ["Transcript and graduation credit audit", "Lunch schedule", "Teacher seating charts"], "a": 0, "why": "Start with transcript and graduation credit status, then create a recovery or schedule adjustment plan."}, {"q": "A student wants to drop a course. What should be checked before making the change?", "choices": ["Only student preference", "Graduation needs, prerequisites, seats, and conflicts", "Whether the class is popular"], "a": 1, "why": "Schedule changes must protect graduation progress and avoid creating new conflicts."}], "Teacher": [{"q": "A student is missing from your gradebook. What should you check first?", "choices": ["Add/Drops in Manage Students", "Delete the gradebook", "Contact every parent"], "a": 0, "why": "Missing students are often found in Add/Drops before manually adding them."}, {"q": "After changing gradebook information, what should you do?", "choices": ["Back up the gradebook", "Close the browser immediately", "Create a new teacher account"], "a": 0, "why": "The uploaded teacher guide emphasizes backing up gradebooks after entering or updating information."}, {"q": "In attendance, what does a blank box mean?", "choices": ["Absent", "Present", "Tardy"], "a": 1, "why": "Blank means present, A means absent, and T means tardy."}]};
-let currentRole = 'Principal';
-const roleInfo = {
- Principal: {emoji:'🏫', title:'Principal Hub', subtitle:'Master scheduling, discipline, attendance, enrollment, reports, and grade oversight.'},
- Counselor: {emoji:'🧭', title:'Counselor Hub', subtitle:'Transcripts, credits, student schedules, graduation progress, and interventions.'},
- Teacher: {emoji:'📚', title:'Teacher Hub', subtitle:'Gradebook, attendance, communication, class rosters, EL reports, and daily workflows.'}
-};
-function renderRoles(){
- const wrap=document.getElementById('roleCards');
- wrap.innerHTML=Object.keys(roleInfo).map(r=>`<button onclick="setRole('${r}')" class="role-card ${r===currentRole?'active':''} text-left glass border border-white/70 rounded-3xl p-6 transition-all"><div class="text-4xl mb-3">${roleInfo[r].emoji}</div><h3 class="text-2xl font-black">${r}</h3><p class="text-slate-500 font-medium mt-2">${roleInfo[r].subtitle}</p></button>`).join('');
-}
-function setRole(role){currentRole=role;document.getElementById('searchBox').value='';document.getElementById('guideDetail').classList.add('hidden');document.getElementById('trainingBox').classList.add('hidden');renderAll();}
-function renderQuick(){
- document.getElementById('quickActions').innerHTML=quick[currentRole].map(q=>`<button onclick="quickAsk('${q}')" class="w-full text-left bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl px-4 py-3 font-bold text-sm transition">${q}</button>`).join('');
-}
-function quickAsk(q){document.getElementById('askBox').value=q;document.getElementById('assistantTop').scrollIntoView({behavior:'smooth',block:'start'});askAssistant();}
-function renderGuides(){
- const q=document.getElementById('searchBox').value.toLowerCase();
- const list=guides.filter(g=>g.role===currentRole).filter(g=>!q||JSON.stringify(g).toLowerCase().includes(q));
- document.getElementById('guideResults').innerHTML=list.map((g,i)=>`<button onclick="openGuide('${g.title.replace(/'/g,"\'")}')" class="guide-card text-left bg-white border border-slate-200 rounded-3xl p-5 transition-all"><div class="flex items-start justify-between gap-2"><span class="badge bg-blue-100 text-blue-800 px-2 py-1 rounded-full">${g.category}</span><span class="text-xs font-black text-slate-400">${g.time}</span></div><h3 class="text-xl font-black mt-3">${g.title}</h3><p class="text-slate-500 text-sm mt-2 leading-relaxed">${g.summary}</p><span class="inline-block mt-4 text-sm font-black text-blue-700">Open guide →</span></button>`).join('') || `<div class="bg-white border border-slate-200 rounded-3xl p-6 text-slate-500 font-semibold">No guides found for that search.</div>`;
-}
-function openGuide(title){
- const g=guides.find(x=>x.title===title && x.role===currentRole);
- const box=document.getElementById('guideDetail');
- box.classList.remove('hidden');
- box.innerHTML=`<div class="flex items-start justify-between gap-3"><div><span class="badge bg-amber-100 text-amber-800 px-2 py-1 rounded-full">${g.role} • ${g.category}</span><h2 class="text-3xl font-black mt-3">${g.title}</h2><p class="text-slate-500 mt-2 font-medium">${g.summary}</p></div><button onclick="document.getElementById('guideDetail').classList.add('hidden')" class="bg-slate-100 hover:bg-slate-200 rounded-xl px-3 py-2 font-black">×</button></div><div class="md md-output mt-5">${g.content}</div>`;
- box.scrollIntoView({behavior:'smooth',block:'start'});
-}
-const queryBank = [
- {keys:['ell','el status','language fluency','english learner'], title:'EL / Language Fluency list', query:'LIST STU ID LN FN GR LF', note:'Lists student ID, last name, first name, grade, and Language Fluency. This matches the teacher guide example for checking ELL status.'},
- {keys:['attendance','absence','absent','tardy','period attendance'], title:'Basic attendance review', query:'LIST STU ATT STU.ID STU.LN STU.FN STU.GR ATT.DT ATT.AL ATT.PR BY STU.LN', note:'Use this as a starter. Verify the attendance table/field names in your Aeries environment before running.'},
- {keys:['suspension','suspended','discipline','assertive discipline','iss','sus'], title:'Suspension / Assertive Discipline starter', query:'LIST STU ADS DSP STU.SC STU.ID STU.LN STU.FN STU.GR ADS.IID DSP.DS DSP.DD DSP.ED DSP.DY IF DSP.DS = SUS OR DSP.DS = ISS', note:'Use for suspension review. Add a date condition such as AND DSP.DD >= 08/01/2025 for the current school year.'},
- {keys:['credit','credits','graduation','transcript'], title:'Credit review starter', query:'LIST STU HIS STU.ID STU.LN STU.FN STU.GR HIS.CN HIS.MK HIS.CR BY STU.LN', note:'Starter query for transcript/course history review. Counselors should confirm course history fields before using.'},
- {keys:['gradebook','missing grades','low grades','failing','d','f'], title:'Low grade / grade reporting starter', query:'LIST STU GRD STU.ID STU.LN STU.FN STU.GR GRD.CN GRD.M1 GRD.M2 IF GRD.M1 = D OR GRD.M1 = F BY STU.LN', note:'Starter only. Grade reporting field names can vary by term and setup.'},
- {keys:['parent','phone','contact','email','guardian'], title:'Student contact information starter', query:'LIST STU CON STU.ID STU.LN STU.FN STU.GR CON.NM CON.RL CON.EM CON.TL BY STU.LN', note:'Use to review parent/guardian contact information. Confirm local privacy expectations before exporting.'},
- {keys:['enrollment','new students','students by grade','roster'], title:'Enrollment by grade starter', query:'LIST STU STU.SC STU.ID STU.LN STU.FN STU.GR STU.TG BY STU.GR STU.LN', note:'Useful for basic enrollment/roster review. Add school or grade conditions as needed.'}
-];
-function escapeHtml(str){return String(str).replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
-function findQueryHelp(query){
- const q=query.toLowerCase();
- return queryBank.find(item=>item.keys.some(k=>q.includes(k)));
-}
-function buildRoleIntro(){
- if(currentRole==='Principal') return 'I will answer as a principal support coach, focusing on schoolwide setup, monitoring, compliance checks, and who needs to be looped in.';
- if(currentRole==='Counselor') return 'I will answer as a counselor support coach, focusing on student schedules, transcripts, credits, course requests, and interventions.';
- return 'I will answer as a teacher support coach, focusing on gradebook, attendance, communication, rosters, and classroom workflows.';
-}
-function makeStepsFromGuide(g){
- const temp=document.createElement('div'); temp.innerHTML=g.content;
- const items=[...temp.querySelectorAll('li')].slice(0,8).map(li=>li.textContent.trim());
- if(items.length) return '<ol class="list-decimal pl-5 space-y-1">'+items.map(x=>`<li>${escapeHtml(x)}</li>`).join('')+'</ol>';
- return '<p>'+escapeHtml(g.summary)+'</p>';
-}
-function askAssistant(){
- const raw=document.getElementById('askBox').value.trim();
- const query=raw.toLowerCase();
- const box=document.getElementById('answerBox');
- if(!query){box.innerHTML='<strong>Ask the Hub:</strong> Type a question first, then click the button again.';return;}
- box.innerHTML='<strong>Thinking...</strong> Checking guides and the Aeries query helper.';
- const wantsQuery = /\b(query|sql|list stu|aeries query|report)\b/i.test(raw);
- const queryHelp = wantsQuery ? findQueryHelp(query) : null;
- const words=query.split(/\s+/).map(w=>w.replace(/[^a-z0-9]/g,'')).filter(w=>w.length>2);
- const matches=guides.filter(g=>g.role===currentRole).map(g=>{
-  const hay=(g.title+' '+g.category+' '+g.summary+' '+g.content).toLowerCase();
-  let score=0;
-  words.forEach(w=>{if(hay.includes(w)) score++;});
-  if(hay.includes(query)) score+=6;
-  if(query.includes('master') && g.title.toLowerCase().includes('master')) score+=8;
-  if(query.includes('gradebook') && g.title.toLowerCase().includes('gradebook')) score+=8;
-  if(query.includes('transcript') && g.title.toLowerCase().includes('transcript')) score+=8;
-  return {g,score};
- }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
- let html=`<div class="space-y-3"><p><strong>${currentRole} Assistant:</strong> ${buildRoleIntro()}</p>`;
- if(queryHelp){
-  html+=`<div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-3"><p class="font-black text-indigo-900">Suggested Aeries Query: ${escapeHtml(queryHelp.title)}</p><pre class="whitespace-pre-wrap bg-white border border-indigo-100 rounded-xl p-3 mt-2 text-xs overflow-auto"><code>${escapeHtml(queryHelp.query)}</code></pre><p class="text-xs text-indigo-900 mt-2"><strong>Note:</strong> ${escapeHtml(queryHelp.note)}</p></div>`;
+let currentRole='Principal';
+const data={
+ Principal:{
+  chips:['Create master schedule','Flex scheduling help','Too many students unscheduled','Suspension query','Monitor attendance trends','How many sections do I need?'],
+  quick:['Create Master Schedule','Open Playbook','Fix Unscheduled Students','Review Suspension Data','Monitor Attendance Trends','Check Missing Grades'],
+  training:'Scenario: You ran mass scheduling and 84 students remain unscheduled. Best next step: review conflict reports and look for patterns before changing individual schedules.',
+  guides:[
+   ['Master Schedule Beginner Guide','A start-to-finish guide for leaders who have never built a schedule before.','Master Scheduling'],
+   ['Elementary Master Scheduling','Build classroom sections, specialist rotations, intervention/WIN time, and balanced rosters.','Elementary'],
+   ['Middle School Master Scheduling','Balance required courses, electives, teams, advisory/flex, and student conflicts.','Middle School'],
+   ['High School Master Scheduling','Build sections around graduation requirements, pathways, A-G, AP/CTE, singletons, and counselor review.','High School'],
+   ['Flex Scheduling Models','WIN, advisory + flex, A/B block, hybrid schedules, and supervision/attendance planning.','Flex'],
+   ['Resolve Scheduling Conflicts','Use unscheduled student lists, conflict reports, section counts, and singleton review to fix patterns.','Troubleshooting'],
+   ['Monitor Attendance Trends','Review chronic absenteeism, daily attendance, and grade-level/site patterns before intervention meetings.','Attendance'],
+   ['Suspension Data Review','Check that discipline records and attendance codes align for suspensions and in-school suspensions.','Discipline'],
+   ['Missing Grades Monitoring','Run grade reporting checks, identify missing marks, and follow up with teachers before deadline.','Grades']]
+ },
+ Counselor:{
+  chips:['Run transcript','Graduation credit audit','Change student schedule','Resolve schedule conflict','Credit deficiency report','A-G monitoring'],
+  quick:['Run Transcript','Graduation Credit Audit','Change Student Schedule','Resolve Conflict','Check Credit Deficiency','Course Request Review'],
+  training:'Scenario: A senior is short credits. Best next step: run transcript/graduation status, identify missing requirements, then confirm schedule placement or recovery options.',
+  guides:[
+   ['Run Transcript','Locate and review student transcript data for credits, marks, and course history.','Transcripts'],
+   ['Graduation Credit Audit','Compare completed and in-progress credits against requirements.','Graduation'],
+   ['A-G Monitoring','Review college-readiness course patterns and missing requirements.','A-G'],
+   ['Change Student Schedule','Use add/drop workflow, check conflicts, and document reason for change.','Scheduling'],
+   ['Resolve Schedule Conflicts','Review period conflicts, missing alternates, full sections, and singleton blocks.','Scheduling'],
+   ['Course Requests','Verify requests and alternates before mass scheduling.','Scheduling'],
+   ['Credit Deficiency Report','Identify students who need recovery, summer school, or targeted counselor follow-up.','Reports'],
+   ['Master Scheduling Counselor Role','Support requests, conflict review, senior validation, and final QA.','Master Scheduling']]
+ },
+ Teacher:{
+  chips:['Create gradebook','Backup gradebook','Fix N/A gradebook','Take attendance','Missing student in gradebook','EL status query'],
+  quick:['Create Gradebook','Backup Gradebook','Fix N/A Gradebook','Take Attendance','Add Missing Student','Parent Communication'],
+  training:'Scenario: A student is missing from your gradebook. Best next step: check Manage Students and the Add/Drop list before manually adding the student.',
+  guides:[
+   ['Create Gradebook','Click Gradebook, add gradebook, select term, mark primary gradebook, name it, and save.','Gradebook'],
+   ['Add Assignments','Open assignments, add assignment, select category, due date, points, visibility, standards, and save.','Gradebook'],
+   ['Backup Gradebook','After changes, use Manage > Backups and select classes to backup.','Gradebook'],
+   ['Restore Gradebook','Use Manage > Restore, select backup, verify, and restore.','Gradebook'],
+   ['Fix N/A in Gradebook','Check student start/end dates in Manage > Students and correct incorrect dates.','Gradebook'],
+   ['Drop Student from Gradebook','Open Manage > Students, locate student, and use Drop for the incorrect gradebook.','Gradebook'],
+   ['Take Attendance','Use Attendance page; blank = present, A = absent, T = tardy. Attendance saves automatically.','Attendance'],
+   ['Parent Communication','Use Contact or Send Emails to communicate with individual or multiple students/parents.','Communication'],
+   ['EL Status Query','Use a simple LIST STU query to include Language Fluency.','Query']]
  }
- if(matches.length){
-  const top=matches[0].g;
-  const safeTitle=top.title.replace(/'/g,"&#39;");
-  html+=`<div class="bg-white border border-slate-200 rounded-2xl p-3"><p><strong>Best matching guide:</strong> <button class="text-blue-700 font-black underline" onclick="openGuide('${safeTitle}')">${escapeHtml(top.title)}</button></p><p class="mt-2">${escapeHtml(top.summary)}</p><div class="mt-3"><strong>Suggested steps:</strong>${makeStepsFromGuide(top)}</div></div>`;
-  if(matches.length>1){ html+=`<p class="text-xs text-slate-500"><strong>Related guides:</strong> ${matches.slice(1).map(m=>escapeHtml(m.g.title)).join(', ')}</p>`; }
- } else if(!queryHelp){
-  html+=`<div class="bg-amber-50 border border-amber-200 rounded-2xl p-3"><p><strong>I do not have a direct guide match yet.</strong></p><p class="mt-2">Try asking with words like master schedule, transcript, schedule change, gradebook, attendance, suspension, EL status, or Aeries query. This would also be a good future guide topic.</p></div>`;
- }
- html+=`<div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 text-xs text-slate-600"><strong>Reminder:</strong> This hub can provide guidance and starter queries, but staff should confirm sensitive processes, exports, discipline, attendance, and student data decisions with WUSD procedures and the appropriate department.</div></div>`;
- box.innerHTML=html;
- box.scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-
-// Make the button work even if a browser blocks inline handlers or the page is embedded.
-const askButton=document.getElementById('askHubBtn');
-if(askButton){askButton.addEventListener('click', askAssistant);}
-function showTraining(){
- const scenarios=training[currentRole];
- const box=document.getElementById('trainingBox'); box.classList.remove('hidden');
- box.innerHTML=`<h3 class="text-2xl font-black mb-2">${currentRole} Training Coach</h3><p class="text-slate-500 font-medium mb-4">Practice real scenarios with instant coaching feedback.</p>`+scenarios.map((s,idx)=>`<div class="bg-white border border-slate-200 rounded-2xl p-4 mb-3"><p class="font-black mb-3">Scenario ${idx+1}: ${s.q}</p><div class="grid gap-2">${s.choices.map((c,ci)=>`<button onclick="checkAnswer(${idx},${ci})" class="training-choice text-left border border-slate-200 hover:bg-blue-50 rounded-xl px-4 py-2 font-semibold">${String.fromCharCode(65+ci)}. ${c}</button>`).join('')}</div><div id="feedback-${idx}" class="mt-3 hidden rounded-xl p-3 text-sm font-semibold"></div></div>`).join('');
- box.scrollIntoView({behavior:'smooth',block:'start'});
-}
-function checkAnswer(idx,choice){
- const s=training[currentRole][idx]; const f=document.getElementById('feedback-'+idx); f.classList.remove('hidden');
- if(choice===s.a){f.className='mt-3 rounded-xl p-3 text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200';f.innerHTML='Correct. '+s.why;}
- else{f.className='mt-3 rounded-xl p-3 text-sm font-semibold bg-amber-50 text-amber-900 border border-amber-200';f.innerHTML='Not quite. '+s.why;}
-}
-
-const smartPrompts = {
- Principal: ['How do I create a master schedule?', 'What query can I use for suspensions?', 'How do I monitor attendance trends?', 'How do I resolve scheduling conflicts?', 'How do I check missing grades?'],
- Counselor: ['How do I run a transcript?', 'How do I change a student schedule?', 'What query can help with graduation credits?', 'How do I resolve a schedule conflict?', 'How do I document an intervention?'],
- Teacher: ['How do I create a gradebook?', 'How do I backup my gradebook?', 'How do I fix N/A in gradebook?', 'What query shows EL status?', 'How do I take attendance?']
 };
-function renderSmartChips(){
- const wrap=document.getElementById('smartChips');
- if(!wrap) return;
- wrap.innerHTML=smartPrompts[currentRole].map(p=>`<button class="prompt-chip bg-slate-100 hover:bg-blue-100 border border-slate-200 hover:border-blue-200 text-slate-700 hover:text-blue-900 rounded-full px-4 py-2 text-sm font-black" onclick="quickAsk('${p.replace(/'/g,"&#39;")}')">${p}</button>`).join('');
+function setRole(role){currentRole=role;document.querySelectorAll('.role').forEach(r=>r.classList.toggle('active',r.dataset.role===role));document.getElementById('quickTitle').textContent=role+' Quick Actions';document.getElementById('guidesTitle').textContent=role+' Guides';document.getElementById('heroTitle').textContent=role==='Principal'?'Lead scheduling with confidence.':role==='Counselor'?'Support students with clear Aeries workflows.':'Teacher workflows, fast answers.';document.getElementById('heroText').textContent=role==='Principal'?'Ask questions, open the playbook, or use the Master Scheduling Center to reduce late or incorrect schedules.':role==='Counselor'?'Use the hub for transcripts, graduation audits, schedule changes, course requests, and conflict resolution.':'Use the hub for gradebook, attendance, communication, reports, and quick query help.';document.getElementById('masterCenter').style.display=(role==='Teacher')?'none':'block';renderChips();renderQuick();renderGuides();renderTraining();}
+function renderChips(){let c=document.getElementById('chips');c.innerHTML='';data[currentRole].chips.forEach(x=>{let b=document.createElement('button');b.className='chip';b.textContent=x;b.onclick=()=>{document.getElementById('question').value=x;askHub()};c.appendChild(b);});}
+function renderQuick(){let q=document.getElementById('quickActions');q.innerHTML='';data[currentRole].quick.forEach(x=>{let b=document.createElement('button');b.textContent=x;b.onclick=()=>{document.getElementById('question').value=x;askHub()};q.appendChild(b);});}
+function renderTraining(){document.getElementById('training').innerHTML='<h4>'+currentRole+' Training Scenario</h4><p>'+data[currentRole].training+'</p><button class="btn secondary" onclick="askScenario()">Ask for coaching</button>';}
+function renderGuides(){let term=(document.getElementById('search').value||'').toLowerCase();let g=document.getElementById('guides');g.innerHTML='';let list=data[currentRole].guides.filter(x=>(x.join(' ')).toLowerCase().includes(term));document.getElementById('guideCount').textContent=list.length+' guides';list.forEach(x=>{let d=document.createElement('div');d.className='guide';d.innerHTML='<h4>'+x[0]+'</h4><p>'+x[1]+'</p><span class="tag">'+x[2]+'</span>';d.onclick=()=>{document.getElementById('question').value=x[0];askHub()};g.appendChild(d);});}
+function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+function askScenario(){document.getElementById('question').value=data[currentRole].training;askHub();}
+function askHub(){const q=(document.getElementById('question').value||'').trim();const out=document.getElementById('answer');if(!q){out.style.display='block';out.innerHTML='<h3>Ask me anything</h3><p>Try: How do I create a master schedule? What query shows EL status? How do I fix N/A in gradebook?</p>';return;}let a=answerFor(q.toLowerCase());out.style.display='block';out.innerHTML=a;}
+function answerFor(q){
+ if(q.includes('suspension')||q.includes('sus')||q.includes('iss'))return `<h3>Suspension / ISS query starter</h3><p>Use this as a starting point, then add your school year/date filters.</p><div class="code">LIST STU ADS DSP STU.SC STU.ID STU.LN STU.FN STU.GR DSP.DS DSP.DD DSP.ED DSP.DY IF DSP.DS = SUS OR DSP.DS = ISS</div><p><b>Check:</b> discipline records and attendance must align for suspension or in-school suspension days.</p>`;
+ if(q.includes('el status')||q.includes('language')||q.includes('ell'))return `<h3>EL / Language Fluency query</h3><div class="code">LIST STU ID LN FN GR LF</div><p>This lists student ID, last name, first name, grade, and language fluency. Add teacher/course filters as needed.</p>`;
+ if(q.includes('section')&&q.includes('how many'))return `<h3>How many sections do I need?</h3><ol><li>Start with projected enrollment or course request count.</li><li>Divide by class-size target.</li><li>Round up, then check teacher availability, rooms, and singleton conflicts.</li></ol><p><b>Example:</b> 142 requests / 32 target = 4.4, so plan for 5 sections.</p>`;
+ if(q.includes('master schedule')||q.includes('scheduling')||q.includes('unscheduled')||q.includes('flex'))return `<h3>Master scheduling workflow</h3><ol><li>Confirm enrollment, staffing, rooms, bell schedule, course offerings, and program needs.</li><li>Collect and verify course requests and alternates.</li><li>Build required courses first. Schedule singletons early.</li><li>Add flex/advisory/WIN only after defining purpose, attendance, assignment process, and supervision.</li><li>Run mass scheduling and review unscheduled students.</li><li>Fix patterns, then re-run and validate.</li></ol><p><b>Red flag:</b> If many students are unscheduled, check too few sections, singleton conflicts, missing alternates, or required courses offered in too few periods.</p>`;
+ if(q.includes('transcript')||q.includes('graduation')||q.includes('credit'))return `<h3>Counselor workflow</h3><ol><li>Run transcript or graduation status.</li><li>Compare completed, in-progress, and missing requirements.</li><li>Check current schedule placement.</li><li>Identify credit recovery, summer school, or schedule changes.</li><li>Document follow-up and review with student/family as appropriate.</li></ol>`;
+ if(q.includes('gradebook')||q.includes('n/a')||q.includes('missing student'))return `<h3>Teacher gradebook support</h3><ol><li>Open the correct gradebook.</li><li>Go to Manage, then Students.</li><li>For missing students, check Add/Drop first.</li><li>For N/A issues, review student start/end dates.</li><li>Back up gradebooks after changes.</li></ol>`;
+ if(q.includes('attendance'))return `<h3>Attendance support</h3><p>For teachers: blank means present, A means absent, and T means tardy. For leaders: monitor trends by grade, period, subgroup, and repeated patterns. Pair attendance data with intervention notes.</p>`;
+ return `<h3>${currentRole} answer</h3><p>I would handle this as a ${currentRole.toLowerCase()} workflow:</p><ol><li>Clarify the student group, school level, date range, and expected outcome.</li><li>Find the closest matching guide in the searchable guide library.</li><li>If this is a query request, identify the needed fields first, then build the LIST query.</li><li>If this affects compliance, attendance, discipline, transcripts, or graduation, confirm with the appropriate district process before finalizing.</li></ol><p>Try asking with more detail, such as “What query shows students with EL status?” or “How do I fix 40 unscheduled students?”</p>`;
 }
-function renderAll(){renderRoles();renderQuick();renderSmartChips();document.getElementById('roleTitle').textContent=roleInfo[currentRole].title;document.getElementById('roleSubtitle').textContent=roleInfo[currentRole].subtitle;renderGuides();}
-renderAll();
+setRole('Principal');
 </script>
 </body>
 </html>
