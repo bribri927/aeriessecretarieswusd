@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Elementary Scheduling - Master Scheduling Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #12355b;
+  --blue: #2563eb;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #dbe3ef;
+  --bg: #f8fafc;
+  --soft: #eff6ff;
+  --white: #ffffff;
+}
+
+* { 
+  box-sizing: border-box; 
+  transition: max-width 0.3s ease, width 0.3s ease, padding 0.3s ease;
+}
+
+body {
+  margin: 0; 
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef5ff 100%); 
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.header {
+  position: sticky; 
+  top: 0; 
+  z-index: 50; 
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(14px); 
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+}
+
+.header-inner {
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 14px 22px; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 16px; 
+  flex-wrap: wrap;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 16px; 
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 900; 
+  font-size: 24px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, .22);
+}
+
+h1 { font-size: 24px; margin: 0; font-weight: 900; letter-spacing: -.04em; }
+.subtitle { margin-top: 3px; color: var(--muted); font-size: 13px; font-weight: 650; }
+
+.btn {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+  border-radius: 14px;
+  padding: 11px 18px; 
+  text-decoration: none; 
+  font-weight: 900; 
+  border: 1px solid transparent;
+  background: var(--blue); 
+  color: white; 
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.btn:hover { 
+  transform: translateY(-1px); 
+  filter: brightness(.95); 
+}
+
+.btn.secondary { 
+  background: white; 
+  color: #1d4ed8; 
+  border-color: #bfdbfe; 
+  box-shadow: none;
+}
+
+.container { 
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 22px; 
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--navy), var(--blue)); 
+  color: white; 
+  border-radius: 30px; 
+  padding: 34px;
+  box-shadow: 0 18px 48px rgba(37, 99, 235, .22); 
+  margin: 18px 0 22px;
+}
+
+.badge {
+  display: inline-flex; 
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, .16); 
+  border: 1px solid rgba(255, 255, 255, .26);
+  border-radius: 999px; 
+  padding: 6px 12px; 
+  font-size: 11px; 
+  font-weight: 900;
+  text-transform: uppercase; 
+  letter-spacing: .08em; 
+  margin-bottom: 14px;
+}
+
+.hero h2 { font-size: 38px; line-height: 1.05; margin: 0 0 12px; letter-spacing: -.05em; }
+.hero p { color: #dbeafe; max-width: 900px; font-size: 16px; line-height: 1.6; margin: 0; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.section {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-radius: 24px; 
+  padding: 24px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .055);
+}
+
+.section h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.035em; color: var(--navy); }
+.section p { color: #475569; line-height: 1.58; font-size: 14.5px; }
+
+.callout { border-radius: 18px; padding: 16px; margin: 16px 0; font-size: 14px; line-height: 1.55; }
+.callout.strong { display: block; margin-bottom: 4px; font-size: 15px; }
+.callout.tip { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
+.callout.mistake { background: #fff7ed; border: 1px solid #fed7aa; color: #92400e; }
+.callout.check { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+
+.path {
+  display: inline-block; 
+  background: #0f172a; 
+  color: #38bdf8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  border-radius: 12px; 
+  padding: 9px 14px; 
+  font-size: 13px; 
+  margin: 8px 0 12px;
+  border: 1px solid #334155;
+}
+
+.steps { display: grid; gap: 20px; }
+.step {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-left: 7px solid var(--blue);
+  border-radius: 24px; 
+  padding: 26px; 
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .05);
+}
+
+.step h3 { margin: 0 0 6px; font-size: 22px; letter-spacing: -.04em; color: var(--navy); }
+.step .step-subtitle { color: var(--muted); font-size: 14px; font-weight: 500; margin-bottom: 16px; display: block; }
+.step h4 {
+  margin: 20px 0 8px; 
+  color: #1e3a8a; 
+  font-size: 13px; 
+  text-transform: uppercase; 
+  letter-spacing: .06em;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.step ul, .step ol { color: #334155; line-height: 1.65; padding-left: 22px; font-size: 14.5px; }
+.step li { margin-bottom: 8px; }
+
+/* Interactive Specialist Minute Tool */
+.interactive-calc {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 14px 0;
+  border: 1px solid #e2e8f0;
+}
+
+.interactive-calc label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.interactive-calc select, .interactive-calc input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 12px;
+  background: white;
+}
+
+.calc-result {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+  background: #e0f2fe;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.checklist li {
+  padding: 12px 14px; 
+  border: 1px solid var(--line); 
+  background: #f8fafc;
+  border-radius: 14px; 
+  color: #334155; 
+  font-weight: 600; 
+  line-height: 1.45;
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checklist li::before { 
+  content: "☐"; 
+  color: var(--blue); 
+  font-weight: 900; 
+  font-size: 16px;
+}
+
+.example { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; padding: 16px; margin: 12px 0; font-size: 14px; color: #475569; line-height: 1.5; }
+.next-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; }
+.next-card { background: linear-gradient(180deg, #fff, #f8fafc); border: 1px solid var(--line); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.next-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--navy); }
+.next-card p { font-size: 13.5px; color: #475569; margin-top: 0; margin-bottom: 14px; line-height: 1.5; }
+
+.footer { color: #64748b; text-align: center; font-size: 12px; padding: 34px 20px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+@media(max-width:900px) {
+  .two, .next-grid { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 30px; }
+  .container { padding: 16px; }
+  .header-inner { padding: 12px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">W</div>
+      <div>
+        <h1>Elementary Scheduling Workspace</h1>
+        <div class="subtitle">Complete step-by-step elementary master scheduling build-along toolkit</div>
+      </div>
+    </div>
+    <a class="btn secondary" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+      🏠 WUSD Central Hub Home
+    </a>
+  </div>
+</header>
+
+<main class="container">
+  
+  <section class="hero">
+    <div class="badge">🏫 Interactive Build-Along Training Guide</div>
+    <h2>How to Build Your Elementary Master Schedule</h2>
+    <p>This is a live learning guide. Instead of just reading, you will be building. Open this workspace page in one window on your monitor, and open your active <strong>Aeries database</strong> in another window alongside it. We will proceed chronologically to configure and audit your database structures from scratch before scheduling a single student.</p>
+  </section>
+
+  <section class="two" style="margin-bottom: 22px;">
+    <div class="section">
+      <h3>Your Active Build Strategy</h3>
+      <p>Building an elementary schedule requires absolute precision. We are going to treat every step as a live design session. By entering sections and constraints sequentially, you prevent system logic errors during the student loading phase. Let's align your database before making changes.</p>
+      <div class="callout check">
+        <strong>Our Goal:</strong>
+        <p style="margin: 4px 0 0;">By the end of this guide, you will have configured terms, balanced school sizing counts, mapped out teacher FTE constraints, and organized clean student requests in your real database window.</p>
+      </div>
+    </div>
+    <div class="section">
+      <h3>The Live Checklist We Are Creating</h3>
+      <ul class="checklist">
+        <li><strong>Phase 1:</strong> Align calendar deadlines and school day hours.</li>
+        <li><strong>Phase 2:</strong> Match class sizing counts with our staffing.</li>
+        <li><strong>Phase 3:</strong> Build structural sections (singletons first!).</li>
+        <li><strong>Phase 4:</strong> Resolve duplicate or broken requests.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Understanding the Aeries Tables We are Modifying</h3>
+    <p>As you work inside Aeries, you are directly interacting with specific database tables. Let's look at the three primary tables we will be configuring and auditing together:</p>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-top:12px;">
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--navy);">STU (Student Data Table)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Stores who the students are. This includes their base demographic information, grade level, and enrollment status.</p>
+      </div>
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--blue);">SSS (Student Requests Table)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Stores what classes they want. This lists the specific course codes requested by families or counselors.</p>
+      </div>
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--gold);">MST / SMS (Master Schedule Table)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Stores where/when classes occur. This houses the physical structures: teachers, periods, rooms, and seat caps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3 style="font-size:24px; border-bottom: 2px solid var(--line); padding-bottom:10px;">The 5 Beginner Training Milestones</h3>
+    <p>Work through these five steps systematically. Do not skip steps. Let's begin.</p>
+    
+    <div class="steps">
+
+      <!-- MILESTONE 1 -->
+      <article class="step">
+        <h3>Step 1 — Set Up Self-Contained Classrooms</h3>
+        <span class="step-subtitle">Beginner Milestone 1 • Base Class Logic</span>
+        <p><strong>Goal:</strong> Configure students to be assigned to a single, main classroom teacher for the bulk of their instructional day.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">School Info / Scheduling → Master Schedule (or Scheduling Master Schedule)</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Create a single, main section for each self-contained teacher.</li>
+          <li>Assign the teacher's unique ID to that section.</li>
+          <li>Set the course code to represent "Homeroom" or "Grade Level" block courses.</li>
+          <li>Ensure the attendance flag is enabled for this section so it acts as your primary attendance-taking hub.</li>
+        </ol>
+        
+        <div class="callout tip">
+          <strong>Teacher Tip:</strong> In elementary scheduling, you don't need a separate section for Math, Science, and Social Studies unless your district specifically tracks grades at the course level. Using a single "Homeroom" or "Elementary Block" section simplifies grading and attendance.
+        </div>
+      </article>
+
+      <!-- MILESTONE 2 -->
+      <article class="step">
+        <h3>Step 2 — Configure AM/PM Kindergarten Sections</h3>
+        <span class="step-subtitle">Beginner Milestone 2 • Half-Day Cohorts</span>
+        <p><strong>Goal:</strong> Safely split half-day students into balanced morning and afternoon shifts in Aeries to ensure accurate reporting and clean attendance tracking.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">School Info / Scheduling → Master Schedule → Section Details</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Create two distinct sections for each kindergarten teacher in the Master Schedule.</li>
+          <li>Assign <strong>Section 1 (AM)</strong> to Period 1 and <strong>Section 2 (PM)</strong> to Period 2 (or use your district’s specific Kindergarten Period codes).</li>
+          <li>Set the seat cap (MST.MX) for both sections to match district limits (e.g., 20 students per section).</li>
+          <li>Audit each section to ensure correct AM/PM flags are populated.</li>
+        </ol>
+        
+        <div class="callout mistake">
+          <strong>Beginner Mistake:</strong> Putting both AM and PM kindergarten students into the same section number. If you do this, Aeries will mark PM students absent during AM attendance calls! They must be separated into unique section numbers.
+        </div>
+      </article>
+
+      <!-- MILESTONE 3 -->
+      <article class="step">
+        <h3>Step 3 — Map Specialist Rotations (PE, Music, RSP)</h3>
+        <span class="step-subtitle">Beginner Milestone 3 • Specialist Alignment</span>
+        <p><strong>Goal:</strong> Ensure teachers receive their contractually obligated prep minutes while their classes are supervised by PE and Music specialists.</p>
+        
+        <h4>Try out this Specialist Prep Minute Auditor:</h4>
+        <div class="interactive-calc">
+          <label for="calc-sessions">How many specialist sessions does each class get per week?</label>
+          <input type="number" id="calc-sessions" value="2" min="1" max="10" oninput="calculatePrep()">
+          
+          <label for="calc-minutes">How long is each session (in minutes)?</label>
+          <input type="number" id="calc-minutes" value="50" min="15" max="90" oninput="calculatePrep()">
+          
+          <label for="calc-required">What is your district's required weekly teacher prep minutes?</label>
+          <input type="number" id="calc-required" value="100" oninput="calculatePrep()">
+          
+          <div>
+            <strong>Weekly Prep Minutes Provided:</strong>
+            <span id="calc-result" class="calc-result">100 Minutes</span>
+          </div>
+          <div id="prep-warning" style="margin-top: 10px; font-size: 13px; font-weight: 700; display: none;"></div>
+        </div>
+
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Identify specialist blocks in Aeries (e.g., Music, PE, Art).</li>
+          <li>Create secondary sections where the PE/Music teacher is assigned as the primary teacher of record.</li>
+          <li>Check that the times of these sections match exactly when the home-room teacher expects their prep periods.</li>
+        </ol>
+      </article>
+
+      <!-- MILESTONE 4 -->
+      <article class="step">
+        <h3>Step 4 — Build Multi-Grade Combo Classes</h3>
+        <span class="step-subtitle">Beginner Milestone 4 • Split Grade Levels</span>
+        <p><strong>Goal:</strong> Build and enroll multi-grade split sections (e.g., a 2nd/3rd grade combo class) without breaking student transcripts or grade levels.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling → Master Schedule → Sections</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Do not create two separate physical classes for the same room. Instead, create a single section.</li>
+          <li>Assign the teacher to this section.</li>
+          <li>When enrolling students, populate the section using their true grade level codes in the `STU.GR` field.</li>
+          <li>Ensure the seat capacity accommodates both grade levels combined without exceeding class caps.</li>
+        </ol>
+        
+        <div class="callout tip">
+          <strong>Best Practice for Combos:</strong> Make sure you coordinate with your site testing coordinator early. State testing runs by grade level, so students in split combo sections must be sorted correctly into their respective testing windows.
+        </div>
+      </article>
+
+      <!-- MILESTONE 5 -->
+      <article class="step">
+        <h3>Step 5 — Establish Intervention Support (RSP, ELD)</h3>
+        <span class="step-subtitle">Beginner Milestone 5 • Support Services Mapping</span>
+        <p><strong>Goal:</strong> Configure Aeries so push-in or pull-out intervention staff can easily track support sessions without disrupting the student's primary self-contained attendance.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">School Info / Scheduling → Courses / Supplemental Services</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Assign the student to their primary self-contained classroom section for core morning attendance.</li>
+          <li>Use supplemental scheduling tabs or non-attendance tracking codes to associate students with RSP or ELD teachers.</li>
+          <li>Do not map these pull-out services as primary attendance sections. Doing so will generate double-booked class flags on validation reports.</li>
+        </ol>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3>Where to go next</h3>
+    <p>Once you understand the basic timeline and terminology, select the direct training module that matches your school level:</p>
+    <div class="next-grid">
+      <div class="next-card">
+        <div>
+          <h3>🚀 Start Here Guide</h3>
+          <p>Go back to review general timelines, check district rules, and master Aeries database structure defaults.</p>
+        </div>
+        <a class="btn" href="scheduling-start-here.html">Open Start Here</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🏫 Middle School Level</h3>
+          <p>Learn to design core academic teams, elective rotation wheels, and integrated WIN support blocks.</p>
+        </div>
+        <a class="btn" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank">Open Middle Guide</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  WUSD Aeries Resource Center • Master Scheduling Elementary Guide • Formatted for interactive build-along training. Ensure you coordinate database changes with your site administrator.
+</footer>
+
+<script>
+// Specialist Prep Calculation Logic
+function calculatePrep() {
+  const sessions = parseFloat(document.getElementById('calc-sessions').value);
+  const minutes = parseFloat(document.getElementById('calc-minutes').value);
+  const required = parseFloat(document.getElementById('calc-required').value);
+  const resultSpan = document.getElementById('calc-result');
+  const warningDiv = document.getElementById('prep-warning');
+  
+  if (!sessions || !minutes || minutes <= 0 || sessions <= 0) {
+    resultSpan.textContent = "0 Minutes";
+    warningDiv.style.display = "none";
+    return;
+  }
+  
+  const totalProvided = sessions * minutes;
+  resultSpan.textContent = `${totalProvided} Minutes`;
+  
+  if (totalProvided < required) {
+    warningDiv.style.color = "#dc2626";
+    warningDiv.style.display = "block";
+    warningDiv.innerHTML = `⚠️ Warning: You are short by ${required - totalProvided} minutes per week! Check your Specialist rotations.`;
+  } else if (totalProvided > required) {
+    warningDiv.style.color = "#10b981";
+    warningDiv.style.display = "block";
+    warningDiv.innerHTML = `✅ Goal Met: You are providing ${totalProvided - required} surplus minutes above target contract agreement.`;
+  } else {
+    warningDiv.style.color = "#10b981";
+    warningDiv.style.display = "block";
+    warningDiv.innerHTML = `✅ Goal Met: Exactly matches target contract agreement.`;
+  }
+}
+
+// Run calculator once on load
+window.onload = function() {
+  calculatePrep();
+};
+</script>
+
+</body>
+</html>
