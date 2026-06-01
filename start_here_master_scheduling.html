@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Start Here - Master Scheduling Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #12355b;
+  --blue: #2563eb;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #dbe3ef;
+  --bg: #f8fafc;
+  --soft: #eff6ff;
+  --white: #ffffff;
+}
+
+* { 
+  box-sizing: border-box; 
+  transition: max-width 0.3s ease, width 0.3s ease, padding 0.3s ease;
+}
+
+body {
+  margin: 0; 
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef5ff 100%); 
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.header {
+  position: sticky; 
+  top: 0; 
+  z-index: 50; 
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(14px); 
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+}
+
+.header-inner {
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 14px 22px; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 16px; 
+  flex-wrap: wrap;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 16px; 
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 900; 
+  font-size: 24px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, .22);
+}
+
+h1 { font-size: 24px; margin: 0; font-weight: 900; letter-spacing: -.04em; }
+.subtitle { margin-top: 3px; color: var(--muted); font-size: 13px; font-weight: 650; }
+
+.btn {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+  border-radius: 14px;
+  padding: 11px 18px; 
+  text-decoration: none; 
+  font-weight: 900; 
+  border: 1px solid transparent;
+  background: var(--blue); 
+  color: white; 
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.btn:hover { 
+  transform: translateY(-1px); 
+  filter: brightness(.95); 
+}
+
+.btn.secondary { 
+  background: white; 
+  color: #1d4ed8; 
+  border-color: #bfdbfe; 
+  box-shadow: none;
+}
+
+.container { 
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 22px; 
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--navy), var(--blue)); 
+  color: white; 
+  border-radius: 30px; 
+  padding: 34px;
+  box-shadow: 0 18px 48px rgba(37, 99, 235, .22); 
+  margin: 18px 0 22px;
+}
+
+.badge {
+  display: inline-flex; 
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, .16); 
+  border: 1px solid rgba(255, 255, 255, .26);
+  border-radius: 999px; 
+  padding: 6px 12px; 
+  font-size: 11px; 
+  font-weight: 900;
+  text-transform: uppercase; 
+  letter-spacing: .08em; 
+  margin-bottom: 14px;
+}
+
+.hero h2 { font-size: 38px; line-height: 1.05; margin: 0 0 12px; letter-spacing: -.05em; }
+.hero p { color: #dbeafe; max-width: 900px; font-size: 16px; line-height: 1.6; margin: 0; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.section {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-radius: 24px; 
+  padding: 24px;
+  box-shadow: 0 10px 26 rgba(15, 23, 42, .055);
+}
+
+.section h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.035em; color: var(--navy); }
+.section p { color: #475569; line-height: 1.58; font-size: 14.5px; }
+
+.callout { border-radius: 18px; padding: 16px; margin: 16px 0; font-size: 14px; line-height: 1.55; }
+.callout.strong { display: block; margin-bottom: 4px; font-size: 15px; }
+.callout.tip { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
+.callout.mistake { background: #fff7ed; border: 1px solid #fed7aa; color: #92400e; }
+.callout.check { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+
+.path {
+  display: inline-block; 
+  background: #0f172a; 
+  color: #38bdf8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  border-radius: 12px; 
+  padding: 9px 14px; 
+  font-size: 13px; 
+  margin: 8px 0 12px;
+  border: 1px solid #334155;
+}
+
+.steps { display: grid; gap: 20px; }
+.step {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-left: 7px solid var(--blue);
+  border-radius: 24px; 
+  padding: 26px; 
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .05);
+}
+
+.step h3 { margin: 0 0 6px; font-size: 22px; letter-spacing: -.04em; color: var(--navy); }
+.step .step-subtitle { color: var(--muted); font-size: 14px; font-weight: 500; margin-bottom: 16px; display: block; }
+.step h4 {
+  margin: 20px 0 8px; 
+  color: #1e3a8a; 
+  font-size: 13px; 
+  text-transform: uppercase; 
+  letter-spacing: .06em;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.step ul, .step ol { color: #334155; line-height: 1.65; padding-left: 22px; font-size: 14.5px; }
+.step li { margin-bottom: 8px; }
+
+/* Interactive Sandbox Calculator Setup */
+.interactive-calc {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 14px 0;
+  border: 1px solid #e2e8f0;
+}
+
+.interactive-calc label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.interactive-calc input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.calc-result {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+  background: #e0f2fe;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.checklist li {
+  padding: 12px 14px; 
+  border: 1px solid var(--line); 
+  background: #f8fafc;
+  border-radius: 14px; 
+  color: #334155; 
+  font-weight: 600; 
+  line-height: 1.45;
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checklist li::before { 
+  content: "☐"; 
+  color: var(--blue); 
+  font-weight: 900; 
+  font-size: 16px;
+}
+
+.example { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; padding: 16px; margin: 12px 0; font-size: 14px; color: #475569; line-height: 1.5; }
+.next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+.next-card { background: linear-gradient(180deg, #fff, #f8fafc); border: 1px solid var(--line); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.next-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--navy); }
+.next-card p { font-size: 13.5px; color: #475569; margin-top: 0; margin-bottom: 14px; line-height: 1.5; }
+
+.footer { color: #64748b; text-align: center; font-size: 12px; padding: 34px 20px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+@media(max-width:900px) {
+  .two, .next-grid { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 30px; }
+  .container { padding: 16px; }
+  .header-inner { padding: 12px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">W</div>
+      <div>
+        <h1>Master Scheduling Workspace</h1>
+        <div class="subtitle">Complete step-by-step master scheduling build-along toolkit</div>
+      </div>
+    </div>
+    <a class="btn secondary" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+      🏠 WUSD Central Hub Home
+    </a>
+  </div>
+</header>
+
+<main class="container">
+  
+  <section class="hero">
+    <div class="badge">🚀 Interactive Build-Along Training Guide</div>
+    <h2>How to Build Your First Master Schedule</h2>
+    <p>This is a live learning guide. Instead of just reading, you will be building. Open this workspace page in one window on your monitor, and open your active <strong>Aeries database</strong> in another window alongside it. We will proceed chronologically to configure and audit your database structures from scratch before scheduling a single student.</p>
+  </section>
+
+  <section class="two" style="margin-bottom: 22px;">
+    <div class="section">
+      <h3>Your Active Build Strategy</h3>
+      <p>Building a schedule requires absolute precision. We are going to treat every step as a live design session. By entering sections and constraints sequentially, you prevent system logic errors during the student loading phase. Let's align your database before making changes.</p>
+      <div class="callout check">
+        <strong>Our Goal:</strong>
+        <p style="margin: 4px 0 0;">By the end of this guide, you will have configured terms, balanced school sizing counts, mapped out teacher FTE constraints, and organized clean student requests in your real database window.</p>
+      </div>
+    </div>
+    <div class="section">
+      <h3>The Live Checklist We Are Creating</h3>
+      <ul class="checklist">
+        <li><strong>Phase 1:</strong> Align calendar deadlines and school day hours.</li>
+        <li><strong>Phase 2:</strong> Match class sizing counts with our staffing.</li>
+        <li><strong>Phase 3:</strong> Build structural sections (singletons first!).</li>
+        <li><strong>Phase 4:</strong> Resolve duplicate or broken requests.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Understanding the Aeries Tables We are Modifying</h3>
+    <p>As you work inside Aeries, you are directly interacting with specific database tables. Let's look at the three primary tables we will be configuring and auditing together:</p>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-top:12px;">
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--navy);">STU (Student Data Table)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Stores who the students are. This includes their base demographic information, grade level, and enrollment status.</p>
+      </div>
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--blue);">SSS (Student Requests Table)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Stores what classes they want. This lists the specific course codes requested by families or counselors.</p>
+      </div>
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--gold);">MST / SMS (Master Schedule Table)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Stores where/when classes occur. This houses the physical structures: teachers, periods, rooms, and seat caps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3 style="font-size:24px; border-bottom: 2px solid var(--line); padding-bottom:10px;">The 8 Beginner Training Milestones</h3>
+    <p>Work through these eight steps systematically. Do not skip steps. Let's begin.</p>
+    
+    <div class="steps">
+
+      <!-- STEP 1 -->
+      <article class="step">
+        <h3>Step 1 — Map Out Your Timeline Off-Screen</h3>
+        <span class="step-subtitle">Beginner Milestone 1 • Preparation Strategy</span>
+        <p><strong>Goal:</strong> Before touching your live database, define who has the final authority to make curriculum decisions and know when your drafts are due.</p>
+        
+        <h4>Where to go in your workspace:</h4>
+        <p>Check your email inbox or local school site documentation folders for the district's Educational Services calendar.</p>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Identify the target launch date when families should see schedules.</li>
+          <li>Mark an "internal review" checkpoint on your calendar one week prior to release.</li>
+          <li>Determine who approves exceptions (e.g., if a student requests two overlapping singletons, who resolves it?).</li>
+        </ol>
+        
+        <div class="callout tip">
+          <strong>Teacher Tip:</strong> Scheduling issues usually occur because administrators make changes during busy enrollment days without documenting them. Establish a "Change Request Form" early.
+        </div>
+      </article>
+
+      <!-- STEP 2 -->
+      <article class="step">
+        <h3>Step 2 — Configure the School Bell Structure</h3>
+        <span class="step-subtitle">Beginner Milestone 2 • Navigating Time Settings</span>
+        <p><strong>Goal:</strong> Set up and verify how Aeries tracks instructional time blocks. If these period hours are mapped wrong, student attendance will break.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">School Info / Scheduling → Bell Schedule / Calendar / Terms</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Open the **Bell Schedule** module. Compare it to your paper bell schedule sheet.</li>
+          <li>Verify that each period number (including Period 0 or Advisory) matches.</li>
+          <li>Ensure the AM/PM flags are set correctly for each block.</li>
+          <li>Check the calendar terms: Standard Semesters (S1/S2) or Quarters (Q1-Q4).</li>
+        </ol>
+        
+        <div class="callout mistake">
+          <strong>Beginner Mistake:</strong> Entering an advisory or supervision block as a regular class period. If you do this, Aeries will attempt to generate grades for it. Keep non-instructional blocks clearly flagged.
+        </div>
+      </article>
+
+      <!-- STEP 3 -->
+      <article class="step">
+        <h3>Step 3 — Project Your Grade-Level Sizing</h3>
+        <span class="step-subtitle">Beginner Milestone 3 • Section Calculation</span>
+        <p><strong>Goal:</strong> Calculate exactly how many sections (classes) we need to open for each grade. This prevents over-hiring or having overcrowded classes.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Reports → Enrollment Reports / Student Lists / Grade-Level Counts</div>
+        
+        <h4>Try out this section calculator:</h4>
+        <div class="interactive-calc">
+          <label for="calc-students">Total Grade Enrollment Projections</label>
+          <input type="number" id="calc-students" value="150" oninput="calculateSections()">
+          
+          <label for="calc-cap">District Classroom Maximum Capacity Cap</label>
+          <input type="number" id="calc-cap" value="30" oninput="calculateSections()">
+          
+          <div>
+            <strong>Calculated Minimum Required Sections:</strong>
+            <span id="calc-result" class="calc-result">5.0 Sections</span>
+          </div>
+        </div>
+
+        <div class="callout check">
+          <strong>Important Rule of Sizing:</strong> If your equation yields 5.2, you *must* open 6 sections, or coordinate with district personnel to adjust class cap exceptions.
+        </div>
+      </article>
+
+      <!-- STEP 4 -->
+      <article class="step">
+        <h3>Step 4 — Verify Staffing Allowances (FTE)</h3>
+        <span class="step-subtitle">Beginner Milestone 4 • Auditing Teacher Availability</span>
+        <p><strong>Goal:</strong> Make sure teachers aren't assigned to teach more periods than their contracts allow, and that split-site (itinerant) teachers are available during scheduled times.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling → Teachers / Staff Assignments</div>
+        
+        <h4>Beginner Verification Checks:</h4>
+        <ul>
+          <li>Open each teacher's record. Check their assigned FTE limit (e.g., 1.0 FTE is standard, 0.5 FTE is half-time).</li>
+          <li>Confirm each teacher's designated prep period. Mark it on a spreadsheet as "unavailable".</li>
+          <li>Verify that itinerant music or PE staff are not scheduled at your school when they are assigned to another site.</li>
+        </ul>
+      </article>
+
+      <!-- STEP 5 -->
+      <article class="step">
+        <h3>Step 5 — Identify Protected Singletons First</h3>
+        <span class="step-subtitle">Beginner Milestone 5 • Immovable Blocks</span>
+        <p><strong>Goal:</strong> Locate classes that only meet once per day. If singletons are built last, they will clash with other classes, creating a scheduling bottleneck.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling → Courses / Sections</div>
+        
+        <div class="example">
+          <strong>What is a Singleton?</strong> Common examples include AP Chemistry, Leadership, Advanced Band, or Specialized SPED push-ins. Because these only meet at one specific hour, students have zero flexibility to choose alternative sections.
+        </div>
+        
+        <div class="callout tip">
+          <strong>Pro-Tip:</strong> Write down all your school's singletons on a sticky note. Place these classes on your master scheduling board *first* before assigning general English, Math, or History sections.
+        </div>
+      </article>
+
+      <!-- STEP 6 -->
+      <article class="step">
+        <h3>Step 6 — Clean Up Bad Student Requests</h3>
+        <span class="step-subtitle">Beginner Milestone 6 • Pre-Scheduling Database Audit</span>
+        <p><strong>Goal:</strong> Find and repair incomplete, duplicate, or missing student requests inside the SSS database table before initiating scheduling runs.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling → Course Requests / Student Requests</div>
+        
+        <h4>Verify these steps:</h4>
+        <ol>
+          <li>Run a report of "Students Missing Course Requests" to catch students who haven't selected electives.</li>
+          <li>Check for duplicates (e.g., a student requested English 9 twice).</li>
+          <li>Verify that incoming students from feeder elementary or middle schools have clean records in the system.</li>
+        </ol>
+      </article>
+
+      <!-- STEP 7 -->
+      <article class="step">
+        <h3>Step 7 — Build Your First Schedule Draft</h3>
+        <span class="step-subtitle">Beginner Milestone 7 • Constructing Sections</span>
+        <p><strong>Goal:</strong> Manually enter your draft sections into the SMS (Scheduling Master Schedule) table in the correct structural order.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling → Master Schedule / Scheduling Master Schedule</div>
+        
+        <h4>Step-by-Step Entry Protocol:</h4>
+        <ol>
+          <li>Begin with your singletons and doubletons identified in Step 5.</li>
+          <li>Next, place special education and English learner support courses.</li>
+          <li>Follow up with core classes (e.g., English, Math, Science).</li>
+          <li>Conclude by placing general elective sections that have multiple alternate open hours.</li>
+        </ol>
+      </article>
+
+      <!-- STEP 8 -->
+      <article class="step">
+        <h3>Step 8 — Run Key Audits and Validation Checks</h3>
+        <span class="step-subtitle">Beginner Milestone 8 • Error Assessment</span>
+        <p><strong>Goal:</strong> Let Aeries scan your draft to check for double-booked classrooms, overloaded teachers, or unresolved student conflicts.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling → Reports / Conflict Reports / Teacher Load</div>
+        
+        <h4>The Top Three Reports to Run:</h4>
+        <ul>
+          <li><strong>Teacher Load Report:</strong> Confirms no teacher is assigned to teach two classes during the same period.</li>
+          <li><strong>Room Overlap Report:</strong> Confirms no physical room has two different classes assigned to it at the same hour.</li>
+          <li><strong>Conflict Matrix:</strong> Shows the percentage of student schedules that successfully resolved without errors. Aim for above 85% success on your first validation run!</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3>Where to go next</h3>
+    <p>Once you understand the basic timeline and terminology, select the direct training module that matches your school level:</p>
+    <div class="next-grid">
+      <div class="next-card">
+        <div>
+          <h3>🏫 Elementary Level</h3>
+          <p>Learn to configure self-contained classrooms, PM/AM Kindergarten sessions, and multi-grade combos.</p>
+        </div>
+        <a class="btn" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank">Open Elementary Guide</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🏫 Middle School Level</h3>
+          <p>Learn to design core academic teams, elective rotation wheels, and integrated WIN support blocks.</p>
+        </div>
+        <a class="btn" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank">Open Middle Guide</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🎓 High School Level</h3>
+          <p>Learn to analyze graduation pathways, complex singletons, student request ratios, and counselor checks.</p>
+        </div>
+        <a class="btn" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank">Open High Guide</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  WUSD Aeries Resource Center • Master Scheduling Start Here Guide • Formatted for interactive build-along training. Ensure you coordinate database changes with your site administrator.
+</footer>
+
+<script>
+// Section Capacity Calculator Logic
+function calculateSections() {
+  const studentsVal = parseFloat(document.getElementById('calc-students').value);
+  const capVal = parseFloat(document.getElementById('calc-cap').value);
+  const resultSpan = document.getElementById('calc-result');
+  
+  if (!studentsVal || !capVal || capVal <= 0) {
+    resultSpan.textContent = "0.0 Sections";
+    return;
+  }
+  
+  const rawSections = studentsVal / capVal;
+  const requiredSections = Math.ceil(rawSections);
+  
+  resultSpan.textContent = `${requiredSections} Sections (Exact: ${rawSections.toFixed(2)})`;
+}
+
+// Run calculator once on load
+window.onload = function() {
+  calculateSections();
+};
+</script>
+
+</body>
+</html>
