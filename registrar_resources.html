@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WUSD Registrar & Enrollment Resources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            50: '#f4f7fa',
+            100: '#eef5ff',
+            900: '#12355b',
+            950: '#0f1e36',
+          },
+          blue: {
+            600: '#2563eb',
+            700: '#1d4ed8',
+          },
+          gold: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            600: '#d97706',
+            700: '#b45309',
+          },
+          green: {
+            50: '#f0fdf4',
+            100: '#d1fae5',
+            600: '#10b981',
+            700: '#047857',
+          },
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            600: '#dc2626',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(18, 53, 91, 0.08);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f8fafc] to-[#eef5ff] min-h-screen text-slate-900 font-sans antialiased">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center font-black text-2xl shadow-md shadow-blue-500/20">
+        W
+      </div>
+      <div>
+        <h1 class="text-xl font-extrabold text-navy-900 tracking-tight leading-tight">WUSD Registrar & Enrollment Portal</h1>
+        <p class="text-xs font-semibold text-slate-500">CALPADS Compliance, Cumulative Records, and Schedule Audits</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 flex-wrap">
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-start-here.html">
+        🚀 Start Here Guide
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-secretary.html">
+        👩‍💼 Secretary Portal
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-attendance.html">
+        🕒 Attendance Portal
+      </a>
+      <a class="inline-flex items-center gap-2 px-4 py-2 text-sm font-extrabold text-blue-600 bg-white border border-blue-200 rounded-xl hover:bg-slate-50 hover:border-blue-300 shadow-sm transition active:scale-95" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+        WUSD Central Hub
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+  <!-- HERO BANNER -->
+  <section class="bg-gradient-to-r from-navy-900 via-[#1a3d6c] to-blue-600 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        📋 state reporting & calpads audit readiness
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Registrar Playbook</h2>
+      <p class="text-blue-100 text-sm sm:text-lg font-medium max-w-3xl leading-relaxed">
+        Your primary resource for maintaining clean student academic archives. Formatted to remain open on one half of your screen while completing records enrollment, CALPADS auditing, and class schedule transitions inside your active database.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPLIT COLUMN LAYOUT -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- LEFT & CENTER COLUMN (2/3 width) - IN-DEPTH WORKFLOWS -->
+    <div class="lg:col-span-2 space-y-8">
+
+      <!-- INTERACTIVE REGISTRAR & CALPADS ASSISTANT -->
+      <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+          <div class="text-2xl">⚡</div>
+          <div>
+            <h3 class="text-lg font-black text-navy-900">Registrar Query & Audit Assistant</h3>
+            <p class="text-xs text-slate-500 font-medium">Select a core registrar scenario to instantly map database tables, review CALPADS reporting impacts, and load pre-formatted queries.</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            <button onclick="switchRegistrarAction('mckinney')" id="rg-btn-mckinney" class="rg-btn p-2 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md">
+              <span class="block text-lg mb-1">🏠</span>
+              Foster/Homeless
+            </button>
+            <button onclick="switchRegistrarAction('calpads')" id="rg-btn-calpads" class="rg-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">🔍</span>
+              CALPADS SSID
+            </button>
+            <button onclick="switchRegistrarAction('gaps')" id="rg-btn-gaps" class="rg-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">⏱️</span>
+              Schedule Gaps
+            </button>
+            <button onclick="switchRegistrarAction('transcripts')" id="rg-btn-transcripts" class="rg-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">📄</span>
+              Transcripts / HIS
+            </button>
+            <button onclick="switchRegistrarAction('noshow')" id="rg-btn-noshow" class="rg-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">🚫</span>
+              No-Show Cleanup
+            </button>
+          </div>
+
+          <!-- DYNAMIC CONTENT CARD -->
+          <div class="p-5 rounded-xl border border-blue-100 bg-blue-50/25 space-y-4" id="rg-content">
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-black text-navy-900 uppercase tracking-wider" id="rg-title">McKinney-Vento & Foster Coding</h4>
+                <span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-extrabold rounded-lg uppercase" id="rg-badge">SSD Table & PG = 5</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-normal" id="rg-description">Applies to students meeting federal criteria for housing insecurity or foster placement. Strict chronological entry ensures timely district services.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-blue-100/50 pt-4">
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2">CALPADS Field & Verification Requirements:</span>
+                <ul class="space-y-1.5" id="rg-docs">
+                  <!-- JS Inserted -->
+                </ul>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Copyable Diagnostic Audit Query:</span>
+                <div class="relative bg-slate-900 rounded-lg p-2.5 text-[11px] font-mono text-blue-400 overflow-x-auto select-all border border-slate-800">
+                  <pre id="rg-query">LIST STU SSD STU.ID STU.NM SSD.PG SSD.SD SSD.ED BY STU.NM IF SSD.PG = 5</pre>
+                  <button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded px-1.5 py-0.5 transition text-[9px]" onclick="copyRegistrarQueryText('rg-query')">Copy</button>
+                </div>
+                <div class="path" id="rg-path">Demographics → Special Programs (SSD)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLAYBOOK 1: CALPADS COMPLIANCE & BOUNDARY AUDITS -->
+      <article id="calpads-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+            1
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 1 • Data Hygiene & State Reporting</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">CALPADS Audits & Residency Verification</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          CALPADS updates require clean student profile records to guarantee the district matches correct State Student Identifiers (SSIDs). Any demographic errors, missing parent contact flags, or unverified boundaries can block active district funding claims.
+        </p>
+
+        <div class="space-y-4">
+          <h4 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">Demographic Cleaning & SSID Mapping Sequence:</h4>
+          <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-4">
+            <li>
+              <strong>Perform a global duplicate check:</strong> 
+              Before requesting an SSID or adding a demographic, search the entire district.
+              <div class="path">Aeries: Student Data → Search All Students</div>
+              <p class="text-xs text-slate-500 mt-1">If the student attended WUSD years prior, do not build a brand-new profile. Request an administrative record transfer to prevent duplicate SSID registrations.</p>
+            </li>
+            <li>
+              <strong>Verify Legal Names and Parent Details:</strong>
+              CALPADS requires student legal names to match state-issued birth certificates exactly. Confirm that at least one primary parent or guardian is checked as the primary contact with an active email address.
+            </li>
+            <li>
+              <strong>Verify Out-of-District Boundary Clearances:</strong>
+              If a student resides outside of district bounds but is enrolling, do not save an active demographics profile until the physical Inter-District Transfer Permit has been collected, signed, and saved to specialized files.
+              <div class="path">Aeries Path: Student Data → Specialized Programs → Enter Inter-District Status</div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-navy-50 rounded-xl border border-slate-100">
+          <strong class="text-xs text-navy-900 uppercase tracking-wider block font-extrabold">🚨 State Auditor Warning:</strong>
+          <p class="text-xs text-slate-500 mt-1 leading-normal">Any student with active CALPADS reporting errors (e.g., mismatch in birth country coding, missing primary home language tags, or open program end dates) is automatically excluded from active district unduplicated pupil counts (UPC), directly lowering localized state funding allocations.</p>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 2: MCKINNEY-VENTO & FOSTER CODING -->
+      <article id="mckinney-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+            2
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 2 • Special Program Configurations</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Foster Youth & McKinney-Vento Program Coding</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Students meeting McKinney-Vento (Homeless Assistance Act) or Foster Youth criteria are protected under federal law, granting them immediate school registration privileges and enrollment safety checks.
+        </p>
+
+        <div class="space-y-4">
+          <h4 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">How to Code Special Program Status:</h4>
+          <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-3">
+            <li>
+              <strong>Locate and open the Special Programs (SSD) module:</strong>
+              Look up the student ID in Aeries.
+              <div class="path">Left Menu: Student Data → Programs → Special Programs</div>
+            </li>
+            <li>
+              <strong>Add a new Program Record:</strong>
+              Click the **Add** button. Set the program code to your district's specific Homeless/Insecurity code (e.g., **5** or **McKinney-Vento**).
+            </li>
+            <li>
+              <strong>Enter exact dates:</strong>
+              Set the **Start Date** to the exact day the housing affidavit was verified or the foster placement occurred. Never leave the Start Date blank.
+            </li>
+            <li>
+              <strong>Update Primary Residence Code:</strong>
+              Navigate to Demographics (STU) and ensure the corresponding **Resident Status** dropdown matches the verified living arrangement (e.g., Doubled-up, Shelter, Unsheltered).
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 3: SCHEDULING CHANGES & CORE GAP AUDITING -->
+      <article id="scheduling-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+            3
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 3 • Schedule Engineering & HIS Records</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Processing Schedule Changes & Audit Gaps</h3>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="text-sm font-black text-navy-900">Preventing Period Gaps during Drop/Add Changes</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Secondary registrars frequently process schedule changes initiated by counselors. Dropping and adding sections out of sequence can create blank period gaps on student profiles, raising severe attendance tracking errors.
+          </p>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2">
+            <li>Open the student's **Classes / Course Schedule** page in Aeries.</li>
+            <li>Before hitting Update, check the class maximum caps on the incoming section. If the class is full, consult scheduling leads before executing an override.</li>
+            <li>When updating, assign matching **Effective Start & End Dates** on both the dropped section and the added section. Dropping a section yesterday but adding the replacement tomorrow generates an unauthorized 1-day scheduling gap.</li>
+          </ol>
+          <div class="path">Aeries Path: Student Data → Classes → Click [Change] → Update sections</div>
+        </div>
+
+        <div class="space-y-4 pt-4 border-t border-slate-100">
+          <h4 class="text-sm font-black text-navy-900">Transcripts, Records Requests, and Cumulative Transfers</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            When a student registers or exits, coordinating cumulative records (Cum Files) and Course History (`HIS` table) must remain a high priority to ensure academic continuity.
+          </p>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2">
+            <li><strong>Execute Official Transcript Audits (HIS):</strong> For incoming high school students, translate their out-of-district transcript credits into standard WUSD equivalents and save them directly in Course History.</li>
+            <li><strong>Release outgoing records:</strong> Upon receiving a validated records request from an outside district, pull the student's physical folder, photocopy the documents, print the final transcript, and log the release in cumulative records.</li>
+            <li><strong>Day-1 No-Show Cleanup:</strong> Run Rosters checks on opening day. If an enrolled student fails to attend by your district's designated window, withdraw them using the day *before* the start of school as their exit date, assigning the appropriate **N - No-Show** exit code to clear seat counts.</li>
+          </ol>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- RIGHT COLUMN (1/3 width) - WORKSPACE CHECKLISTS & TOOLS -->
+    <div class="space-y-8">
+      
+      <!-- DAILY REGISTRAR AUDITING CHECKLIST -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-blue-600">📋</span>
+          <span>Registrar Audit Checklist</span>
+        </h3>
+        <p class="text-xs text-slate-500 font-medium">Execute these chronological data validation routines sequentially to maintain clean school records:</p>
+
+        <div class="space-y-3" id="registrar-tasks-container">
+          <!-- Dynamically generated with JS localstorage -->
+        </div>
+
+        <div class="pt-2 border-t border-slate-100 space-y-2">
+          <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+            <div id="registrar-progress-bar" class="h-full bg-blue-600 transition-all duration-300" style="width: 0%;"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-bold text-navy-900">
+            <span id="registrar-percent-text">0% Completed</span>
+            <button class="text-blue-600 hover:underline" onclick="resetRegistrarChecklist()">Reset Audits</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALPADS CRITICAL ALERTS -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-3 shadow-sm">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-red-600">⚠️</span>
+          <span>CALPADS SSID Watchdog</span>
+        </h3>
+        <p class="text-xs text-slate-500 leading-normal">
+          The California Department of Education rejects enrollments containing conflicting demographics. Pay close attention to these parameters:
+        </p>
+        
+        <div class="p-3 bg-red-50 border border-red-100 rounded-xl space-y-1">
+          <strong class="text-xs text-red-800 block font-extrabold">Weekly Demographic Sweeps:</strong>
+          <p class="text-[11px] text-slate-600 leading-normal">
+            Run anomalies reports weekly to find missing Birth State flags on foreign-born records, unverified home language codes, or blank SSID cells.
+          </p>
+        </div>
+      </div>
+
+      <!-- REGISTRAR SQL QUERY COPIER -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-gold-600">📊</span>
+          <span>Registrar Aeries Queries</span>
+        </h3>
+        <p class="text-xs text-slate-500 font-medium">Copy these queries directly to find enrollment and program mismatches instantly:</p>
+
+        <div class="space-y-4">
+          <!-- Query 1 -->
+          <div class="space-y-2">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">1. Locate Foster/Homeless Codes (SSD)</span>
+            <div class="relative bg-slate-900 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto select-all">
+              <pre id="query-ssd">LIST STU SSD STU.ID STU.NM SSD.PG SSD.SD BY STU.NM IF SSD.PG = 5</pre>
+              <button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded-md px-1.5 py-0.5 transition text-[9px]" onclick="copyRegistrarQueryText('query-ssd')">Copy</button>
+            </div>
+          </div>
+
+          <!-- Query 2 -->
+          <div class="space-y-2">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">2. Find Blank SSID Cells</span>
+            <div class="relative bg-slate-900 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto select-all">
+              <pre id="query-ssid-blank">LIST STU STU.ID STU.NM STU.GR BY STU.NM IF STU.ID > 0 AND STU.CID = NULL</pre>
+              <button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded-md px-1.5 py-0.5 transition text-[9px]" onclick="copyRegistrarQueryText('query-ssid-blank')">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<div class="copy-toast fixed bottom-6 right-6 bg-navy-950 text-white rounded-xl px-4 py-3 shadow-2xl flex items-center gap-2 text-xs font-bold opacity-0 translate-y-10 transition-all duration-300 pointer-events-none" id="copy-toast-notify">
+  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  Query copied to clipboard!
+</div>
+
+<footer class="footer border-t border-slate-200 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium mt-12">
+  WUSD Aeries Resource Center • Registrar & Enrollment Workspace • Formatted for follow-along training next to your active database.
+</footer>
+
+<script>
+// SCENARIO DICTIONARY FOR REGISTRARS
+const registrarActionData = {
+  mckinney: {
+    title: "Foster Youth & McKinney-Vento Coding",
+    badge: "SSD Table & PG = 5",
+    description: "Applies to students meeting federal criteria for housing insecurity or foster placement. Entering exact dates ensures access to specialized district supports.",
+    docs: [
+      "WUSD Housing Questionnaire affidavit (validated)",
+      "Official Foster placement case agency documents",
+      "Enrollment status code 'Active' (A) with custom resident status tags"
+    ],
+    query: 'LIST STU SSD STU.ID STU.NM SSD.PG SSD.SD SSD.ED BY STU.NM IF SSD.PG = 5',
+    path: "Left Sidebar → Student Data → Programs → Special Programs (SSD)"
+  },
+  calpads: {
+    title: "CALPADS SSID Conflict Audit",
+    badge: "STU Table & CID",
+    description: "Used to sweep and repair demographic discrepancies prior to submitting active student counts to the California Department of Education.",
+    docs: [
+      "Birth Country matching standard CALPADS country codes",
+      "Home Language code mapped correctly on STU table",
+      "Verification of Student ID (CID) to prevent double state reporting"
+    ],
+    query: 'LIST STU STU.ID STU.NM STU.GR BY STU.NM IF STU.ID > 0 AND STU.CID = NULL',
+    path: "Left Sidebar → Student Data → Demographics (STU) → Profile Review"
+  },
+  gaps: {
+    title: "Student Schedule Gap Audit",
+    badge: "SEC & SMS Tables",
+    description: "Assesses student course sections to ensure students are enrolled in standard period sequences without blank hour gaps.",
+    docs: [
+      "Counselor class adjustment slips (dropped & added)",
+      "Section capacities (MST.MX) audited to prevent overfilled sections",
+      "Section drop dates and add dates matched identically to prevent gaps"
+    ],
+    query: 'LIST STU SEC STU.ID STU.NM SEC.PD BY STU.NM IF SEC.PD = NULL',
+    path: "Left Sidebar → Student Data → Classes (SEC) → Schedule Details"
+  },
+  transcripts: {
+    title: "Transcripts & Course History Release",
+    badge: "HIS Table",
+    description: "Processes academic credits, out-of-district transcript evaluations, and historical cumulative folder records.",
+    docs: [
+      "Official signed outside-district academic transcript records",
+      "Evaluated credits written to correct course equivalencies (HIS table)",
+      "Outbound records release forms filed with Cum folder logs"
+    ],
+    query: 'LIST STU HIS STU.ID STU.NM HIS.CN HIS.GR HIS.MK BY STU.NM',
+    path: "Left Sidebar → Student Data → Course History (HIS) → Print Transcript"
+  },
+  noshow: {
+    title: "Day-1 No-Show Cleanups",
+    badge: "STU Withdraw",
+    description: "Removes student enrollments from roster counts if they fail to attend school on the opening instructional day.",
+    docs: [
+      "Verify absence across all instructional periods on Day 1",
+      "Confirm withdrawal status code is set to 'Inactive'",
+      "Set withdrawal exit date to the day before the school year started"
+    ],
+    query: 'LIST STU STU.ID STU.NM BY STU.NM IF STU.TG = "N"',
+    path: "Left Sidebar → Student Data → Demographics → Exit Details"
+  }
+};
+
+function switchRegistrarAction(actionKey) {
+  const data = registrarActionData[actionKey];
+  if (!data) return;
+
+  // Update button active styles
+  document.querySelectorAll('.rg-btn').forEach(btn => {
+    btn.className = "rg-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300";
+  });
+
+  const activeBtn = document.getElementById(`rg-btn-${actionKey}`);
+  if (activeBtn) {
+    activeBtn.className = "rg-btn p-2 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md";
+  }
+
+  // Update text values
+  document.getElementById('rg-title').textContent = data.title;
+  document.getElementById('rg-badge').textContent = data.badge;
+  document.getElementById('rg-description').textContent = data.description;
+  document.getElementById('rg-path').textContent = data.path;
+  document.getElementById('rg-query').textContent = data.query;
+
+  // Update Documentation checklists
+  const docsList = document.getElementById('rg-docs');
+  docsList.innerHTML = '';
+  data.docs.forEach(doc => {
+    const li = document.createElement('li');
+    li.className = "flex items-start gap-2 text-xs text-slate-600 font-medium";
+    li.innerHTML = `<span class="text-blue-600">✓</span> <span>${doc}</span>`;
+    docsList.appendChild(li);
+  });
+}
+
+// COPY QUERY SYSTEM (falls back reliably in frames)
+function copyRegistrarQueryText(elementId) {
+  const element = document.getElementById(elementId);
+  const text = element.textContent;
+  
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = text;
+  document.body.appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempTextArea);
+  
+  // Toast notifications
+  const toast = document.getElementById('copy-toast-notify');
+  toast.classList.remove('opacity-0', 'translate-y-10');
+  toast.classList.add('opacity-100', 'translate-y-0');
+  setTimeout(() => {
+    toast.classList.remove('opacity-100', 'translate-y-0');
+    toast.classList.add('opacity-0', 'translate-y-10');
+  }, 2500);
+}
+
+// DAILY AUDIT LOCALSTORAGE STATE TRACKER
+const REG_STORAGE_KEY = 'wusd_registrar_daily_audit';
+const dailyRegistrarTasks = [
+  "Verify and lock current site context on Aeries login",
+  "Audit Day-1 rosters to execute No-Show student withdrawals",
+  "Request new SSIDs via CALPADS for freshly enrolled pupils",
+  "Code Foster/Homeless status flags in Special Programs (SSD)",
+  "Run the 'Missing Course Requests' report to detect schedule gaps",
+  "Verify and evaluate transcripts (HIS) for out-of-district transfers",
+  "Organize, photocopy, and log outgoing cum records requests"
+];
+
+function initRegistrarTracker() {
+  const container = document.getElementById('registrar-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(REG_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  dailyRegistrarTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-2.5 p-2 border rounded-lg hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-green-50/40 border-green-200' : 'border-slate-100'}`;
+    taskRow.setAttribute('onclick', `toggleRegistrarTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-4 h-4 border rounded mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-green-600 border-green-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3 h-3 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-[11px] font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = dailyRegistrarTasks.length > 0 ? Math.round((completedCount / dailyRegistrarTasks.length) * 100) : 0;
+  document.getElementById('registrar-progress-bar').style.width = percent + '%';
+  document.getElementById('registrar-percent-text').textContent = `${percent}% Completed`;
+}
+
+function toggleRegistrarTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(REG_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(REG_STORAGE_KEY, JSON.stringify(savedState));
+  initRegistrarTracker();
+}
+
+function resetRegistrarChecklist() {
+  localStorage.removeItem(REG_STORAGE_KEY);
+  initRegistrarTracker();
+}
+
+// INITIALIZATION
+window.onload = function() {
+  initRegistrarTracker();
+  switchRegistrarAction('mckinney');
+};
+</script>
+
+</body>
+</html>
