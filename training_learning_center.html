@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WUSD Office Staff Training & Learning Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            50: '#f4f7fa',
+            100: '#eef5ff',
+            900: '#12355b',
+            950: '#0f1e36',
+          },
+          blue: {
+            50: '#eff6ff',
+            100: '#dbeafe',
+            600: '#2563eb',
+            700: '#1d4ed8',
+          },
+          gold: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            600: '#d97706',
+            700: '#b45309',
+          },
+          green: {
+            50: '#f0fdf4',
+            100: '#d1fae5',
+            600: '#10b981',
+            700: '#047857',
+          },
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            600: '#dc2626',
+            700: '#b91c1c',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(18, 53, 91, 0.06);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+  .certificate-border {
+    border: 12px double #12355b;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f8fafc] to-[#eef5ff] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+        W
+      </div>
+      <div>
+        <h1 class="text-lg font-extrabold text-navy-900 tracking-tight leading-none flex items-center gap-2">
+          <span>Training & Learning Center</span>
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-extrabold">
+            PD & Onboarding
+          </span>
+        </h1>
+        <p class="text-[11px] font-semibold text-slate-500 mt-1">Washington Unified School District Administrative Help Desk</p>
+      </div>
+    </div>
+    
+    <!-- SUB-PORTAL QUICK LINKS -->
+    <div class="flex items-center gap-1.5 flex-wrap">
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-start-here.html">
+        🚀 Start Here
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-secretary.html">
+        👩‍💼 Secretary
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-attendance.html">
+        🕒 Attendance
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-registrar.html">
+        🧾 Registrar
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-health.html">
+        🏥 Health
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-admin.html">
+        🧑‍💼 Admin Assistant
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-queries.html">
+        📊 Queries Library
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-extrabold text-blue-600 bg-white border border-blue-200 rounded-xl hover:bg-slate-50 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-home"></i> Central Hub
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 flex-grow">
+
+  <!-- HERO BANNER -->
+  <section class="bg-gradient-to-r from-navy-900 via-[#1a3d6c] to-blue-600 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        🎓 ASYNCHRONOUS PROFESSIONAL DEVELOPMENT
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">PD, Walkthroughs & Training Hub</h2>
+      <p class="text-blue-100 text-sm sm:text-lg font-medium max-w-3xl leading-relaxed">
+        Your unified on-demand center for master training. Learn core Aeries routines asynchronously, reference critical timelines, complete interactive onboarding tasks, and test your knowledge to earn competency certification.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPLIT GRID: ASYNCHRONOUS PD CONTROLS & CHECKLIST -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+    
+    <!-- LEFT & CENTER COLUMN (2/3 width) - INTERACTIVE TUTORIALS & REMINDERS -->
+    <div class="lg:col-span-2 space-y-6">
+      
+      <!-- INTERACTIVE "TEACH ME" WORKFLOWS -->
+      <section class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+          <div class="text-2xl">⚡</div>
+          <div>
+            <h3 class="text-lg font-black text-navy-900">Interactive "Teach Me" Workflows</h3>
+            <p class="text-xs text-slate-500 font-medium">Select a scenario to instantly load step-by-step procedures, click-by-click Aeries paths, and target database fields.</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <button onclick="switchWorkflow('evac')" id="wf-btn-evac" class="wf-btn p-3 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md">
+              <span class="block text-lg mb-1">🚨</span>
+              Emergency Drill Roster
+            </button>
+            <button onclick="switchWorkflow('portal_lookup')" id="wf-btn-portal_lookup" class="wf-btn p-3 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">🔑</span>
+              Parent Portal Setup
+            </button>
+            <button onclick="switchWorkflow('trimester_grade')" id="wf-btn-trimester_grade" class="wf-btn p-3 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">📊</span>
+              Gradebook Rollup
+            </button>
+            <button onclick="switchWorkflow('unlinked_contacts')" id="wf-btn-unlinked_contacts" class="wf-btn p-3 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">👥</span>
+              Unlinked Contacts Sweep
+            </button>
+          </div>
+
+          <!-- DYNAMIC CONTENT CARD -->
+          <div class="p-5 rounded-xl border border-blue-100 bg-blue-50/25 space-y-4" id="wf-content">
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-black text-navy-900 uppercase tracking-wider" id="wf-title">Emergency Drill Evac Roster Pull</h4>
+                <span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-extrabold rounded-lg uppercase" id="wf-badge">STU & CON Tables</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-normal" id="wf-description">Pulling active emergency lists and contact details instantly for site-wide fire, evacuation, or safety drills.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-blue-100/50 pt-4">
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2">Required Fields & Checkpoints:</span>
+                <ul class="space-y-1.5" id="wf-docs">
+                  <!-- JS Inserted -->
+                </ul>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Click-by-Click Aeries Path:</span>
+                <div class="path" id="wf-path">Aeries Reports → Reports → Student Data → Emergency Contacts</div>
+                <ol class="list-decimal pl-4 space-y-1.5 text-xs text-slate-600 font-medium" id="wf-steps">
+                  <!-- JS Inserted -->
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANNUAL REFRESHERS & CALENDAR REMINDERS -->
+      <section class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0 border border-blue-100">
+            <i class="fa-solid fa-calendar-days text-sm"></i>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Operational Lifecycle Reminders</span>
+            <h3 class="text-lg font-black text-navy-900 tracking-tight">Standard Year-Round Operational Milestones</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Office tasks fall into predictable calendar patterns. Follow this baseline cyclical reminder sequence to protect site counts and keep clean records throughout the school year.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- BOY -->
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <span class="text-[10px] font-black text-blue-600 uppercase tracking-wider bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-md">Beginning of Year</span>
+            <h4 class="text-xs font-extrabold text-navy-900">BOY Cleanups</h4>
+            <ul class="list-disc pl-4 text-[11px] text-slate-500 space-y-1 leading-normal">
+              <li>Mark opening day **No-Shows** and drop schedules.</li>
+              <li>Audit TK/K immunization yellow cards.</li>
+              <li>Review boundary residency verification forms.</li>
+            </ul>
+          </div>
+          <!-- MID-YEAR -->
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <span class="text-[10px] font-black text-gold-600 uppercase tracking-wider bg-gold-50 border border-gold-100 px-2 py-0.5 rounded-md">Mid-Year Check</span>
+            <h4 class="text-xs font-extrabold text-navy-900">Semester Rotations</h4>
+            <ul class="list-disc pl-4 text-[11px] text-slate-500 space-y-1 leading-normal">
+              <li>Verify second-semester drops and add dates.</li>
+              <li>Perform unlinked emergency contact sweeps.</li>
+              <li>Re-assess chronic absenteeism and send Letter 2 warnings.</li>
+            </ul>
+          </div>
+          <!-- EOY -->
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <span class="text-[10px] font-black text-green-600 uppercase tracking-wider bg-green-50 border border-green-100 px-2 py-0.5 rounded-md">End of Year</span>
+            <h4 class="text-xs font-extrabold text-navy-900">EOY Transcripts & Cum Files</h4>
+            <ul class="list-disc pl-4 text-[11px] text-slate-500 space-y-1 leading-normal">
+              <li>Print, verify, and stamp official final transcripts.</li>
+              <li>Reconcile independent study hours with grading blocks.</li>
+              <li>Archive and lock cumulative files for summer transfer.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RIGHT COLUMN (1/3 width) - TRACKABLE ONBOARDING CHECKLISTS -->
+    <aside class="space-y-6">
+      
+      <!-- ONBOARDING LOGISTICAL PROGRESS HUD -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+        <h3 class="text-base font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-blue-600"><i class="fa-solid fa-graduation-cap"></i></span>
+          <span>New Hire Onboarding Tracker</span>
+        </h3>
+        <p class="text-xs text-slate-500 leading-relaxed">
+          Complete these asynchronous baseline configurations and practice lookups in your Aeries sandbox environment. Progress is preserved locally:
+        </p>
+
+        <div class="space-y-3" id="pd-tasks-container">
+          <!-- Dynamically generated with JS localstorage -->
+        </div>
+
+        <div class="pt-2 border-t border-slate-100 space-y-2">
+          <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+            <div id="pd-progress-bar" class="h-full bg-blue-600 transition-all duration-300" style="width: 0%;"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-bold text-navy-900">
+            <span id="pd-percent-text">0% Completed</span>
+            <button class="text-blue-600 hover:underline" onclick="resetOnboardingTracker()">Reset Progress</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESK STUDY GUIDE -->
+      <div class="p-5 bg-navy-950 text-white rounded-2xl space-y-3">
+        <strong class="text-xs text-blue-400 uppercase tracking-widest block font-extrabold">🖥️ Side-by-Side Setup Tip</strong>
+        <p class="text-xs text-slate-300 leading-normal">
+          Keep this Training Portal pinned to the **left half** of your monitor, and open Aeries to your site's secure training sandbox in the **right half**. 
+        </p>
+        <p class="text-[11px] text-slate-400 font-medium">
+          Do not complete practice exercises on live student records. Use test students (IDs starting with 999) to keep district databases completely safe during onboarding.
+        </p>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- COMPETENCY EVALUATION & CERTIFICATE GENERATOR -->
+  <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-start gap-4 border-b border-slate-100 pb-4">
+      <div class="w-10 h-10 rounded-xl bg-gold-50 text-gold-600 border border-gold-100 flex items-center justify-center font-black text-lg flex-shrink-0">
+        <i class="fa-solid fa-award"></i>
+      </div>
+      <div class="space-y-1">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Evaluation and Certification</span>
+        <h3 class="text-xl font-black text-navy-900 tracking-tight">WUSD Aeries Competency Knowledge Check</h3>
+        <p class="text-xs text-slate-500 font-medium">Validate your site support competencies by completing this 3-question review to unlock a printable certificate.</p>
+      </div>
+    </div>
+
+    <!-- QUIZ INTERFACE -->
+    <div id="quiz-container" class="space-y-6">
+      
+      <!-- Question 1 -->
+      <div class="space-y-2">
+        <strong class="text-sm text-navy-900 font-extrabold block">1. Which Aeries table primary link houses student emergency contacts, parent emails, and notification permissions?</strong>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <button onclick="checkAnswer(1, 'A')" id="q1-A" class="quiz-opt text-left p-3 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 transition">A) STU Table</button>
+          <button onclick="checkAnswer(1, 'B')" id="q1-B" class="quiz-opt text-left p-3 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 transition">B) CON Table</button>
+          <button onclick="checkAnswer(1, 'C')" id="q1-C" class="quiz-opt text-left p-3 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 transition">C) ATT Table</button>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="space-y-2">
+        <strong class="text-sm text-navy-900 font-extrabold block">2. In Aeries Student Search, typing <span class="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-red-600 font-black">/9</span> will execute which database filter?</strong>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <button onclick="checkAnswer(2, 'A')" id="q2-A" class="quiz-opt text-left p-3 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 transition">A) Finds student ID 9</button>
+          <button onclick="checkAnswer(2, 'B')" id="q2-B" class="quiz-opt text-left p-3 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 transition">B) Finds student last names beginning with "Nine"</button>
+          <button onclick="checkAnswer(2, 'C')" id="q2-C" class="quiz-opt text-left p-3 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 transition">C) Lists all active students in Grade 9</button>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="space-y-2">
+        <strong class="text-sm text-navy-900 font-extrabold block">3. When a student leaves school, you cannot withdraw them on a day they were marked present. True or False?</strong>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button onclick="checkAnswer(3, 'A')" id="q3-A" class="quiz-opt text-left p-3 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 transition">A) True. The exit date must be the next day of non-presence.</button>
+          <button onclick="checkAnswer(3, 'B')" id="q3-B" class="quiz-opt text-left p-3 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 transition">B) False. You can exit on any day regardless of presence.</button>
+        </div>
+      </div>
+
+      <!-- EVALUATION SUBMIT button -->
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+        <div id="quiz-status-feedback" class="text-xs font-extrabold text-slate-500">
+          Ensure you answer all 3 questions to generate your certificate.
+        </div>
+        <button onclick="submitPDQuiz()" class="px-5 py-2.5 text-xs font-black text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition">
+          Submit Competency Check
+        </button>
+      </div>
+
+    </div>
+
+    <!-- DYNAMIC printable CERTIFICATE RENDER COMPONENT -->
+    <div id="cert-render-card" class="hidden animate-fade-in p-6 bg-slate-50 border border-slate-200 rounded-3xl space-y-6">
+      <div class="p-8 bg-white certificate-border rounded-xl text-center space-y-6 relative overflow-hidden" id="cert-print-area">
+        <div class="absolute -top-16 -right-16 w-36 h-36 bg-blue-50 rounded-full blur-xl"></div>
+        
+        <div class="w-16 h-16 rounded-full bg-navy-900 text-white flex items-center justify-center font-black text-2xl mx-auto border-4 border-gold-100 shadow-md">
+          W
+        </div>
+        
+        <div class="space-y-1.5">
+          <h4 class="text-[10px] font-black text-slate-400 tracking-widest uppercase">Certificate of Operations Competency</h4>
+          <h2 class="text-xl sm:text-2xl font-black text-navy-900 tracking-tight">WUSD Aeries Competency Certification</h2>
+          <p class="text-xs text-slate-500 font-medium">Washington Unified School District Administrative Help Desk</p>
+        </div>
+
+        <div class="max-w-md mx-auto py-2 border-t border-b border-slate-100 space-y-2 text-xs">
+          <p class="text-slate-500 font-semibold italic">This certificate establishes that</p>
+          <input type="text" id="cert-holder-name" class="w-full text-center font-extrabold text-navy-900 text-base border-b border-dashed border-slate-300 outline-none focus:border-blue-500 bg-transparent py-1 uppercase" placeholder="[Type Your Name Here]">
+          <p class="text-slate-500 font-semibold">has completed all asynchronous onboarding modules, evaluated structural database layouts, and validated baseline competency checks successfully.</p>
+        </div>
+
+        <div class="flex items-center justify-between max-w-sm mx-auto pt-4 text-[9px] font-bold text-slate-400 uppercase tracking-wider">
+          <div class="text-center">
+            <span class="block text-navy-900 font-bold mb-1">Aeries Training Board</span>
+            <span>Certification Authority</span>
+          </div>
+          <div class="text-center">
+            <span class="block text-navy-900 font-bold mb-1" id="cert-timestamp">June 2026</span>
+            <span>Date Granted</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2.5">
+        <button onclick="window.print()" class="px-4 py-2 text-xs font-black text-navy-900 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-print"></i> Print Certificate
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer border-t border-slate-200 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium mt-12">
+  WUSD Aeries Resource Center • Training & Learning Center Workspace • Formatted for asynchronous self-paced professional development.
+</footer>
+
+<script>
+// SCENARIO DICTIONARY FOR WORKFLOW WALKTHROUGHS
+const workflowData = {
+  evac: {
+    title: "Emergency Drill Evac Roster Pull",
+    badge: "STU & CON Tables",
+    description: "Used to pull clean, printable student directories containing active phone numbers and emergency contacts in preparation for school-wide fire, evacuation, or safety drills.",
+    docs: [
+      "WUSD Emergency Evacuation roster template",
+      "Current class locator sheets printed from the daily locator tool"
+    ],
+    steps: [
+      "Navigate to Aeries Reports → Reports → Student Data → Emergency Contacts.",
+      "In the report parameters panel, check the boxes for: Primary Contact Names, Priority 1 & 2 Phone Numbers, and Primary Address.",
+      "Set student enrollment filter status to Active (A) only. Unchecked filters will dump decades of exited student records.",
+      "Generate the PDF report. Send the printout directly to classroom emergency binders in the front office."
+    ],
+    path: "Aeries Sidebar → Reports → Student Data → Emergency Contacts"
+  },
+  portal_lookup: {
+    title: "Parent Portal Setup Verification",
+    badge: "CON & STU Linkage",
+    description: "How to troubleshoot parent logins and retrieve verification codes so families can easily link their children's demographic cards inside the secure WUSD parent portal.",
+    docs: [
+      "Parent valid photo identification (verify custodial authority)",
+      "Active parent email registered on the Contact (CON) record"
+    ],
+    steps: [
+      "Search for the student to pull up their main Demographics card.",
+      "Select the Portal Accounts utility from the student's sub-navigation tabs.",
+      "Check that the parent's email is successfully listed under linked accounts.",
+      "Find and provide the parent with their 3 unique credentials: **Student ID**, **Primary Telephone Number**, and the unique **Verification Code (VPC)**.",
+      "Guide the parent to paste these codes into their dashboard to link files."
+    ],
+    path: "Aeries Sidebar → Student Data → Medical (or Demographics) → Portal Accounts"
+  },
+  trimester_grade: {
+    title: "Trimester / Quarter Gradebook Rollup",
+    badge: "GRD & HIS Table",
+    description: "The seasonal procedure to pull teachers' gradebook assignments and post final grades to transcript histories (HIS) for report cards.",
+    docs: [
+      "Teacher submitted Grade Verification signature sheets",
+      "District gradebook rollover calendar guidelines"
+    ],
+    steps: [
+      "Execute a Missing Gradebook query to verify all classrooms have posted final marks.",
+      "Navigate to Grades → Grade Reporting → Initialize Grade Reporting.",
+      "Confirm parameters are set to roll teachers' electronic gradebook entries directly into Aeries Grades (GRD).",
+      "Print and send grades verification sheets to counselors for credits audit."
+    ],
+    path: "Aeries Sidebar → Grades → Grade Reporting → Initialize Grade Reporting"
+  },
+  unlinked_contacts: {
+    title: "Unlinked Contacts Sweep",
+    badge: "CON Audit Sweep",
+    description: "Running diagnostic checks to locate emergency contact rows that are floating in the CON database without a valid link to a student ID.",
+    docs: [
+      "WUSD Emergency Contact clean parameters sheet",
+      "Unlinked contacts spreadsheet report"
+    ],
+    steps: [
+      "Navigate to Aeries Reports → Query.",
+      "Copy and paste the unlinked contacts sweep query from the queries library.",
+      "Select Run. Export empty results sheets to identify unlinked rows.",
+      "Link or delete floating records on student demographic panels."
+    ],
+    path: "Aeries Sidebar → Reports → Query"
+  }
+};
+
+function switchWorkflow(wfKey) {
+  const data = workflowData[wfKey];
+  if (!data) return;
+
+  // Update button active styles
+  document.querySelectorAll('.wf-btn').forEach(btn => {
+    btn.className = "wf-btn p-3 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300";
+  });
+
+  const activeBtn = document.getElementById(`wf-btn-${wfKey}`);
+  if (activeBtn) {
+    activeBtn.className = "wf-btn p-3 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md";
+  }
+
+  // Update text values
+  document.getElementById('wf-title').textContent = data.title;
+  document.getElementById('wf-badge').textContent = data.badge;
+  document.getElementById('wf-description').textContent = data.description;
+  document.getElementById('wf-path').textContent = data.path;
+
+  // Update documentation list
+  const docsList = document.getElementById('wf-docs');
+  docsList.innerHTML = '';
+  data.docs.forEach(doc => {
+    const li = document.createElement('li');
+    li.className = "flex items-start gap-2 text-xs text-slate-600 font-medium";
+    li.innerHTML = `<span class="text-blue-600">✓</span> <span>${doc}</span>`;
+    docsList.appendChild(li);
+  });
+
+  // Update steps list
+  const stepsList = document.getElementById('wf-steps');
+  stepsList.innerHTML = '';
+  data.steps.forEach(step => {
+    const li = document.createElement('li');
+    li.className = "mb-1.5 leading-normal";
+    li.innerHTML = step;
+    stepsList.appendChild(li);
+  });
+}
+
+// ONBOARDING PROGRESS STATE ENGINE
+const TRAINING_STORAGE_KEY = 'wusd_asynchronous_pd_onboarding_tasks';
+const onboardingTasks = [
+  "Verify and lock current year and site context on Aeries login",
+  "Practice searching with student ID, partial name, and grade filters",
+  "Examine student demographic records and upload sample PDF documentation",
+  "Process a practice student withdrawal exit sequence in Demographics",
+  "Audit immunization compliance and configure health alert flags in MED",
+  "Run 'Missing Attendance' reports and practice attendance correction steps"
+];
+
+function initPDTracker() {
+  const container = document.getElementById('pd-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(TRAINING_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  onboardingTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-2.5 p-2 border rounded-lg hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-blue-50/40 border-blue-200' : 'border-slate-100'}`;
+    taskRow.setAttribute('onclick', `togglePDTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-4 h-4 border rounded mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3 h-3 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-[11px] font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = onboardingTasks.length > 0 ? Math.round((completedCount / onboardingTasks.length) * 100) : 0;
+  document.getElementById('pd-progress-bar').style.width = percent + '%';
+  document.getElementById('pd-percent-text').textContent = `${percent}% Completed`;
+}
+
+function togglePDTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(TRAINING_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(TRAINING_STORAGE_KEY, JSON.stringify(savedState));
+  initPDTracker();
+}
+
+function resetOnboardingTracker() {
+  localStorage.removeItem(TRAINING_STORAGE_KEY);
+  initPDTracker();
+}
+
+// PD COMPETENCY EVALUATION LOGIC
+const userAnswers = { 1: null, 2: null, 3: null };
+const correctAnswers = { 1: 'B', 2: 'C', 3: 'A' };
+
+function checkAnswer(qNum, optLetter) {
+  userAnswers[qNum] = optLetter;
+  
+  // Clear other active options for this question
+  document.querySelectorAll(`[id^="q${qNum}-"]`).forEach(btn => {
+    btn.className = "text-left p-3 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 transition";
+  });
+  
+  // Highlight active selected option
+  const activeBtn = document.getElementById(`q${qNum}-${optLetter}`);
+  if (activeBtn) {
+    activeBtn.className = "text-left p-3 border-2 rounded-xl text-xs font-black bg-blue-50 text-blue-700 border-blue-600 transition shadow-sm";
+  }
+}
+
+function submitPDQuiz() {
+  const q1 = userAnswers[1];
+  const q2 = userAnswers[2];
+  const q3 = userAnswers[3];
+  const statusFeedback = document.getElementById('quiz-status-feedback');
+  
+  if (!q1 || !q2 || !q3) {
+    statusFeedback.className = "text-xs font-extrabold text-red-600";
+    statusFeedback.innerHTML = `⚠️ Error: Please answer all 3 questions to evaluate your score.`;
+    return;
+  }
+  
+  const isCorrect = q1 === correctAnswers[1] && q2 === correctAnswers[2] && q3 === correctAnswers[3];
+  
+  if (isCorrect) {
+    statusFeedback.className = "text-xs font-extrabold text-green-700";
+    statusFeedback.innerHTML = `🎉 Congratulations! 100% Correct. Generating competency certificate below...`;
+    
+    // Set dynamic granted date stamp
+    const date = new Date();
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    document.getElementById('cert-timestamp').textContent = `${months[date.getMonth()]} ${date.getFullYear()}`;
+    
+    // Reveal Printable Certificate panel
+    const certCard = document.getElementById('cert-render-card');
+    certCard.classList.remove('hidden');
+    certCard.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    statusFeedback.className = "text-xs font-extrabold text-red-600 animate-pulse";
+    statusFeedback.innerHTML = `❌ Score: Incorrect answers detected. Review lessons and try the competency check again!`;
+  }
+}
+
+// INITIALIZATION
+window.onload = function() {
+  initPDTracker();
+  switchWorkflow('evac');
+};
+</script>
+
+</body>
+</html>
