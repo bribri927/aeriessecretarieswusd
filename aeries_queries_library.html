@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WUSD Aeries Queries Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            50: '#f4f7fa',
+            100: '#eef5ff',
+            900: '#12355b',
+            950: '#0f1e36',
+          },
+          blue: {
+            50: '#eff6ff',
+            100: '#dbeafe',
+            600: '#2563eb',
+            700: '#1d4ed8',
+          },
+          gold: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            600: '#d97706',
+            700: '#b45309',
+          },
+          green: {
+            50: '#f0fdf4',
+            100: '#d1fae5',
+            600: '#10b981',
+            700: '#047857',
+          },
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            600: '#dc2626',
+            700: '#b91c1c',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(18, 53, 91, 0.06);
+  }
+  .code-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  .code-scroll::-webkit-scrollbar-track {
+    background: #0f1e36;
+  }
+  .code-scroll::-webkit-scrollbar-thumb {
+    background-color: #475569;
+    border-radius: 99px;
+  }
+  .chat-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .chat-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .chat-scroll::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 99px;
+  }
+  .query-active-tab {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f8fafc] to-[#eef5ff] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+        W
+      </div>
+      <div>
+        <h1 class="text-lg font-extrabold text-navy-900 tracking-tight leading-none flex items-center gap-2">
+          <span>Aeries Queries Library</span>
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-extrabold">
+            Site Support Companion
+          </span>
+        </h1>
+        <p class="text-[11px] font-semibold text-slate-500 mt-1">Washington Unified School District Administrative Help Desk</p>
+      </div>
+    </div>
+    
+    <!-- SUB-PORTAL Nav links -->
+    <div class="flex items-center gap-1.5 flex-wrap">
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-start-here.html">
+        🚀 Start Here
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-secretary.html">
+        👩‍💼 Secretary
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-attendance.html">
+        🕒 Attendance
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-registrar.html">
+        🧾 Registrar
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-health.html">
+        🏥 Health
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-admin.html">
+        🧑‍💼 Admin Assistant
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-extrabold text-blue-600 bg-white border border-blue-200 rounded-xl hover:bg-slate-50 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-home"></i> Central Hub
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 flex-grow">
+
+  <!-- TOP SECTION: HERO & SEARCH (LEFT) + ASSISTANT (RIGHT) -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    
+    <!-- TOP LEFT: HERO & SEARCH BAR (8/12) -->
+    <div class="lg:col-span-8 flex flex-col gap-4 justify-between">
+      <!-- QUERY HERO HEADER CARD -->
+      <div class="bg-gradient-to-r from-navy-900 to-blue-700 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden flex-grow flex flex-col justify-center">
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+        <div>
+          <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-black uppercase tracking-wider mb-3">
+            📊 DATA INTEGRITY CONTROL CENTER
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight leading-tight mb-2">Aeries Query Command Center</h2>
+          <p class="text-xs sm:text-sm text-blue-100 max-w-2xl leading-relaxed">
+            Your structured dictionary of copy-paste Aeries query codes. Select a category below or use the active filter bar to isolate precise auditing scripts instantly.
+          </p>
+        </div>
+      </div>
+
+      <!-- FILTER BOARD & INSTANT SEARCH -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-4 glow-card flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div class="relative w-full md:w-80">
+          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 pointer-events-none">
+            <i class="fa-solid fa-search text-xs"></i>
+          </span>
+          <input type="text" id="directory-search-input" onkeyup="filterQueries()" class="w-full pl-9 pr-4 py-2 text-xs border border-slate-200 rounded-xl outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 transition" placeholder="Search by problem, table, or keyword...">
+        </div>
+
+        <div class="flex items-center gap-1.5 flex-wrap w-full md:w-auto">
+          <button onclick="switchCategory('all')" id="tab-all" class="query-tab px-3 py-1.5 text-xs font-bold border border-slate-200 rounded-full bg-white text-slate-700 hover:bg-slate-50 transition query-active-tab">All</button>
+          <button onclick="switchCategory('attendance')" id="tab-attendance" class="query-tab px-3 py-1.5 text-xs font-bold border border-slate-200 rounded-full bg-white text-slate-700 hover:bg-slate-50 transition">Attendance</button>
+          <button onclick="switchCategory('enrollment')" id="tab-enrollment" class="query-tab px-3 py-1.5 text-xs font-bold border border-slate-200 rounded-full bg-white text-slate-700 hover:bg-slate-50 transition">Enrollment</button>
+          <button onclick="switchCategory('scheduling')" id="tab-scheduling" class="query-tab px-3 py-1.5 text-xs font-bold border border-slate-200 rounded-full bg-white text-slate-700 hover:bg-slate-50 transition">Scheduling</button>
+          <button onclick="switchCategory('student-data')" id="tab-student-data" class="query-tab px-3 py-1.5 text-xs font-bold border border-slate-200 rounded-full bg-white text-slate-700 hover:bg-slate-50 transition">Student Data</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP RIGHT: QUERY ASSISTANT (4/12) -->
+    <aside class="lg:col-span-4">
+      <!-- CHAT CONSOLE CARD -->
+      <div class="bg-white border border-slate-200 rounded-3xl flex flex-col justify-between overflow-hidden glow-card h-[450px] lg:h-full min-h-[450px]">
+        
+        <!-- HEADER CONSOLE -->
+        <div class="bg-slate-50 border-b border-slate-100 px-4 py-3 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
+              🤖
+            </div>
+            <div>
+              <h3 class="text-xs font-black text-navy-900">Query Assistant</h3>
+              <span id="chat-api-status" class="inline-flex items-center gap-1 text-[9px] font-bold text-slate-400 uppercase tracking-widest block">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block mr-1"></span> Gemini Live
+              </span>
+            </div>
+          </div>
+          <button onclick="clearChat()" class="text-[10px] font-black text-slate-400 hover:text-red-600 transition uppercase">
+            Reset
+          </button>
+        </div>
+
+        <!-- SCROLLABLE DIALOGUE AREA -->
+        <div id="companion-chat-history" class="chat-scroll flex-grow overflow-y-auto p-4 space-y-4 bg-[#f8fafc]/50 text-xs leading-relaxed max-h-[180px] lg:max-h-none">
+          <div class="flex items-start gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center text-xs flex-shrink-0 font-bold">
+              🤖
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-3 text-slate-700 shadow-sm space-y-2">
+              <p class="font-extrabold text-navy-900">Hello! I am your WUSD Query Companion.</p>
+              <p>Tell me what you are trying to find or audit, and I will generate a custom Aeries Query code for you instantly!</p>
+              <p class="text-[10px] text-slate-500 font-semibold italic">Examples: "Find seniors missing schedules" or "Find students with missing home phone numbers."</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK SUGGESTIONS CAROUSEL -->
+        <div class="p-3 border-t border-slate-100 bg-slate-50/50 space-y-1.5">
+          <span class="text-[9px] font-black text-slate-400 uppercase tracking-wider block">Suggested Prompts:</span>
+          <div class="flex flex-wrap gap-1">
+            <button onclick="submitPrompt('Find students with no emergency contacts')" class="px-2 py-1 text-[10px] font-bold text-slate-600 bg-white border border-slate-200 rounded-lg hover:border-blue-400 hover:text-blue-600 transition">Missing Contacts</button>
+            <button onclick="submitPrompt('List students with more than 10 unexcused absences')" class="px-2 py-1 text-[10px] font-bold text-slate-600 bg-white border border-slate-200 rounded-lg hover:border-blue-400 hover:text-blue-600 transition">Absenteeism Audit</button>
+            <button onclick="submitPrompt('Find students missing Tdap immunizations')" class="px-2 py-1 text-[10px] font-bold text-slate-600 bg-white border border-slate-200 rounded-lg hover:border-blue-400 hover:text-blue-600 transition">Tdap Sweep</button>
+          </div>
+        </div>
+
+        <!-- TEXT CONSOLE BAR -->
+        <div class="p-3 border-t border-slate-200 bg-white flex items-center gap-2">
+          <input type="text" id="companion-input" onkeypress="handleInputKey(event)" class="flex-grow px-3 py-2 text-xs border border-slate-200 rounded-xl outline-none focus:border-blue-500 transition" placeholder="Describe the data audit you need...">
+          <button onclick="queryAssistant()" class="px-3.5 py-2 text-xs font-black text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition flex items-center gap-1 flex-shrink-0">
+            <span>Search</span> <i class="fa-solid fa-paper-plane text-[9px]"></i>
+          </button>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- BOTTOM SECTION: QUERY CARDS GRID (12/12 - Spanning Full Width) -->
+  <div id="query-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Query Cards are loaded dynamically here from the JSON array -->
+  </div>
+
+</main>
+
+<!-- TOAST ALERT NOTIFICATION -->
+<div class="copy-toast fixed bottom-6 right-6 bg-navy-950 text-white rounded-xl px-4 py-3 shadow-2xl flex items-center gap-2 text-xs font-bold opacity-0 translate-y-10 transition-all duration-300 pointer-events-none" id="toast-clipboard-alert">
+  <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  Query successfully copied to clipboard!
+</div>
+
+<!-- FOOTER -->
+<footer class="footer border-t border-slate-200 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium mt-12">
+  WUSD Aeries Resource Center • Aeries Queries Library Workspace • Formatted for side-by-side active window audits.
+</footer>
+
+<script>
+// RAW QUERY DATA ARRAY STRUCTURE
+const queryDatabase = [
+  // ATTENDANCE CATEGORY
+  {
+    category: "attendance",
+    title: "Missing Attendance Audit Tracker",
+    problem: "Identifying classrooms where secondary teachers have failed to complete daily or period-level attendance calls.",
+    query: "LIST TCH MST TCH.LN TCH.FN MST.SE MST.CN IF MST.HR = 1 AND MST.AT = NULL",
+    what: "Pulls sections set up as primary homeroom/attendance zones (MST.HR = 1) that have zero attendance records populated in the daily tracking ledger.",
+    when: "Run this query daily, exactly 15 minutes after the opening bell, to locate non-compliant classrooms and coordinate front-desk check-in calls.",
+    mistake: "Do not run on secondary rosters during assembly days if specialized flex-schedules are engaged without adjusting the period scope.",
+    id: "query-attendance-missing"
+  },
+  {
+    category: "attendance",
+    title: "Chronic Absenteeism Intervention Sweep",
+    problem: "Finding active students whose cumulative unexcused absences exceed critical thresholds (10+ days), triggering Tier-2 interventions.",
+    query: "LIST STU ATT STU.ID STU.NM BY STU.NM IF ATT.CD = \"A\" AND ATT.DY > 10",
+    what: "Queries the Student demographics (STU) and Attendance calendar ledger (ATT) to list students with more than 10 total unexcused absence marks (A).",
+    when: "Run this on Friday afternoons to construct the site support team's parent contact checklist.",
+    mistake: "Running this sweep without verifying that parent excuse notes submitted within the 3-day Ed Code window have been processed.",
+    id: "query-attendance-chronic"
+  },
+  {
+    category: "attendance",
+    title: "Opening Week No-Show Sweep",
+    problem: "Isolating students marked absent across every single period on Day 1 to execute No-Show withdrawals and protect site numbers.",
+    query: "LIST STU ATT STU.ID STU.NM BY STU.NM IF ATT.DY = 1 AND ATT.CD = \"A\"",
+    what: "Flags students whose Day-1 calendar cells are filled with baseline unexcused absences, indicating they failed to physically attend on opening day.",
+    when: "Run this on the morning of Day 2 of the school year to prepare your No-Show exit slips.",
+    mistake: "Accidentally withdrawing students who were simply checked in at the health clerk's desk but skipped class check-ins.",
+    id: "query-attendance-noshow"
+  },
+  {
+    category: "attendance",
+    title: "Truancy Letter Trigger Sweep",
+    problem: "Isolating students with 3 or more unexcused absences to satisfy Ed Code mandate 48260 notifications.",
+    query: "LIST STU ATT STU.ID STU.NM BY STU.NM IF ATT.CD = \"A\" AND ATT.DY >= 3",
+    what: "Audits active attendance lines and counts students with at least 3 separate unexcused absence codes (A) to flag the Truancy Letter 1 run.",
+    when: "Run this on a weekly cycle (typically Wednesdays) to coordinate standard mail-out notifications.",
+    mistake: "Failing to verify that short-term Independent Study contract credits are updated first.",
+    id: "query-attendance-truancy"
+  },
+
+  // ENROLLMENT CATEGORY
+  {
+    category: "enrollment",
+    title: "Missing Enrollment Proof of Age Documents",
+    problem: "Locating newly enrolled student records where required Birth Certificate proof-of-age verifications are missing in Aeries.",
+    query: "LIST STU STU.ID STU.NM STU.RG BY STU.NM IF STU.RG = NULL AND STU.TG = \"A\"",
+    what: "Sweeps active (STU.TG = 'A') student records to find instances where the primary registry verification flag (STU.RG) is empty.",
+    when: "Run this two weeks prior to the start of the school year to contact families with outstanding documentation.",
+    mistake: "Failing to exclude returning historical students whose files were already audited in prior years.",
+    id: "query-enrollment-documents"
+  },
+  {
+    category: "enrollment",
+    title: "Blank Address / Zip Code Sweep",
+    problem: "Locating students with incomplete primary home addresses that generate CALPADS upload errors.",
+    query: "LIST STU STU.ID STU.NM STU.AD STU.ZP BY STU.NM IF STU.AD = NULL OR STU.ZP = NULL",
+    what: "Checks the primary demographics table (STU) and isolates records with empty home address (STU.AD) or zip code (STU.ZP) fields.",
+    when: "Execute this audit monthly to clean up registrar input mistakes.",
+    mistake: "Running this query and modifying records without checking parent residency affidavits.",
+    id: "query-enrollment-residency"
+  },
+  {
+    category: "enrollment",
+    title: "Missing Emergency Contacts (CON Sweep)",
+    problem: "Locating active students who do not have any priority emergency contacts linked in the CON database table.",
+    query: "SKIP STU CON IF ( CON.CD > \"\" )\nLIST STU ID NM BY STU.NM",
+    what: "Uses the Aeries 'SKIP' operator to find students who do not have a matching contact record linked in the emergency contact (CON) database.",
+    when: "Run this audit on Friday of the first week of school to prioritize immediate parent contacts.",
+    mistake: "Running this query on full district databases without filtering for active students, which will return decades of inactive history.",
+    id: "query-enrollment-contacts"
+  },
+
+  // SCHEDULING CATEGORY
+  {
+    category: "scheduling",
+    title: "Missing Student Course Requests",
+    problem: "Locating active secondary students who have no course requests entered in the SSS table, leaving them unscheduled.",
+    query: "SKIP STU SSS IF SSS.CN > 0\nLIST STU ID NM GR BY GR",
+    what: "Skips any student who has at least one active course request (SSS.CN) and lists the remaining students with empty request profiles.",
+    when: "Run this weekly during spring registration blocks to locate students who missed counseling deadlines.",
+    mistake: "Failing to filter for active grade cohorts, resulting in list anomalies for incoming feeder classes.",
+    id: "query-scheduling-requests"
+  },
+  {
+    category: "scheduling",
+    title: "Flex Class Calendar Overlap Audit",
+    problem: "Locating sections running in flex period layouts that lack a linked class calendar (CCL), breaking attendance audits.",
+    query: "LIST SMS SSM STF STF.LN SMS.SE SMS.FSQ SMS.CSQ IF ( SSM.PR = 1 AND SMS.CSQ < 1 )",
+    what: "Checks section setups in Scheduling Master (SMS) to verify standard academic courses have valid class calendar indices (SMS.CSQ).",
+    when: "Execute this check during pre-scheduling dry-runs before loading student rosters.",
+    mistake: "Running this query before the district office freezes the calendar parameters.",
+    id: "query-scheduling-conflicts"
+  },
+  {
+    category: "scheduling",
+    title: "Active Students with Incomplete Schedules",
+    problem: "Finding secondary students scheduled into fewer than the district-mandated minimum courses (e.g., less than 5 periods).",
+    query: "LIST STU SEC STU.ID STU.NM COUNT(SEC.SE) BY STU.NM IF COUNT(SEC.SE) < 5",
+    what: "Queries active enrollments and groups counts of course sections to flag students with incomplete schedules.",
+    when: "Run this daily during the first week of each semester to support counselor caseload updates.",
+    mistake: "Failing to account for part-time seniors or work-experience students who are authorized to leave early.",
+    id: "query-scheduling-noschedules"
+  },
+
+  // STUDENT DATA CATEGORY
+  {
+    category: "student-data",
+    title: "Duplicate Student Name Auditing",
+    problem: "Finding identical student names across separate profiles to prevent duplicate state SSID generation.",
+    query: "LIST STU ID NM BY NM IF STU.NM = STU.NM AND STU.ID != STU.ID",
+    what: "Compares demographic (STU) rows to locate duplicate student names where Aeries student ID numbers do not match.",
+    when: "Execute this check during weekly registrar audits prior to submitting student numbers.",
+    mistake: "Running on common names (e.g. John Smith) without checking birthdates first to verify unique student profiles.",
+    id: "query-studentdata-duplicates"
+  },
+  {
+    category: "student-data",
+    title: "CALPADS Demographics Field Validation",
+    problem: "Isolating student records with blank state fields (such as home language or birth country) that trigger CALPADS validation errors.",
+    query: "LIST STU STU.ID STU.NM STU.HL STU.BC BY STU.NM IF STU.HL = NULL OR STU.BC = NULL",
+    what: "Audits active student profiles for blank values in Home Language (STU.HL) or Birth Country (STU.BC) fields.",
+    when: "Run this sweep quarterly to clean up records before state reporting submissions.",
+    mistake: "Assuming birth country defaults to USA without checking birth certificate documents.",
+    id: "query-studentdata-cleanup"
+  },
+  {
+    category: "student-data",
+    title: "Incomplete Parent Contact Records",
+    problem: "Isolating students who do not have primary parent/guardian names populated in demographics, breaking automated communication.",
+    query: "LIST STU STU.ID STU.NM STU.PG BY STU.NM IF STU.PG = NULL AND STU.TG = \"A\"",
+    what: "Audits active student records to find empty Parent/Guardian (STU.PG) name cells on the demographics screen.",
+    when: "Execute this audit during opening week enrollment checks.",
+    mistake: "Checking this table and manually editing names without verifying custodial records.",
+    id: "query-studentdata-contacts"
+  }
+];
+
+function renderQueryCards(list) {
+  const container = document.getElementById('query-cards-grid');
+  container.innerHTML = '';
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div class="bg-white border border-slate-200 rounded-2xl p-8 text-center glow-card">
+        <div class="text-3xl mb-2">🔍</div>
+        <h4 class="font-extrabold text-navy-900 text-sm">No Queries Found</h4>
+        <p class="text-xs text-slate-500 mt-1">Try adjusting your search terms or select another category above.</p>
+      </div>
+    `;
+    return;
+  }
+
+  list.forEach(q => {
+    const card = document.createElement('div');
+    card.className = `query-item-card bg-white border border-slate-200 rounded-2xl p-5 glow-card space-y-4 hover:border-blue-300 transition duration-150`;
+    card.setAttribute('data-category', q.category);
+    card.setAttribute('data-search', `${q.title} ${q.problem} ${q.query} ${q.what}`.toLowerCase());
+
+    card.innerHTML = `
+      <div class="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
+        <div>
+          <span class="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 text-blue-700 mb-1">
+            ${q.category}
+          </span>
+          <h3 class="text-sm font-extrabold text-navy-900 leading-tight">${q.title}</h3>
+        </div>
+        <span class="text-slate-400 font-mono text-[10px] bg-slate-50 px-2 py-0.5 rounded border">ID: ${q.id}</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Problem Statement:</span>
+        <p class="text-xs text-slate-700 font-medium">${q.problem}</p>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Aeries Query Syntax:</span>
+        <div class="relative bg-slate-950 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto code-scroll border border-slate-800">
+          <pre id="text-${q.id}">${q.query}</pre>
+          <button onclick="copyToClipboard('text-${q.id}')" class="absolute top-2.5 right-2.5 bg-white/10 hover:bg-white/20 text-white rounded px-2 py-0.5 text-[9px] font-black transition">
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 text-[11px] border-t border-slate-100">
+        <div class="space-y-0.5">
+          <span class="font-bold text-navy-900"><i class="fa-solid fa-circle-info text-blue-500 mr-1"></i> What it does:</span>
+          <p class="text-slate-600 leading-normal">${q.what}</p>
+        </div>
+        <div class="space-y-0.5">
+          <span class="font-bold text-green-700"><i class="fa-solid fa-calendar-check text-green-500 mr-1"></i> When to use it:</span>
+          <p class="text-slate-600 leading-normal">${q.when}</p>
+        </div>
+        <div class="space-y-0.5">
+          <span class="font-bold text-red-700"><i class="fa-solid fa-triangle-exclamation text-red-500 mr-1"></i> Common mistake:</span>
+          <p class="text-slate-600 leading-normal">${q.mistake}</p>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// SEARCH FILTER LOGIC
+function filterQueries() {
+  const searchVal = document.getElementById('directory-search-input').value.toLowerCase();
+  const activeTab = document.querySelector('.query-tab.query-active-tab').id.replace('tab-', '');
+
+  const filtered = queryDatabase.filter(q => {
+    const matchesSearch = `${q.title} ${q.problem} ${q.query} ${q.what}`.toLowerCase().includes(searchVal);
+    const matchesCategory = activeTab === 'all' || q.category === activeTab;
+    return matchesSearch && matchesCategory;
+  });
+
+  renderQueryCards(filtered);
+}
+
+// SWITCH ACTIVE CATEGORIES
+function switchCategory(categoryKey) {
+  document.querySelectorAll('.query-tab').forEach(btn => {
+    btn.classList.remove('query-active-tab');
+  });
+
+  document.getElementById(`tab-${categoryKey}`).classList.add('query-active-tab');
+  filterQueries();
+}
+
+// SECURE COPY UTILITY
+function copyToClipboard(elementId) {
+  const element = document.getElementById(elementId);
+  const text = element.textContent;
+
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = text;
+  document.body.appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempTextArea);
+
+  // Show Toast
+  const toast = document.getElementById('toast-clipboard-alert');
+  toast.classList.remove('opacity-0', 'translate-y-10');
+  toast.classList.add('opacity-100', 'translate-y-0');
+  setTimeout(() => {
+    toast.classList.remove('opacity-100', 'translate-y-0');
+    toast.classList.add('opacity-0', 'translate-y-10');
+  }, 2500);
+}
+
+const COMPANION_PROMPT = `You are the WUSD Aeries Query Assistant. Your task is to generate valid Aeries Query Language (AQL) syntax based on user requests, specifically designed for school site office staff. WUSD Aeries Query language uses a simplified syntax. Examples: 
+- LIST STU ID NM BY NM IF STU.GR = 12
+- LIST STU ATT STU.ID STU.NM BY STU.NM IF ATT.CD = 'A'
+- SKIP STU CON IF ( CON.CD > '' ) 
+LIST STU ID NM
+Return your response using clean markdown formatting. Provide the generated query in a markdown code block, followed by a clear, plain-English explanation of 'What it does', 'When to use it', and 'Common mistakes' like matching incorrect school terms or running on inactive students. Keep it professional, encouraging, and tailored for clerical staff.`;
+
+const offlineDictionary = {
+  "find students with no emergency contacts": {
+    query: "SKIP STU CON IF ( CON.CD > \"\" )\nLIST STU ID NM BY STU.NM",
+    explanation: "This query sweeps the contacts database and skips any student that has at least one active contact card on file. It then lists the remaining students with blank emergency contact sheets."
+  },
+  "list students with more than 10 unexcused absences": {
+    query: "LIST STU ATT STU.ID STU.NM BY STU.NM IF ATT.CD = \"A\" AND ATT.DY > 10",
+    explanation: "Audits active attendance lines and filters for students who have accumulated more than 10 unexcused absence marks (A) in the ATT table."
+  },
+  "find students missing tdap immunizations": {
+    query: "LIST STU IMM STU.ID STU.NM BY STU.NM IF IMM.TD = NULL",
+    explanation: "Sweeps the immunization ledger (IMM) to identify students who do not have a recorded Tdap booster vaccination date."
+  }
+};
+
+// CHAT SUBMITTER
+function submitPrompt(text) {
+  document.getElementById('companion-input').value = text;
+  queryAssistant();
+}
+
+function handleInputKey(event) {
+  if (event.key === 'Enter') {
+    queryAssistant();
+  }
+}
+
+// INTERACTIVE CHAT ENGINE WITH GEMINI
+async function queryAssistant() {
+  const inputEl = document.getElementById('companion-input');
+  const text = inputEl.value.trim();
+  if (!text) return;
+
+  // Append user message
+  appendMessage(text, 'user');
+  inputEl.value = '';
+
+  const thinkingId = appendThinkingBubble();
+
+  try {
+    const responseText = await callGeminiLive(text);
+    removeThinkingBubble(thinkingId);
+    appendMessage(responseText, 'bot');
+  } catch (error) {
+    console.error("AI Error:", error);
+    removeThinkingBubble(thinkingId);
+
+    // Offline match search
+    const cleanText = text.toLowerCase().replace(/[?.]/g, '').trim();
+    const offlineMatch = offlineDictionary[cleanText];
+
+    if (offlineMatch) {
+      const fallbackHtml = `
+        <p class="font-extrabold text-navy-900">Found Local Match (Offline Mode):</p>
+        <div class="relative bg-slate-950 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto border mt-2">
+          <pre>${offlineMatch.query}</pre>
+        </div>
+        <p class="mt-2 text-slate-600">${offlineMatch.explanation}</p>
+      `;
+      appendMessage(fallbackHtml, 'bot');
+    } else {
+      appendMessage(`<p class="text-red-600 font-bold"><i class="fa-solid fa-triangle-exclamation"></i> Communication error. Try choosing one of our suggested prompts or search for on-page cards.</p>`, 'bot');
+    }
+  }
+}
+
+// FETCH GEMINI CONNECTIVITY
+async function callGeminiLive(userText) {
+  const apiKey = "";
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+  const payload = {
+    contents: [{ parts: [{ text: userText }] }],
+    systemInstruction: {
+      parts: [{ text: COMPANION_PROMPT }]
+    }
+  };
+
+  let delay = 1000;
+  for (let i = 0; i < 3; i++) {
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        const candidate = result.candidates?.[0];
+        if (candidate && candidate.content?.parts?.[0]?.text) {
+          return formatMarkdown(candidate.content.parts[0].text);
+        }
+      }
+    } catch (e) {
+      if (i === 2) throw e;
+    }
+    await new Promise(resolve => setTimeout(resolve, delay));
+    delay *= 2;
+  }
+  throw new Error("API call timed out.");
+}
+
+// APPEND BUBBLES
+function appendMessage(content, sender) {
+  const container = document.getElementById('companion-chat-history');
+  const wrapper = document.createElement('div');
+  wrapper.className = `flex items-start gap-2.5 ${sender === 'user' ? 'justify-end' : ''}`;
+
+  const icon = sender === 'user' ? '👩‍💻' : '🤖';
+  const bubbleStyles = sender === 'user'
+    ? 'bg-blue-600 text-white rounded-xl rounded-tr-none p-3 shadow-sm'
+    : 'bg-white border border-slate-200 rounded-xl rounded-tl-none p-3 text-slate-700 shadow-sm space-y-2';
+
+  wrapper.innerHTML = `
+    <div class="w-7 h-7 rounded-lg bg-gradient-to-br ${sender === 'user' ? 'from-blue-600 to-indigo-600 text-white' : 'from-navy-900 to-blue-600 text-white'} flex items-center justify-center text-xs flex-shrink-0 font-bold ${sender === 'user' ? 'order-last' : ''}">
+      ${icon}
+    </div>
+    <div class="${bubbleStyles}">
+      ${content}
+    </div>
+  `;
+  container.appendChild(wrapper);
+  container.scrollTop = container.scrollHeight;
+}
+
+function appendThinkingBubble() {
+  const container = document.getElementById('companion-chat-history');
+  const id = 'thinking-' + Date.now();
+  const wrapper = document.createElement('div');
+  wrapper.id = id;
+  wrapper.className = `flex items-start gap-2.5`;
+
+  wrapper.innerHTML = `
+    <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center text-xs flex-shrink-0 font-bold">
+      🤖
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl rounded-tl-none p-3 text-slate-400 italic flex items-center gap-1.5 shadow-sm">
+      <i class="fa-solid fa-cog fa-spin text-blue-500"></i> Formulating valid query parameters...
+    </div>
+  `;
+  container.appendChild(wrapper);
+  container.scrollTop = container.scrollHeight;
+  return id;
+}
+
+function removeThinkingBubble(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function clearChat() {
+  const container = document.getElementById('companion-chat-history');
+  container.innerHTML = `
+    <div class="flex items-start gap-2.5">
+      <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center text-xs flex-shrink-0 font-bold">
+        🤖
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl p-3 text-slate-700 shadow-sm space-y-2">
+        <p class="font-extrabold text-navy-900">Console reset successful.</p>
+        <p>I am ready to audit and structure your Aeries query requests from scratch. What are we sweeping today?</p>
+      </div>
+    </div>
+  `;
+}
+
+// BASIC MARKDOWN FORMATTER
+function formatMarkdown(md) {
+  let html = md;
+  // Code blocks
+  html = html.replace(/```(?:sql|aeries)?\n([\s\S]*?)```/g, '<div class="relative bg-slate-950 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto border mt-2"><pre>$1</pre></div>');
+  // Bold
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-black text-navy-900">$1</strong>');
+  // Ordered lists
+  html = html.replace(/^\d+\.\s(.*)$/gm, '<li class="mb-1">$1</li>');
+  // Paragraph gaps
+  html = html.replace(/\n\n/g, '</p><p class="mt-1.5 text-slate-700">');
+  return `<div class="space-y-1 text-xs text-slate-700 leading-relaxed">${html}</div>`;
+}
+
+// PAGE INITIALIZATION
+window.onload = function() {
+  renderQueryCards(queryDatabase);
+};
+</script>
+
+</body>
+</html>
