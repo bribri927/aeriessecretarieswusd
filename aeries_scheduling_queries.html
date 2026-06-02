@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aeries Scheduling Queries - Master Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #12355b;
+  --blue: #2563eb;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --red: #ef4444;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #dbe3ef;
+  --bg: #f8fafc;
+  --soft: #eff6ff;
+  --white: #ffffff;
+}
+
+* { 
+  box-sizing: border-box; 
+}
+
+body {
+  margin: 0; 
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef5ff 100%); 
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.header {
+  position: sticky; 
+  top: 0; 
+  z-index: 50; 
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(14px); 
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+}
+
+.header-inner {
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 14px 22px; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 16px; 
+  flex-wrap: wrap;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 16px; 
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 900; 
+  font-size: 24px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, .22);
+}
+
+h1 { font-size: 22px; margin: 0; font-weight: 900; letter-spacing: -.04em; color: var(--navy); }
+.subtitle { margin-top: 3px; color: var(--muted); font-size: 13px; font-weight: 650; }
+
+.btn {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+  border-radius: 14px;
+  padding: 11px 18px; 
+  text-decoration: none; 
+  font-weight: 900; 
+  border: 1px solid transparent;
+  background: var(--blue); 
+  color: white; 
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.btn:hover { 
+  transform: translateY(-1px); 
+  filter: brightness(.95); 
+}
+
+.btn.secondary { 
+  background: white; 
+  color: #1d4ed8; 
+  border-color: #bfdbfe; 
+  box-shadow: none;
+}
+
+.container { 
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 22px; 
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--navy), #1e3a8a); 
+  color: white; 
+  border-radius: 30px; 
+  padding: 34px;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, .22); 
+  margin: 18px 0 22px;
+}
+
+.badge {
+  display: inline-flex; 
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, .16); 
+  border: 1px solid rgba(255, 255, 255, .26);
+  border-radius: 999px; 
+  padding: 6px 12px; 
+  font-size: 11px; 
+  font-weight: 900;
+  text-transform: uppercase; 
+  letter-spacing: .08em; 
+  margin-bottom: 14px;
+}
+
+.hero h2 { font-size: 38px; line-height: 1.05; margin: 0 0 12px; letter-spacing: -.05em; }
+.hero p { color: #dbeafe; max-width: 900px; font-size: 16px; line-height: 1.6; margin: 0; }
+
+.section {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-radius: 24px; 
+  padding: 24px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .055);
+  margin-bottom: 22px;
+}
+
+.section h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.035em; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+.section p { color: #475569; line-height: 1.58; font-size: 14.5px; }
+
+/* AI Assistant Interface Styles */
+.ai-workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+@media(max-width: 900px) {
+  .ai-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ai-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .055);
+  overflow: hidden;
+}
+
+.ai-card-header {
+  background: linear-gradient(135deg, var(--navy), #1e3a8a);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+.ai-chat-meta h4 { margin: 0; font-size: 15px; font-weight: 800; }
+.ai-chat-meta p { margin: 0; font-size: 11px; opacity: 0.8; }
+
+.chat-history {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chat-bubble {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.chat-bubble.ai {
+  background: white;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  align-self: flex-start;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.chat-bubble.user {
+  background: var(--blue);
+  color: white;
+  align-self: flex-end;
+}
+
+.ai-suggested-prompts {
+  padding: 12px 16px;
+  background: #f1f5f9;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.prompt-pill {
+  font-size: 12px;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--navy);
+  transition: all 0.15s ease;
+}
+
+.prompt-pill:hover {
+  background: var(--soft);
+  border-color: #bfdbfe;
+  color: var(--blue);
+}
+
+.chat-input-area {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid var(--line);
+  background: white;
+}
+
+.chat-text-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+}
+
+.chat-text-input:focus {
+  border-color: var(--blue);
+}
+
+/* AI Output Panel Styles */
+.output-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .055);
+}
+
+.output-title-wrapper {
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.output-title-wrapper h3 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.output-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.code-container {
+  background: #0f172a;
+  border-radius: 14px;
+  padding: 16px;
+  position: relative;
+  border: 1px solid #334155;
+}
+
+.code-block {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #38bdf8;
+  font-size: 13.5px;
+  white-space: pre-wrap;
+  margin: 0;
+  word-break: break-all;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.badge-green {
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 800;
+}
+
+/* Query Directory Section */
+.directory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 11px 14px 11px 38px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--blue);
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 13px;
+  color: var(--muted);
+}
+
+.filter-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.filter-btn.active {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+.queries-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media(max-width: 768px) {
+  .queries-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.query-card {
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+}
+
+.query-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.query-meta h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.query-meta span {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: var(--soft);
+  color: var(--blue);
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+}
+
+.query-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.path-box {
+  background: var(--bg);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: monospace;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+/* Database Schema Panel */
+.schema-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.schema-box {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: var(--bg);
+}
+
+.schema-box strong {
+  display: block;
+  font-size: 14px;
+  color: var(--navy);
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 4px;
+}
+
+.schema-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: monospace;
+  font-size: 12px;
+  color: #475569;
+}
+
+.schema-box li {
+  margin-bottom: 4px;
+}
+
+/* Alert notifications */
+.copy-alert {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--navy);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  font-weight: 700;
+  font-size: 13px;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
+}
+
+.copy-alert.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.footer { color: #64748b; text-align: center; font-size: 12px; padding: 34px 20px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+.next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+.next-card { background: linear-gradient(180deg, #fff, #f8fafc); border: 1px solid var(--line); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.next-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--navy); }
+.next-card p { font-size: 13.5px; color: #475569; margin-top: 0; margin-bottom: 14px; line-height: 1.5; }
+
+@media(max-width:900px) {
+  .next-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">W</div>
+      <div>
+        <h1>Aeries Master Scheduling Queries</h1>
+        <div class="subtitle">WUSD District-Wide Aeries Resource & Support Toolkit</div>
+      </div>
+    </div>
+    <a class="btn secondary" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+      🏠 WUSD Central Hub Home
+    </a>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="badge">📊 Query Command Center</div>
+    <h2>Master Scheduling Query Workspace</h2>
+    <p>Aeries database queries are the ultimate diagnostic tool to identify structural, teacher, and student data errors in your master schedule. Use this workspace to copy starter templates or chat with our <strong>Aeries Query AI Assistant</strong> to instantly generate custom syntax for your live audits.</p>
+  </section>
+
+  <!-- DATABASE SCHEEMA QUICK SHEET -->
+  <section class="section">
+    <h3>Aeries Core Table & Field Quick-Reference</h3>
+    <p>Master scheduling queries relies on targeted instructions sent to several database tables. Refer to this quick sheet before compiling your queries:</p>
+    <div class="schema-grid">
+      <div class="schema-box">
+        <strong>STU (Student)</strong>
+        <ul>
+          <li>ID: Student ID</li>
+          <li>NM: Name (Last, First)</li>
+          <li>GR: Grade Level</li>
+          <li>SG: Scheduling Group</li>
+        </ul>
+      </div>
+      <div class="schema-box">
+        <strong>SSS (Course Requests)</strong>
+        <ul>
+          <li>CN: Course Number</li>
+          <li>C2: Alternate Course</li>
+          <li>AL: Exclude Course Flag</li>
+          <li>PR: Priority Level</li>
+        </ul>
+      </div>
+      <div class="schema-box">
+        <strong>MST (Master Schedule)</strong>
+        <ul>
+          <li>SE: Section Number</li>
+          <li>CN: Course Number</li>
+          <li>MX: Maximum Seats</li>
+          <li>ACT: Active Enrollment</li>
+        </ul>
+      </div>
+      <div class="schema-box">
+        <strong>SMS (Scheduling Master)</strong>
+        <ul>
+          <li>SE: Section Number</li>
+          <li>RM: Room Code</li>
+          <li>PD: Period Number</li>
+          <li>CSQ: Class Calendar Link</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI INTERACTIVE WORKSPACE -->
+  <section class="ai-workspace">
+    
+    <!-- LEFT PANEL: CHAT INTERFACE -->
+    <div class="ai-card">
+      <div class="ai-card-header">
+        <div class="ai-avatar">🤖</div>
+        <div class="ai-chat-meta">
+          <h4>Aeries Query AI Assistant</h4>
+          <p>Describe what you want to audit to generate your query syntax.</p>
+        </div>
+      </div>
+      
+      <div class="chat-history" id="chat-box">
+        <div class="chat-bubble ai">
+          Hi! I am your Aeries Master Scheduling Query assistant. I can translate your audit goals into functional Aeries query commands. Tell me what you are trying to find!
+        </div>
+      </div>
+      
+      <div class="ai-suggested-prompts">
+        <div class="prompt-pill" onclick="sendSuggestion('Find kids with duplicate requests')">Duplicate Requests</div>
+        <div class="prompt-pill" onclick="sendSuggestion('Show me sections with zero students')">Empty Sections</div>
+        <div class="prompt-pill" onclick="sendSuggestion('List overfilled classes')">Overfilled Classes</div>
+        <div class="prompt-pill" onclick="sendSuggestion('Check for missing flex calendars')">Missing Flex Calendars</div>
+      </div>
+      
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" class="chat-text-input" placeholder="Tell the bot what you want to discover..." onkeypress="handleKeyPress(event)">
+        <button class="btn" onclick="processChatIntent()">Ask Bot</button>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: GENERATOR OUTPUT -->
+    <div class="output-card">
+      <div class="output-title-wrapper">
+        <span class="badge-green" style="float: right;" id="query-cat">System</span>
+        <h3 id="query-title">Query Output</h3>
+      </div>
+      <div class="output-body">
+        <p id="query-desc">Select a suggested prompt or type an audit query to load structural diagnostics.</p>
+        
+        <label style="font-weight:700; font-size:12px; color:var(--muted); text-transform:uppercase;">Copyable Query Command:</label>
+        <div class="code-container">
+          <button class="copy-btn" onclick="copyGenQuery()">Copy Code</button>
+          <pre class="code-block" id="generated-query">-- Query Command Will Load Here --</pre>
+        </div>
+        
+        <div id="query-checklist-wrapper" style="display:none;">
+          <label style="font-weight:700; font-size:12px; color:var(--muted); text-transform:uppercase; display:block; margin-bottom:6px;">Auditing Execution Check:</label>
+          <ul id="query-checklist" style="margin:0; padding-left:20px; font-size:13.5px; color:#475569; line-height:1.6;"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUERY DIRECTORY LIBRARY -->
+  <section class="section">
+    <div class="directory-header">
+      <h3>Starter Aeries Query Library</h3>
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-bar" class="search-input" placeholder="Search queries..." onkeyup="filterQueries()">
+      </div>
+    </div>
+    
+    <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
+      <button class="filter-btn active" id="btn-all" onclick="filterCategory('all')">All</button>
+      <button class="filter-btn" id="btn-stu" onclick="filterCategory('stu')">Students & Requests</button>
+      <button class="filter-btn" id="btn-mst" onclick="filterCategory('mst')">Master Board & Sections</button>
+      <button class="filter-btn" id="btn-stf" onclick="filterCategory('stf')">Staff & Teachers</button>
+    </div>
+
+    <div class="queries-grid" id="queries-container">
+      <!-- Cards dynamically generated via JavaScript -->
+    </div>
+  </section>
+
+  <!-- NEXT SEGMENT NAVIGATOR -->
+  <section class="section" style="margin-top:22px">
+    <h3>Where to go next</h3>
+    <p>Use the specific master scheduling workspaces to align your generated query diagnostics to corresponding design milestones:</p>
+    <div class="next-grid">
+      <div class="next-card">
+        <div>
+          <h3>🚀 Start Here Guide</h3>
+          <p>Review standardized timelines, initial configurations, and chronological rules of master schedule design.</p>
+        </div>
+        <a class="btn" href="scheduling-start-here.html">Open Start Here</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🏫 Elementary Level</h3>
+          <p>Learn to design self-contained grade cohorts, AM/PM Kindergarten assignments, and specialist rotation preps.</p>
+        </div>
+        <a class="btn" href="scheduling-elementary.html">Open Elementary Guide</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🛠 Troubleshooting</h3>
+          <p>Deep-dive into student reject codes, room overrides, class overload margins, and diagnostic matrices.</p>
+        </div>
+        <a class="btn" href="scheduling-troubleshooting.html">Open Troubleshooting</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="copy-alert" id="copy-toast">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="stroke:#10b981;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  Query successfully copied to clipboard!
+</div>
+
+<footer class="footer">
+  WUSD Aeries Resource Center • Aeries Scheduling Queries Guide • Designed for District Administrators, Registrars, and Principals. Ensure query parameters match school year definitions before execution.
+</footer>
+
+<script>
+// QUERY LIBRARY DATA DIRECTORY
+const queryDirectory = [
+  {
+    title: "Duplicate Course Requests",
+    desc: "Identifies students who have duplicate requests entered for the same course code, which blocks successful loading.",
+    code: "LIST STU SSS STU.ID STU.LN STU.FN SSS.CN BY STU.ID IF SSS.CN = SSS.CN",
+    path: "Scheduling Process → Course Requests → Request Reports",
+    cat: "stu"
+  },
+  {
+    title: "Students Missing Requests",
+    desc: "Isolates students in a target grade (e.g. 10th grade) who have no scheduled requests in the SSS table.",
+    code: "SKIP STU SSS IF SSS.CN > 0\nLIST STU ID LN FN GR BY GR IF GR = 10",
+    path: "Scheduling Process → Reports → Student Query Audit",
+    cat: "stu"
+  },
+  {
+    title: "Classes Over Max Capacity",
+    desc: "Lists all sections where current student load exceeds the maximum allowable class size setting (MST.MX).",
+    code: "LIST MST CRS MST.SE MST.CN CRS.CO MST.MX MST.ACT IF MST.ACT > MST.MX",
+    path: "Scheduling Process → Master Schedule → Master Schedule Board",
+    cat: "mst"
+  },
+  {
+    title: "Sections with Zero Enrollment",
+    desc: "Identifies empty sections in your master board where enrollment is currently 0, indicating potential dead space.",
+    code: "LIST MST CRS MST.SE MST.CN CRS.CO MST.ACT IF MST.ACT = 0",
+    path: "Scheduling Process → Master Schedule → Interactive Schedule",
+    cat: "mst"
+  },
+  {
+    title: "Missing Flex Class Calendars",
+    desc: "Isolates sections in flex-schedule models that lack a linked class calendar index, resulting in attendance errors.",
+    code: "LIST SMS SSM STF STF.LN SMS.SE SMS.FSQ SMS.CSQ IF ( SSM.PR = 1 AND SMS.CSQ < 1 )",
+    path: "School Info / Scheduling → Flex Period Setup",
+    cat: "mst"
+  },
+  {
+    title: "Teacher Load and Section Auditing",
+    desc: "Lists active sections alongside teacher codes and periods to verify FTE targets and prep designations.",
+    code: "LIST SMS SSM STF STF.LN STF.FN SMS.SE SMS.PD BY STF.LN STF.FN",
+    path: "Scheduling Process → Reports → Teacher Section Audit",
+    cat: "stf"
+  },
+  {
+    title: "Room Overlaps & Double Bookings",
+    desc: "Finds instances where multiple sections are assigned to the same room during identical period blocks.",
+    code: "LIST SMS SSM STF STF.LN SMS.SE SMS.RM SMS.PD BY SMS.RM SMS.PD IF SMS.RM = SMS.RM",
+    path: "Scheduling Process → Reports → Room Overlap Listing",
+    cat: "mst"
+  },
+  {
+    title: "Unscheduled Seniors Audit",
+    desc: "Isolates seniors (Grade 12) who are missing core graduation requirements or have empty instructional blocks.",
+    code: "SKIP STU HIS IF HIS.CN = 1200\nLIST STU NM ID GR BY NM IF GR = 12",
+    path: "Scheduling Process → Student Data → Graduation Status",
+    cat: "stu"
+  }
+];
+
+// INTENT MAPPING DICTIONARY FOR "AI QUERY ASSISTANT"
+const aiIntents = [
+  {
+    keywords: ["duplicate", "dup", "double request", "request twice"],
+    title: "Isolate Duplicate Student Course Requests",
+    desc: "Students with duplicate requests for the same course code are isolated. Running this ensures that the scheduling engine does not throw a Reject Code due to duplicate record allocation in the <code>SSS</code> database table.",
+    code: "LIST STU SSS STU.ID STU.LN STU.FN SSS.CN BY STU.ID IF SSS.CN = SSS.CN",
+    cat: "Student Requests (SSS)",
+    checklist: [
+      "Open standard Aeries query workspace.",
+      "Execute query to find duplicate request entries.",
+      "Clear duplicate entries before loading scheduling passes."
+    ]
+  },
+  {
+    keywords: ["empty", "zero", "no students", "low enroll", "size 0"],
+    title: "List Empty & Low-Enrollment Sections",
+    desc: "This query lists active sections in your draft or current master schedule (`MST` table) with zero student assignments, helping you find and remove dead space.",
+    code: "LIST MST CRS MST.SE MST.CN CRS.CO MST.ACT IF MST.ACT = 0",
+    cat: "Master Schedule (MST)",
+    checklist: [
+      "Confirm if section should be deleted or merged.",
+      "Check if class has been updated with students on subsequent pass.",
+      "Optimize teacher allocation on inactive rooms."
+    ]
+  },
+  {
+    keywords: ["full", "limit", "overfilled", "max size", "capacity", "overloaded"],
+    title: "Identify Over-Capacity Sections",
+    desc: "Quickly flags sections where the active student headcount is greater than your contracted section limit.",
+    code: "LIST MST CRS MST.SE MST.CN CRS.CO MST.MX MST.ACT IF MST.ACT > MST.MX",
+    cat: "Master Schedule (MST)",
+    checklist: [
+      "Compare actual enrollment (MST.ACT) with limits (MST.MX).",
+      "Consult site administration before manually adjusting limits.",
+      "Utilize drag-and-drop to balance class sizes."
+    ]
+  },
+  {
+    keywords: ["calendar", "csq", "flex calendar", "unlinked"],
+    title: "Audit Missing Flex Period Calendars",
+    desc: "Flex scheduling models require active linking between class sections and Calendars. This query finds sections that have unlinked calendar sequences.",
+    code: "LIST SMS SSM STF STF.LN SMS.SE SMS.FSQ SMS.CSQ IF ( SSM.PR = 1 AND SMS.CSQ < 1 )",
+    cat: "Scheduling Master (SMS)",
+    checklist: [
+      "Identify the section record missing the calendar link (SMS.CSQ).",
+      "Navigate to Flex Scheduling Period Setup in Aeries.",
+      "Link corresponding calendar schedules to prevent errors."
+    ]
+  },
+  {
+    keywords: ["missing request", "no request", "incomplete request", "empty schedule"],
+    title: "Find Students Missing Requests",
+    desc: "Isolates students who are missing requested courses or have completely empty scheduling records, which prevents schedule loading.",
+    code: "SKIP STU SSS IF SSS.CN > 0\nLIST STU ID LN FN GR BY GR",
+    cat: "Student Audit (STU)",
+    checklist: [
+      "Identify target student grade records.",
+      "Verify requests have been collected on standard cards.",
+      "Update missing requests in the student profile before running simulation."
+    ]
+  },
+  {
+    keywords: ["room", "overlap", "double book", "classroom duplicate"],
+    title: "Room Overlap and Collision Audit",
+    desc: "Scans active section files to identify instances where multiple sections are assigned to the same physical room during identical periods.",
+    code: "LIST SMS SSM STF STF.LN SMS.SE SMS.RM SMS.PD BY SMS.RM SMS.PD IF SMS.RM = SMS.RM",
+    cat: "Scheduling Master (SMS)",
+    checklist: [
+      "Open your room assignments schedule.",
+      "Locate room codes with multiple sections assigned.",
+      "Re-assign sections to open rooms to resolve collisions."
+    ]
+  },
+  {
+    keywords: ["teacher load", "prep", "preps", "teacher schedule", "fte"],
+    title: "Teacher Load & Schedule Verification",
+    desc: "Lists active sections alongside teacher codes and periods to verify FTE targets and prep designations.",
+    code: "LIST SMS SSM STF STF.LN STF.FN SMS.SE SMS.PD BY STF.LN STF.FN",
+    cat: "Staff Audit (STF)",
+    checklist: [
+      "Check active teacher sections against FTE targets.",
+      "Verify prep periods are scheduled correctly.",
+      "Ensure co-teachers are assigned to classrooms if needed."
+    ]
+  }
+];
+
+// RENDER DEFAULT STARTER CARDS
+function renderQueries(list) {
+  const container = document.getElementById('queries-container');
+  container.innerHTML = '';
+  
+  list.forEach((q, idx) => {
+    const card = document.createElement('div');
+    card.className = 'query-card';
+    card.setAttribute('data-cat', q.cat);
+    
+    card.innerHTML = `
+      <div>
+        <div class="query-meta">
+          <h4>${q.title}</h4>
+          <span>${q.cat}</span>
+        </div>
+        <p class="query-desc">${q.desc}</p>
+        <div class="path-box">Path: ${q.path}</div>
+      </div>
+      <div class="code-container">
+        <button class="copy-btn" onclick="copyCardQuery('query-code-${idx}')">Copy</button>
+        <pre class="code-block" id="query-code-${idx}">${q.code}</pre>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// COPIERS
+function copyCardQuery(elementId) {
+  const el = document.getElementById(elementId);
+  const text = el.textContent;
+  executeCopy(text);
+}
+
+function copyGenQuery() {
+  const text = document.getElementById('generated-query').textContent;
+  if(text.includes("--")) return; // Don't copy placeholder
+  executeCopy(text);
+}
+
+function executeCopy(text) {
+  const temp = document.createElement('textarea');
+  temp.value = text;
+  document.body.appendChild(temp);
+  temp.select();
+  document.execCommand('copy');
+  document.body.removeChild(temp);
+  
+  // Show toast notification
+  const toast = document.getElementById('copy-toast');
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2500);
+}
+
+// SEARCH AND CATEGORY FILTERING
+function filterQueries() {
+  const searchVal = document.getElementById('search-bar').value.toLowerCase();
+  const activeFilter = document.querySelector('.filter-btn.active').id.replace('btn-', '');
+  
+  const cards = document.querySelectorAll('.query-card');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-cat');
+    const titleText = card.querySelector('h4').textContent.toLowerCase();
+    const descText = card.querySelector('.query-desc').textContent.toLowerCase();
+    
+    const matchesSearch = titleText.includes(searchVal) || descText.includes(searchVal);
+    const matchesFilter = activeFilter === 'all' || cardCat === activeFilter;
+    
+    if (matchesSearch && matchesFilter) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function filterCategory(cat) {
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  document.getElementById('btn-' + cat).classList.add('active');
+  filterQueries();
+}
+
+// CHATBOT SIMULATOR PROCESSING
+function sendSuggestion(text) {
+  document.getElementById('chat-input').value = text;
+  processChatIntent();
+}
+
+function handleKeyPress(event) {
+  if (event.key === 'Enter') {
+    processChatIntent();
+  }
+}
+
+function processChatIntent() {
+  const inputEl = document.getElementById('chat-input');
+  const userText = inputEl.value.trim();
+  if(!userText) return;
+  
+  // Append user bubble
+  appendBubble(userText, 'user');
+  inputEl.value = '';
+  
+  // Simulate bot thinking
+  setTimeout(() => {
+    const matched = findIntent(userText);
+    
+    if (matched) {
+      appendBubble(`I matched your query to <strong>${matched.title}</strong>! Check the generated query in the Output Panel.`, 'ai');
+      loadGeneratorOutput(matched);
+    } else {
+      appendBubble("I'm not quite sure about that request. Try choosing one of our popular suggested prompts above, or ask me about duplicate requests or overfilled classes.", 'ai');
+    }
+  }, 400);
+}
+
+function findIntent(text) {
+  const clean = text.toLowerCase();
+  
+  for (let intent of aiIntents) {
+    for (let keyword of intent.keywords) {
+      if (clean.includes(keyword)) {
+        return intent;
+      }
+    }
+  }
+  return null;
+}
+
+function appendBubble(text, sender) {
+  const chatBox = document.getElementById('chat-box');
+  const div = document.createElement('div');
+  div.className = `chat-bubble ${sender}`;
+  div.innerHTML = text;
+  chatBox.appendChild(div);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function loadGeneratorOutput(data) {
+  document.getElementById('query-title').textContent = data.title;
+  document.getElementById('query-cat').textContent = data.cat;
+  document.getElementById('query-desc').innerHTML = data.desc;
+  document.getElementById('generated-query').textContent = data.code;
+  
+  // Generate checklist
+  const listEl = document.getElementById('query-checklist');
+  listEl.innerHTML = '';
+  data.checklist.forEach(step => {
+    const li = document.createElement('li');
+    li.textContent = step;
+    listEl.appendChild(li);
+  });
+  
+  document.getElementById('query-checklist-wrapper').style.display = 'block';
+}
+
+// PAGE LOAD INITIALIZATION
+window.onload = function() {
+  renderQueries(queryDirectory);
+  
+  // Load first intent as default in panel
+  loadGeneratorOutput(aiIntents[0]);
+};
+</script>
+
+</body>
+</html>
