@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WUSD Ask the Aeries Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            50: '#f4f7fa',
+            100: '#eef5ff',
+            900: '#12355b',
+            950: '#0f1e36',
+          },
+          blue: {
+            600: '#2563eb',
+            700: '#1d4ed8',
+          },
+          gold: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            600: '#d97706',
+            700: '#b45309',
+          },
+          green: {
+            50: '#f0fdf4',
+            100: '#d1fae5',
+            600: '#10b981',
+            700: '#047857',
+          },
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            600: '#dc2626',
+            700: '#b91c1c',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(18, 53, 91, 0.08);
+  }
+  .chat-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .chat-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .chat-scroll::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 99px;
+  }
+  .pulsing-status {
+    animation: statusPulse 2s infinite ease-in-out;
+  }
+  @keyframes statusPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  .chat-bubble code {
+    background: #0f1e36;
+    color: #38bdf8;
+    padding: 3px 6px;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+  }
+  .chat-bubble pre {
+    background: #0f1e36;
+    color: #38bdf8;
+    padding: 12px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11.5px;
+    margin: 8px 0;
+    border: 1px solid #1e293b;
+    position: relative;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f8fafc] to-[#eef5ff] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center font-black text-xl shadow-md shadow-blue-500/20">
+        W
+      </div>
+      <div>
+        <h1 class="text-lg font-extrabold text-navy-900 tracking-tight leading-none flex items-center gap-2">
+          <span>Ask the Aeries Assistant</span>
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-extrabold">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-600 pulsing-status"></span>
+            Smart Front Door
+          </span>
+        </h1>
+        <p class="text-[11px] font-semibold text-slate-500 mt-1">Washington Unified School District Administrative Help Desk</p>
+      </div>
+    </div>
+    
+    <!-- SUB-PORTAL QUICK LINKS -->
+    <div class="flex items-center gap-1.5 flex-wrap">
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-start-here.html">
+        🚀 Start Here
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-secretary.html">
+        👩‍💼 Secretary
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-attendance.html">
+        🕒 Attendance
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-registrar.html">
+        🧾 Registrar
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-health.html">
+        🏥 Health
+      </a>
+      <a class="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-admin.html">
+        🧑‍💼 Admin Assistant
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-extrabold text-blue-600 bg-white border border-blue-200 rounded-xl hover:bg-slate-50 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-home"></i> Central Hub
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+  <!-- LEFT COLUMN: DESK REFERENCE SIDEBAR (1/4 width) -->
+  <aside class="lg:col-span-1 flex flex-col gap-6">
+    
+    <!-- SYSTEM API CONNECTION HUD -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-4 glow-card space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-black tracking-wider text-slate-400 uppercase">System Status</span>
+        <span id="conn-badge" class="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-black rounded-lg bg-green-50 text-green-700 uppercase">
+          <i class="fa-solid fa-cloud-bolt"></i> Gemini Live
+        </span>
+      </div>
+      <p class="text-xs text-slate-500 leading-normal">
+        Your questions are translated in real-time. If offline, the portal automatically triggers built-in local database rules.
+      </p>
+      
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-xs font-semibold text-slate-600">Secure API Sandbox</span>
+        <button onclick="toggleAPIConnection()" id="toggle-conn-btn" class="text-[10px] font-extrabold text-blue-600 hover:underline">
+          Switch to Local Only
+        </button>
+      </div>
+    </div>
+
+    <!-- CORE AERIES TABLES REFERENCES -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-4 glow-card space-y-4">
+      <h3 class="text-xs font-black tracking-wider text-navy-900 uppercase border-b border-slate-100 pb-2">
+        <i class="fa-solid fa-database text-blue-600 mr-1"></i> Aeries Tables Quick-Reference
+      </h3>
+      <div class="space-y-2.5">
+        <div class="p-2 border border-slate-100 rounded-xl hover:bg-slate-50 transition">
+          <span class="font-mono text-xs font-bold text-blue-600 block">STU (Student Data)</span>
+          <span class="text-[11px] text-slate-500 block leading-tight">Master anchor file containing demographics, grade levels, and status.</span>
+        </div>
+        <div class="p-2 border border-slate-100 rounded-xl hover:bg-slate-50 transition">
+          <span class="font-mono text-xs font-bold text-navy-900 block">CON (Contacts)</span>
+          <span class="text-[11px] text-slate-500 block leading-tight">Linked records storing parent details, emergency permissions, and priority.</span>
+        </div>
+        <div class="p-2 border border-slate-100 rounded-xl hover:bg-slate-50 transition">
+          <span class="font-mono text-xs font-bold text-gold-700 block">ATT (Attendance)</span>
+          <span class="text-[11px] text-slate-500 block leading-tight">Daily / Period-level calendars recording codes and excusal comments.</span>
+        </div>
+        <div class="p-2 border border-slate-100 rounded-xl hover:bg-slate-50 transition">
+          <span class="font-mono text-xs font-bold text-green-700 block">SSD (Special Programs)</span>
+          <span class="text-[11px] text-slate-500 block leading-tight">Tracks McKinney-Vento (Homeless), Foster, and student group eligibility.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANDATORY DISTRICT OFFICE FORMS -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-4 glow-card space-y-4">
+      <h3 class="text-xs font-black tracking-wider text-navy-900 uppercase border-b border-slate-100 pb-2">
+        <i class="fa-solid fa-file-invoice text-blue-600 mr-1"></i> WUSD Common Forms
+      </h3>
+      <div class="space-y-2 text-xs font-semibold text-slate-600">
+        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-xl">
+          <span>Residency Affidavit</span>
+          <span class="text-[10px] font-black bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded uppercase">WUSD-92</span>
+        </div>
+        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-xl">
+          <span>McKinney Questionnaire</span>
+          <span class="text-[10px] font-black bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded uppercase">MV-1A</span>
+        </div>
+        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-xl">
+          <span>Immunization Registry</span>
+          <span class="text-[10px] font-black bg-green-100 text-green-700 px-1.5 py-0.5 rounded uppercase">CAIR-V</span>
+        </div>
+        <div class="flex items-center justify-between p-2 bg-slate-50 rounded-xl">
+          <span>Records Transfer Slip</span>
+          <span class="text-[10px] font-black bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded uppercase">REC-X</span>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- CENTER/RIGHT COLUMN: CHAT INTERFACE & SUGGESTED CONTROLS (3/4 width) -->
+  <section class="lg:col-span-3 flex flex-col gap-4 h-[calc(100vh-140px)] min-h-[500px]">
+    
+    <!-- DYNAMIC CHAT BOX -->
+    <div class="bg-white border border-slate-200 rounded-3xl flex-grow flex flex-col justify-between overflow-hidden glow-card">
+      
+      <!-- HEADER CONSOLE BAR -->
+      <div class="bg-slate-50 border-b border-slate-100 px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+            🤖
+          </div>
+          <div>
+            <h2 class="text-sm font-black text-navy-900">Conversational Help Portal</h2>
+            <span id="chat-sub-badge" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Active Sandbox Interface</span>
+          </div>
+        </div>
+        
+        <!-- CLEAR HISTORY OPTION -->
+        <button onclick="clearChatHistory()" class="text-xs font-bold text-slate-400 hover:text-red-600 transition flex items-center gap-1">
+          <i class="fa-solid fa-trash-can"></i> Clear Thread
+        </button>
+      </div>
+
+      <!-- SCROLLABLE CHAT MESSAGES AREA -->
+      <div id="chat-history-container" class="chat-scroll flex-grow overflow-y-auto p-6 space-y-6 bg-[#f8fafc]/50">
+        <!-- CHAT INTRODUCTION -->
+        <div class="flex items-start gap-3.5 max-w-3xl">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center text-sm shadow-md flex-shrink-0">
+            🤖
+          </div>
+          <div class="chat-bubble bg-white border border-slate-200 rounded-2xl rounded-tl-none p-4 text-sm text-slate-700 leading-relaxed space-y-3 shadow-sm">
+            <p class="font-extrabold text-navy-900 text-base">Hello! I am your WUSD Site Office Assistant.</p>
+            <p>I am the "Smart Front Door" designed to support you with immediate Aeries workflows. Ask me any operations question in plain English, and I will output:</p>
+            <ul class="list-disc pl-5 space-y-1 text-xs text-slate-500 font-semibold">
+              <li>Clear plain-English answers</li>
+              <li>Click-by-click navigation paths</li>
+              <li>WUSD specific procedures and forms</li>
+              <li>Target database tables modified</li>
+              <li>Suggested SQL queries (if applicable)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROMPT PILLOWS / PRESETS CONTROLS -->
+      <div class="px-6 py-3 border-t border-slate-100 bg-slate-50/50 space-y-2">
+        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Quick-start questions:</span>
+        <div class="flex items-center gap-2 flex-wrap">
+          <button onclick="submitSuggested('How do I enroll a student?')" class="px-3 py-1.5 text-xs font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:text-blue-600 transition shadow-sm">
+            📝 Enroll Student
+          </button>
+          <button onclick="submitSuggested('How do I correct attendance for yesterday?')" class="px-3 py-1.5 text-xs font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:text-blue-600 transition shadow-sm">
+            🕒 Correct Attendance
+          </button>
+          <button onclick="submitSuggested('What query shows students with no emergency contact?')" class="px-3 py-1.5 text-xs font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:text-blue-600 transition shadow-sm">
+            📋 No Contacts Query
+          </button>
+          <button onclick="submitSuggested('How do I withdraw a student?')" class="px-3 py-1.5 text-xs font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:text-blue-600 transition shadow-sm">
+            🚪 Withdraw Student
+          </button>
+          <button onclick="submitSuggested('What Aeries query finds students missing immunizations?')" class="px-3 py-1.5 text-xs font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:text-blue-600 transition shadow-sm">
+            💉 Missing Vaccines Query
+          </button>
+        </div>
+      </div>
+
+      <!-- CHAT CONSOLE INPUT FORM -->
+      <div class="p-4 border-t border-slate-200 bg-white flex items-center gap-2.5">
+        <input type="text" id="user-chat-input" onkeypress="handleInputKey(event)" class="flex-grow px-4 py-3 text-sm border border-slate-200 rounded-2xl outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 transition" placeholder="Tell me what you are trying to discover or verify...">
+        <button onclick="executeUserQuery()" class="px-5 py-3 text-sm font-black text-white bg-blue-600 rounded-2xl hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/10 active:scale-95 transition flex items-center gap-1.5">
+          <span>Send</span> <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<div class="copy-toast fixed bottom-6 right-6 bg-navy-950 text-white rounded-xl px-4 py-3 shadow-2xl flex items-center gap-2 text-xs font-bold opacity-0 translate-y-10 transition-all duration-300 pointer-events-none" id="copy-toast-notify">
+  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  SQL Query copied to clipboard!
+</div>
+
+<footer class="footer border-t border-slate-200 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium">
+  WUSD Aeries Resource Center • Ask the Aeries Assistant Smart Portal • Formatted for follow-along training.
+</footer>
+
+<script>
+// LIVE CONFIGURABILITY SYSTEM (SECURE CLIENT SANDBOX)
+let useGeminiLive = true;
+const WUSD_SYSTEM_PROMPT = `Act as the "WUSD Smart Aeries Assistant", an expert on Washington Unified School District Aeries operations.
+Provide comprehensive support to school clerks, secretaries, attendance clerks, and registrars.
+When answering any operations question, return your reply using rich HTML/Markdown structure containing:
+1. SUMMARY / CONTEXT: A plain-English overview of the process.
+2. CLICK-BY-CLICK STEPS: Clear pathways (e.g. Aeries Sidebar -> Student Data -> Demographics).
+3. TARGET AERIES TABLES: Specify affected tables (e.g. STU, CON, ATT, SSD, MED, ML).
+4. WUSD FORMS NEEDED: Mention WUSD forms (e.g. Proof of Residency, Yellow Immunization card, MV-1A McKinney-Vento Questionnaire).
+5. SUGGESTED QUERY: If applicable, format a clean copy-paste SQL query (e.g. LIST STU CON STU.ID STU.NM BY STU.NM IF...).
+Maintain a friendly, professional, extremely detailed, and clear instruction tone. Speak in plain English as if teaching a complete novice.`;
+
+// PRE-LOADED LOCAL DICTIONARY FALLBACK ANSWERS
+const localFallbackAnswers = {
+  "how do i enroll a student?": {
+    text: `<h3 class="font-extrabold text-navy-900 text-base mb-2">Student Enrollment Process (WUSD Standards)</h3>
+    <p class="mb-3">Enrolling a student is the foundational gateway to State CALPADS counts. Always follow this exact sequence to prevent data duplication.</p>
+    <div class="p-3 bg-blue-50 border border-blue-100 rounded-xl mb-3 space-y-1.5 text-xs font-semibold">
+      <span class="text-blue-900 block font-bold"><i class="fa-solid fa-file-circle-check"></i> WUSD Forms Needed:</span>
+      <ul class="list-disc pl-4 space-y-0.5 text-slate-600">
+        <li>WUSD Residency Verification form (WUSD-92)</li>
+        <li>Birth Certificate (Proof of Age verification)</li>
+        <li>Yellow CA School Immunization Record (or CAIR-V)</li>
+      </ul>
+    </div>
+    <strong class="text-xs text-navy-900 uppercase block tracking-wider mb-1">Click-by-Click Steps in Aeries:</strong>
+    <ol class="list-decimal pl-5 text-xs space-y-2 mb-3">
+      <li><strong>Duplicate Search:</strong> Navigate to <span class="font-mono bg-slate-100 px-1 rounded text-navy-950">Aeries Search Bar → Search All Students</span>. Search globally across all historical/withdrawn district records by name and DOB before building a new record.</li>
+      <li><strong>Add Demographics:</strong> Navigate to <span class="font-mono bg-slate-100 px-1 rounded text-navy-950">Student Data → Demographics</span> and click <span class="font-bold">Add</span>.</li>
+      <li><strong>Populate STU Table:</strong> Enter legal name exactly matching the birth certificate, DOB, address, parent, language code, and set Status Code to <span class="font-mono font-bold text-blue-600">Active (A)</span>.</li>
+      <li><strong>Load Documents:</strong> Open the student's profile, select the <span class="font-bold">Documents</span> tab, and upload PDF scans of proof of residency and birth certificates.</li>
+    </ol>
+    <div class="text-xs text-slate-500 font-semibold mb-3">
+      <span class="block text-navy-900 font-bold">Target Aeries Tables:</span>
+      <span class="font-mono text-blue-600">STU</span> (Demographics), <span class="font-mono text-blue-600">CON</span> (Emergency Contacts)
+    </div>`
+  },
+  "how do i correct attendance for yesterday?": {
+    text: `<h3 class="font-extrabold text-navy-900 text-base mb-2">Attendance Correction Sequence (3-Day Ed Code Rule)</h3>
+    <p class="mb-3">California Ed Code allows exactly <span class="font-bold">3 school days</span> to excuse a student absence. Undocumented changes from 'Unexcused' to 'Excused' are flagged in district audits.</p>
+    <div class="p-3 bg-green-50 border border-green-100 rounded-xl mb-3 space-y-1.5 text-xs font-semibold">
+      <span class="text-green-900 block font-bold"><i class="fa-solid fa-phone-volume"></i> Verification Needed:</span>
+      <ul class="list-disc pl-4 space-y-0.5 text-slate-600">
+        <li>Parent telephone excuse log</li>
+        <li>Physical doctor's/dentist's excusal note on file</li>
+      </ul>
+    </div>
+    <strong class="text-xs text-navy-900 uppercase block tracking-wider mb-1">Click-by-Click Steps in Aeries:</strong>
+    <ol class="list-decimal pl-5 text-xs space-y-2 mb-3">
+      <li>Lookup the student ID via the main search bar.</li>
+      <li>Navigate to <span class="font-mono bg-slate-100 px-1 rounded text-navy-950">Attendance → Attendance Detail</span> on the sidebar.</li>
+      <li>Click the <span class="font-bold text-blue-600">Update</span> button at the bottom of the page.</li>
+      <li>Change the unexcused absence code (such as <span class="font-mono font-bold">A</span>) to the correct excusal (such as <span class="font-mono font-bold text-green-600">E</span> for Illness).</li>
+      <li>Double-click the date field to open the comments sub-box. Write who authorized the correction (e.g., <span class="italic">"Mom called, temp 101. J. Doe (Clerk)"</span>) and save.</li>
+    </ol>
+    <div class="text-xs text-slate-500 font-semibold mb-3">
+      <span class="block text-navy-900 font-bold">Target Aeries Tables:</span>
+      <span class="font-mono text-blue-600">ATT</span> (Daily Attendance), <span class="font-mono text-blue-600">STU</span> (Context)
+    </div>`
+  },
+  "what query shows students with no emergency contact?": {
+    text: `<h3 class="font-extrabold text-navy-900 text-base mb-2">Audit Query: Students with Missing Emergency Contacts</h3>
+    <p class="mb-3">This query sweeps the active student demographic list and identifies profiles that do not have any matching priority emergency records in the CON table.</p>
+    <strong class="text-xs text-navy-900 uppercase block tracking-wider mb-1">Suggested Aeries Query:</strong>
+    <pre id="copied-query-1">SKIP STU CON IF ( CON.CD &gt; "" ) 
+LIST STU ID NM BY STU.NM<button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded px-2 py-0.5" onclick="copySnippet('copied-query-1')">Copy</button></pre>
+    <strong class="text-xs text-navy-900 uppercase block tracking-wider mb-1">Steps to Run in Aeries:</strong>
+    <ol class="list-decimal pl-5 text-xs space-y-1 mb-3">
+      <li>Navigate to <span class="font-mono bg-slate-100 px-1 rounded text-navy-950">Header Search → Reports → Query</span>.</li>
+      <li>Copy the query above and paste it into the command field.</li>
+      <li>Click <span class="font-bold">Run</span>. Export the output to Excel to distribute to parent outreach coordinators.</li>
+    </ol>
+    <div class="text-xs text-slate-500 font-semibold">
+      <span class="block text-navy-900 font-bold">Target Aeries Tables:</span>
+      <span class="font-mono text-blue-600">STU</span>, <span class="font-mono text-blue-600">CON</span>
+    </div>`
+  },
+  "how do i withdraw a student?": {
+    text: `<h3 class="font-extrabold text-navy-900 text-base mb-2">Student Withdrawal Process (WUSD Standards)</h3>
+    <p class="mb-3">Withdrawing a student must be executed cleanly to free classroom seats and prevent duplicate active enrollments inside the CALPADS state database.</p>
+    <div class="p-3 bg-red-50 border border-red-100 rounded-xl mb-3 space-y-1.5 text-xs font-semibold">
+      <span class="text-red-900 block font-bold"><i class="fa-solid fa-file-export"></i> Forms Needed:</span>
+      <ul class="list-disc pl-4 space-y-0.5 text-slate-600">
+        <li>WUSD Parent Request for Student Withdrawal form</li>
+        <li>Official Outside District Cumulative Records Transfer slip (REC-X)</li>
+      </ul>
+    </div>
+    <strong class="text-xs text-navy-900 uppercase block tracking-wider mb-1">Click-by-Click Steps in Aeries:</strong>
+    <ol class="list-decimal pl-5 text-xs space-y-2 mb-3">
+      <li>Search for the target student to load their demographics card.</li>
+      <li>Verify attendance records. <span class="font-bold text-red-600">Warning:</span> You cannot withdraw a student on a day they were marked present. Change status codes on the day *after* their last physical presence.</li>
+      <li>Navigate to <span class="font-mono bg-slate-100 px-1 rounded text-navy-950">Student Data → Demographics</span> and click <span class="font-bold">Change</span>.</li>
+      <li>Set the Status field to <span class="font-mono font-bold text-red-600">Inactive</span> (or your custom withdrawal code).</li>
+      <li>Enter the exact Exit Date, the CA Exit Reason Code, and click <span class="font-bold">Save</span>. All class section blocks will automatically drop.</li>
+    </ol>
+    <div class="text-xs text-slate-500 font-semibold mb-3">
+      <span class="block text-navy-900 font-bold">Target Aeries Tables:</span>
+      <span class="font-mono text-blue-600">STU</span> (Demographics), <span class="font-mono text-blue-600">SEC</span> (Dropped Classes)
+    </div>`
+  },
+  "what aeries query finds students missing immunizations?": {
+    text: `<h3 class="font-extrabold text-navy-900 text-base mb-2">Audit Query: Students Missing Tdap booster</h3>
+    <p class="mb-3">This query sweeps incoming grade 7 student records to check for blank cells in the Tdap booster immunization field, which is mandated by California law before school entry.</p>
+    <strong class="text-xs text-navy-900 uppercase block tracking-wider mb-1">Suggested Aeries Query:</strong>
+    <pre id="copied-query-2">LIST STU IMM STU.ID STU.NM BY STU.NM IF STU.GR = 7 AND IMM.TD = NULL<button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded px-2 py-0.5" onclick="copySnippet('copied-query-2')">Copy</button></pre>
+    <strong class="text-xs text-navy-900 uppercase block tracking-wider mb-1">Steps to Run in Aeries:</strong>
+    <ol class="list-decimal pl-5 text-xs space-y-1 mb-3">
+      <li>Navigate to <span class="font-mono bg-slate-100 px-1 rounded text-navy-950">Header Search → Reports → Query</span>.</li>
+      <li>Copy the query above and paste it into the command field.</li>
+      <li>Click <span class="font-bold">Run</span>. Distribute this list of non-compliant students to your site health clerk.</li>
+    </ol>
+    <div class="text-xs text-slate-500 font-semibold">
+      <span class="block text-navy-900 font-bold">Target Aeries Tables:</span>
+      <span class="font-mono text-blue-600">STU</span>, <span class="font-mono text-blue-600">IMM</span>
+    </div>`
+  }
+};
+
+// TOGGLE CONNECTION MODE HANDLER
+function toggleAPIConnection() {
+  useGeminiLive = !useGeminiLive;
+  const badge = document.getElementById('conn-badge');
+  const toggleBtn = document.getElementById('toggle-conn-btn');
+  const chatSubBadge = document.getElementById('chat-sub-badge');
+  
+  if (useGeminiLive) {
+    badge.className = "inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 text-green-700 text-[10px] font-black uppercase";
+    badge.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i> Gemini Live`;
+    toggleBtn.textContent = "Switch to Local Only";
+    chatSubBadge.textContent = "Active Gemini Sandbox Interface";
+  } else {
+    badge.className = "inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-yellow-50 text-yellow-700 text-[10px] font-black uppercase";
+    badge.innerHTML = `<i class="fa-solid fa-server"></i> Local Rules`;
+    toggleBtn.textContent = "Switch to Gemini Live";
+    chatSubBadge.textContent = "Local WUSD Rulebook Engaged";
+  }
+}
+
+// HANDLE ENTER KEYPRESS
+function handleInputKey(event) {
+  if (event.key === 'Enter') {
+    executeUserQuery();
+  }
+}
+
+// EXECUTE CHAT CONSOLE FLOW
+async function executeUserQuery() {
+  const inputEl = document.getElementById('user-chat-input');
+  const userText = inputEl.value.trim();
+  if (!userText) return;
+
+  // Append user bubble to UI
+  appendChatBubble(userText, 'user');
+  inputEl.value = '';
+
+  // Append thinking bubble
+  const thinkingId = appendThinkingBubble();
+
+  try {
+    if (useGeminiLive) {
+      // Connect and query the active Gemini live sandbox
+      const responseText = await callGeminiLiveEngine(userText);
+      removeThinkingBubble(thinkingId);
+      appendChatBubble(responseText, 'bot');
+    } else {
+      // Offline local search rules
+      const normalized = userText.toLowerCase().replace(/[?.]/g, '').trim();
+      const localResult = localFallbackAnswers[normalized];
+      
+      removeThinkingBubble(thinkingId);
+      
+      if (localResult) {
+        appendChatBubble(localResult.text, 'bot');
+      } else {
+        // Simple regex fallback search inside local rules
+        let genericReply = `<h3 class="font-extrabold text-navy-900 text-sm mb-2"><i class="fa-solid fa-circle-exclamation text-yellow-500"></i> No Exact Match in Local Repository</h3>
+        <p class="text-xs text-slate-600 mb-2">This desk-reference operates under offline local rules. Here are the active quick-start keywords we have mapped:</p>
+        <ul class="list-disc pl-5 text-xs text-slate-500 font-semibold space-y-1">
+          <li><strong>"how do i enroll a student"</strong></li>
+          <li><strong>"how do i correct attendance for yesterday"</strong></li>
+          <li><strong>"what query shows students with no emergency contact"</strong></li>
+          <li><strong>"how do i withdraw a student"</strong></li>
+          <li><strong>"what aeries query finds students missing immunizations"</strong></li>
+        </ul>
+        <p class="text-xs text-slate-600 mt-3">Toggle the system badge in the sidebar to <strong>"Gemini Live"</strong> to process advanced administrative questions instantly.</p>`;
+        appendChatBubble(genericReply, 'bot');
+      }
+    }
+  } catch (error) {
+    console.error("Error communicating with query engine:", error);
+    removeThinkingBubble(thinkingId);
+    appendChatBubble(`<p class="text-xs text-red-600 font-bold"><i class="fa-solid fa-circle-xmark"></i> Connection error. The system automatically shifted to secure local rules. Please try asking again.</p>`, 'bot');
+    useGeminiLive = false;
+    toggleAPIConnection();
+  }
+}
+
+// INTEGRATING THE GEMINI ENGINE REQUEST (AS PER MANDATORY rules)
+async function callGeminiLiveEngine(promptText) {
+  const apiKey = ""; // Canvas automatically supplies API keys globally in runtime
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+  const payload = {
+    contents: [{ parts: [{ text: promptText }] }],
+    systemInstruction: {
+      parts: [{ text: WUSD_SYSTEM_PROMPT }]
+    }
+  };
+
+  // Implementing exponential backoff logic for high-frequency requests
+  let delay = 1000;
+  for (let i = 0; i < 3; i++) {
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        const candidate = result.candidates?.[0];
+        if (candidate && candidate.content?.parts?.[0]?.text) {
+          // Convert basic markdown tags to structured elements
+          return formatMarkdownToHTML(candidate.content.parts[0].text);
+        }
+      }
+    } catch (e) {
+      if (i === 2) throw e;
+    }
+    await new Promise(resolve => setTimeout(resolve, delay));
+    delay *= 2;
+  }
+  throw new Error("Unable to complete request to server.");
+}
+
+// SUBMIT QUICK-START PILLOWS
+function submitSuggested(pillText) {
+  document.getElementById('user-chat-input').value = pillText;
+  executeUserQuery();
+}
+
+// MARKDOWN TO HTML CONVERSION HELPER
+function formatMarkdownToHTML(md) {
+  let html = md;
+  // Bold markup
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-extrabold text-navy-900">$1</strong>');
+  // Ordered lists
+  html = html.replace(/^\d+\.\s(.*)$/gm, '<li class="mb-1.5">$1</li>');
+  // Bullet points
+  html = html.replace(/^\*\s(.*)$/gm, '<li class="mb-1.5">$1</li>');
+  // Paragraph structures
+  html = html.replace(/\n\n/g, '</p><p class="mt-2 text-slate-700">');
+  return `<div class="space-y-2 text-sm text-slate-700 leading-relaxed">${html}</div>`;
+}
+
+// APPEND DIALOGUE BUBBLES
+function appendChatBubble(content, sender) {
+  const container = document.getElementById('chat-history-container');
+  const bubbleWrapper = document.createElement('div');
+  bubbleWrapper.className = `flex items-start gap-3.5 max-w-3xl ${sender === 'user' ? 'ml-auto justify-end' : ''}`;
+  
+  const icon = sender === 'user' ? '👩‍💻' : '🤖';
+  const bubbleStyles = sender === 'user' 
+    ? 'bg-blue-600 text-white rounded-2xl rounded-tr-none p-4 text-sm font-semibold shadow-md' 
+    : 'bg-white border border-slate-200 rounded-2xl rounded-tl-none p-4 text-sm text-slate-700 leading-relaxed space-y-2 shadow-sm';
+
+  bubbleWrapper.innerHTML = `
+    <div class="w-9 h-9 rounded-2xl bg-gradient-to-br ${sender === 'user' ? 'from-blue-600 to-indigo-600 text-white' : 'from-navy-900 to-blue-600 text-white'} flex items-center justify-center text-sm shadow-md flex-shrink-0 ${sender === 'user' ? 'order-last' : ''}">
+      ${icon}
+    </div>
+    <div class="chat-bubble ${bubbleStyles}">
+      ${content}
+    </div>
+  `;
+  container.appendChild(bubbleWrapper);
+  container.scrollTop = container.scrollHeight;
+}
+
+// THINKING ANOMALY LOADING HUD
+function appendThinkingBubble() {
+  const container = document.getElementById('chat-history-container');
+  const uniqueId = 'thinking-' + Date.now();
+  const bubbleWrapper = document.createElement('div');
+  bubbleWrapper.id = uniqueId;
+  bubbleWrapper.className = `flex items-start gap-3.5 max-w-3xl`;
+  
+  bubbleWrapper.innerHTML = `
+    <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center text-sm shadow-md flex-shrink-0">
+      🤖
+    </div>
+    <div class="chat-bubble bg-white border border-slate-200 rounded-2xl rounded-tl-none p-4 text-xs text-slate-400 font-semibold italic flex items-center gap-1.5 shadow-sm">
+      <i class="fa-solid fa-cog fa-spin text-blue-500"></i> Thinking and verifying district rules...
+    </div>
+  `;
+  container.appendChild(bubbleWrapper);
+  container.scrollTop = container.scrollHeight;
+  return uniqueId;
+}
+
+function removeThinkingBubble(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+// CLEAR DIALOGUE THREAD
+function clearChatHistory() {
+  const container = document.getElementById('chat-history-container');
+  container.innerHTML = `
+    <div class="flex items-start gap-3.5 max-w-3xl">
+      <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center text-sm shadow-md flex-shrink-0">
+        🤖
+      </div>
+      <div class="chat-bubble bg-white border border-slate-200 rounded-2xl rounded-tl-none p-4 text-sm text-slate-700 leading-relaxed space-y-3 shadow-sm">
+        <p class="font-extrabold text-navy-900 text-base">Threads cleared successfully.</p>
+        <p>I am ready to audit and direct your WUSD office questions from scratch. What are we discovering today?</p>
+      </div>
+    </div>
+  `;
+}
+
+// COPY SNIPPET UTILITY
+function copySnippet(elementId) {
+  const element = document.getElementById(elementId);
+  const text = element.textContent.replace('Copy', '');
+  
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = text;
+  document.body.appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempTextArea);
+  
+  // Toast notifications
+  const toast = document.getElementById('copy-toast-notify');
+  toast.classList.remove('opacity-0', 'translate-y-10');
+  toast.classList.add('opacity-100', 'translate-y-0');
+  setTimeout(() => {
+    toast.classList.remove('opacity-100', 'translate-y-0');
+    toast.classList.add('opacity-0', 'translate-y-10');
+  }, 2500);
+}
+</script>
+
+</body>
+</html>
