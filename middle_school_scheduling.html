@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Middle School Scheduling - Master Scheduling Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #12355b;
+  --blue: #2563eb;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #dbe3ef;
+  --bg: #f8fafc;
+  --soft: #eff6ff;
+  --white: #ffffff;
+}
+
+* { 
+  box-sizing: border-box; 
+  transition: max-width 0.3s ease, width 0.3s ease, padding 0.3s ease;
+}
+
+body {
+  margin: 0; 
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef5ff 100%); 
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.header {
+  position: sticky; 
+  top: 0; 
+  z-index: 50; 
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(14px); 
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+}
+
+.header-inner {
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 14px 22px; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 16px; 
+  flex-wrap: wrap;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 16px; 
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 900; 
+  font-size: 24px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, .22);
+}
+
+h1 { font-size: 24px; margin: 0; font-weight: 900; letter-spacing: -.04em; }
+.subtitle { margin-top: 3px; color: var(--muted); font-size: 13px; font-weight: 650; }
+
+.btn {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+  border-radius: 14px;
+  padding: 11px 18px; 
+  text-decoration: none; 
+  font-weight: 900; 
+  border: 1px solid transparent;
+  background: var(--blue); 
+  color: white; 
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.btn:hover { 
+  transform: translateY(-1px); 
+  filter: brightness(.95); 
+}
+
+.btn.secondary { 
+  background: white; 
+  color: #1d4ed8; 
+  border-color: #bfdbfe; 
+  box-shadow: none;
+}
+
+.container { 
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 22px; 
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--navy), var(--blue)); 
+  color: white; 
+  border-radius: 30px; 
+  padding: 34px;
+  box-shadow: 0 18px 48px rgba(37, 99, 235, .22); 
+  margin: 18px 0 22px;
+}
+
+.badge {
+  display: inline-flex; 
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, .16); 
+  border: 1px solid rgba(255, 255, 255, .26);
+  border-radius: 999px; 
+  padding: 6px 12px; 
+  font-size: 11px; 
+  font-weight: 900;
+  text-transform: uppercase; 
+  letter-spacing: .08em; 
+  margin-bottom: 14px;
+}
+
+.hero h2 { font-size: 38px; line-height: 1.05; margin: 0 0 12px; letter-spacing: -.05em; }
+.hero p { color: #dbeafe; max-width: 900px; font-size: 16px; line-height: 1.6; margin: 0; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.section {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-radius: 24px; 
+  padding: 24px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .055);
+}
+
+.section h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.035em; color: var(--navy); }
+.section p { color: #475569; line-height: 1.58; font-size: 14.5px; }
+
+.callout { border-radius: 18px; padding: 16px; margin: 16px 0; font-size: 14px; line-height: 1.55; }
+.callout.strong { display: block; margin-bottom: 4px; font-size: 15px; }
+.callout.tip { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
+.callout.mistake { background: #fff7ed; border: 1px solid #fed7aa; color: #92400e; }
+.callout.check { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+
+.path {
+  display: inline-block; 
+  background: #0f172a; 
+  color: #38bdf8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  border-radius: 12px; 
+  padding: 9px 14px; 
+  font-size: 13px; 
+  margin: 8px 0 12px;
+  border: 1px solid #334155;
+}
+
+.steps { display: grid; gap: 20px; }
+.step {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-left: 7px solid var(--blue);
+  border-radius: 24px; 
+  padding: 26px; 
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .05);
+}
+
+.step h3 { margin: 0 0 6px; font-size: 22px; letter-spacing: -.04em; color: var(--navy); }
+.step .step-subtitle { color: var(--muted); font-size: 14px; font-weight: 500; margin-bottom: 16px; display: block; }
+.step h4 {
+  margin: 20px 0 8px; 
+  color: #1e3a8a; 
+  font-size: 13px; 
+  text-transform: uppercase; 
+  letter-spacing: .06em;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.step ul, .step ol { color: #334155; line-height: 1.65; padding-left: 22px; font-size: 14.5px; }
+.step li { margin-bottom: 8px; }
+
+/* Interactive Middle School Sizer Widget */
+.interactive-calc {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 14px 0;
+  border: 1px solid #e2e8f0;
+}
+
+.interactive-calc label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.interactive-calc select, .interactive-calc input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 12px;
+  background: white;
+}
+
+.calc-result {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+  background: #e0f2fe;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.checklist li {
+  padding: 12px 14px; 
+  border: 1px solid var(--line); 
+  background: #f8fafc;
+  border-radius: 14px; 
+  color: #334155; 
+  font-weight: 600; 
+  line-height: 1.45;
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checklist li::before { 
+  content: "☐"; 
+  color: var(--blue); 
+  font-weight: 900; 
+  font-size: 16px;
+}
+
+.example { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; padding: 16px; margin: 12px 0; font-size: 14px; color: #475569; line-height: 1.5; }
+.next-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; }
+.next-card { background: linear-gradient(180deg, #fff, #f8fafc); border: 1px solid var(--line); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.next-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--navy); }
+.next-card p { font-size: 13.5px; color: #475569; margin-top: 0; margin-bottom: 14px; line-height: 1.5; }
+
+.footer { color: #64748b; text-align: center; font-size: 12px; padding: 34px 20px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+@media(max-width:900px) {
+  .two, .next-grid { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 30px; }
+  .container { padding: 16px; }
+  .header-inner { padding: 12px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">W</div>
+      <div>
+        <h1>Middle School Scheduling Workspace</h1>
+        <div class="subtitle">Complete step-by-step middle school master scheduling build-along toolkit</div>
+      </div>
+    </div>
+    <a class="btn secondary" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+      🏠 WUSD Central Hub Home
+    </a>
+  </div>
+</header>
+
+<main class="container">
+  
+  <section class="hero">
+    <div class="badge">🏫 Interactive Build-Along Training Guide</div>
+    <h2>How to Build Your Middle School Master Schedule</h2>
+    <p>Middle school scheduling is a puzzle of intersecting demands. Unlike self-contained classrooms, students here rotate between subject-matter experts, work within balanced academic teams, and flow through elective block rotations. Open this training window side-by-side with your active <strong>Aeries database</strong> to audit and configure your middle school schedule cleanly.</p>
+  </section>
+
+  <section class="two" style="margin-bottom: 22px;">
+    <div class="section">
+      <h3>Middle School Core Strategy</h3>
+      <p>The secret to middle school scheduling lies in controlling the flow of student cohorts. When you organize academic teams, establish elective wheels, and configure flex intervention periods in the correct database sequence, you prevent bottleneck conflicts before the computer schedules a single student.</p>
+      <div class="callout check">
+        <strong>Our Build Goal:</strong>
+        <p style="margin: 4px 0 0;">Together, we are going to define Scheduling Groups to link core academic cohorts, build trimester or quarterly rotating elective sections, and setup dynamic WIN support blocks that track clean daily attendance.</p>
+      </div>
+    </div>
+    <div class="section">
+      <h3>The Live Checklist We Are Building</h3>
+      <ul class="checklist">
+        <li><strong>Phase 1:</strong> Interlock cohorts using Aeries Scheduling Groups.</li>
+        <li><strong>Phase 2:</strong> Structure split-term elective wheel blocks.</li>
+        <li><strong>Phase 3:</strong> Configure non-GPA intervention/WIN periods.</li>
+        <li><strong>Phase 4:</strong> Balance teacher loads and handle shared staff limits.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Understanding the Aeries Tables We are Modifying</h3>
+    <p>Middle school scheduling relies on specific database fields to cluster students. Let's look at the Aeries tables we are modifying together:</p>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-top:12px;">
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--navy);">STU.SG (Scheduling Group Field)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Stores the cohort tag. By tagging a student cohort and matching sections with this code, Aeries forces those students to stay together in core classes.</p>
+      </div>
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--blue);">SEC.TM (Section Term Code)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Determines when a class is active. For elective wheels, we configure these as Trimesters (T1, T2, T3) or Quarters (Q1-Q4) instead of full Years.</p>
+      </div>
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--gold);">MST.MX / MST.ACT (Limits & Counts)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Houses room seat caps (MX) and current student loads (ACT). We audit these to keep core classes and elective rotations completely balanced.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3 style="font-size:24px; border-bottom: 2px solid var(--line); padding-bottom:10px;">The 5 Middle School Training Milestones</h3>
+    <p>Perform these configurations systematically in your active database window. Do not skip steps.</p>
+    
+    <div class="steps">
+
+      <!-- MILESTONE 1 -->
+      <article class="step">
+        <h3>Step 1 — Establish Academic Teams (Scheduling Groups)</h3>
+        <span class="step-subtitle">Middle School Milestone 1 • Cohort Control</span>
+        <p><strong>Goal:</strong> Link specific student cohorts with a designated team of core teachers (e.g., Team 7A ELA/Social Studies and Team 7A Math/Science) so they transition as a unified group.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling Process → Student Data (STU) → Scheduling Groups</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Identify your grade-level cohort blocks (e.g., Team 7A, Team 7B).</li>
+          <li>Assign a unique numeric Scheduling Group code to the students in Aeries (located in the <code>STU.SG</code> field).</li>
+          <li>Create core academic sections in the Scheduling Master Schedule (SMS) and assign the matching <strong>Scheduling Group</strong> code to those sections (<code>SEC.SG</code>).</li>
+          <li>When you run the scheduler, Aeries will only schedule students from Group 1 into core sections tagged with Group 1.</li>
+        </ol>
+        
+        <div class="callout tip">
+          <strong>Teaming Tip:</strong> Organizing students into Scheduling Groups reduces schedule conflict checks by over 90% because the algorithm doesn't have to search your entire master list of core classes to place a student.
+        </div>
+      </article>
+
+      <!-- MILESTONE 2 -->
+      <article class="step">
+        <h3>Step 2 — Configure Split-Term Elective Wheels</h3>
+        <span class="step-subtitle">Middle School Milestone 2 • Trimester & Quarter Rotations</span>
+        <p><strong>Goal:</strong> Build elective wheels (e.g., Art, Computer Literacy, and Music) where the same student group rotates through a new class each trimester or quarter without manual scheduling changes.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling Process → Master Schedule (SMS) → Term Codes</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Create distinct, unique course codes for each elective option (do not use the same course code for different topics).</li>
+          <li>Create sections in the SMS with specific term boundaries: use <strong>T1</strong>, <strong>T2</strong>, and <strong>T3</strong> for trimesters, or <strong>Q1</strong> through <strong>Q4</strong> for quarters.</li>
+          <li>Align the period, teacher, and room. For example, if Room 102 holds Art in T1, it can hold Computers in T2, and Music in T3—all scheduled during Period 5.</li>
+          <li>Keep the seat capacity (<code>MST.MX</code>) identical across all rotating sections to ensure even student loads during trimester changes.</li>
+        </ol>
+        
+        <div class="callout mistake">
+          <strong>Beginner Mistake:</strong> Setting up an elective wheel using standard "Yearlong" course terms and trying to drop/add students manually mid-year. This breaks state reporting and grading records! Always configure real Term split sections (T1/T2/T3) from the start.
+        </div>
+      </article>
+
+      <!-- MILESTONE 3 -->
+      <article class="step">
+        <h3>Step 3 — Audit Team Enrollment & Section Allocation</h3>
+        <span class="step-subtitle">Middle School Milestone 3 • Sizing & Staffing Balance</span>
+        <p><strong>Goal:</strong> Ensure you have allocated the correct number of sections per academic team so that class sizes do not exceed district limits.</p>
+        
+        <h4>Try out this Middle School Team Sizer:</h4>
+        <div class="interactive-calc">
+          <label for="calc-stu-count">Total Projected Enrollment in Grade Level:</label>
+          <input type="number" id="calc-stu-count" value="240" min="10" max="1000" oninput="calculateMSTeams()">
+          
+          <label for="calc-teams-count">How many academic teams do you want to split this grade into?</label>
+          <input type="number" id="calc-teams-count" value="2" min="1" max="10" oninput="calculateMSTeams()">
+          
+          <label for="calc-ms-cap">District Class Capacity Cap (Max students per class):</label>
+          <input type="number" id="calc-ms-cap" value="30" min="15" max="45" oninput="calculateMSTeams()">
+          
+          <div>
+            <strong>Students Per Team:</strong>
+            <span id="calc-students-per-team" class="calc-result" style="margin-bottom:12px;">120 Students</span>
+          </div>
+          <div style="margin-top: 8px;">
+            <strong>Minimum Sections Required per Core Subject per Team:</strong>
+            <span id="calc-sections-needed" class="calc-result">4 Sections</span>
+          </div>
+          <div id="ms-warning" style="margin-top: 12px; font-size: 13px; font-weight: 700; display: none;"></div>
+        </div>
+
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Input your total grade-level enrollment and divide it by your target team count to verify balanced student blocks.</li>
+          <li>Ensure that the number of core sections you create in the SMS matches or exceeds the minimum calculated sections.</li>
+          <li>Check that the teacher’s daily assignment load does not exceed contract agreements (e.g., standard five instructional periods max).</li>
+        </ol>
+      </article>
+
+      <!-- MILESTONE 4 -->
+      <article class="step">
+        <h3>Step 4 — Build Flex Intervention / WIN Blocks</h3>
+        <span class="step-subtitle">Middle School Milestone 4 • advisory and WIN Setup</span>
+        <p><strong>Goal:</strong> Set up a daily WIN ("What I Need") or Advisory period to handle flexible intervention, tutoring, and social-emotional learning with daily attendance tracking.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">School Info / Scheduling → Courses → Course Table (CRS)</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Create a distinct course code for Advisory/WIN (e.g., Course Code `9005 - WIN Block`).</li>
+          <li>In the course properties, configure this course as **Non-Credit / No Grade** so it does not calculate into student GPAs or generate transcript history.</li>
+          <li>Build sections in the SMS during your designated period (e.g., Period 4).</li>
+          <li>Enable the attendance flag on these sections so teachers can take roll during this period. This meets state requirements while maintaining a highly flexible daily support block.</li>
+        </ol>
+        
+        <div class="callout tip">
+          <strong>Intervention Strategy:</strong> If students rotate between intervention groups on different days of the week, assign them to their permanent advisory homeroom teacher in Aeries for daily roll-call. Use local spreadsheets or supplemental groups to track daily roster rotations.
+        </div>
+      </article>
+
+      <!-- MILESTONE 5 -->
+      <article class="step">
+        <h3>Step 5 — Run Room & Teacher Overlap Audits</h3>
+        <span class="step-subtitle">Middle School Milestone 5 • Pre-Scheduling Audit</span>
+        <p><strong>Goal:</strong> Catch scheduling conflicts, teacher double-bookings, and room overlaps before running the student scheduling engine.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling Process → Reports → Room Overlap Report / Teacher Load</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Run the **Teacher Load Report** to confirm no core or elective teacher is scheduled to teach two different classes during the same period.</li>
+          <li>Run the **Room Overlap Report** to ensure specialized rooms (such as science labs, computer rooms, or gyms) are not double-booked.</li>
+          <li>Verify shared or itinerant teachers (such as band directors who split sites with the elementary school) have empty periods in your SMS that align with their travel times.</li>
+        </ol>
+        
+        <div class="callout check">
+          <strong>Auditing Success:</strong> Resolving room and teacher overlaps at this stage prevents scheduling reject errors from failing your student loads.
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3>Where to go next</h3>
+    <p>Once you understand the basic middle school teaming parameters, you can review neighboring build-along training modules:</p>
+    <div class="next-grid">
+      <div class="next-card">
+        <div>
+          <h3>🚀 Start Here Guide</h3>
+          <p>Review standard timelines, basic Aeries calendar configurations, and the general chronological order of building.</p>
+        </div>
+        <a class="btn" href="scheduling-start-here.html">Open Start Here</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🏫 Elementary Level</h3>
+          <p>Learn to design stable, self-contained homerooms, AM/PM Kindergarten split sessions, and specialist rotations.</p>
+        </div>
+        <a class="btn" href="scheduling-elementary.html">Open Elementary Guide</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  WUSD Aeries Resource Center • Master Scheduling Middle School Guide • Formatted for interactive build-along training. Ensure you coordinate database changes with your site administrator.
+</footer>
+
+<script>
+function calculateMSTeams() {
+  const enrollment = parseFloat(document.getElementById('calc-stu-count').value);
+  const teams = parseFloat(document.getElementById('calc-teams-count').value);
+  const cap = parseFloat(document.getElementById('calc-ms-cap').value);
+  
+  const perTeamSpan = document.getElementById('calc-students-per-team');
+  const sectionsSpan = document.getElementById('calc-sections-needed');
+  const warningDiv = document.getElementById('ms-warning');
+  
+  if (!enrollment || !teams || !cap || enrollment <= 0 || teams <= 0 || cap <= 0) {
+    perTeamSpan.textContent = "0 Students";
+    sectionsSpan.textContent = "0 Sections";
+    warningDiv.style.display = "none";
+    return;
+  }
+  
+  // Calculate students per team
+  const studentsPerTeam = Math.round(enrollment / teams);
+  perTeamSpan.textContent = `${studentsPerTeam} Students`;
+  
+  // Calculate required sections per core course per team
+  const rawSections = studentsPerTeam / cap;
+  const sectionsNeeded = Math.ceil(rawSections);
+  sectionsSpan.textContent = `${sectionsNeeded} Sections`;
+  
+  // Render analytical warning if appropriate
+  if (studentsPerTeam % cap !== 0 && (studentsPerTeam % cap) > (cap * 0.9)) {
+    warningDiv.style.color = "#d97706";
+    warningDiv.style.display = "block";
+    warningDiv.innerHTML = `⚠️ Warning: Team sizes leave a remainder class that is extremely close to your seat limit. Consider adjusting your team boundaries or increasing to ${sectionsNeeded + 1} sections.`;
+  } else if (studentsPerTeam < cap) {
+    warningDiv.style.color = "#10b981";
+    warningDiv.style.display = "block";
+    warningDiv.innerHTML = `✅ Balanced: Your total team student enrollment is smaller than your class capacity cap. You only need 1 section of each core subject per team.`;
+  } else {
+    warningDiv.style.color = "#10b981";
+    warningDiv.style.display = "block";
+    warningDiv.innerHTML = `✅ Goal Met: Students are cleanly distributed across ${sectionsNeeded} sections of ${Math.round(studentsPerTeam / sectionsNeeded)} students each.`;
+  }
+}
+
+// Run calculator once on load
+window.onload = function() {
+  calculateMSTeams();
+};
+</script>
+
+</body>
+</html>
