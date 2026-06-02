@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Start Here - Office Staff Aeries Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            50: '#f4f7fa',
+            100: '#eef5ff',
+            900: '#12355b',
+            950: '#0f1e36',
+          },
+          blue: {
+            600: '#2563eb',
+            700: '#1d4ed8',
+          },
+          gold: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            600: '#d97706',
+            700: '#b45309',
+          },
+          green: {
+            50: '#f0fdf4',
+            100: '#d1fae5',
+            600: '#10b981',
+            700: '#047857',
+          },
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            600: '#dc2626',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(18, 53, 91, 0.08);
+  }
+  .active-tab {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f8fafc] to-[#eef5ff] min-h-screen text-slate-900 font-sans antialiased">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center font-black text-2xl shadow-md shadow-blue-500/20">
+        W
+      </div>
+      <div>
+        <h1 class="text-xl font-extrabold text-navy-900 tracking-tight leading-tight">WUSD Office Staff Resources</h1>
+        <p class="text-xs font-semibold text-slate-500">Site Secretary, Attendance Clerk & Registrar Training</p>
+      </div>
+    </div>
+    <a class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-extrabold text-blue-600 bg-white border border-blue-200 rounded-xl hover:bg-slate-50 hover:border-blue-300 shadow-sm transition active:scale-95" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </svg>
+      WUSD Central Hub Home
+    </a>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+  <!-- HERO BANNER -->
+  <section class="bg-gradient-to-r from-navy-900 via-[#1a3d6c] to-blue-600 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        🚀 LEVEL 1 • NEW HIRE ONBOARDING
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Aeries Basics: Teach Me From Scratch</h2>
+      <p class="text-blue-100 text-sm sm:text-lg font-medium max-w-3xl leading-relaxed">
+        Welcome to WUSD! If you have never opened a student information database before, you are in the right place. 
+        Open this guide in one browser window and open Aeries in another window next to it. We will build your knowledge step-by-step.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPLIT SCREEN INSTRUCTION STRATEGY CARD -->
+  <section class="bg-blue-50 border border-blue-200 rounded-2xl p-6 flex flex-col md:flex-row gap-6 items-center justify-between shadow-sm">
+    <div class="space-y-2 flex-1">
+      <div class="flex items-center gap-2 text-blue-900 font-extrabold text-lg">
+        <span class="text-2xl">🖥️</span>
+        <h3>The "Split Screen" Practice Method</h3>
+      </div>
+      <p class="text-blue-800 text-sm leading-relaxed">
+        Do not just read this! For the best learning experience, snap this window to the **left side** of your monitor, and open Aeries on the **right side**. Every step is written as an active action you can immediately perform and test.
+      </p>
+    </div>
+    <div class="flex items-center gap-2 self-start md:self-center">
+      <span class="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-100 border border-blue-200 rounded-lg px-3 py-1.5">Follow-Along Active</span>
+    </div>
+  </section>
+
+  <!-- TRAINING MILESTONES -->
+  <section class="space-y-8">
+    <div class="border-b border-slate-200 pb-4">
+      <h3 class="text-2xl font-black text-navy-900 tracking-tight">Your Onboarding Roadmap</h3>
+      <p class="text-sm text-slate-500 font-medium">Complete these milestones sequentially on your first day of system access.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- MILESTONE CONTENT CARDS (2/3 width) -->
+      <div class="lg:col-span-2 space-y-8">
+
+        <!-- MILESTONE 1 -->
+        <article class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+              1
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Milestone 1 • The Security Check</span>
+              <h4 class="text-lg font-black text-navy-900">Logging In & Setting Your Site</h4>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Before touching student records, you must confirm you are logged into the correct database. It is incredibly common to accidentally search the wrong year or have your settings locked to the district office.
+          </p>
+
+          <div class="space-y-4">
+            <h5 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">What to Do in Your Aeries Window:</h5>
+            <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-3">
+              <li>Log in using your secure WUSD single sign-on credentials (SSO).</li>
+              <li>Look in the **top-right corner** of your active header. You will see a dropdown indicating your active school year and active school site.</li>
+              <li><strong>Verify your year:</strong> Ensure it says the current academic year (e.g., 2026-2027) and not last year.</li>
+              <li><strong>Verify your school:</strong> If you work at an elementary school but the site is accidentally set to 'District Office', you will not find your site's students or menus!</li>
+            </ol>
+            <div class="path">Aeries Header (Top Right) → Site Selector Dropdown → Verify Site Match</div>
+          </div>
+
+          <div class="p-4 bg-navy-50 rounded-xl border border-slate-100">
+            <strong class="text-xs text-navy-900 uppercase tracking-wider block font-extrabold">🚨 Why this matters:</strong>
+            <p class="text-xs text-slate-500 mt-1 leading-normal">If you enter demographic corrections or attendance codes while logged into the wrong site, you will trigger severe reporting errors across the entire district database cluster.</p>
+          </div>
+        </article>
+
+        <!-- MILESTONE 2 -->
+        <article class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+              2
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Milestone 2 • Interface Navigation</span>
+              <h4 class="text-lg font-black text-navy-900">Decoding the Aeries Layout Map</h4>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-600 leading-relaxed">
+            The Aeries interface is divided into three primary zones. Familiarizing yourself with these zones means you won't get lost when following complex procedural instructions.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+              <strong class="text-sm text-navy-900 block font-extrabold">Zone A: Left Menu Bar</strong>
+              <p class="text-xs text-slate-500 mt-1 leading-normal">Your primary navigation panel. Folders slide open to reveal screens like **Student Data**, **Attendance**, and **Medical**.</p>
+            </div>
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+              <strong class="text-sm text-navy-900 block font-extrabold">Zone B: Header Search</strong>
+              <p class="text-xs text-slate-500 mt-1 leading-normal">The main search input. Typing here allows you to quickly query names, student IDs, or grade cohorts.</p>
+            </div>
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+              <strong class="text-sm text-navy-900 block font-extrabold">Zone C: Active Form Card</strong>
+              <p class="text-xs text-slate-500 mt-1 leading-normal">The main middle area where student records, contact cards, and daily calendars display for edits.</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h5 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">Navigation Skill Check:</h5>
+            <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-2">
+              <li>Move to the left menu. Hover over **Student Data**. Click it to expand.</li>
+              <li>Find **Demographics** in the expanded list. Click it once.</li>
+              <li>Confirm the middle area changes to display the main student information layout. You have successfully navigated your first path!</li>
+            </ol>
+            <div class="path">Left Sidebar → Student Data → Demographics</div>
+          </div>
+        </article>
+
+        <!-- MILESTONE 3 (WITH INTERACTIVE TOOL) -->
+        <article id="search-operators" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+              3
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Milestone 3 • Query Skills</span>
+              <h4 class="text-lg font-black text-navy-900">Mastering Student Search Operators</h4>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Searching by typing out entire first and last names is slow and prone to spelling errors. Aeries supports unique **Search Operator** symbols that allow you to locate records instantly with brief syntax commands.
+          </p>
+
+          <!-- Search Simulator Tool Container -->
+          <div class="border border-blue-100 bg-blue-50/50 rounded-xl p-5 space-y-4">
+            <div class="space-y-1">
+              <strong class="text-sm text-blue-900 block font-extrabold">🔮 Interactive Search Syntax Practice Simulator</strong>
+              <p class="text-xs text-slate-500">Select or type a query search syntax below to see exactly how Aeries filters database records.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">Preset Operator Options (Click to Test):</label>
+                <div class="flex flex-col gap-2">
+                  <button class="text-left px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs font-mono text-blue-600 hover:border-blue-400 transition" onclick="simulateSearch('123456')">123456</button>
+                  <button class="text-left px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs font-mono text-blue-600 hover:border-blue-400 transition" onclick="simulateSearch('Smi, Jo')">Smi, Jo</button>
+                  <button class="text-left px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs font-mono text-blue-600 hover:border-blue-400 transition" onclick="simulateSearch('/12')">/12</button>
+                  <button class="text-left px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs font-mono text-blue-600 hover:border-blue-400 transition" onclick="simulateSearch('*Lop')">*Lop</button>
+                  <button class="text-left px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs font-mono text-blue-600 hover:border-blue-400 transition" onclick="simulateSearch('?John')">?John</button>
+                </div>
+              </div>
+
+              <div class="flex flex-col justify-between p-4 bg-slate-900 text-white rounded-xl font-mono text-xs space-y-4">
+                <div class="space-y-1">
+                  <span class="text-slate-400 block font-extrabold uppercase tracking-widest text-[9px]">Active Search Query:</span>
+                  <span id="simulator-query-display" class="text-blue-400 font-bold text-sm">Smi, Jo</span>
+                </div>
+                <div class="space-y-1 border-t border-slate-800 pt-3">
+                  <span class="text-slate-400 block font-extrabold uppercase tracking-widest text-[9px]">Database Action:</span>
+                  <p id="simulator-result-display" class="text-slate-200 leading-normal">Looks for students whose last names begin with "Smi" and first names begin with "Jo" (e.g., Joseph Smith, Joanna Smithers).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- MILESTONE 4 -->
+        <article class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+              4
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Milestone 4 • Database Structure</span>
+              <h4 class="text-lg font-black text-navy-900">The Core 4 Database Tables Defined</h4>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Every piece of student data you interact with is filed in database categories called "Tables." Think of student profiles as drawers in a filing cabinet. Each drawer has several specialized cards inside:
+          </p>
+
+          <div class="space-y-3">
+            <div class="flex flex-col sm:flex-row gap-4 p-4 border rounded-xl hover:bg-slate-50 transition">
+              <strong class="text-navy-900 font-mono text-sm sm:w-24 flex-shrink-0">STU Table</strong>
+              <div class="space-y-1">
+                <span class="text-xs font-extrabold text-blue-600 uppercase tracking-wider block">Demographics Card</span>
+                <p class="text-xs text-slate-500 leading-normal">The master anchor file. Holds Student ID, legal name, date of birth, grade level, and enrollment status (e.g., Active or Inactive).</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 p-4 border rounded-xl hover:bg-slate-50 transition">
+              <strong class="text-navy-900 font-mono text-sm sm:w-24 flex-shrink-0">CON Table</strong>
+              <div class="space-y-1">
+                <span class="text-xs font-extrabold text-blue-600 uppercase tracking-wider block">Contacts Card</span>
+                <p class="text-xs text-slate-500 leading-normal">Stores parents, guardians, emergency release contacts, priority phone numbers, and web portal access associations.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 p-4 border rounded-xl hover:bg-slate-50 transition">
+              <strong class="text-navy-900 font-mono text-sm sm:w-24 flex-shrink-0">ATT Table</strong>
+              <div class="space-y-1">
+                <span class="text-xs font-extrabold text-blue-600 uppercase tracking-wider block">Attendance History Card</span>
+                <p class="text-xs text-slate-500 leading-normal">Records every single absence mark, tardy timestamp, checkout code, and parent-excusal note for all 180 instructional days.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 p-4 border rounded-xl hover:bg-slate-50 transition">
+              <strong class="text-navy-900 font-mono text-sm sm:w-24 flex-shrink-0">SEC Table</strong>
+              <div class="space-y-1">
+                <span class="text-xs font-extrabold text-blue-600 uppercase tracking-wider block">Class Schedule Card</span>
+                <p class="text-xs text-slate-500 leading-normal">Links the student to specific courses, period blocks, rooms, teachers, and corresponding grading gradebooks.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- MILESTONE 5 -->
+        <article class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+              5
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Milestone 5 • Daily Workflow Basics</span>
+              <h4 class="text-lg font-black text-navy-900">Your First Roster Lookup Task</h4>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Let's put your navigation and search operator knowledge to work. Imagine a parent walks into your school lobby and asks to verify who their child's third-period teacher is.
+          </p>
+
+          <div class="space-y-4">
+            <h5 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">Follow this Build-Along Checklist:</h5>
+            <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-3">
+              <li>In your Aeries Search bar, type the student's **ID number** (if known) or their last name (using the operator format `Smi, Jo`).</li>
+              <li>Once the demographics screen opens, navigate to the sidebar menu and select **Classes** or **Schedule**.</li>
+              <li>Locate the period column on the screen and look up the row representing **Period 3**.</li>
+              <li>Identify the teacher's name and room number assigned to that period row. You can now confidently assist the family!</li>
+            </ol>
+            <div class="path">Aeries Header Search → Student Profile → Left Menu: Student Data → Classes</div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- WATCHLISTS & LOCAL STORAGE ONBOARDING PROGRESS (1/3 width) -->
+      <div class="space-y-8">
+        
+        <!-- BEGINNER MISTAKES CARD -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+          <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+            <span class="text-red-500">⚠️</span>
+            <span>Beginner Mistakes to Avoid</span>
+          </h3>
+          <p class="text-xs text-slate-500 font-medium">Be on alert for these four common pitfalls on your first week.</p>
+
+          <div class="space-y-4">
+            <div class="p-4 bg-red-50 border border-red-100 rounded-xl space-y-1">
+              <strong class="text-xs text-red-600 block font-extrabold">1. Not checking global duplicates</strong>
+              <p class="text-[11px] text-slate-500 leading-relaxed">When a family enrolls a child, always search the entire district history first before creating a brand-new profile. Re-creating an existing student splits academic transcripts.</p>
+            </div>
+
+            <div class="p-4 bg-gold-50 border border-gold-100 rounded-xl space-y-1">
+              <strong class="text-xs text-gold-700 block font-extrabold">2. Modifying Contacts from secondary cards</strong>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Always check the primary emergency contact card links. Modifying details on secondary student cards without verification can disconnect parent-portal access accounts.</p>
+            </div>
+
+            <div class="p-4 bg-blue-50 border border-blue-100 rounded-xl space-y-1">
+              <strong class="text-xs text-blue-700 block font-extrabold">3. Forgetting site context checks</strong>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Entering attendance changes or scheduling blocks while your site dropdown remains set to 'District Office' blocks synchronization updates.</p>
+            </div>
+            
+            <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+              <strong class="text-xs text-slate-600 block font-extrabold">4. Back-dating logs</strong>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Never log back-dated attendance changes without checking independent study rosters. Back-dating blindly can delete state-audited instruction records.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROGRESS HUD CARD -->
+        <div class="bg-white rounded-2xl border border-blue-200 p-6 glow-card space-y-4 shadow-sm relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none"></div>
+          <div class="relative z-10 space-y-3">
+            <h3 class="text-base font-extrabold text-navy-900">Your Day-1 Progress</h3>
+            <p class="text-xs text-slate-500 leading-normal">Perform these tasks in your live Aeries window next to this screen and track your progress:</p>
+            
+            <div class="space-y-2" id="onboarding-tasks-container">
+              <!-- Dynamically generated checkmarks -->
+            </div>
+
+            <div class="pt-2 border-t border-slate-100 space-y-2">
+              <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div id="progress-indicator-bar" class="h-full bg-blue-600 transition-all duration-300" style="width: 0%;"></div>
+              </div>
+              <div class="flex items-center justify-between text-[11px] font-bold text-navy-900">
+                <span id="progress-percent-text">0% Completed</span>
+                <button class="text-blue-600 hover:underline" onclick="resetDayOneProgress()">Reset Tasks</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer border-t border-slate-200 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium">
+  WUSD Aeries Resource Center • Office Staff Onboarding: Start Here Guide • Formatted for follow-along training next to your active database.
+</footer>
+
+<script>
+// OPERATOR SIMULATION DATA
+const operatorScenarios = {
+  "123456": {
+    display: "123456",
+    action: "Instant ID Search Lookup",
+    details: "Looks for the exact matching student record associated with that custom ID number. This is the fastest, most error-proof method to load a student profile card."
+  },
+  "Smi, Jo": {
+    display: "Smi, Jo",
+    action: "Partial First/Last Name Lookup",
+    details: "Filters the student list for last names beginning with 'Smi' and first names beginning with 'Jo'. Helps find 'John Smith' or 'Joanna Smithers' without typing complete names."
+  },
+  "/12": {
+    display: "/12",
+    action: "Grade Level Cohort Lookup",
+    details: "Entering a slash followed by a number filters the search list to display only active students in that specific grade level (Grade 12, in this example)."
+  },
+  "*Lop": {
+    display: "*Lop",
+    action: "Anywhere Name Content Lookup",
+    details: "Using an asterisk before a string searches for students containing those letters anywhere in their name profiles. Highly useful for finding hyphenated or complex last names."
+  },
+  "?John": {
+    display: "?John",
+    action: "First Name Direct Lookup",
+    details: "A question mark before a search term instructs Aeries to look exclusively at students' first name fields, ignoring last names entirely."
+  }
+};
+
+function simulateSearch(operator) {
+  const data = operatorScenarios[operator];
+  if (!data) return;
+  
+  document.getElementById('simulator-query-display').textContent = data.display;
+  document.getElementById('simulator-result-display').innerHTML = `<strong>${data.action}:</strong> ${data.details}`;
+}
+
+// PROGRESS STATE TRACKER
+const STORAGE_KEY = 'wusd_site_staff_day1_progress';
+const dayOneTasks = [
+  "Logged in and verified active year (top right corner)",
+  "Found school site selector dropdown and matched my school site",
+  "Opened Demographics screen via left-side Student Data menu",
+  "Practiced searching with a student ID number",
+  "Found emergency contact priority logs in the CON table card",
+  "Assigned student schedules inside the SEC schedule table card"
+];
+
+function initDayOneTracker() {
+  const container = document.getElementById('onboarding-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  dayOneTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-2.5 p-2 border rounded-lg hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-green-50/40 border-green-200' : 'border-slate-100'}`;
+    taskRow.setAttribute('onclick', `toggleDayOneTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-4 h-4 border rounded mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-green-600 border-green-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3 h-3 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-[11px] font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = dayOneTasks.length > 0 ? Math.round((completedCount / dayOneTasks.length) * 100) : 0;
+  document.getElementById('progress-indicator-bar').style.width = percent + '%';
+  document.getElementById('progress-percent-text').textContent = `${percent}% Completed`;
+}
+
+function toggleDayOneTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(savedState));
+  initDayOneTracker();
+}
+
+function resetDayOneProgress() {
+  localStorage.removeItem(STORAGE_KEY);
+  initDayOneTracker();
+}
+
+// INITIALIZATION
+window.onload = function() {
+  initDayOneTracker();
+  simulateSearch('Smi, Jo'); // Load default search scenario
+}
+</script>
+
+</body>
+</html>
