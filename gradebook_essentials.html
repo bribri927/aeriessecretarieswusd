@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gradebook Essentials - WUSD Aeries Teacher Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          classroom: {
+            50: '#f0fdf4',
+            100: '#dcfce7',
+            200: '#bbf7d0',
+            600: '#16a34a',
+            700: '#15803d',
+            800: '#166534',
+            900: '#14532d',
+            950: '#022c22',
+          },
+          slate: {
+            900: '#0f172a',
+            950: '#020617',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.04);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+  .example {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 12.5px;
+    color: #475569;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f7fcf9] to-[#edf9f1] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<!-- TOP HEADER BAR (Directly matching global navigation layout) -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-classroom-800 to-classroom-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
+        W
+      </div>
+      <div>
+        <h1 class="text-sm font-extrabold text-slate-900 tracking-tight leading-none">
+          WUSD Teacher Aeries Workspace
+        </h1>
+        <p class="text-[10px] font-semibold text-slate-500 mt-1">Washington Unified School District Support Portal</p>
+      </div>
+    </div>
+    
+    <nav class="flex items-center gap-1.5 flex-wrap text-xs font-semibold text-slate-600">
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">Aeries Home</a>
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition font-bold text-classroom-800" href="teacher-resources.html">🍎 Teacher Directory</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN CONTENT CONTAINER -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow">
+
+  <!-- HERO HEADER -->
+  <section class="bg-gradient-to-br from-classroom-900 via-classroom-800 to-classroom-600 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        📘 2. Gradebook Essentials • Progressive Training
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-none">Mastering Your Digital Gradebook</h2>
+      <p class="text-classroom-100 text-sm sm:text-base font-medium leading-relaxed">
+        Let’s take your Aeries skills from basic entry to advanced optimization. This workspace details the configurations needed to set up clean, weighted categories, safely copy settings across terms, customize grading window requirements, and run actionable student reports. Snapping this window to half of your screen while modifying your live Aeries settings is highly recommended!
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE WEIGHTING SIMULATOR -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-start gap-4 border-b border-slate-100 pb-4">
+      <div class="w-10 h-10 rounded-xl bg-classroom-50 text-classroom-800 flex items-center justify-center font-black text-lg flex-shrink-0 border border-classroom-100">
+        <i class="fa-solid fa-calculator text-base"></i>
+      </div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Interactive Gradebook Weighting Simulator</h3>
+        <p class="text-xs text-slate-500 font-semibold">Verify how weighted category averages mathematically distribute final student grades. Add or edit categories to test real grading syllabus scenarios!</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+      
+      <!-- Input Panel -->
+      <div class="md:col-span-7 space-y-4">
+        <div class="flex items-center justify-between">
+          <strong class="text-xs font-black uppercase tracking-wider text-slate-400 block">Syllabus Categories:</strong>
+          <button onclick="addSimulatorCategory()" class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-classroom-700 bg-classroom-100 rounded-lg hover:bg-classroom-200 transition">
+            + Add Category
+          </button>
+        </div>
+
+        <div id="simulator-categories-container" class="space-y-2">
+          <!-- Dynamic Category Rows -->
+        </div>
+
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Syllabus Weight:</span>
+          <span id="simulator-total-weight-badge" class="px-2.5 py-1 rounded-lg text-xs font-black">0%</span>
+        </div>
+      </div>
+
+      <!-- Live Calculation Display Panel -->
+      <div class="md:col-span-5 bg-classroom-50/50 border border-classroom-100 p-5 rounded-2xl flex flex-col justify-between space-y-4 text-center">
+        <div class="space-y-2">
+          <strong class="text-xs text-classroom-800 uppercase tracking-widest block font-black">Calculated Final Grade:</strong>
+          <div id="simulator-grade-display" class="text-5xl font-black text-slate-900 leading-none">--</div>
+          <p id="simulator-grade-percentage" class="text-xs text-slate-500 font-semibold leading-normal">Configure categories to calculate grade</p>
+        </div>
+
+        <div id="simulator-calc-audit-message" class="p-3 rounded-xl text-xs font-medium border">
+          <!-- Audit advice messages are printed dynamically here -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REPOSITORY WALKTHROUGH MODULES -->
+  <section class="space-y-8">
+
+    <!-- MILESTONE 1: COPY SETTINGS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">1</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 1 • Term Transition</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Copying Gradebooks (The August Time-Saver)</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          If you taught this course last year or need to duplicate configurations across semester terms, never build your categories and weights from scratch. Use the Aeries **Copy Gradebook** wizard to mirror structures in seconds.
+        </p>
+
+        <div class="path">Left Sidebar → Gradebook → Click 'Add Gradebook' → Select 'Copy Gradebooks' Tab</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">Standard Copier Workflow:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Open the Copier utility. The source menu will list your active historical databases.</li>
+            <li>Select the target source gradebook you want to duplicate (e.g., *English 9 - Fall 2025*).</li>
+            <li>Check the option boxes for the structures you wish to copy: **Categories**, **Grading Scale**, and **Gradebook Options**. Do not check 'Assignments' unless you plan to reuse exact dates.</li>
+            <li>Select the destination active gradebook you are establishing for this term.</li>
+            <li>Click **Copy Selected Gradebook**. Aeries will import the parameters and build your framework instantly.</li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-orange-50 border border-orange-200 rounded-2xl">
+          <strong class="text-xs text-orange-800 uppercase tracking-wider block font-extrabold">⚠️ Common Copy Warning:</strong>
+          <p class="text-xs text-slate-600 mt-1 leading-normal">Copying gradebooks only duplicates structure framework parameters. It **does not** enroll students. Students must always be linked via standard course section rosters!</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- MILESTONE 2: LINKING SECTIONS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">2</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 2 • Cohort Consolidation</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Linking Course Sections</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          If you teach three separate periods of the same class (e.g., Period 1, 3, and 5 Biology), you do not need to create three different gradebooks in Aeries. Linking them lets you manage assignments and entries in a single, combined interface.
+        </p>
+
+        <div class="path">Open Gradebook → Click 'Manage Gradebook' → Select 'Add/Link Sections' Tab</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">How to Link Sections:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Select your primary gradebook card representing Period 1.</li>
+            <li>Open the Link Sections tab. You will see a list of adjacent course sections taught by you.</li>
+            <li>Check the boxes next to matching sections (e.g., Periods 3 and 5) to pair them.</li>
+            <li>Click **Save**. Your gradebook is now linked. When adding an assignment, it will render across all three periods automatically.</li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-emerald-50 border border-classroom-200 rounded-2xl">
+          <strong class="text-xs text-classroom-800 uppercase tracking-wider block font-extrabold">💡 Why this is awesome:</strong>
+          <p class="text-xs text-slate-600 mt-1 leading-normal">Linking sections saves you hours of duplicate data entry. You only create the assignment once, enter grades across a unified list, and push updates in a single click, while keeping period rosters completely separate for attendance checks.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- MILESTONE 3: CATEGORIES & WEIGHTING -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">3</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 3 • Category Structure</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Setting up Categories & Weighted Grades</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          How final grades are calculated is determined by your gradebook options. Setting up categories first prevents grading calculation anomalies during active semesters.
+        </p>
+
+        <div class="path">Open Gradebook → Click 'Manage Gradebook' → Select 'Categories' Tab</div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold leading-relaxed text-slate-600">
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <strong class="text-xs text-classroom-800 uppercase font-black block tracking-wider">Method A: Point-Based Grading</strong>
+            <p>Calculates grades using simple division:</p>
+            <div class="my-1.5 p-2 bg-slate-100 rounded text-center text-slate-800 font-mono">
+              $\text{Final Grade} = \frac{\sum \text{Points Earned}}{\sum \text{Max Points}}$
+            </div>
+            <p>Every point has equal weight. Useful for elementary layouts where assignments share similar point structures.</p>
+          </div>
+
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <strong class="text-xs text-classroom-800 uppercase font-black block tracking-wider">Method B: Weighted Grading</strong>
+            <p>Syllabus weights allocate percentage shares:</p>
+            <div class="my-1.5 p-2 bg-slate-100 rounded text-center text-slate-800 font-mono">
+              $\text{Final Grade} = \sum (\text{Category \%} \times \text{Category Weight})$
+            </div>
+            <p>Check the box labeled **Do Weighted Grading** under Gradebook Options and input category proportions (e.g., Homework 20%, Assessments 80%).</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- MILESTONE 4: SCORE TAGS & LATE WORK -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">4</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 4 • Gradebook Policies</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Score Tags, Late Work, & Exclusions</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Aeries contains specific tag codes designed to track student compliance and work submissions without manually overriding point values.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+            <strong class="font-mono text-xs text-classroom-800 font-black block">MI (Missing)</strong>
+            <p class="text-xs text-slate-500 leading-normal">Counts mathematically as a **0% score** in final calculations while triggering alerts on student and parent dashboards. Excellent for tracking late work.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+            <strong class="font-mono text-xs text-classroom-800 font-black block">EX (Excused)</strong>
+            <p class="text-xs text-slate-500 leading-normal">Bypasses calculation completely. This assignment does not hurt or help the student's cumulative average.</p>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+            <strong class="font-mono text-xs text-classroom-800 font-black block">Drop Lowest Score</strong>
+            <p class="text-xs text-slate-500 leading-normal">Under **Manage Gradebook → Categories**, you can configure Aeries to automatically drop a student's lowest quiz or homework score within that category.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- MILESTONE 5: GRADING WINDOWS & STANDARDS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">5</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 5 • Reporting Timeline</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Grading Windows & Comments</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          When the reporting period ends (Trimester or Quarter), gradebooks must be updated and rolled into standard Report Card tables (`GRD`).
+        </p>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">Grading Window Protocol:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Ensure all scores are entered, and unsubmitted assignments are marked with `MI` or a zero score.</li>
+            <li>Navigate to **Grades → Grade Reporting → Initialize Grade Reporting**.</li>
+            <li>Load teachers' electronic gradebook entries directly into report card tables.</li>
+            <li>Double-click the comments field on report card screens to add standardized remarks (such as *Consistently turns in high-quality assignments* or *Needs regular homework review*).</li>
+            <li>Print and submit signed **Grade Verification Sheets** to your site office.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- CONFIDENCE CHECKLIST -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+      <div class="text-3xl">🎒</div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Gradebook Configuration Verification</h3>
+        <p class="text-xs text-slate-500 font-semibold">Track your setup progress across key configuration tasks. Progress saves locally in your browser:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      
+      <div class="lg:col-span-8 space-y-3" id="config-tasks-container">
+        <!-- JS Config checks go here -->
+      </div>
+
+      <div class="lg:col-span-4 bg-classroom-50 border border-classroom-100 p-5 rounded-2xl space-y-3 text-center">
+        <strong class="text-xs text-classroom-800 uppercase tracking-widest block font-extrabold">Config Readiness Score:</strong>
+        <div class="text-4xl font-black text-classroom-900" id="percent-display-text">0% Done</div>
+        <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+          <div id="tracker-progress-bar" class="h-full bg-classroom-600 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+        <button onclick="resetConfigTracker()" class="text-[10px] font-bold text-classroom-700 hover:underline">Reset Progress</button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-classroom-100 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium">
+  WUSD Aeries Resource Center • Gradebook Essentials Guide • Formatted for side-by-side active classroom reference.
+</footer>
+
+<script>
+// CATEGORY WEIGHTING SIMULATOR STATE
+let categories = [
+  { id: 1, name: "Assessments / Tests", weight: 60, studentScore: 82 },
+  { id: 2, name: "Homework & Classwork", weight: 30, studentScore: 95 },
+  { id: 3, name: "Participation", weight: 10, studentScore: 100 }
+];
+
+function initWeightingSimulator() {
+  const container = document.getElementById('simulator-categories-container');
+  container.innerHTML = '';
+
+  categories.forEach((cat, index) => {
+    const row = document.createElement('div');
+    row.className = "p-3 bg-white border border-slate-200 rounded-xl grid grid-cols-12 gap-3 items-center shadow-sm";
+    
+    row.innerHTML = `
+      <div class="col-span-4">
+        <input type="text" value="${cat.name}" onchange="updateCategoryField(${cat.id}, 'name', this.value)" class="w-full text-xs font-semibold text-slate-800 border-none bg-slate-100/50 rounded p-1.5 focus:bg-white outline-none focus:ring-1 focus:ring-classroom-600" />
+      </div>
+      <div class="col-span-3">
+        <div class="flex items-center gap-1.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase">Weight:</span>
+          <input type="number" value="${cat.weight}" min="0" max="100" oninput="updateCategoryField(${cat.id}, 'weight', this.value)" class="w-16 text-xs text-center font-bold text-slate-800 border rounded p-1" />
+          <span class="text-xs font-bold text-slate-500">%</span>
+        </div>
+      </div>
+      <div class="col-span-4">
+        <div class="flex items-center gap-1.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase">Mock Score:</span>
+          <input type="number" value="${cat.studentScore}" min="0" max="150" oninput="updateCategoryField(${cat.id}, 'studentScore', this.value)" class="w-16 text-xs text-center font-bold text-slate-800 border rounded p-1" />
+          <span class="text-xs font-bold text-slate-500">%</span>
+        </div>
+      </div>
+      <div class="col-span-1 text-right">
+        <button onclick="deleteSimulatorCategory(${cat.id})" class="text-slate-400 hover:text-red-600 transition">
+          <i class="fa-solid fa-trash-can text-sm"></i>
+        </button>
+      </div>
+    `;
+    container.appendChild(row);
+  });
+
+  calculateFinalSimulatorGrade();
+}
+
+function updateCategoryField(id, field, value) {
+  const cat = categories.find(c => c.id === id);
+  if (!cat) return;
+
+  if (field === 'weight' || field === 'studentScore') {
+    cat[field] = parseFloat(value) || 0;
+  } else {
+    cat[field] = value;
+  }
+
+  calculateFinalSimulatorGrade();
+}
+
+function addSimulatorCategory() {
+  const newId = categories.length > 0 ? Math.max(...categories.map(c => c.id)) + 1 : 1;
+  categories.push({
+    id: newId,
+    name: `New Category ${newId}`,
+    weight: 0,
+    studentScore: 80
+  });
+  initWeightingSimulator();
+}
+
+function deleteSimulatorCategory(id) {
+  categories = categories.filter(c => c.id !== id);
+  initWeightingSimulator();
+}
+
+function calculateFinalSimulatorGrade() {
+  let totalWeight = 0;
+  let finalGradeSum = 0;
+
+  categories.forEach(cat => {
+    totalWeight += cat.weight;
+    finalGradeSum += (cat.studentScore * (cat.weight / 100));
+  });
+
+  // Render badge text
+  const badge = document.getElementById('simulator-total-weight-badge');
+  badge.textContent = `${totalWeight}%`;
+  
+  if (totalWeight === 100) {
+    badge.className = "px-2.5 py-1 rounded-lg text-xs font-black bg-classroom-100 text-classroom-800";
+  } else {
+    badge.className = "px-2.5 py-1 rounded-lg text-xs font-black bg-yellow-100 text-yellow-800";
+  }
+
+  // Calculate GPA Mark Letter
+  const gradeDisplay = document.getElementById('simulator-grade-display');
+  const percDisplay = document.getElementById('simulator-grade-percentage');
+  const auditMessage = document.getElementById('simulator-calc-audit-message');
+
+  if (categories.length === 0) {
+    gradeDisplay.textContent = "--";
+    percDisplay.textContent = "Please add a category";
+    auditMessage.className = "p-3 rounded-xl text-xs font-medium border bg-slate-50 border-slate-200 text-slate-500";
+    auditMessage.innerHTML = "No categories present. Add standard class categories to simulate scores.";
+    return;
+  }
+
+  let letter = "F";
+  const finalScore = totalWeight > 0 ? (finalGradeSum / (totalWeight / 100)) : 0;
+  const scoreRounded = Math.round(finalScore * 10) / 10;
+
+  if (scoreRounded >= 90) letter = "A";
+  else if (scoreRounded >= 80) letter = "B";
+  else if (scoreRounded >= 70) letter = "C";
+  else if (scoreRounded >= 60) letter = "D";
+
+  gradeDisplay.textContent = letter;
+  percDisplay.textContent = `${scoreRounded}% Calculated Average`;
+
+  // Audit validation messages
+  if (totalWeight !== 100) {
+    auditMessage.className = "p-3 rounded-xl text-xs font-medium border bg-yellow-50 border-yellow-200 text-yellow-800";
+    auditMessage.innerHTML = `⚠️ <strong>Total weight is ${totalWeight}%</strong>. For standard weighted grading to calculate accurately, your categories must sum to exactly 100% in your Aeries setup!`;
+  } else {
+    auditMessage.className = "p-3 rounded-xl text-xs font-medium border bg-classroom-50 border-classroom-200 text-classroom-800";
+    auditMessage.innerHTML = `⭐ <strong>Weights balanced successfully (100%)</strong>. Aeries will calculate this student's grade average exactly as shown in this simulator.`;
+  }
+}
+
+// CHECKLIST STORAGE TRACKER SYSTEM
+const CONFIG_STORAGE_KEY = 'wusd_teacher_gradebook_config_essentials_state';
+const configTasks = [
+  "I can copy gradebook framework parameters using the Copy Gradebook tab.",
+  "I can link multiple sections of the same course to manage assignments concurrently.",
+  "I can enable weighted grading and configure category percentages to equal 100%.",
+  "I can apply standard grading markers (EX, MI) in the spreadsheet card correctly.",
+  "I can initialize Grade Reporting windows and copy totals into report card files."
+];
+
+function initConfigTracker() {
+  const container = document.getElementById('config-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(CONFIG_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  configTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-classroom-50 border-classroom-200' : 'border-slate-100 bg-white'}`;
+    taskRow.setAttribute('onclick', `toggleConfigTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-5 h-5 border rounded-lg mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-classroom-600 border-classroom-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3.5 h-3.5 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-xs font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400 font-medium' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = configTasks.length > 0 ? Math.round((completedCount / configTasks.length) * 100) : 0;
+  document.getElementById('tracker-progress-bar').style.width = percent + '%';
+  document.getElementById('percent-display-text').textContent = `${percent}% Ready`;
+}
+
+function toggleConfigTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(CONFIG_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(savedState));
+  initConfigTracker();
+}
+
+function resetConfigTracker() {
+  localStorage.removeItem(CONFIG_STORAGE_KEY);
+  initConfigTracker();
+}
+
+// INITIALIZATION
+window.onload = function() {
+  initWeightingSimulator();
+  initConfigTracker();
+};
+</script>
+
+</body>
+</html>
