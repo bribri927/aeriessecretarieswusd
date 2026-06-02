@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WUSD Attendance Clerk Resources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            50: '#f4f7fa',
+            100: '#eef5ff',
+            900: '#12355b',
+            950: '#0f1e36',
+          },
+          blue: {
+            600: '#2563eb',
+            700: '#1d4ed8',
+          },
+          gold: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            600: '#d97706',
+            700: '#b45309',
+          },
+          green: {
+            50: '#f0fdf4',
+            100: '#d1fae5',
+            600: '#10b981',
+            700: '#047857',
+          },
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            600: '#dc2626',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(18, 53, 91, 0.08);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f8fafc] to-[#eef5ff] min-h-screen text-slate-900 font-sans antialiased">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center font-black text-2xl shadow-md shadow-blue-500/20">
+        W
+      </div>
+      <div>
+        <h1 class="text-xl font-extrabold text-navy-900 tracking-tight leading-tight">WUSD Attendance Clerk Portal</h1>
+        <p class="text-xs font-semibold text-slate-500">Excusal Workflows, Truancy Pipelines & Audit Companion</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 flex-wrap">
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-start-here.html">
+        🚀 Start Here Guide
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-secretary.html">
+        👩‍💼 Secretary Portal
+      </a>
+      <a class="inline-flex items-center gap-2 px-4 py-2 text-sm font-extrabold text-blue-600 bg-white border border-blue-200 rounded-xl hover:bg-slate-50 hover:border-blue-300 shadow-sm transition active:scale-95" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+        WUSD Central Hub
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+  <!-- HERO BANNER -->
+  <section class="bg-gradient-to-r from-navy-900 via-[#1a3d6c] to-blue-600 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        🕒 Attendance & compliance audits
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Attendance Clerk Playbook</h2>
+      <p class="text-blue-100 text-sm sm:text-lg font-medium max-w-3xl leading-relaxed">
+        Your unified workspace for managing attendance compliance and audits. This guide is built to remain open as an active instructional companion on one half of your screen while executing live tasks in Aeries on the other.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPLIT COLUMN LAYOUT -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- LEFT & CENTER COLUMN (2/3 width) - IN-DEPTH WORKFLOWS -->
+    <div class="lg:col-span-2 space-y-8">
+
+      <!-- INTERACTIVE ATTENDANCE CODE & PROTOCOL RESOLVER -->
+      <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+          <div class="text-2xl">🔄</div>
+          <div>
+            <h3 class="text-lg font-black text-navy-900">Aeries Attendance Code & Protocol Resolver</h3>
+            <p class="text-xs text-slate-500 font-medium">Select a student attendance scenario to load required codes, legal protocols, and required documentation.</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            <button onclick="switchAttendanceAction('illness')" id="at-btn-illness" class="at-btn p-2 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md">
+              <span class="block text-lg mb-1">🤒</span>
+              Illness (Excused)
+            </button>
+            <button onclick="switchAttendanceAction('unexcused')" id="at-btn-unexcused" class="at-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">🚪</span>
+              Unexcused
+            </button>
+            <button onclick="switchAttendanceAction('noshow')" id="at-btn-noshow" class="at-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">🚫</span>
+              No-Show Student
+            </button>
+            <button onclick="switchAttendanceAction('is')" id="at-btn-is" class="at-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">📝</span>
+              Ind. Study
+            </button>
+            <button onclick="switchAttendanceAction('tardy')" id="at-btn-tardy" class="at-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">⏱️</span>
+              Tardy/Check-out
+            </button>
+          </div>
+
+          <!-- DYNAMIC CONTENT CARD -->
+          <div class="p-5 rounded-xl border border-blue-100 bg-blue-50/25 space-y-4" id="at-content">
+            <!-- Dynamically populated via JS -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-black text-navy-900 uppercase tracking-wider" id="at-title">Excused Illness Verification</h4>
+                <span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-extrabold rounded-lg uppercase" id="at-badge">Aeries Code: E</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-normal" id="at-description">Apply this code when a parent reports a student's physical illness or medical appointment.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-blue-100/50 pt-4">
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2">Required Verification & Auditing:</span>
+                <ul class="space-y-1.5" id="at-docs">
+                  <!-- JS Inserted -->
+                </ul>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2">Aeries Step-by-Step Path:</span>
+                <div class="path" id="at-path">Aeries: Attendance → Attendance Detail → Update</div>
+                <ol class="list-decimal pl-4 space-y-1 text-xs text-slate-600 font-medium" id="at-steps">
+                  <!-- JS Inserted -->
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLAYBOOK 1: THE ATTENDANCE CORRECTION SEQUENCE -->
+      <article id="correction-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+            1
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 1 • Data Adjustments & Auditing</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">How to Correct Attendance Step-by-Step</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Attendance corrections must follow standard, legal pathways. Every absence change can affect district funding (ADA) and must be backed up by physical documentation (phone logs, doctor notes, or signed slips).
+        </p>
+
+        <div class="space-y-4">
+          <h4 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">Aeries Navigation & Execution Path:</h4>
+          <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-4">
+            <li>
+              <strong>Look up the student:</strong> 
+              Type the student ID or name inside your Aeries search bar.
+              <div class="path">Left Sidebar → Attendance → Attendance Detail</div>
+            </li>
+            <li>
+              <strong>Verify parent excusal timelines:</strong>
+              California Ed Code allows exactly <strong>3 school days</strong> after an absence to submit validation notes. If a note is received late, the unexcused absence remains.
+            </li>
+            <li>
+              <strong>Execute the Correction:</strong>
+              Select the active date from the attendance calendar.
+              <div class="path">Attendance Detail Page → Click [Update] button</div>
+              <p class="text-xs text-slate-500 mt-1">Change the unexcused absence code (such as A) to the correct verified code (e.g., E for excused illness). If the correction applies only to single periods (at secondary levels), click individual period fields.</p>
+            </li>
+            <li>
+              <strong>Log notes in the verification window:</strong>
+              Double-click the date field to open the comments sub-box. Write who authorized the correction and save.
+              <div class="example"><strong>Audit Comment Format:</strong> "Rec'd doctor note on 10/12/2026. Excused by J. Doe (Clerk)."</div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-navy-50 rounded-xl border border-slate-100">
+          <strong class="text-xs text-navy-900 uppercase tracking-wider block font-extrabold">🚨 Legal Auditing Warning:</strong>
+          <p class="text-xs text-slate-500 mt-1 leading-normal">Never leave an attendance correction notes field empty. In a state attendance audit, any undocumented code changes from 'Unexcused' to 'Excused' are automatically flagged, exposing the school to strict funding penalties.</p>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 2: THE TRUANCY & SARB PIPELINE -->
+      <article id="truancy-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+            2
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 2 • Legal Compliance & Interventions</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">The Truancy and SARB Pipeline</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Under CA Education Code Section 48260, any student absent from school without a valid excuse for 3 full days in a single school year (or tardy/absent for more than 30 minutes on three occasions) is legally classified as a **truant**.
+        </p>
+
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <h4 class="text-sm font-black text-navy-900">1. Triggering Truancy Letter 1 (3 Absences)</h4>
+            <p class="text-xs text-slate-500">Run Letter 1 sweeps weekly to notify families of initial unexcused absence milestones.</p>
+            <div class="path">Aeries Path: Attendance Accounting → Reports → Attendance Letters</div>
+            <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-1">
+              <li>Select **Letter 1** from the system report. Set parameters to query students with **3 or more** unexcused absences.</li>
+              <li>Print the report. Save a PDF copy to the student’s digital cumulative records in Aeries.</li>
+              <li>Mail the physical letter home to the parent/guardian.</li>
+            </ol>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="text-sm font-black text-navy-900">2. Running Letter 2 & Parent Conferences (6 Absences)</h4>
+            <p class="text-xs text-slate-500">Triggered after <strong>6 unexcused absences</strong>. This step requires setting up an active intervention meeting.</p>
+            <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-1">
+              <li>Query **Letter 2** parameters. This prints an official request for an in-person attendance contract meeting.</li>
+              <li>Set up a conference with the parent, counselor, and vice principal.</li>
+              <li>Log the signed attendance intervention contract directly under Aeries Student Programs.</li>
+            </ol>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="text-sm font-black text-navy-900">3. SARB Escales (9+ Absences)</h4>
+            <p class="text-xs text-slate-500">When a student breaches <strong>9+ unexcused absences</strong> and violates their site contract, escalate the case to the district.</p>
+            <div class="path">Left Sidebar → Student Data → Behavior → Discipline (DIS) or Student Programs</div>
+            <p class="text-xs text-slate-600 leading-relaxed">Compile the legal attendance audits, previous letters, contract meeting notes, and mail verification records. Route the full packet to the district School Attendance Review Board (SARB) coordinator.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 3: INDEPENDENT STUDY & NO-SHOW MANAGEMENT -->
+      <article id="compliance-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg flex-shrink-0">
+            3
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 3 • Specialized Compliance & Exits</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Independent Study Tracking & No-Show Cleanup</h3>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="text-sm font-black text-navy-900">Short-Term Independent Study (IS) Compliance</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Short-term Independent Study (between 3 and 14 consecutive school days) allows students to study from home without losing attendance funding. Strict tracking is required:
+          </p>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2">
+            <li>Verify a **signed Master Agreement contract** is on file *before* the student departs.</li>
+            <li>In Aeries, flag the scheduled days as **Pending Independent Study** using a placeholder code.</li>
+            <li>Once academic assignments are returned and evaluated by teachers, obtain the **work evaluation form** detailing verified academic time.</li>
+            <li>Change the placeholder codes on the Attendance Detail screen to **I** (Independent Study - Excused) based on the evaluated percentage of work completed.</li>
+          </ol>
+          <div class="path">Attendance Detail → Click [Update] → Use Code I for verified hours</div>
+        </div>
+
+        <div class="space-y-4 pt-4 border-t border-slate-100">
+          <h4 class="text-sm font-black text-navy-900">No-Show Student Cleanup Protocols</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            On the first day of instruction, you must audit classroom rosters to identify students who did not attend. Keeping "no-show" students marked as active generates severe state reporting errors and throws off school attendance statistics.
+          </p>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2">
+            <li>Run a **Missing Attendance Report** to verify which sections are unaccounted for.</li>
+            <li>Identify students marked absent across *every* period block on day 1.</li>
+            <li>Verify with the front office if parent check-in records or enrollment withdrawals are pending.</li>
+            <li>If a student does not attend by the end of day 1 (or within your district's designated window), process a **No-Show Exit**. Withdraw the student using the day prior to the start of the school year as their exit date, and assign the appropriate "No Show" exit reason code.</li>
+          </ol>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- RIGHT COLUMN (1/3 width) - WORKSPACE CHECKLISTS & TOOLS -->
+    <div class="space-y-8">
+      
+      <!-- DAILY CLERK AUDITING CHECKLIST -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-blue-600">📋</span>
+          <span>Daily Audit Checklist</span>
+        </h3>
+        <p class="text-xs text-slate-500 font-medium">Perform these vital audit routines sequentially each day. Your progress is saved locally:</p>
+
+        <div class="space-y-3" id="audit-tasks-container">
+          <!-- Dynamically generated with JS localstorage -->
+        </div>
+
+        <div class="pt-2 border-t border-slate-100 space-y-2">
+          <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+            <div id="audit-progress-bar" class="h-full bg-blue-600 transition-all duration-300" style="width: 0%;"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-bold text-navy-900">
+            <span id="audit-percent-text">0% Completed</span>
+            <button class="text-blue-600 hover:underline" onclick="resetAuditChecklist()">Reset Audits</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHRONIC ABSENTEEISM WATCHDOG -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-3 shadow-sm">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-red-600">⚠️</span>
+          <span>Chronic Absenteeism Tracker</span>
+        </h3>
+        <p class="text-xs text-slate-500 leading-normal">
+          California defines **Chronic Absenteeism** as missing **10% or more** of school days (typically 18+ days across a standard school year).
+        </p>
+        
+        <div class="p-3 bg-red-50 border border-red-100 rounded-xl space-y-1">
+          <strong class="text-xs text-red-800 block font-extrabold">Weekly Audit Sweeps:</strong>
+          <p class="text-[11px] text-slate-600 leading-normal">
+            Run ADA reports weekly to identify students whose attendance rate has dropped below **90%**. Route these students directly to counselor coordination teams for Tier-2 attendance interventions.
+          </p>
+        </div>
+      </div>
+
+      <!-- ATTENDANCE SQL QUERY COPIER -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-gold-600">📊</span>
+          <span>Clerk Aeries Queries</span>
+        </h3>
+        <p class="text-xs text-slate-500 font-medium">Copy these queries to search for and isolate attendance errors instantly:</p>
+
+        <div class="space-y-4">
+          <!-- Query 1 -->
+          <div class="space-y-2">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">1. Locate Daily Absenteeism (A)</span>
+            <div class="relative bg-slate-900 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto select-all">
+              <pre id="query-absent">LIST STU ATT STU.ID STU.NM BY STU.NM IF ATT.CD = "A"</pre>
+              <button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded-md px-1.5 py-0.5 transition text-[9px]" onclick="copyQueryText('query-absent')">Copy</button>
+            </div>
+          </div>
+
+          <!-- Query 2 -->
+          <div class="space-y-2">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">2. Identify High Tardies (15+)</span>
+            <div class="relative bg-slate-900 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto select-all">
+              <pre id="query-tardies">LIST STU ATT STU.ID STU.NM BY STU.NM IF ATT.CD = "T" AND ATT.DY > 15</pre>
+              <button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded-md px-1.5 py-0.5 transition text-[9px]" onclick="copyQueryText('query-tardies')">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<div class="copy-toast fixed bottom-6 right-6 bg-navy-950 text-white rounded-xl px-4 py-3 shadow-2xl flex items-center gap-2 text-xs font-bold opacity-0 translate-y-10 transition-all duration-300 pointer-events-none" id="copy-toast-notify">
+  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  Query copied to clipboard!
+</div>
+
+<footer class="footer border-t border-slate-200 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium mt-12">
+  WUSD Aeries Resource Center • Attendance Clerk Resources Workspace • Formatted for follow-along training next to your active database.
+</footer>
+
+<script>
+// OPERATIONAL DATA DICTIONARY
+const attendanceActionData = {
+  illness: {
+    title: "Excused Illness Verification",
+    badge: "Aeries Code: E",
+    description: "Use this code when a parent/guardian verifies a student is absent due to illness, medical appointment, or quarantine.",
+    docs: [
+      "Parent phone call verification log",
+      "Signed parent excuse note (keep on file)",
+      "Official doctor/dentist checkout receipt"
+    ],
+    steps: [
+      "Open Demographics (STU) to lookup student profile.",
+      "Navigate to Attendance Detail screen.",
+      "Click Update, change the absence code to E.",
+      "Double-click the date field to write call comments (e.g., 'Mom called, sick').",
+      "Click Save to update ADA records."
+    ],
+    path: "Left Sidebar → Attendance → Attendance Detail → Click [Update]"
+  },
+  unexcused: {
+    title: "Unexcused Absence Protocol",
+    badge: "Aeries Code: A",
+    description: "Assigned as the baseline placeholder code for any unaccounted day of non-attendance.",
+    docs: [
+      "No notification received from families",
+      "Vacations or family trips not covered by Independent Study contracts",
+      "Absences not cleared within the 3-day Ed Code window"
+    ],
+    steps: [
+      "Leave the default unexcused code (A) on the record.",
+      "Run your site's automated evening phone dialer to alert parents.",
+      "Monitor student counts weekly to trigger Truancy letters at 3, 6, and 9 unexcused days."
+    ],
+    path: "Left Sidebar → Attendance Accounting → Reports → Attendance Letters"
+  },
+  noshow: {
+    title: "No-Show Student Protocol",
+    badge: "Aeries Code: N / Exit",
+    description: "Apply this process on Day 1 of school to remove students who did not attend and prevent enrollment conflicts.",
+    docs: [
+      "Verify absence across all periods during Day 1",
+      "Confirm student has not attended adjacent sites"
+    ],
+    steps: [
+      "Mark student absent across all periods during opening day roll calls.",
+      "Crosscheck parent registration contacts.",
+      "If attendance is zero, execute a No-Show withdrawal in Demographics.",
+      "Set the withdrawal date to the day before school started.",
+      "Save section drops to clear seat counts."
+    ],
+    path: "Left Sidebar → Student Data → Demographics → Click [Change] → Exit Details"
+  },
+  is: {
+    title: "Short-Term Independent Study (IS)",
+    badge: "Aeries Code: I / Pending Code",
+    description: "Used to preserve school funding when a student departs for 3-14 days with an active learning contract.",
+    docs: [
+      "Completed and signed Master IS Agreement (must be dated before start)",
+      "Student work packet (graded and evaluated)",
+      "Completed and signed Teacher evaluation verification form"
+    ],
+    steps: [
+      "Flag initial departures with placeholders to notify teachers.",
+      "Distribute learning packet before student leaves.",
+      "Upon return, obtain evaluated work percentage and time forms.",
+      "Replace placeholders with verified code I in Attendance Details."
+    ],
+    path: "Left Sidebar → Attendance → Attendance Detail → Click [Update]"
+  },
+  tardy: {
+    title: "Tardies & Early Check-Outs",
+    badge: "Aeries Code: T / Check-out",
+    description: "Tracks late arrivals or early departures to maintain legal supervision logs.",
+    docs: [
+      "Lardy slip signed by parent or office staff",
+      "Doctor appointment note",
+      "Early checkout slip signed by authorized pickup contact"
+    ],
+    steps: [
+      "If arriving late, update the period code to T (Tardy) and log arrival time.",
+      "For early checkouts, confirm parent identification matches the CON table.",
+      "Write departure slip, hand-off student, and update afternoon attendance codes."
+    ],
+    path: "Left Sidebar → Attendance → Attendance Detail → Click [Update]"
+  }
+};
+
+function switchAttendanceAction(actionKey) {
+  const data = attendanceActionData[actionKey];
+  if (!data) return;
+
+  // Update button active styles
+  document.querySelectorAll('.at-btn').forEach(btn => {
+    btn.className = "at-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300";
+  });
+
+  const activeBtn = document.getElementById(`at-btn-${actionKey}`);
+  if (activeBtn) {
+    activeBtn.className = "at-btn p-2 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md";
+  }
+
+  // Update text values
+  document.getElementById('at-title').textContent = data.title;
+  document.getElementById('at-badge').textContent = data.badge;
+  document.getElementById('at-description').textContent = data.description;
+  document.getElementById('at-path').textContent = data.path;
+
+  // Update Documentation checklists
+  const docsList = document.getElementById('at-docs');
+  docsList.innerHTML = '';
+  data.docs.forEach(doc => {
+    const li = document.createElement('li');
+    li.className = "flex items-start gap-2 text-xs text-slate-600 font-medium";
+    li.innerHTML = `<span class="text-blue-600">✓</span> <span>${doc}</span>`;
+    docsList.appendChild(li);
+  });
+
+  // Update Steps checklists
+  const stepsList = document.getElementById('at-steps');
+  stepsList.innerHTML = '';
+  data.steps.forEach(step => {
+    const li = document.createElement('li');
+    li.className = "mb-1.5 leading-normal";
+    li.innerHTML = step;
+    stepsList.appendChild(li);
+  });
+}
+
+// COPY QUERY SYSTEM (falls back reliably in frames)
+function copyQueryText(elementId) {
+  const element = document.getElementById(elementId);
+  const text = element.textContent;
+  
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = text;
+  document.body.appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempTextArea);
+  
+  // Toast notifications
+  const toast = document.getElementById('copy-toast-notify');
+  toast.classList.remove('opacity-0', 'translate-y-10');
+  toast.classList.add('opacity-100', 'translate-y-0');
+  setTimeout(() => {
+    toast.classList.remove('opacity-100', 'translate-y-0');
+    toast.classList.add('opacity-0', 'translate-y-10');
+  }, 2500);
+}
+
+// DAILY AUDIT LOCALSTORAGE STATE TRACKER
+const AUDIT_STORAGE_KEY = 'wusd_attendance_clerk_daily_audit';
+const dailyAuditTasks = [
+  "Verify and lock site selection on Aeries login (top right)",
+  "Run the 'Missing Attendance Report' 15 minutes after period 1 start",
+  "Call classrooms that have missing attendance flags",
+  "Process parent phone call logs and excuse slips",
+  "Scan, log, and upload verified doctor and excuse notes",
+  "Track Independent Study check-ins and evaluation forms",
+  "Run truancy sweeps and queue legal Letter 1, 2, or 3 runs"
+];
+
+function initAuditTracker() {
+  const container = document.getElementById('audit-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(AUDIT_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  dailyAuditTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-2.5 p-2 border rounded-lg hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-green-50/40 border-green-200' : 'border-slate-100'}`;
+    taskRow.setAttribute('onclick', `toggleAuditTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-4 h-4 border rounded mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-green-600 border-green-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3 h-3 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-[11px] font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = dailyAuditTasks.length > 0 ? Math.round((completedCount / dailyAuditTasks.length) * 100) : 0;
+  document.getElementById('audit-progress-bar').style.width = percent + '%';
+  document.getElementById('audit-percent-text').textContent = `${percent}% Completed`;
+}
+
+function toggleAuditTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(AUDIT_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(AUDIT_STORAGE_KEY, JSON.stringify(savedState));
+  initAuditTracker();
+}
+
+function resetAuditChecklist() {
+  localStorage.removeItem(AUDIT_STORAGE_KEY);
+  initAuditTracker();
+}
+
+// INITIALIZATION
+window.onload = function() {
+  initAuditTracker();
+  switchAttendanceAction('illness');
+};
+</script>
+
+</body>
+</html>
