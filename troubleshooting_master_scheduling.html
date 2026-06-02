@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Troubleshooting & Common Errors - Master Scheduling Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #12355b;
+  --blue: #2563eb;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --red: #ef4444;
+  --red-soft: #fef2f2;
+  --red-border: #fca5a5;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #dbe3ef;
+  --bg: #f8fafc;
+  --soft: #eff6ff;
+  --white: #ffffff;
+}
+
+* { 
+  box-sizing: border-box; 
+  transition: max-width 0.3s ease, width 0.3s ease, padding 0.3s ease;
+}
+
+body {
+  margin: 0; 
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef5ff 100%); 
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.header {
+  position: sticky; 
+  top: 0; 
+  z-index: 50; 
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(14px); 
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+}
+
+.header-inner {
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 14px 22px; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 16px; 
+  flex-wrap: wrap;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 16px; 
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 900; 
+  font-size: 24px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, .22);
+}
+
+h1 { font-size: 24px; margin: 0; font-weight: 900; letter-spacing: -.04em; }
+.subtitle { margin-top: 3px; color: var(--muted); font-size: 13px; font-weight: 650; }
+
+.btn {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+  border-radius: 14px;
+  padding: 11px 18px; 
+  text-decoration: none; 
+  font-weight: 900; 
+  border: 1px solid transparent;
+  background: var(--blue); 
+  color: white; 
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.btn:hover { 
+  transform: translateY(-1px); 
+  filter: brightness(.95); 
+}
+
+.btn.secondary { 
+  background: white; 
+  color: #1d4ed8; 
+  border-color: #bfdbfe; 
+  box-shadow: none;
+}
+
+.container { 
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 22px; 
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--navy), #1e3a8a); 
+  color: white; 
+  border-radius: 30px; 
+  padding: 34px;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, .22); 
+  margin: 18px 0 22px;
+}
+
+.badge {
+  display: inline-flex; 
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, .16); 
+  border: 1px solid rgba(255, 255, 255, .26);
+  border-radius: 999px; 
+  padding: 6px 12px; 
+  font-size: 11px; 
+  font-weight: 900;
+  text-transform: uppercase; 
+  letter-spacing: .08em; 
+  margin-bottom: 14px;
+}
+
+.hero h2 { font-size: 38px; line-height: 1.05; margin: 0 0 12px; letter-spacing: -.05em; }
+.hero p { color: #dbeafe; max-width: 900px; font-size: 16px; line-height: 1.6; margin: 0; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.section {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-radius: 24px; 
+  padding: 24px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .055);
+}
+
+.section h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.035em; color: var(--navy); }
+.section p { color: #475569; line-height: 1.58; font-size: 14.5px; }
+
+.callout { border-radius: 18px; padding: 16px; margin: 16px 0; font-size: 14px; line-height: 1.55; }
+.callout.strong { display: block; margin-bottom: 4px; font-size: 15px; }
+.callout.tip { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
+.callout.mistake { background: #fff7ed; border: 1px solid #fed7aa; color: #92400e; }
+.callout.check { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+.callout.alert { background: var(--red-soft); border: 1px solid var(--red-border); color: #991b1b; }
+
+.path {
+  display: inline-block; 
+  background: #0f172a; 
+  color: #38bdf8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  border-radius: 12px; 
+  padding: 9px 14px; 
+  font-size: 13px; 
+  margin: 8px 0 12px;
+  border: 1px solid #334155;
+}
+
+.steps { display: grid; gap: 20px; }
+.step {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-left: 7px solid var(--red);
+  border-radius: 24px; 
+  padding: 26px; 
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .05);
+}
+
+.step h3 { margin: 0 0 6px; font-size: 22px; letter-spacing: -.04em; color: var(--navy); }
+.step .step-subtitle { color: var(--muted); font-size: 14px; font-weight: 500; margin-bottom: 16px; display: block; }
+.step h4 {
+  margin: 20px 0 8px; 
+  color: #1e3a8a; 
+  font-size: 13px; 
+  text-transform: uppercase; 
+  letter-spacing: .06em;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.step ul, .step ol { color: #334155; line-height: 1.65; padding-left: 22px; font-size: 14.5px; }
+.step li { margin-bottom: 8px; }
+
+/* Interactive Troubleshooter Widget */
+.interactive-calc {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 14px 0;
+  border: 1px solid #e2e8f0;
+}
+
+.interactive-calc label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.interactive-calc select, .interactive-calc input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14.5px;
+  margin-bottom: 14px;
+  background: white;
+}
+
+.config-container {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 14px;
+}
+
+.config-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+  border-bottom: 1.5px solid #f1f5f9;
+  padding-bottom: 6px;
+}
+
+.config-detail {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #334155;
+  margin-bottom: 12px;
+}
+
+.calc-result {
+  font-size: 13.5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #0f172a;
+  background: #f8fafc;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  display: block;
+  white-space: pre-wrap;
+  margin-top: 6px;
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.copy-btn:hover {
+  background: var(--blue);
+}
+
+.copy-success-message {
+  display: none;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  position: absolute;
+  top: 12px;
+  right: 80px;
+}
+
+.checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.checklist li {
+  padding: 12px 14px; 
+  border: 1px solid var(--line); 
+  background: #f8fafc;
+  border-radius: 14px; 
+  color: #334155; 
+  font-weight: 600; 
+  line-height: 1.45;
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checklist li::before { 
+  content: "⚠"; 
+  color: var(--red); 
+  font-weight: 900; 
+  font-size: 16px;
+}
+
+.example { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; padding: 16px; margin: 12px 0; font-size: 14px; color: #475569; line-height: 1.5; }
+.next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+.next-card { background: linear-gradient(180deg, #fff, #f8fafc); border: 1px solid var(--line); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.next-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--navy); }
+.next-card p { font-size: 13.5px; color: #475569; margin-top: 0; margin-bottom: 14px; line-height: 1.5; }
+
+.footer { color: #64748b; text-align: center; font-size: 12px; padding: 34px 20px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+@media(max-width:900px) {
+  .two, .next-grid { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 30px; }
+  .container { padding: 16px; }
+  .header-inner { padding: 12px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">W</div>
+      <div>
+        <h1>Master Schedule Troubleshooting & Diagnostics</h1>
+        <div class="subtitle">WUSD District-Wide Aeries Resource & Support Toolkit</div>
+      </div>
+    </div>
+    <a class="btn secondary" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+      🏠 WUSD Central Hub Home
+    </a>
+  </div>
+</header>
+
+<main class="container">
+  
+  <section class="hero">
+    <div class="badge">🛠 Interactive Emergency Tool</div>
+    <h2>Stuck? Let's Diagnose the Issues Together</h2>
+    <p>We've all been there: you run a master schedule simulation, and your placement rate is stuck at 40%, classrooms are showing double-booked, or teachers have more sections than contracts allow. This page serves as a live triage manual. Open your active <strong>Aeries database</strong> on one screen and keep this workspace open on your second screen as a step-by-step diagnostic companion.</p>
+  </section>
+
+  <section class="two" style="margin-bottom: 22px;">
+    <div class="section">
+      <h3>The Core Diagnostic Strategy</h3>
+      <p>Master scheduling failures are almost always categorized into two distinct types of errors. Understanding which side of the scale you are on saves hours of blind re-building:</p>
+      
+      <div style="margin-top:14px; display:grid; gap:12px;">
+        <div style="background:#fff7ed; border-left:4px solid var(--gold); padding:12px; border-radius:8px;">
+          <strong style="color:#92400e; font-size:14px;">1. Student Request Failures (The SSS Table)</strong>
+          <p style="font-size:13px; margin:4px 0 0; color:#78350f;">Students have bad course requests, duplicates, or missing core prerequisites. The scheduling engine runs out of choices because of the student's constraints, leaving them unscheduled.</p>
+        </div>
+        
+        <div style="background:var(--red-soft); border-left:4px solid var(--red); padding:12px; border-radius:8px;">
+          <strong style="color:#991b1b; font-size:14px;">2. Master Board Failures (The MST/SMS Tables)</strong>
+          <p style="font-size:13px; margin:4px 0 0; color:#7f1d1d;">Teachers are double-booked, class maximum capacities are capped too low, singletons are clashing during the same period, or class calendars are unlinked.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h3>Live Verification Diagnostics</h3>
+      <ul class="checklist">
+        <li><strong>Class Overloads:</strong> Spotting enrollment numbers that breach contracted limits.</li>
+        <li><strong>Double-Booked Rooms:</strong> Preventing physical room overrides.</li>
+        <li><strong>Unscheduled Students:</strong> Islating students left with gaps or empty periods.</li>
+        <li><strong>Missing Calendar Flags:</strong> Fixing date ranges on sections in the master.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3>Interactive Aeries Error Diagnostic Tool</h3>
+    <p>Select a common scheduling warning or roadblock you are seeing in your current database to view its meaning, tables affected, step-by-step visual fix instructions, and a custom copyable Aeries query to isolate the records instantly.</p>
+    
+    <div class="interactive-calc">
+      <label for="error-model-select">Select Your Roadblock / Error Message:</label>
+      <select id="error-model-select" onchange="renderErrorModel()">
+        <option value="d7_full">Reject Code D7 (Class is Full / Seat Lockout)</option>
+        <option value="double_teacher">Teacher Scheduled in Two Classes Same Period</option>
+        <option value="singleton_clash">Singleton Course Clash (Low Fill Rate)</option>
+        <option value="missing_calendar">No Class Calendar Linked / Absence of CCL</option>
+        <option value="unscheduled_core">Core Course Code Missing From Request Board</option>
+      </select>
+
+      <div class="config-container">
+        <div id="error-title" class="config-title">Reject Code D7 (Class is Full)</div>
+        <div id="error-desc" class="config-detail">Loading description...</div>
+        
+        <label>Aeries Database Path to Fix:</label>
+        <div id="error-path" class="path" style="margin-bottom:12px; display:block;">Scheduling Process → master schedule</div>
+        
+        <label>Diagnostic Steps:</label>
+        <div id="error-steps" class="config-detail" style="font-size:14.5px; padding-left:14px; line-height:1.6;">Loading steps...</div>
+
+        <label style="margin-top:14px; display:block;">Isolate Records with this Copyable Aeries Query:</label>
+        <div style="position:relative;">
+          <span id="copy-success" class="copy-success-message">Copied!</span>
+          <button class="copy-btn" onclick="copyDiagnosticQuery()">Copy Query</button>
+          <pre id="error-query" class="calc-result">LIST MST...</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3 style="font-size:24px; border-bottom: 2px solid var(--line); padding-bottom:10px;">The 4 Essential Troubleshooting Scenarios</h3>
+    <p>When you encounter a scheduling dead-end, work through these four critical scenarios to resolve your bottlenecks.</p>
+    
+    <div class="steps">
+
+      <!-- SCENARIO 1 -->
+      <article class="step">
+        <h3>Scenario 1 — Your Scheduling Placement Rate is Low (Under 80%)</h3>
+        <span class="step-subtitle">Diagnostic Scenario 1 • Scheduling Passes</span>
+        <p><strong>Goal:</strong> Diagnose why the student scheduling simulator is unable to place students into valid paths, resulting in widespread gaps in student rosters.</p>
+        
+        <h4>Aeries Path:</h4>
+        <div class="path">Scheduling Process → Reports → Conflict Matrix / Student Schedule Summary</div>
+        
+        <h4>Triage Protocol (Step-by-Step):</h4>
+        <ol>
+          <li>Open your **Conflict Matrix** report. This creates a grid intersecting every singleton and doubleton course at your school.</li>
+          <li>Look for high intersection numbers. If AP Literature (Period 1) and AP Government (Period 1) have an intersection of 25, it means 25 students requested both courses, but they are physically locked in the same period block.</li>
+          <li>Spread these sections across the master schedule (e.g., move AP Literature to Period 3).</li>
+          <li>Re-run the scheduling pass. Your placement rate should immediately rise.</li>
+        </ol>
+        
+        <div class="callout tip">
+          <strong>The 80% Benchmark:</strong> If your placement rate starts below 80% on the first run, do not attempt to schedule individual students manually. You have a structural conflict on the master board (typically overlapping singletons). Resolve the pattern conflict first to save hours of manual counseling schedules.
+        </div>
+      </article>
+
+      <!-- SCENARIO 2 -->
+      <article class="step">
+        <h3>Scenario 2 — Class Overloads & Max Capacity Collisions</h3>
+        <span class="step-subtitle">Diagnostic Scenario 2 • Seat Balance Audit</span>
+        <p><strong>Goal:</strong> Detect and resolve sections where enrollment counts breach district-contracted limits, leaving classes imbalanced.</p>
+        
+        <h4>Aeries Path:</h4>
+        <div class="path">Scheduling Process → Master Schedule → Interactive Master Schedule</div>
+        
+        <h4>Triage Protocol (Step-by-Step):</h4>
+        <ol>
+          <li>Run a query or view the Interactive Master Schedule Board to review section counts side-by-side.</li>
+          <li>Find the maximum class limit setting on the master schedule record (<code>MST.MX</code>). If a classroom is contracted for a maximum of 32 students, ensure `MST.MX` is set to exactly 32.</li>
+          <li>If a course is showing overfilled (e.g., 38 students in standard English 10, while another section has 12), use the Aeries **Interactive Scheduling Board** to drag and drop students to balance class sizes.</li>
+        </ol>
+        
+        <div class="callout mistake">
+          <strong>Beginner Mistake:</strong> Artificially raising the maximum seat limit `MST.MX` in Aeries to clear scheduling blocks without consulting site administration. This causes room overcrowding and contract limit violations.
+        </div>
+      </article>
+
+      <!-- SCENARIO 3 -->
+      <article class="step">
+        <h3>Scenario 3 — Teacher and Room Overlaps</h3>
+        <span class="step-subtitle">Diagnostic Scenario 3 • Room & Instructor Collision Audit</span>
+        <p><strong>Goal:</strong> Find and repair physical room overrides and teacher double-bookings (where an instructor is scheduled to teach two classes in the same period).</p>
+        
+        <h4>Aeries Path:</h4>
+        <div class="path">Scheduling Process → Reports → Room Overlap Listing / Teacher Load Report</div>
+        
+        <h4>Triage Protocol (Step-by-Step):</h4>
+        <ol>
+          <li>Run the **Room Overlap Listing** to identify instances where multiple sections are assigned to the same room during the same period. This frequently occurs with shared spaces like gyms, science labs, or multi-purpose rooms.</li>
+          <li>Run the **Teacher Load Report** to confirm no teacher is assigned to multiple classes in the same period.</li>
+          <li>Correct overlaps by assigning unique classroom numbers or updating the section teacher assignment records on the Master Board.</li>
+        </ol>
+      </article>
+
+      <!-- SCENARIO 4 -->
+      <article class="step">
+        <h3>Scenario 4 — Senior Graduation Path Holds</h3>
+        <span class="step-subtitle">Diagnostic Scenario 4 • 12th Grade Triage</span>
+        <p><strong>Goal:</strong> Prioritize graduation-critical scheduling runs for seniors and credit-deficient students, ensuring they receive required courses before general electives are scheduled.</p>
+        
+        <h4>Aeries Path:</h4>
+        <div class="path">Scheduling Process → Student Data → Graduation Requirements (REQ) / Transcripts (HIS)</div>
+        
+        <h4>Triage Protocol (Step-by-Step):</h4>
+        <ol>
+          <li>Isolate senior records. Group student requests by graduation track.</li>
+          <li>Lock the required core courses for seniors first. This protects their graduation pathways and ensures they are placed before lower grade levels fill elective seats.</li>
+          <li>Run scheduling passes with priority flags enabled for the senior cohort.</li>
+        </ol>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3>Aeries Master Database Field Reference Sheet</h3>
+    <p>When running custom audits or writing advanced Aeries queries, refer to this cheat sheet of key database tables and fields to ensure your diagnostics are targeting the right parameters:</p>
+    
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; text-align:left; font-size:14px; margin-top:12px;">
+        <thead>
+          <tr style="background:var(--navy); color:white;">
+            <th style="padding:10px; border-radius:8px 0 0 0;">Table</th>
+            <th style="padding:10px;">Field Name</th>
+            <th style="padding:10px;">Database Code</th>
+            <th style="padding:10px; border-radius:0 8px 0 0;">Common Troubleshooting Use Cases</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line); background:#fff;">
+            <td style="padding:10px; font-weight:700;">MST</td>
+            <td style="padding:10px;">Max Capacity</td>
+            <td style="padding:10px; font-family:monospace; color:var(--blue);">MST.MX</td>
+            <td style="padding:10px;">Audit seat capacities and resolve class-overload limits.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line); background:#f8fafc;">
+            <td style="padding:10px; font-weight:700;">MST</td>
+            <td style="padding:10px;">Actual Enrollment</td>
+            <td style="padding:10px; font-family:monospace; color:var(--blue);">MST.ACT</td>
+            <td style="padding:10px;">Audit class sizes and balance student rosters across periods.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line); background:#fff;">
+            <td style="padding:10px; font-weight:700;">SSS</td>
+            <td style="padding:10px;">Course Number</td>
+            <td style="padding:10px; font-family:monospace; color:var(--blue);">SSS.CN</td>
+            <td style="padding:10px;">Clean up student requests and remove duplicate or invalid course entries.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line); background:#f8fafc;">
+            <td style="padding:10px; font-weight:700;">SMS</td>
+            <td style="padding:10px;">Class Calendar Index</td>
+            <td style="padding:10px; font-family:monospace; color:var(--blue);">SMS.CSQ</td>
+            <td style="padding:10px;">Link flex periods to valid calendars and prevent attendance audit issues.</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line); background:#fff;">
+            <td style="padding:10px; font-weight:700;">SMS</td>
+            <td style="padding:10px;">Exclusion Flag</td>
+            <td style="padding:10px; font-family:monospace; color:var(--blue);">SMS.ES</td>
+            <td style="padding:10px;">Verify exclusion flags on assembly days or modified schedules.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3>Where to go next</h3>
+    <p>Once you resolve your scheduling errors and conflicts, return to your core school-level master scheduling workspaces:</p>
+    <div class="next-grid">
+      <div class="next-card">
+        <div>
+          <h3>🚀 Start Here Guide</h3>
+          <p>Review standard timelines, basic Aeries calendar configurations, and the general chronological order of building.</p>
+        </div>
+        <a class="btn" href="scheduling-start-here.html">Open Start Here</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🏫 Elementary Level</h3>
+          <p>Learn to design stable, self-contained homerooms, AM/PM Kindergarten split sessions, and specialist rotations.</p>
+        </div>
+        <a class="btn" href="scheduling-elementary.html">Open Elementary Guide</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🏫 Middle School Level</h3>
+          <p>Learn to design core academic teams, elective rotation wheels, and integrated WIN support blocks.</p>
+        </div>
+        <a class="btn" href="scheduling-middle-school.html">Open Middle Guide</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  WUSD Aeries Resource Center • Master Scheduling Troubleshooting Guide • Formatted for interactive build-along training. Ensure you coordinate database changes with your site administrator.
+</footer>
+
+<script>
+// Interactive Aeries Diagnostic Tool Data
+const errorData = {
+  d7_full: {
+    title: "Reject Code D7 (Class is Full / Seat Lockout)",
+    desc: "The student scheduling engine failed to place a student because the requested master section has reached its maximum enrollment capacity (MST.MX), preventing further schedules from finalizing.",
+    path: "Scheduling Process → Master Schedule → Interactive master schedule",
+    steps: `1. Check your section maximums in Aeries (MST.MX) to confirm they match district limits.
+2. If class maximums are correct but sections are full, determine if you need to open an additional section.
+3. Review the student's alternative requests in the SSS table to check for open elective options.`,
+    query: "LIST MST CRS MST.SE MST.CN CRS.CO MST.MX MST.ACT IF MST.ACT >= MST.MX"
+  },
+  double_teacher: {
+    title: "Teacher Scheduled in Two Classes Same Period",
+    desc: "An instructor is assigned as the primary teacher of record for two separate sections during the same period, causing conflicts in attendance and scheduling reports.",
+    path: "Scheduling Process → Reports → Teacher Load Report / Pre-Scheduling Listing",
+    steps: `1. Run the Aeries Room Overlap and Teacher Overlap Reports.
+2. Identify the period and section where the instructor is double-booked.
+3. Assign a co-teacher or update the section record with a valid teacher ID.`,
+    query: "LIST SMS SSM STF STF.FN STF.LN SMS.SE SMS.FSQ BY STF.LN STF.FN IF SMS.SE = SMS.SE"
+  },
+  singleton_clash: {
+    title: "Singleton Course Clash (Low Fill Rate)",
+    desc: "Two singleton courses requested by the same student are scheduled during the same period, forcing a scheduling reject and lowering your overall simulation fill rate.",
+    path: "Scheduling Process → Course Requests → Request Reports / Student Reject Matrix",
+    steps: `1. Open your Conflict Matrix report in Aeries to find singletons with high overlap counts.
+2. If many students are blocked by a single AP or elective conflict, move one of the singletons to a different period on your board.
+3. Re-run your scheduling simulation to verify the placement rate increases.`,
+    query: "LIST STU SSS STU.ID STU.NM SSS.CN BY STU.ID IF SSS.CN = SSS.CN"
+  },
+  missing_calendar: {
+    title: "No Class Calendar Linked / Absence of CCL",
+    desc: "A master section is assigned to a flex period but lacks a linked Class Calendar, causing scheduling blocks and calendar validation warnings.",
+    path: "Scheduling Process → Master Schedule → Master Schedule Sections Detail",
+    steps: `1. Navigate to Master Schedule Sections on your master master scheduling board.
+2. Verify that each section has a valid Class Calendar assigned (SMS.CSQ).
+3. If a calendar is missing, update the section detail settings to link the correct calendar ID.`,
+    query: "LIST SMS SSM STF STF.FN STF.LN SMS.SE SMS.FSQ SMS.CSQ IF ( SSM.PR = 1 AND SMS.CSQ < 1 )"
+  },
+  unscheduled_core: {
+    title: "Core Course Code Missing From Request Board",
+    desc: "A student request record (SSS) contains a course number that does not match any active section in your master schedule, leaving the request unplaced.",
+    path: "Scheduling Process → Course Requests → Request Reports / Student Request Audit",
+    steps: `1. Open your Student Course Request audit page in Aeries.
+2. Identify students with course requests that do not map to active sections.
+3. Correct the course numbers in the student's request list or add the missing section to the master schedule.`,
+    query: "LIST STU SSS STU.ID STU.NM SSS.CN BY SSS.CN IF SSS.CN NOT IN (SELECT CN FROM MST)"
+  }
+};
+
+function renderErrorModel() {
+  const selectVal = document.getElementById('error-model-select').value;
+  const data = errorData[selectVal];
+  
+  const titleDiv = document.getElementById('error-title');
+  const descDiv = document.getElementById('error-desc');
+  const pathDiv = document.getElementById('error-path');
+  const stepsDiv = document.getElementById('error-steps');
+  const queryDiv = document.getElementById('error-query');
+  
+  if (data) {
+    titleDiv.textContent = data.title;
+    descDiv.innerHTML = data.desc;
+    pathDiv.textContent = data.path;
+    
+    // Formatting steps as list items
+    const stepsArray = data.steps.split('\n');
+    let stepsHtml = "<ol style='padding-left: 20px; margin: 0;'>";
+    stepsArray.forEach(step => {
+      if (step.trim() !== "") {
+        // Remove number prefix if present
+        const cleanStep = step.replace(/^\d+\.\s*/, '');
+        stepsHtml += `<li style='margin-bottom: 8px;'>${cleanStep}</li>`;
+      }
+    });
+    stepsHtml += "</ol>";
+    stepsDiv.innerHTML = stepsHtml;
+    
+    queryDiv.textContent = data.query;
+  }
+}
+
+// Copy query to clipboard fallback method
+function copyDiagnosticQuery() {
+  const queryText = document.getElementById('error-query').textContent;
+  
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = queryText;
+  document.body.appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempTextArea);
+  
+  // Show copied success indicator
+  const successIndicator = document.getElementById('copy-success');
+  successIndicator.style.display = "inline";
+  setTimeout(() => {
+    successIndicator.style.display = "none";
+  }, 2000);
+}
+
+// Run diagnostic on load
+window.onload = function() {
+  renderErrorModel();
+};
+</script>
+
+</body>
+</html>
