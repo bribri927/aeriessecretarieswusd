@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LMS Integration & Sync Help - WUSD Aeries Teacher Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          classroom: {
+            50: '#f0fdf4',
+            100: '#dcfce7',
+            200: '#bbf7d0',
+            500: '#22c55e',
+            600: '#16a34a',
+            700: '#15803d',
+            800: '#166534',
+            900: '#14532d',
+            950: '#022c22',
+          },
+          slate: {
+            900: '#0f172a',
+            950: '#020617',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.04);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f7fcf9] to-[#edf9f1] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<!-- TOP HEADER BAR -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-classroom-800 to-classroom-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
+        W
+      </div>
+      <div>
+        <h1 class="text-sm font-extrabold text-slate-900 tracking-tight leading-none">
+          WUSD Teacher Aeries Workspace
+        </h1>
+        <p class="text-[10px] font-semibold text-slate-500 mt-1">Washington Unified School District Support Portal</p>
+      </div>
+    </div>
+    
+    <nav class="flex items-center gap-1.5 flex-wrap text-xs font-semibold text-slate-600">
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">Aeries Home</a>
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition font-bold text-classroom-800" href="teacher-resources.html">🍎 Teacher Directory</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN CONTENT CONTAINER -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow">
+
+  <!-- HERO WELCOME BANNER -->
+  <section class="bg-gradient-to-br from-classroom-900 via-classroom-800 to-classroom-600 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        🧩 7. Canvas / Google / Integration Help • LMS Connections
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Connecting Your Virtual Classroom</h2>
+      <p class="text-classroom-100 text-sm sm:text-base font-medium leading-relaxed">
+        Syncing your external digital platforms with Aeries eliminates manual scoring, but requires precise configuration to prevent grade book discrepancies. **Please Note: WUSD supports Direct Grade Passback only for Canvas.** Google Classroom acts as a roster and assignment import tool (no automated grade push back). Let's explore how to safely map, sync, and troubleshoot your integrations!
+      </p>
+    </div>
+  </section>
+
+  <!-- WUSD INTEGRATION MANDATE WARNING -->
+  <section class="bg-orange-50 border border-orange-200 rounded-3xl p-6 sm:p-8 space-y-4">
+    <div class="flex items-start gap-4">
+      <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-800 flex items-center justify-center font-black text-xl flex-shrink-0">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <div class="space-y-1 flex-1">
+        <h3 class="text-base font-black text-orange-950 uppercase tracking-wide">WUSD Direct Integration Policy Notice</h3>
+        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+          To protect student data integrity and avoid synchronization locks, WUSD enforces two strict integration behaviors:
+        </p>
+        <ul class="list-disc pl-5 text-xs text-slate-700 font-semibold space-y-1.5 mt-2">
+          <li><strong class="text-orange-950">Canvas Grade Passback is Supported:</strong> You can push finalized grades directly from Canvas to Aeries. Categories (such as Homework, Tests) must match spelling and case exactly.</li>
+          <li><strong class="text-red-800">NO Google Classroom Grade Passback:</strong> WUSD does *not* authorize Google to write grades back into Aeries. You can import student rosters and pull assignments *into* Aeries, but grading calculations must be completed or synced through manually configured columns.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE INTEGRATION SYNC TROUBLESHOOTER -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-start gap-4 border-b border-slate-100 pb-4">
+      <div class="w-10 h-10 rounded-xl bg-classroom-50 text-classroom-800 flex items-center justify-center font-black text-lg flex-shrink-0 border border-classroom-100">
+        <i class="fa-solid fa-arrows-rotate text-base"></i>
+      </div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">WUSD Sync Diagnostics & Roster Sandbox</h3>
+        <p class="text-xs text-slate-500 font-semibold">
+          Select an LMS platform and a synchronization issue to view active diagnostic steps, Aeries field requirements, and WUSD-specific behaviors.
+        </p>
+      </div>
+    </div>
+
+    <!-- Live Controls HUD -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-2xl border">
+      <div class="space-y-1">
+        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">1. Select LMS Platform</label>
+        <select id="sim-platform" onchange="runSyncDiagnostics()" class="w-full px-2.5 py-1.5 text-xs border rounded-xl bg-white font-bold">
+          <option value="canvas">Canvas (District Standard)</option>
+          <option value="google">Google Classroom (Roster Pull Only)</option>
+          <option value="external">Quizizz / Playground Tools</option>
+        </select>
+      </div>
+
+      <div class="space-y-1">
+        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">2. Active Sync Issue</label>
+        <select id="sim-issue" onchange="runSyncDiagnostics()" class="w-full px-2.5 py-1.5 text-xs border rounded-xl bg-white font-bold">
+          <option value="mismatch">Category Name Mismatch (Grade Error)</option>
+          <option value="duplicate">Duplicate Assignments Generated</option>
+          <option value="roster">Roster / Section Count Mismatch</option>
+          <option value="login">Connection SSO Authorization Issue</option>
+        </select>
+      </div>
+
+      <div class="flex items-end">
+        <button onclick="testSyncSimulation()" id="test-sync-btn" class="w-full px-4 py-2 bg-classroom-600 hover:bg-classroom-700 text-white rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition active:scale-95 shadow-sm">
+          <i class="fa-solid fa-circle-play"></i> Run Sync Diagnostic
+        </button>
+      </div>
+    </div>
+
+    <!-- Dynamic Output Area -->
+    <div class="p-5 bg-white border rounded-2xl space-y-4" id="sync-diagnostic-output">
+      <!-- Populated dynamically by JavaScript -->
+    </div>
+
+    <!-- Live Visual Feedback Alert -->
+    <div id="sync-action-banner" class="hidden p-4 rounded-2xl text-xs font-semibold flex items-center gap-3 border">
+      <div id="sync-action-icon" class="w-6 h-6 rounded-full text-white flex items-center justify-center font-bold">✓</div>
+      <div id="sync-action-text">Diagnostic successfully ran!</div>
+    </div>
+  </section>
+
+  <!-- OPERATIONAL TRAINING PLAYBOOKS -->
+  <section class="space-y-8">
+
+    <!-- PLAYBOOK 1: CANVAS GRADE PASSBACK -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">1</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">LMS Protocol • Canvas Direct Sync</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Setting Up Canvas Category Mapping & Passback</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Canvas allows you to push assignment grades directly to Aeries with a single click. For passback to succeed, your Canvas Assignment Groups must map **identically** to your Aeries Gradebook Categories.
+        </p>
+
+        <div class="path">Aeries: Manage Gradebook → Categories → Canvas Category Mapping (Or LMS Sync)</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">The Canvas Passback Setup Flow:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>In **Aeries**, configure your grading categories (e.g., *Tests*, *Homework*). Note spelling and capitalization.</li>
+            <li>In **Canvas**, navigate to your Assignments page and create **Assignment Groups** with matching names (e.g., if Aeries says "Homework", Canvas must say "Homework" — not "HW" or "homework").</li>
+            <li>Enable the toggle **"Sync to SIS"** on individual Canvas assignments. Unchecked assignments will be skipped during passback.</li>
+            <li>In Canvas Gradebook, click **Actions → Sync to SIS** (or direct LTI export) to push marks to your Aeries spreadsheet.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 2: GOOGLE CLASSROOM ROSTER IMPORT -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">2</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">LMS Protocol • Google Classroom Limitations</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Google Classroom Roster Import & Setup</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          While WUSD prohibits automated grade passback from Google to protect records from background writes, you can safely pull student rosters and assignment details *from* Google Classroom into Aeries.
+        </p>
+
+        <div class="path">Open Gradebook → Manage Gradebook → Add/Link Sections → Link Google Classroom</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">How to Link & Pull Roster Data:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Open the target Aeries gradebook. Select **Add/Link Sections** (or Google Connection tab).</li>
+            <li>Click **Link Google Classroom**. Select your district G-Suite account to authorize single sign-on (SSO).</li>
+            <li>Aeries will display your active class sections. Click **Import Students** to match your Aeries roster to your Google Classroom list.</li>
+            <li>To pull homework names, select **Import Assignments**. This automatically creates matching grading columns inside Aeries, leaving grades empty for manual or import scoring.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 3: SECTIONS & DUPLICATE GRADES -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">3</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Sync Management • Data Integrity</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Resolving Duplicate Grades & Sync Disconnects</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          A common sync issue occurs when a single Canvas assignment exports twice, creating duplicate columns inside Aeries. Let's look at how to resolve this.
+        </p>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600 text-slate-500">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong class="text-slate-800">Duplicate Columns:</strong> If an assignment creates duplicate rows, verify if you changed the assignment name in Canvas *after* the initial passback ran. Aeries treats changed names as new entries. Delete the older column in Aeries and run the passback again.</li>
+            <li><strong class="text-slate-800">Missing Canvas Students:</strong> If a student's grades are blank after passback, check if their email address matches across systems. If they are missing their district email in Canvas, the sync bypasses them.</li>
+            <li><strong class="text-slate-800">Re-Authorizing Connections:</strong> If the sync fails with an authorization error, navigate to **Manage Gradebook → LMS Options**, click **Disconnect**, and immediately **Re-Authorize** to refresh security tokens.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 4: EXTERNAL APPS (QUIZIZZ / EDPLAYGROUND) -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">4</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Interactive Tools • Supplemental Sync</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Configuring Quizizz & Edpuzzle Syncing</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Game-based or supplemental programs (such as Quizizz, Blooket, and Edpuzzle) do not sync directly to Aeries database tables. They must be routed through Canvas or Google Classroom.
+        </p>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">The Dual-Step Sync Routing:</p>
+          <ol class="list-decimal pl-5 space-y-2 text-slate-500">
+            <li>Link your Quizizz or Edpuzzle account to your **Canvas Course** (or Google Classroom).</li>
+            <li>Assign the quiz directly inside the Canvas shell as an external tool assignment.</li>
+            <li>Once students complete the activity, let Quizizz sync the scores directly to your Canvas gradebook.</li>
+            <li>Run the standard **Canvas SIS Passback** to pull the finalized scores into Aeries.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- CONFIDENCE BUILDER CHECKLIST -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+      <div class="text-3xl">🎒</div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Active Integration Checklist</h3>
+        <p class="text-xs text-slate-500 font-semibold">Track your integration setup across these critical sync tasks. Your state is saved locally:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      
+      <div class="lg:col-span-8 space-y-3" id="integrations-tasks-container">
+        <!-- Javascript populated checklists -->
+      </div>
+
+      <div class="lg:col-span-4 bg-classroom-50 border border-classroom-100 p-5 rounded-2xl space-y-3 text-center">
+        <strong class="text-xs text-classroom-800 uppercase tracking-widest block font-extrabold">Integration Readiness:</strong>
+        <div class="text-4xl font-black text-classroom-900" id="percent-display-text">0% Ready</div>
+        <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+          <div id="tracker-progress-bar" class="h-full bg-classroom-600 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+        <button onclick="resetIntegrationsTracker()" class="text-[10px] font-bold text-classroom-700 hover:underline">Reset Progress</button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-classroom-100 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium">
+  WUSD Aeries Resource Center • LMS Integration & Sync Guide • Formatted for side-by-side reference.
+</footer>
+
+<script>
+const diagnosticsData = {
+  canvas: {
+    mismatch: {
+      title: "Canvas Category Name Mismatch",
+      status: "PASSBACK WILL FAIL",
+      desc: "Canvas assignment groups and Aeries categories do not match exactly. Canvas grades will fail to pass back.",
+      fields: "Aeries Category: Homework | Canvas Group: HW (Mismatch)",
+      checkpoints: [
+        "Change 'HW' to 'Homework' in Canvas to align category spelling.",
+        "Check that both groups use the exact same character capitalization.",
+        "Ensure direct weights match (Tests: 60%, Homework: 40%)."
+      ],
+      behavior: "Canvas direct LTI direct API passback ignores sections with naming variations."
+    },
+    duplicate: {
+      title: "Canvas Duplicate Assignments",
+      status: "DUPLICATES DETECTED",
+      desc: "A single assignment was renamed in Canvas after the initial sync, creating two duplicate columns in your Aeries gradebook.",
+      fields: "Assignment 1: Trig Prep | Assignment 1 (Sync): Trig Prep Homework",
+      checkpoints: [
+        "Examine Aeries gradebook columns and delete the older assignment column.",
+        "Do not rename Canvas assignments once direct Passback is initialized.",
+        "Ensure the Canvas SIS Sync toggle remains enabled on only one assignment."
+      ],
+      behavior: "Aeries creates a new assignment ID if the Canvas title string is modified post-sync."
+    },
+    roster: {
+      title: "Canvas Roster Sync Mismatch",
+      status: "STUDENT BLOCKS DETECTED",
+      desc: "Newly enrolled students appear in Aeries but are missing from your Canvas student list, blocking direct passback.",
+      fields: "Roster: 24 active in Aeries | 22 synced in Canvas",
+      checkpoints: [
+        "Allow up to 24 hours for overnight district roster sync scripts to run.",
+        "Verify student district email matches across both systems.",
+        "Manually click 'Sync Rosters' on the Canvas dashboard to force an update."
+      ],
+      behavior: "District enrollment scripts populate Canvas rosters nightly from Aeries Master demographics."
+    },
+    login: {
+      title: "Canvas Authorization Connection Issue",
+      status: "SECURITY TOKEN EXPIRED",
+      desc: "Your secure Canvas LTI authorization token has expired. Canvas cannot write to your Aeries gradebook.",
+      fields: "LTI Token: Expired | API Status: Denied",
+      checkpoints: [
+        "Go to Manage Gradebook → LMS Options inside Aeries.",
+        "Click Disconnect, then click Re-Authorize.",
+        "Authenticate using your district SSO credentials."
+      ],
+      behavior: "Integration tokens expire after 90 days of inactivity to protect student records."
+    }
+  },
+  google: {
+    mismatch: {
+      title: "Google Category Mapping Check",
+      status: "PASSBACK NOT SUPPORTED",
+      desc: "Google Classroom grade passback is disabled in WUSD. Category mapping only applies to manually imported assignments.",
+      fields: "Aeries Category: Homework | Google Category: Classwork",
+      checkpoints: [
+        "Manually align categories inside your Aeries Gradebook.",
+        "Pull assignments from Google using the 'Import Assignments' tool.",
+        "Manually grade imported assignments inside your Aeries spreadsheet."
+      ],
+      behavior: "WUSD prohibits Google from writing directly to Aeries databases to protect records."
+    },
+    duplicate: {
+      title: "Google Duplicate Import Protection",
+      status: "DUPLICATE BLOCKS ENGAGED",
+      desc: "Importing assignments multiple times from Google Classroom can create duplicate grading columns in Aeries.",
+      fields: "Google Import ID: Locked | Dup Status: Blocked",
+      checkpoints: [
+        "Avoid importing the same Google Classroom assignments list twice.",
+        "If duplicate columns appear, delete the empty duplicate column in Aeries.",
+        "Always use Aeries as the source of truth for grading weights."
+      ],
+      behavior: "Google Classroom imports must be managed sequentially to avoid duplicate rows."
+    },
+    roster: {
+      title: "Google Classroom Roster Sync",
+      status: "ROSTER PULL ACTIVE",
+      desc: "Roster mismatches occur when student emails are missing from your Google Classroom course.",
+      fields: "Aeries Roster: 28 | Google classroom Roster: 26",
+      checkpoints: [
+        "Link your Google Classroom under Add/Link Sections in Aeries.",
+        "Click 'Import Students' to synchronize your rosters.",
+        "Ensure students are logged into Google Classroom with their school emails."
+      ],
+      behavior: "Aeries pulls active student lists from linked Google Classroom courses."
+    },
+    login: {
+      title: "Google Classroom SSO Authentication",
+      status: "AUTH EXPIRED",
+      desc: "Your G-Suite authorization has expired. Aeries cannot access your Google Classroom courses.",
+      fields: "SSO Status: Expired | G-Suite: Authorized required",
+      checkpoints: [
+        "Click 'Link Google Classroom' under Manage Gradebook.",
+        "Sign in using your district Google account.",
+        "Authorize Aeries to access your Google Classroom roster."
+      ],
+      behavior: "Requires regular G-Suite token authentication to protect student data."
+    }
+  },
+  external: {
+    mismatch: {
+      title: "Quizizz / Edpuzzle Sync Error",
+      status: "PASSBACK ROUTING ISSUES",
+      desc: "External tools (Quizizz, Edpuzzle) cannot write directly to Aeries. They must be routed through Canvas.",
+      fields: "Quizizz Score: Synced | Aeries: Missing",
+      checkpoints: [
+        "Ensure your Quizizz/Edpuzzle account is linked directly to your Canvas course.",
+        "Configure the quiz as an external tool assignment inside Canvas.",
+        "Once scores are in Canvas, run the Canvas SIS Passback to update Aeries."
+      ],
+      behavior: "Quizizz grades must pass through Canvas to be written to Aeries."
+    },
+    duplicate: {
+      title: "Quizizz Duplicate Columns",
+      status: "DUPLICATES BLOCKED",
+      desc: "Duplicate Quizizz columns are blocked from entering Aeries by Canvas mapping rules.",
+      fields: "LTI Status: Safe | Dup Protection: Active",
+      checkpoints: [
+        "Assign Quizizz only once inside your Canvas modules.",
+        "Verify that only one Canvas assignment is linked to the external quiz.",
+        "Delete any duplicate columns in your Canvas gradebook."
+      ],
+      behavior: "Score routing is managed by your Canvas Assignment Groups."
+    },
+    roster: {
+      title: "Quizizz Roster Sync Issues",
+      status: "ROSTER MISMATCH DETECTED",
+      desc: "Students using personal emails in Quizizz will fail to sync with your Aeries roster.",
+      fields: "Aeries Email: @wusd | Quizizz Email: @gmail",
+      checkpoints: [
+        "Ensure students log into Quizizz using their district Google account.",
+        "Import your Canvas roster into Quizizz before assigning quizzes.",
+        "Remove students using personal emails from your Quizizz course."
+      ],
+      behavior: "Passback matching relies on student district email addresses."
+    },
+    login: {
+      title: "Quizizz SSO Authorization Issues",
+      status: "CONNECTION EXPIRING",
+      desc: "Your Quizizz G-Suite authorization has expired, blocking connection syncs.",
+      fields: "Auth: Expiring | SSO: Re-authorize required",
+      checkpoints: [
+        "Disconnect and reconnect Google Classroom inside your Quizizz settings.",
+        "Sign in using your WUSD district email address.",
+        "Refresh your browser and run the sync again."
+      ],
+      behavior: "External integrations require periodic re-authorization."
+    }
+  }
+};
+
+// RUN ACTIVE SYNC DIAGNOSTIC
+function runSyncDiagnostics() {
+  const platform = document.getElementById('sim-platform').value;
+  const issue = document.getElementById('sim-issue').value;
+  const target = diagnosticsData[platform]?.[issue];
+  const container = document.getElementById('sync-diagnostic-output');
+
+  if (!target) return;
+
+  // Render Status Badge style
+  let badgeStyle = "bg-red-100 text-red-800";
+  if (target.status.includes("Safe") || target.status.includes("ACTIVE")) {
+    badgeStyle = "bg-green-100 text-green-800";
+  } else if (target.status.includes("DETECTED")) {
+    badgeStyle = "bg-yellow-100 text-yellow-800";
+  }
+
+  container.innerHTML = `
+    <div class="border-b border-slate-100 pb-3 flex justify-between items-center flex-wrap gap-2">
+      <div>
+        <h4 class="text-sm font-black text-slate-800 uppercase tracking-wider">${target.title}</h4>
+        <span class="text-[10px] text-slate-400 font-bold uppercase block mt-1">Platform: ${platform} • Issue: ${issue}</span>
+      </div>
+      <span class="px-2 py-0.5 rounded text-[10px] font-black ${badgeStyle}">
+        ${target.status}
+      </span>
+    </div>
+
+    <div class="space-y-3">
+      <div class="space-y-1">
+        <span class="text-[9px] font-black uppercase text-slate-400 block">Diagnostic Narrative:</span>
+        <p class="text-xs text-slate-600 font-medium leading-relaxed">${target.desc}</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border">
+        <div>
+          <span class="text-[9px] font-black uppercase text-slate-400 block mb-2">Checkpoints to Fix Sync:</span>
+          <ul class="space-y-1 text-xs font-semibold text-slate-600">
+            ${target.checkpoints.map(check => `<li class="flex items-start gap-1.5"><span class="text-classroom-600">✓</span> <span>${check}</span></li>`).join('')}
+          </ul>
+        </div>
+        <div>
+          <span class="text-[9px] font-black uppercase text-slate-400 block">Integration Detail Field:</span>
+          <p class="font-mono text-[10.5px] text-slate-600 mt-1">${target.fields}</p>
+          <span class="text-[9px] font-black uppercase text-slate-400 block mt-3">Known WUSD Behavior:</span>
+          <p class="text-xs text-slate-600 font-semibold leading-relaxed mt-1">${target.behavior}</p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Hide the quick-action banner
+  document.getElementById('sync-action-banner').classList.add('hidden');
+}
+
+// SIMULATE DIAGNOSTIC RUN SUCCESS
+function testSyncSimulation() {
+  const banner = document.getElementById('sync-action-banner');
+  const icon = document.getElementById('sync-action-icon');
+  const text = document.getElementById('sync-action-text');
+  const platform = document.getElementById('sim-platform').value;
+
+  // WUSD grade passback constraint logic
+  if (platform === 'google') {
+    banner.className = "p-4 bg-orange-50 border border-orange-200 rounded-2xl text-xs text-orange-800 font-semibold flex items-center gap-3";
+    icon.className = "w-6 h-6 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold";
+    icon.textContent = "!";
+    text.textContent = "Audit Notice: Google Classroom direct Grade Passback is NOT supported at WUSD. Import assignments from Google instead to create gradebook columns.";
+  } else {
+    banner.className = "p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-xs text-classroom-900 font-semibold flex items-center gap-3";
+    icon.className = "w-6 h-6 rounded-full bg-classroom-600 text-white flex items-center justify-center font-bold";
+    icon.textContent = "✓";
+    text.textContent = "Success! Direct LTI Sync parameters validated. Run nightly passbacks safely to populate Aeries gradebooks.";
+  }
+
+  banner.classList.remove('hidden');
+
+  // Set first task on the checklist as checked
+  const savedState = JSON.parse(localStorage.getItem(INTEGRATIONS_STORAGE_KEY) || '{}');
+  savedState[0] = true;
+  localStorage.setItem(INTEGRATIONS_STORAGE_KEY, JSON.stringify(savedState));
+  initIntegrationsTracker();
+}
+
+// STORAGE CONFIG ENGINE
+const INTEGRATIONS_STORAGE_KEY = 'wusd_teacher_integrations_state';
+const integrationTasks = [
+  "I have executed a Direct Sync Diagnostic run inside the simulator sandbox above.",
+  "I can map Canvas Assignment Groups to match Aeries categories exactly.",
+  "I know how to enable direct SIS sync on Canvas assignments.",
+  "I understand that WUSD does NOT support direct Grade Passback with Google Classroom.",
+  "I can troubleshoot and resolve duplicate grading columns inside Aeries.",
+  "I know how to sync external scores (Quizizz/Edpuzzle) through Canvas routing."
+];
+
+function initIntegrationsTracker() {
+  const container = document.getElementById('integrations-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(INTEGRATIONS_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  integrationTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-classroom-50 border-classroom-200' : 'border-slate-100 bg-white'}`;
+    taskRow.setAttribute('onclick', `toggleIntegrationsTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-5 h-5 border rounded-lg mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-classroom-600 border-classroom-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3.5 h-3.5 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-xs font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400 font-medium' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = integrationTasks.length > 0 ? Math.round((completedCount / integrationTasks.length) * 100) : 0;
+  document.getElementById('tracker-progress-bar').style.width = percent + '%';
+  document.getElementById('percent-display-text').textContent = `${percent}% Ready`;
+}
+
+function toggleIntegrationsTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(INTEGRATIONS_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(INTEGRATIONS_STORAGE_KEY, JSON.stringify(savedState));
+  initIntegrationsTracker();
+}
+
+function resetIntegrationsTracker() {
+  localStorage.removeItem(INTEGRATIONS_STORAGE_KEY);
+  initIntegrationsTracker();
+  
+  // Hide active warnings
+  document.getElementById('sync-action-banner').classList.add('hidden');
+}
+
+// WINDOW ONLOAD INITIALIZATION
+window.onload = function() {
+  runSyncDiagnostics();
+  initIntegrationsTracker();
+};
+</script>
+
+</body>
+</html>
+```_
