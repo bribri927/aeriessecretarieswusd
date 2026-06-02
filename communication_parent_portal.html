@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Communication & Parent Portal - WUSD Aeries Teacher Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          classroom: {
+            50: '#f0fdf4',
+            100: '#dcfce7',
+            200: '#bbf7d0',
+            500: '#22c55e',
+            600: '#16a34a',
+            700: '#15803d',
+            800: '#166534',
+            900: '#14532d',
+            950: '#022c22',
+          },
+          slate: {
+            900: '#0f172a',
+            950: '#020617',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.04);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+  .transition-all-300 {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f7fcf9] to-[#edf9f1] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<!-- TOP HEADER BAR -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-classroom-800 to-classroom-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
+        W
+      </div>
+      <div>
+        <h1 class="text-sm font-extrabold text-slate-900 tracking-tight leading-none">
+          WUSD Teacher Aeries Workspace
+        </h1>
+        <p class="text-[10px] font-semibold text-slate-500 mt-1">Washington Unified School District Support Portal</p>
+      </div>
+    </div>
+    
+    <nav class="flex items-center gap-1.5 flex-wrap text-xs font-semibold text-slate-600">
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">Aeries Home</a>
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition font-bold text-classroom-800" href="teacher-resources.html">🍎 Teacher Directory</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN CONTENT CONTAINER -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow">
+
+  <!-- HERO WELCOME BANNER -->
+  <section class="bg-gradient-to-br from-classroom-900 via-classroom-800 to-classroom-600 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        👨‍👩‍👧 6. Communication & Parent Portal • Bridge the Gap
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Connecting Classrooms and Living Rooms</h2>
+      <p class="text-classroom-100 text-sm sm:text-base font-medium leading-relaxed">
+        Our digital gradebook is more than an administrative log—it is a continuous window into your classroom. Many parents check Aeries daily to monitor progress, while others need proactive Outreach. In this workspace, you will master tracking family portal activity, identifying struggling and unengaged student records, sending bulk missing-work alert notifications, and constructing legal intervention logs. Let's make home-school communication completely seamless!
+      </p>
+    </div>
+  </section>
+
+  <!-- PARENT PORTAL ALERT & FILTER SIMULATOR -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-start gap-4 border-b border-slate-100 pb-4">
+      <div class="w-10 h-10 rounded-xl bg-classroom-50 text-classroom-800 flex items-center justify-center font-black text-lg flex-shrink-0 border border-classroom-100">
+        <i class="fa-solid fa-bullhorn text-base"></i>
+      </div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">WUSD Parent Portal Engagement & Outreach Simulator</h3>
+        <p class="text-xs text-slate-500 font-semibold">
+          Filter your student roster to isolate specific performance or login anomalies. Select target parents, compose automated alerts, and simulate bulk outreach instantly.
+        </p>
+      </div>
+    </div>
+
+    <!-- Live Filters Controls -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+      <div class="space-y-1">
+        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">1. Filter Academic Grade</label>
+        <select id="sim-filter-grade" onchange="applyPortalFilters()" class="w-full px-2.5 py-1.5 text-xs border rounded-xl bg-white font-bold">
+          <option value="all">Show All Grades</option>
+          <option value="passing">Passing (A, B, C)</option>
+          <option value="struggling">D/F Thresholds</option>
+        </select>
+      </div>
+
+      <div class="space-y-1">
+        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">2. Missing Work Filter</label>
+        <select id="sim-filter-missing" onchange="applyPortalFilters()" class="w-full px-2.5 py-1.5 text-xs border rounded-xl bg-white font-bold">
+          <option value="all">Any Missing Work Count</option>
+          <option value="has-missing">Has Missing Assignments (>= 1)</option>
+          <option value="no-missing">Zero Missing Assignments</option>
+        </select>
+      </div>
+
+      <div class="space-y-1">
+        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">3. Family Portal Login History</label>
+        <select id="sim-filter-login" onchange="applyPortalFilters()" class="w-full px-2.5 py-1.5 text-xs border rounded-xl bg-white font-bold">
+          <option value="all">All Login Histories</option>
+          <option value="active">Active (Within 7 Days)</option>
+          <option value="inactive">Inactive/Never Logged In</option>
+        </select>
+      </div>
+
+      <div class="flex items-end">
+        <button onclick="resetPortalFilters()" class="w-full px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-bold transition">
+          Clear Filters
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Student Parent Demographic Table -->
+    <div class="overflow-x-auto border rounded-2xl">
+      <table class="w-full border-collapse text-left text-xs font-semibold text-slate-600 min-w-[700px]">
+        <thead>
+          <tr class="bg-slate-50 border-b text-slate-400 font-black uppercase tracking-wider text-[9px]">
+            <th class="py-3 px-4 text-center w-12">
+              <input type="checkbox" id="select-all-parents" onchange="toggleSelectAllParents(this)" class="rounded text-classroom-600 focus:ring-classroom-500 w-4 h-4" />
+            </th>
+            <th class="py-3 px-4">Student Name</th>
+            <th class="py-3 px-4">Calculated Average</th>
+            <th class="py-3 px-4">Missing Assignments</th>
+            <th class="py-3 px-4">Primary Contact & Email</th>
+            <th class="py-3 px-4 text-right">Family Portal Login</th>
+          </tr>
+        </thead>
+        <tbody id="sim-portal-rows">
+          <!-- Populated dynamically by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Alert Composer Sandbox -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-3xl border border-slate-200">
+      
+      <!-- Left side: Compose panel -->
+      <div class="space-y-4">
+        <h4 class="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-1.5">
+          <i class="fa-solid fa-envelope-open-text text-classroom-600"></i> Alert Composer Console
+        </h4>
+        
+        <div class="space-y-1">
+          <label class="block text-[10px] font-black uppercase tracking-wider text-slate-400">Select Template</label>
+          <select id="sim-alert-template" onchange="updateAlertTemplate()" class="w-full px-2.5 py-1.5 text-xs border rounded-xl bg-white font-bold">
+            <option value="missing">Bulk Missing Assignment Reminder</option>
+            <option value="struggling">Academic Support Invitation</option>
+            <option value="kudos">Positive Academic Kudos</option>
+          </select>
+        </div>
+
+        <div class="space-y-1">
+          <label class="block text-[10px] font-black uppercase tracking-wider text-slate-400">Target Recipients</label>
+          <input type="text" id="sim-alert-recipients" class="w-full px-2.5 py-1.5 text-xs border rounded-xl bg-slate-100 font-bold text-slate-500" readonly value="0 parents selected" />
+        </div>
+
+        <button onclick="triggerBulkSend()" id="send-alerts-btn" class="w-full px-4 py-2.5 bg-classroom-600 hover:bg-classroom-700 text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2 transition">
+          <i class="fa-solid fa-paper-plane"></i> Send Portal Broadcast Alerts
+        </button>
+      </div>
+
+      <!-- Right side: Preview screen simulating parent dashboard -->
+      <div class="bg-white border rounded-2xl p-4 flex flex-col justify-between shadow-inner h-[280px] overflow-y-auto">
+        <div class="space-y-3">
+          <div class="border-b pb-2 flex justify-between items-center text-[10px] font-bold text-slate-400 uppercase">
+            <span>Parent Email Sandbox Inbox</span>
+            <span class="text-classroom-600">Live Preview</span>
+          </div>
+          <div class="space-y-1">
+            <span class="text-slate-400 text-[10px] block">Subject Line:</span>
+            <strong class="text-xs text-slate-800 block font-black" id="email-preview-subject">Missing Work Alert - WUSD Gradebook</strong>
+          </div>
+          <div class="border-t pt-2 text-xs text-slate-600 leading-relaxed space-y-2 font-medium" id="email-preview-body">
+            <!-- Dynamic body based on template -->
+          </div>
+        </div>
+        <div class="border-t pt-2 mt-4 text-[9px] text-slate-400 font-semibold italic text-center">
+          WUSD Portal Notification Engine • Formatted for Mobile Parent Dashboards
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Notification Result Badge -->
+    <div id="outreach-result-banner" class="hidden p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-xs text-classroom-900 font-semibold flex items-center gap-3">
+      <div class="w-6 h-6 rounded-full bg-classroom-600 text-white flex items-center justify-center font-bold">✓</div>
+      <div id="outreach-result-text">Outreach alert successfully delivered!</div>
+    </div>
+  </section>
+
+  <!-- OPERATIONAL TRAINING PLAYBOOKS -->
+  <section class="space-y-8">
+
+    <!-- PLAYBOOK 1: AUDITING LOGIN HISTORY -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">1</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Step-by-Step • Diagnostic Audit</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Auditing Parent Portal Login History</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          A common mistake is assuming parents see every assignment grade in real-time. Before blaming families for disengagement, check whether they have successfully created and verified their parent portals.
+        </p>
+
+        <div class="path">Left Sidebar → Student Data → Medical → Portal Accounts (or Parents/Contacts Tab)</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">How to Check Parent Login Status:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Search for the student to load their master demographics profile.</li>
+            <li>Select **Portal Accounts** or expand the contacts section to view linked emails.</li>
+            <li><strong>Audit the "Last Login Date" field:</strong> If it remains blank or says *Never*, the parent hasn't linked the child.</li>
+            <li><strong>Check Verification Codes:</strong> If unlinked, click **Print Portal Verification Letters** to generate their unique Student ID, telephone, and Verification Code (VPC). Email or print this code directly for the family.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 2: MASS-EMAIL FOR MISSING WORK -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">2</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Automated Workflow • Time-Saving Outreach</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Sending Proactive Bulk Alerts for Missing Work</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Rather than emailing twenty different parents individual progress messages, Aeries features a native mass outreach engine designed to pull outstanding `MI` (Missing) markers and send parent notifications in bulk.
+        </p>
+
+        <div class="path">Open Gradebook Card → Select Reports → Missing Assignments Listing → Email Notifications</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">The Mass-Email Notification Workflow:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Open your gradebook. Click on **Reports** in the header.</li>
+            <li>Select **Missing Assignments**. Under options, filter the minimum threshold (e.g., *at least 1 missing assignment*).</li>
+            <li>Toggle the option **"Email Parents of Selected Students"**.</li>
+            <li>Aeries dynamically builds an email linking exactly which assignments remain outstanding (e.g., *Trig Functions, Unit Exam 4*) and sends it securely to every registered parent.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 3: COMMUNICATION LOGS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">3</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Interventions paper Trail • Compliance</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Logging Parent Contacts (Intervention Logs)</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          If a student is in danger of failing a grading term, California Education Code requires parent notification before issuing a failing mark. Documenting your parent conversations inside the **Contact Log** builds a secure compliance history.
+        </p>
+
+        <div class="path">Left Sidebar → Student Data → Demographics → select Contact Log tab</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">How to Create an Intervention Contact Log:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Search student, select **Contact Log** under details.</li>
+            <li>Click **Add New Record**. Populates current date/time automatically.</li>
+            <li>Choose **Contact Code** (e.g., *Telephone*, *Email*, *In-Person Conference*).</li>
+            <li>In the **Comments** area, note findings objectively:
+              <div class="p-3 bg-slate-50 border rounded-xl font-mono text-[10.5px] mt-1 text-slate-700">
+                "Notified parent of outstanding Unit 4 exam. Scheduled makeup tutoring for Tuesday after school."
+              </div>
+            </li>
+            <li>Click **Save**. This entries is visible to counselors, administrators, and future teachers, ensuring unified student support.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 4: PROGRESS REPORT EXPORTS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">4</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Exporting Reports • Family Translations</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Printing, Exporting, and Multi-Language translation</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          WUSD is home to a diverse student body. Aeries reports can be exported to PDF and are optimized to support auto-translations into families' registered home languages.
+        </p>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600 text-slate-500">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong class="text-slate-800">Roster translation settings:</strong> Under student demographics, Aeries displays the registered **Home Language (HL)**. When generating progress report letters, check the box *“Print in Home Language”* to translate standard terms automatically.</li>
+            <li><strong class="text-slate-800">Clear progress report printing:</strong> Print standard summaries using the **Student Progress Report** format. Uncheck *“Include assignments not graded”* to keep the report simple for parents.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- CONFIDENCE BUILDER CHECKLIST -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+      <div class="text-3xl">🎒</div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Active Parent Communication Checklist</h3>
+        <p class="text-xs text-slate-500 font-semibold">Track your active family-outreach progress across these critical tasks. Your state is saved locally:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      
+      <div class="lg:col-span-8 space-y-3" id="comms-tasks-container">
+        <!-- Javascript populated checklists -->
+      </div>
+
+      <div class="lg:col-span-4 bg-classroom-50 border border-classroom-100 p-5 rounded-2xl space-y-3 text-center">
+        <strong class="text-xs text-classroom-800 uppercase tracking-widest block font-extrabold">Engagement Status:</strong>
+        <div class="text-4xl font-black text-classroom-900" id="percent-display-text">0% Ready</div>
+        <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+          <div id="tracker-progress-bar" class="h-full bg-classroom-600 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+        <button onclick="resetCommsTracker()" class="text-[10px] font-bold text-classroom-700 hover:underline">Reset Progress</button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-classroom-100 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium">
+  WUSD Aeries Resource Center • Communication & Parent Portal Guide • Formatted for side-by-side reference.
+</footer>
+
+<script>
+// SIMULATOR DATA
+const parentOutreachDatabase = [
+  { id: 1, name: "Alexander, Maya", email: "p.alexander@email.com", parentName: "P. Alexander", gradeNum: 84.2, letter: "B", missing: 0, lastLogin: "Within 7 Days", active: true },
+  { id: 2, name: "Davis, Jackson", email: "m.davis@email.com", parentName: "M. Davis", gradeNum: 58.5, letter: "F", missing: 3, lastLogin: "Never Logged In", active: true },
+  { id: 3, name: "Garcia, Sofia", email: "r.garcia@email.com", parentName: "R. Garcia", gradeNum: 98.1, letter: "A", missing: 0, lastLogin: "Within 7 Days", active: true },
+  { id: 4, name: "Martinez, Leo", email: "l.martinez@email.com", parentName: "L. Martinez", gradeNum: 62.4, letter: "D", missing: 1, lastLogin: "Never Logged In", active: true },
+  { id: 5, name: "Nguyen, Chloe", email: "h.nguyen@email.com", parentName: "H. Nguyen", gradeNum: 79.5, letter: "C+", missing: 0, lastLogin: "Within 7 Days", active: true },
+  { id: 6, name: "Smith, William", email: "t.smith@email.com", parentName: "T. Smith", gradeNum: 68.1, letter: "D", missing: 2, lastLogin: "30+ Days Ago", active: true }
+];
+
+// TEMPLATES DICTIONARY
+const alertTemplates = {
+  missing: {
+    subject: "Missing Work Alert - WUSD Gradebook Update",
+    body: "Dear WUSD Family,<br><br>This is an automated notification to let you know that your student currently has outstanding missing assignments marked in our digital gradebook. Prompt submission is vital to maintain their academic standing.<br><br>Please log into your WUSD Aeries Parent Portal to view which assignments are flagged and review make-up timelines.<br><br>Sincerely,<br>WUSD Classroom Instructor"
+  },
+  struggling: {
+    subject: "Academic Support Invitation - Action Requested",
+    body: "Dear WUSD Family,<br><br>I am writing to invite your student to our after-school tutoring blocks. We are currently reviewing challenging concepts, and additional support will help raise their grade average above current thresholds.<br><br>Please contact me directly or check the Aeries Parent Portal to coordinate tutoring times.<br><br>Sincerely,<br>WUSD Classroom Instructor"
+  },
+  kudos: {
+    subject: "Positive Academic Kudos - Great Job!",
+    body: "Dear WUSD Family,<br><br>I wanted to reach out and share that your student is making excellent contributions in our classroom! Their active participation and high-quality work are greatly appreciated.<br><br>Thank you for your continued partnership and support at home!<br><br>Sincerely,<br>WUSD Classroom Instructor"
+  }
+};
+
+function renderPortalTable() {
+  const container = document.getElementById('sim-portal-rows');
+  container.innerHTML = '';
+
+  parentOutreachDatabase.forEach(student => {
+    // Only render if active based on filters
+    if (!student.active) return;
+
+    const row = document.createElement('tr');
+    row.className = "border-b border-slate-100 hover:bg-slate-50/50 transition duration-150";
+    
+    // Portal badge styling
+    let badgeClass = "bg-red-100 text-red-800";
+    if (student.lastLogin === "Within 7 Days") {
+      badgeClass = "bg-green-100 text-green-800";
+    } else if (student.lastLogin === "30+ Days Ago") {
+      badgeClass = "bg-yellow-100 text-yellow-800";
+    }
+
+    row.innerHTML = `
+      <td class="py-3 px-4 text-center">
+        <input type="checkbox" name="sim-student-check" value="${student.id}" onchange="updateCheckedCount()" class="rounded text-classroom-600 focus:ring-classroom-500 w-4 h-4" />
+      </td>
+      <td class="py-3 px-4 font-black text-slate-800">${student.name}</td>
+      <td class="py-3 px-4">
+        <span class="px-2 py-0.5 rounded text-[10px] font-black ${student.gradeNum < 70 ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}">
+          ${student.gradeNum}% (${student.letter})
+        </span>
+      </td>
+      <td class="py-3 px-4">
+        <strong class="${student.missing > 0 ? 'text-red-600 font-bold' : 'text-slate-400'}">${student.missing} missing</strong>
+      </td>
+      <td class="py-3 px-4 text-slate-500 text-[11px]">
+        <strong class="text-slate-700 block">${student.parentName}</strong>
+        <span>${student.email}</span>
+      </td>
+      <td class="py-3 px-4 text-right">
+        <span class="px-2 py-0.5 rounded text-[10px] font-black ${badgeClass}">
+          ${student.lastLogin}
+        </span>
+      </td>
+    `;
+    container.appendChild(row);
+  });
+
+  updateCheckedCount();
+}
+
+function applyPortalFilters() {
+  const gradeFilter = document.getElementById('sim-filter-grade').value;
+  const missingFilter = document.getElementById('sim-filter-missing').value;
+  const loginFilter = document.getElementById('sim-filter-login').value;
+
+  parentOutreachDatabase.forEach(student => {
+    let showByGrade = true;
+    let showByMissing = true;
+    let showByLogin = true;
+
+    // Academic grade matching
+    if (gradeFilter === 'passing') showByGrade = student.gradeNum >= 70;
+    if (gradeFilter === 'struggling') showByGrade = student.gradeNum < 70;
+
+    // Missing work matching
+    if (missingFilter === 'has-missing') showByMissing = student.missing >= 1;
+    if (missingFilter === 'no-missing') showByMissing = student.missing === 0;
+
+    // Login matching
+    if (loginFilter === 'active') showByLogin = student.lastLogin === "Within 7 Days";
+    if (loginFilter === 'inactive') showByLogin = student.lastLogin === "Never Logged In" || student.lastLogin === "30+ Days Ago";
+
+    student.active = showByGrade && showByMissing && showByLogin;
+  });
+
+  renderPortalTable();
+}
+
+function resetPortalFilters() {
+  document.getElementById('sim-filter-grade').value = 'all';
+  document.getElementById('sim-filter-missing').value = 'all';
+  document.getElementById('sim-filter-login').value = 'all';
+  
+  parentOutreachDatabase.forEach(s => s.active = true);
+  renderPortalTable();
+}
+
+function toggleSelectAllParents(masterCheckbox) {
+  const checkBoxes = document.getElementsByName('sim-student-check');
+  checkBoxes.forEach(cb => {
+    cb.checked = masterCheckbox.checked;
+  });
+  updateCheckedCount();
+}
+
+function updateCheckedCount() {
+  const checkBoxes = document.getElementsByName('sim-student-check');
+  let checkedCount = 0;
+  checkBoxes.forEach(cb => {
+    if (cb.checked) checkedCount++;
+  });
+
+  document.getElementById('sim-alert-recipients').value = `${checkedCount} parent${checkedCount !== 1 ? 's' : ''} selected for outreach`;
+}
+
+function updateAlertTemplate() {
+  const tempKey = document.getElementById('sim-alert-template').value;
+  const template = alertTemplates[tempKey];
+
+  if (template) {
+    document.getElementById('email-preview-subject').textContent = template.subject;
+    document.getElementById('email-preview-body').innerHTML = template.body;
+  }
+}
+
+function triggerBulkSend() {
+  const checkBoxes = document.getElementsByName('sim-student-check');
+  let checkedCount = 0;
+  checkBoxes.forEach(cb => {
+    if (cb.checked) checkedCount++;
+  });
+
+  const banner = document.getElementById('outreach-result-banner');
+  const text = document.getElementById('outreach-result-text');
+
+  if (checkedCount === 0) {
+    banner.className = "p-4 bg-orange-50 border border-orange-200 rounded-2xl text-xs text-orange-800 font-semibold flex items-center gap-3";
+    text.textContent = "Please select at least one parent from the roster table first to dispatch alerts.";
+    banner.classList.remove('hidden');
+    return;
+  }
+
+  // Visual success trigger
+  banner.className = "p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-xs text-classroom-900 font-semibold flex items-center gap-3";
+  text.textContent = `Success! Dynamic parent broadcast alert dispatched to ${checkedCount} household inbox dashboards. Check your Aeries dashboard log to verify deliveries.`;
+  banner.classList.remove('hidden');
+
+  // Mark task 0 as complete on the progress checker
+  const savedState = JSON.parse(localStorage.getItem(COMMS_STORAGE_KEY) || '{}');
+  savedState[0] = true;
+  localStorage.setItem(COMMS_STORAGE_KEY, JSON.stringify(savedState));
+  initCommsTracker();
+}
+
+// COMMS TRACKER LOCALSTORAGE ENGINE
+const COMMS_STORAGE_KEY = 'wusd_teacher_communication_parent_state';
+const commsTasks = [
+  "I have completed and sent parent broadcast alerts in the simulator sandbox above.",
+  "I can identify families who have never logged into their Parent Portal.",
+  "I know how to print parent verification codes to support family portal logins.",
+  "I understand how to send bulk progress alerts for missing assignments.",
+  "I can construct an intervention communication log inside the Aeries Contact Log.",
+  "I know how to export progress reports matching students' home language settings."
+];
+
+function initCommsTracker() {
+  const container = document.getElementById('comms-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(COMMS_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  commsTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-classroom-50 border-classroom-200' : 'border-slate-100 bg-white'}`;
+    taskRow.setAttribute('onclick', `toggleCommsTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-5 h-5 border rounded-lg mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-classroom-600 border-classroom-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3.5 h-3.5 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-xs font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400 font-medium' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = commsTasks.length > 0 ? Math.round((completedCount / commsTasks.length) * 100) : 0;
+  document.getElementById('tracker-progress-bar').style.width = percent + '%';
+  document.getElementById('percent-display-text').textContent = `${percent}% Ready`;
+}
+
+function toggleCommsTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(COMMS_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(COMMS_STORAGE_KEY, JSON.stringify(savedState));
+  initCommsTracker();
+}
+
+function resetCommsTracker() {
+  localStorage.removeItem(COMMS_STORAGE_KEY);
+  initCommsTracker();
+  
+  // Hide warning banner
+  document.getElementById('outreach-result-banner').classList.add('hidden');
+}
+
+// WINDOW LOAD INITIALIZATION
+window.onload = function() {
+  renderPortalTable();
+  updateAlertTemplate();
+  initCommsTracker();
+};
+</script>
+
+</body>
+</html>
