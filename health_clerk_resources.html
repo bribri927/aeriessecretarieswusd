@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WUSD Health Clerk & Medical Resources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            50: '#f4f7fa',
+            100: '#eef5ff',
+            900: '#12355b',
+            950: '#0f1e36',
+          },
+          blue: {
+            600: '#2563eb',
+            700: '#1d4ed8',
+          },
+          gold: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            600: '#d97706',
+            700: '#b45309',
+          },
+          green: {
+            50: '#f0fdf4',
+            100: '#d1fae5',
+            600: '#10b981',
+            700: '#047857',
+          },
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            600: '#dc2626',
+            700: '#b91c1c',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(18, 53, 91, 0.08);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f8fafc] to-[#eef5ff] min-h-screen text-slate-900 font-sans antialiased">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center font-black text-2xl shadow-md shadow-blue-500/20">
+        W
+      </div>
+      <div>
+        <h1 class="text-xl font-extrabold text-navy-900 tracking-tight leading-tight">WUSD Health Office Portal</h1>
+        <p class="text-xs font-semibold text-slate-500">Immunization Compliance, Medical History & Health Alerts</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 flex-wrap">
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-start-here.html">
+        🚀 Start Here Guide
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-secretary.html">
+        👩‍💼 Secretary Portal
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-attendance.html">
+        🕒 Attendance Portal
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-registrar.html">
+        🧾 Registrar Portal
+      </a>
+      <a class="inline-flex items-center gap-2 px-4 py-2 text-sm font-extrabold text-blue-600 bg-white border border-blue-200 rounded-xl hover:bg-slate-50 hover:border-blue-300 shadow-sm transition active:scale-95" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+        WUSD Central Hub
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+  <!-- HERO BANNER -->
+  <section class="bg-gradient-to-r from-[#8b1a1a] via-red-700 to-red-600 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        🏥 HEALTH & IMMUNIZATION COMPLIANCE
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Health Clerk Playbook</h2>
+      <p class="text-red-100 text-sm sm:text-lg font-medium max-w-3xl leading-relaxed">
+        Your primary operational resource for managing student medical history, immunization compliance, and daily clinic tracking. Open this interactive companion on one half of your screen while auditing physical health documents and updating active student records in Aeries.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPLIT COLUMN LAYOUT -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- LEFT & CENTER COLUMN (2/3 width) - IN-DEPTH WORKFLOWS -->
+    <div class="lg:col-span-2 space-y-8">
+
+      <!-- INTERACTIVE HEALTH OFFICE RESOLVER -->
+      <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+          <div class="text-2xl">⚡</div>
+          <div>
+            <h3 class="text-lg font-black text-navy-900">Interactive Health Office Helper</h3>
+            <p class="text-xs text-slate-500 font-medium">Select an on-campus health scenario to instantly view state mandates, critical Aeries tables, documentation requirements, and step-by-step procedures.</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            <button onclick="switchHealthAction('imm_tkk')" id="ht-btn-imm_tkk" class="ht-btn p-2 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md">
+              <span class="block text-lg mb-1">👶</span>
+              TK/K Vaccine Audit
+            </button>
+            <button onclick="switchHealthAction('imm_7th')" id="ht-btn-imm_7th" class="ht-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">💉</span>
+              7th Grade Tdap
+            </button>
+            <button onclick="switchHealthAction('critical_alert')" id="ht-btn-critical_alert" class="ht-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">🚨</span>
+              Health Alerts
+            </button>
+            <button onclick="switchHealthAction('medication')" id="ht-btn-medication" class="ht-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">💊</span>
+              Meds Logging
+            </button>
+            <button onclick="switchHealthAction('screening')" id="ht-btn-screening" class="ht-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">👁️</span>
+              Hearing/Vision
+            </button>
+          </div>
+
+          <!-- DYNAMIC CONTENT CARD -->
+          <div class="p-5 rounded-xl border border-blue-100 bg-blue-50/25 space-y-4" id="ht-content">
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-black text-navy-900 uppercase tracking-wider" id="ht-title">TK/K Immunization Audit Sweep</h4>
+                <span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-extrabold rounded-lg uppercase" id="ht-badge">IMM Table (Immunizations)</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-normal" id="ht-description">California state law requires specific vaccinations prior to entering school. Audit yellow immunization cards for TK and Kindergarten cohorts meticulously.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-blue-100/50 pt-4">
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2">Required Medical Paperwork & Verification:</span>
+                <ul class="space-y-1.5" id="ht-docs">
+                  <!-- Javascript dynamic load -->
+                </ul>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Aeries Click-by-Click Implementation:</span>
+                <div class="path" id="ht-path">Aeries Sidebar → Student Data → Medical → Immunizations</div>
+                <ol class="list-decimal pl-4 space-y-1.5 text-xs text-slate-600 font-medium" id="ht-steps">
+                  <!-- Javascript dynamic load -->
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLAYBOOK 1: VACCINES & AUDITS -->
+      <article id="immunization-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 border border-red-100 flex items-center justify-center font-black text-lg flex-shrink-0">
+            1
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 1 • California Vaccine Compliance</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Immunization Auditing & California Mandates</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Under California Health and Safety Code Sections 120325-120375, schools are prohibited from allowing students on campus unless their immunization record is complete, conditionally met, or backed by a legally registered medical exemption.
+        </p>
+
+        <div class="space-y-4">
+          <h4 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">Target Auditing Cohorts & Specific Doses Required:</h4>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+              <strong class="text-xs text-navy-900 block font-bold">Grade TK / Kindergarten Entry Requirements:</strong>
+              <ul class="list-disc pl-4 text-xs text-slate-600 space-y-1">
+                <li><strong>Polio (IPV):</strong> 4 doses (3 doses are acceptable if the last dose was given on or after the 4th birthday).</li>
+                <li><strong>DTaP:</strong> 5 doses (4 doses acceptable if the last dose was on or after the 4th birthday).</li>
+                <li><strong>MMR (Measles, Mumps, Rubella):</strong> 2 doses (both given on or after the 1st birthday).</li>
+                <li><strong>Hepatitis B:</strong> 3 doses.</li>
+                <li><strong>Varicella (Chickenpox):</strong> 2 doses.</li>
+              </ul>
+            </div>
+            
+            <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+              <strong class="text-xs text-navy-900 block font-bold">Grade 7 Entry Booster Requirements:</strong>
+              <ul class="list-disc pl-4 text-xs text-slate-600 space-y-1">
+                <li><strong>Tdap (Tetanus, Diphtheria, Pertussis):</strong> 1 dose given on or after the 7th birthday.</li>
+                <li><strong>Varicella (Chickenpox):</strong> 2 doses (typically verified during original TK/K entry, but must be checked for new out-of-state enrollments).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">Entering Vaccine Records into Aeries:</h4>
+          <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-3">
+            <li>Search for the student ID. Navigate to the Immunization module.
+              <div class="path">Aeries Navigation: Student Data → Medical → Immunizations (IMM)</div>
+            </li>
+            <li>Click **Change** at the bottom of the immunization form.</li>
+            <li>Enter the exact date (MM/DD/YY) for each dose. Do not enter checkmarks or place placeholders; enter complete dates from the official yellow card or CAIR (California Immunization Registry) system.</li>
+            <li>If the student is entering with a registered CAIR Medical Exemption, enter the CAIR Exemption Number directly into the specialized exemption fields and save.</li>
+            <li>Double-check the **Immunization Status** dropdown (e.g., set to "Has Requirements" or "Conditional"). Click **Save** to lock.</li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-red-50 border border-red-100 rounded-xl">
+          <strong class="text-xs text-red-800 uppercase tracking-wider block font-extrabold">🚨 Critical Audit Penalty Notice:</strong>
+          <p class="text-xs text-slate-600 mt-1 leading-normal">State auditors pull sample student records annually. Any active student on campus without a completed immunization record, conditional admission timeline, or validated CAIR exemption represents a legal violation, exposing the school district to immediate funding audits.</p>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 2: CRITICAL HEALTH ALERTS -->
+      <article id="health-alert-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 border border-red-100 flex items-center justify-center font-black text-lg flex-shrink-0">
+            2
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 2 • Emergency Management</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Critical Health Alerts & Medical Icons</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Students with severe, life-threatening medical conditions (such as anaphylactic food allergies, diabetes, or epilepsy) must have active **Health Alerts** flagged. Flagging the alert generates a bright red medical cross next to the student's name on all teacher portals and office search screens, notifying teachers immediately.
+        </p>
+
+        <div class="space-y-4">
+          <h4 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">How to Flag a Critical Health Alert:</h4>
+          <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-3">
+            <li>Search for the student to load their Demographic profile.</li>
+            <li>Locate and open the Medical History module.
+              <div class="path">Aeries Navigation: Student Data → Medical → Medical History (MED)</div>
+            </li>
+            <li>Click the **Add New Record** button.</li>
+            <li>Select the correct medical code (e.g., **Allergy - Peanut (AL1)**, **Asthma (AS)**, or **Diabetes Type 1 (DB1)**) from the dropdown list.</li>
+            <li><strong>The Crucial Flag:</strong> Check the box labeled **Flag as a Health Alert** (or "Alert Flag"). Setting this is what renders the red cross icon on teacher portals.</li>
+            <li>In the **Details/Comment** text box, write clear, brief instructions for teachers.
+              <div class="example"><strong>Example Text:</strong> "Peanut allergy. Requires EpiPen in health office. Call 911 immediately if exposed."</div>
+            </li>
+            <li>Set the **Status** to active, and click **Save**. Always upload the Emergency Action Plan to the Documents tab.</li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 3: MEDICATIONS & CLINIC LOGS -->
+      <article id="medications-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 border border-red-100 flex items-center justify-center font-black text-lg flex-shrink-0">
+            3
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 3 • Daily Operations</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Clinic Log Entries & Daily Medications</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Every visit to the health office must be documented chronologically in the Medical Log (`ML` table). Daily or emergency medications kept on campus must be documented alongside signed physician orders.
+        </p>
+
+        <div class="space-y-4">
+          <h4 class="text-sm font-black text-navy-900">Documenting Nurse Clinic Visits (ML Table)</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            When a student comes to the health office with an injury, fever, or illness, log the encounter immediately:
+          </p>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2">
+            <li>Navigate to the Medical Log screen.
+              <div class="path">Aeries Navigation: Student Data → Medical → Medical Log (ML)</div>
+            </li>
+            <li>Click **Add New Log Entry**.</li>
+            <li>Select the **Visit Type** (e.g., Sick, Injury, Medication Admin).</li>
+            <li>Enter the **Time In** and **Disposition** (e.g., Returned to Class, Sent Home, Parent Pick-up).</li>
+            <li>In the **Comments** area, note findings objectively:
+              <div class="example"><strong>Objective Entry Example:</strong> "Complaining of stomachache. Temp 98.6°F. Rested for 15 mins. Returned to class."</div>
+            </li>
+            <li>Click **Save** to create the official legal timeline of the encounter.</li>
+          </ol>
+        </div>
+
+        <div class="space-y-4 pt-4 border-t border-slate-100">
+          <h4 class="text-sm font-black text-navy-900">Logging Daily Medication Administration</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Students receiving scheduled prescription medication (e.g., ADHD medication at lunch) must have their doses logged upon administration:
+          </p>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2">
+            <li>Verify that a signed **Physician Authorization Form** is kept in the health folder.</li>
+            <li>Under the Medical History page, ensure the prescription, dosage, and scheduled time are configured.</li>
+            <li>When the student receives their dose, open the **Medication Log** or Daily Medical Log.</li>
+            <li>Log the date, time of administration, and the clerk or nurse's signature. If the student fails to arrive, record the encounter as a "No-Show" and call the classroom teacher.</li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 4: VISION & HEARING SCREENINGS -->
+      <article id="screenings-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 border border-red-100 flex items-center justify-center font-black text-lg flex-shrink-0">
+            4
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 4 • Clinical Referrals</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Vision, Hearing & Mandated Screenings</h3>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="text-sm font-black text-navy-900">Mandated Screening Cohorts (California Ed Code)</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            California mandates regular health screenings. Health clerks coordinate, log, and follow up on referrals:
+          </p>
+          <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+            <li><strong>Vision Screenings:</strong> Required in Kindergarten, Grade 2, Grade 5, Grade 8, and upon first school entry.</li>
+            <li><strong>Hearing Screenings:</strong> Required in Kindergarten, Grade 1, Grade 2, Grade 5, Grade 8, Grade 10, and upon first entry.</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4 pt-4 border-t border-slate-100">
+          <h4 class="text-sm font-black text-navy-900">How to Log Screenings & Referral Status in Aeries:</h4>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2">
+            <li>Open the student's profile. Select Hearing or Vision screen under the Medical menu.
+              <div class="path">Aeries Navigation: Student Data → Medical → Hearing / Vision</div>
+            </li>
+            <li>Click **Add New Screening**. Enter the screening date.</li>
+            <li>Input raw measurements (e.g., Right Eye 20/20, Left Eye 20/40) or Pass/Fail results.</li>
+            <li><strong>Processing Referrals:</strong> If the student fails their initial screening and rescreening, set the **Referral Status** to "Referred".</li>
+            <li>Generate a parent referral packet containing localized clinic resources and mail it home.</li>
+            <li>Upon receiving the returned, signed medical professional report, update the referral record in Aeries with the disposition (e.g., "Glasses Prescribed").</li>
+          </ol>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- RIGHT COLUMN (1/3 width) - WORKSPACE CHECKLISTS & TOOLS -->
+    <div class="space-y-8">
+      
+      <!-- DAILY HEALTH OFFICE CHECKLIST -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-red-600">📋</span>
+          <span>Health Clerk Daily Checklist</span>
+        </h3>
+        <p class="text-xs text-slate-500 font-medium">Verify your clinical and compliance routines sequentially to maintain clean health files:</p>
+
+        <div class="space-y-3" id="health-tasks-container">
+          <!-- Dynamically generated with JS localstorage -->
+        </div>
+
+        <div class="pt-2 border-t border-slate-100 space-y-2">
+          <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+            <div id="health-progress-bar" class="h-full bg-red-600 transition-all duration-300" style="width: 0%;"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-bold text-navy-900">
+            <span id="health-percent-text">0% Completed</span>
+            <button class="text-red-600 hover:underline" onclick="resetHealthChecklist()">Reset Tasks</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEDICAL EMERGENCY PLANNER -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-3 shadow-sm">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-red-600">⚠️</span>
+          <span>Emergency Preparedness</span>
+        </h3>
+        <p class="text-xs text-slate-500 leading-normal">
+          When an active student has a severe allergy or rescue medication, verify these parameters are met:
+        </p>
+        
+        <div class="p-3 bg-red-50 border border-red-100 rounded-xl space-y-1">
+          <strong class="text-xs text-red-800 block font-extrabold">EpiPen & Rescue Inhaler Audits:</strong>
+          <p class="text-[11px] text-slate-600 leading-normal">
+            Crosscheck that medication expiration dates are audited monthly, the physical rescue medication matches physician prescription labels, and the Emergency Action Plan is signed, scanned, and uploaded to the student's Documents tab.
+          </p>
+        </div>
+      </div>
+
+      <!-- HEALTH OFFICE SQL QUERY COPIER -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-gold-600">📊</span>
+          <span>Health Office Queries</span>
+        </h3>
+        <p class="text-xs text-slate-500 font-medium">Copy these queries to search for and isolate immunization and medical logs instantly:</p>
+
+        <div class="space-y-4">
+          <!-- Query 1 -->
+          <div class="space-y-2">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">1. Find 7th Graders Missing Tdap</span>
+            <div class="relative bg-slate-900 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto select-all">
+              <pre id="query-tdap">LIST STU IMM STU.ID STU.NM BY STU.NM IF STU.GR = 7 AND IMM.TD = NULL</pre>
+              <button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded-md px-1.5 py-0.5 transition text-[9px]" onclick="copyHealthQueryText('query-tdap')">Copy</button>
+            </div>
+          </div>
+
+          <!-- Query 2 -->
+          <div class="space-y-2">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">2. List Active Critical Health Alerts</span>
+            <div class="relative bg-slate-900 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto select-all">
+              <pre id="query-alerts">LIST STU MED STU.ID STU.NM MED.CD MED.CO BY STU.NM IF MED.AL = 1</pre>
+              <button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded-md px-1.5 py-0.5 transition text-[9px]" onclick="copyHealthQueryText('query-alerts')">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<div class="copy-toast fixed bottom-6 right-6 bg-navy-950 text-white rounded-xl px-4 py-3 shadow-2xl flex items-center gap-2 text-xs font-bold opacity-0 translate-y-10 transition-all duration-300 pointer-events-none" id="copy-toast-notify">
+  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  Query copied to clipboard!
+</div>
+
+<footer class="footer border-t border-slate-200 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium mt-12">
+  WUSD Aeries Resource Center • Health Clerk Resources Workspace • Formatted for follow-along training next to your active database.
+</footer>
+
+<script>
+// SCENARIO DICTIONARY FOR HEALTH OFFICE
+const healthActionData = {
+  imm_tkk: {
+    title: "TK/K Immunization Audit Sweep",
+    badge: "IMM Table (Immunizations)",
+    description: "California state law requires specific vaccinations prior to entering school. Audit yellow immunization cards for TK and Kindergarten cohorts meticulously.",
+    docs: [
+      "Official CAIR (California Immunization Registry) vaccination record",
+      "Yellow California School Immunization Record card (verified & signed)",
+      "Conditional admission timeline document if student is in process"
+    ],
+    steps: [
+      "Navigate to Student Data → Medical → Immunizations (IMM).",
+      "Click Change, then key in exact dates for Polio, DTaP, MMR, Hep B, and Varicella doses.",
+      "If the child has a medical exemption, input CAIR Exemption Number.",
+      "Check immunizations status dropdown (e.g., 'Has Requirements').",
+      "Click Save to lock. Upload physical yellow card to the Documents tab."
+    ],
+    path: "Left Sidebar → Student Data → Medical → Immunizations"
+  },
+  imm_7th: {
+    title: "7th Grade Tdap Booster Sweep",
+    badge: "Grade 7 Audit • IMM Table",
+    description: "All incoming 7th-grade students must have verified documentation of a Tdap booster vaccine given on or after their 7th birthday.",
+    docs: [
+      "Tdap Booster vaccine clinic verification receipt",
+      "Official CAIR registry report confirming booster date",
+      "Valid temporary or permanent medical exemption documentation"
+    ],
+    steps: [
+      "Run the Tdap Missing query weekly for incoming 7th graders.",
+      "Open the student's immunization profile in Aeries.",
+      "Navigate to the 'Tdap' field and input the exact booster vaccine date.",
+      "Click Save to remove the scheduling lock code.",
+      "Deliver compliance clear passes for school enrollment lockers."
+    ],
+    path: "Left Sidebar → Student Data → Medical → Immunizations"
+  },
+  critical_alert: {
+    title: "Critical Health Alert Flags (Roster Red Cross)",
+    badge: "MED Table • Alert = 1",
+    description: "Flag severe, life-threatening conditions (peanut allergies, type-1 diabetes, seizure disorders) so a red cross icon displays on teacher rosters.",
+    docs: [
+      "Signed Physician Emergency Action Plan (EAP)",
+      "Authorized Emergency Medication Release Form",
+      "Parent emergency contact update form"
+    ],
+    steps: [
+      "Navigate to Student Data → Medical → Medical History (MED).",
+      "Click Add New Record, select correct Condition Code (e.g., Asthma, Allergy).",
+      "Check the box: 'Flag as a Health Alert' (this adds red cross to roster).",
+      "Input brief, actionable details in comments (e.g., 'EpiPen in clinic').",
+      "Click Save and upload physician EAP to Documents tab."
+    ],
+    path: "Left Sidebar → Student Data → Medical → Medical History (MED)"
+  },
+  medication: {
+    title: "On-Campus Medications & Daily Logs",
+    badge: "MED & ML Tables",
+    description: "For students requiring daily or emergency medication administered during school hours. Must have signed medical authorization.",
+    docs: [
+      "Signed Physician Medication Authorization Form (updated annually)",
+      "Prescription bottle matching physician dosage exactly",
+      "Daily medication administration log sheet"
+    ],
+    steps: [
+      "Log the medication name, dose, and time under Medical History (MED).",
+      "Ensure rescue inhalers or EpiPens are marked as self-carry if authorized.",
+      "Upon administration, navigate to the Medication Log and log exact time.",
+      "Sign or initial the administrative log record in Aeries.",
+      "If a student fails to arrive for scheduled meds, call classroom immediately."
+    ],
+    path: "Left Sidebar → Student Data → Medical → Medical History → Medication Log"
+  },
+  screening: {
+    title: "Vision & Hearing Screening Audits",
+    badge: "Mandated Screenings • MED Table",
+    description: "Tracks mandated vision and hearing screenings for TK, K, 1st, 2nd, 5th, 8th, and 10th grade cohorts.",
+    docs: [
+      "Screening checklist results sheet",
+      "Official clinical rescreening forms (if initial screening failed)",
+      "Parent vision/hearing medical clinic referral packet"
+    ],
+    steps: [
+      "Navigate to Student Data → Medical → Vision or Hearing screen.",
+      "Click Add New Screening, input dates and results (Pass/Fail).",
+      "For student failures, change status to 'Referred' and mail home packet.",
+      "Upon receiving returned clinic results, log corrective action (e.g., 'Glasses').",
+      "Save records to clear outstanding referral notifications."
+    ],
+    path: "Left Sidebar → Student Data → Medical → Vision (or Hearing)"
+  }
+};
+
+function switchHealthAction(actionKey) {
+  const data = healthActionData[actionKey];
+  if (!data) return;
+
+  // Update button active styles
+  document.querySelectorAll('.ht-btn').forEach(btn => {
+    btn.className = "ht-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300";
+  });
+
+  const activeBtn = document.getElementById(`ht-btn-${actionKey}`);
+  if (activeBtn) {
+    activeBtn.className = "ht-btn p-2 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md";
+  }
+
+  // Update text values
+  document.getElementById('ht-title').textContent = data.title;
+  document.getElementById('ht-badge').textContent = data.badge;
+  document.getElementById('ht-description').textContent = data.description;
+  document.getElementById('ht-path').textContent = data.path;
+
+  // Update Documentation checklists
+  const docsList = document.getElementById('ht-docs');
+  docsList.innerHTML = '';
+  data.docs.forEach(doc => {
+    const li = document.createElement('li');
+    li.className = "flex items-start gap-2 text-xs text-slate-600 font-medium";
+    li.innerHTML = `<span class="text-red-600">✓</span> <span>${doc}</span>`;
+    docsList.appendChild(li);
+  });
+
+  // Update Steps checklists
+  const stepsList = document.getElementById('ht-steps');
+  stepsList.innerHTML = '';
+  data.steps.forEach(step => {
+    const li = document.createElement('li');
+    li.className = "mb-1.5 leading-normal";
+    li.innerHTML = step;
+    stepsList.appendChild(li);
+  });
+}
+
+// COPY QUERY SYSTEM
+function copyHealthQueryText(elementId) {
+  const element = document.getElementById(elementId);
+  const text = element.textContent;
+  
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = text;
+  document.body.appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempTextArea);
+  
+  // Toast notifications
+  const toast = document.getElementById('copy-toast-notify');
+  toast.classList.remove('opacity-0', 'translate-y-10');
+  toast.classList.add('opacity-100', 'translate-y-0');
+  setTimeout(() => {
+    toast.classList.remove('opacity-100', 'translate-y-0');
+    toast.classList.add('opacity-0', 'translate-y-10');
+  }, 2500);
+}
+
+// DAILY AUDIT LOCALSTORAGE STATE TRACKER
+const HEALTH_STORAGE_KEY = 'wusd_health_clerk_daily_audit';
+const dailyHealthTasks = [
+  "Verify and lock current site context on Aeries login",
+  "Sweep morning clinic logs and process student check-ins",
+  "Audit immunization compliance for newly enrolled TK/K students",
+  "Flag critical allergies/conditions as Health Alerts (Red Cross)",
+  "Log daily scheduled medication administrations",
+  "Input results for vision and hearing screenings",
+  "Scan, upload, and log EAPs and physicians order sheets"
+];
+
+function initHealthTracker() {
+  const container = document.getElementById('health-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(HEALTH_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  dailyHealthTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-2.5 p-2 border rounded-lg hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-red-50/40 border-red-200' : 'border-slate-100'}`;
+    taskRow.setAttribute('onclick', `toggleHealthTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-4 h-4 border rounded mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-red-600 border-red-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3 h-3 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-[11px] font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = dailyHealthTasks.length > 0 ? Math.round((completedCount / dailyHealthTasks.length) * 100) : 0;
+  document.getElementById('health-progress-bar').style.width = percent + '%';
+  document.getElementById('health-percent-text').textContent = `${percent}% Completed`;
+}
+
+function toggleHealthTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(HEALTH_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(HEALTH_STORAGE_KEY, JSON.stringify(savedState));
+  initHealthTracker();
+}
+
+function resetHealthChecklist() {
+  localStorage.removeItem(HEALTH_STORAGE_KEY);
+  initHealthTracker();
+}
+
+// INITIALIZATION
+window.onload = function() {
+  initHealthTracker();
+  switchHealthAction('imm_tkk');
+};
+</script>
+
+</body>
+</html>
