@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WUSD Administrative Assistant Resources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            50: '#f4f7fa',
+            100: '#eef5ff',
+            900: '#12355b',
+            950: '#0f1e36',
+          },
+          blue: {
+            600: '#2563eb',
+            700: '#1d4ed8',
+          },
+          gold: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            600: '#d97706',
+            700: '#b45309',
+          },
+          green: {
+            50: '#f0fdf4',
+            100: '#d1fae5',
+            600: '#10b981',
+            700: '#047857',
+          },
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            600: '#dc2626',
+            700: '#b91c1c',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(18, 53, 91, 0.08);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+  .example {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 12.5px;
+    color: #475569;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f8fafc] to-[#eef5ff] min-h-screen text-slate-900 font-sans antialiased">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-navy-900 to-blue-600 text-white flex items-center justify-center font-black text-2xl shadow-md shadow-blue-500/20">
+        W
+      </div>
+      <div>
+        <h1 class="text-xl font-extrabold text-navy-900 tracking-tight leading-tight">WUSD Site Administration Portal</h1>
+        <p class="text-xs font-semibold text-slate-500">Discipline Tracking, Roster Data Pulls & Mail Merge Guides</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 flex-wrap">
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-start-here.html">
+        🚀 Start Here Guide
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-secretary.html">
+        👩‍💼 Secretary Portal
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-attendance.html">
+        🕒 Attendance Portal
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-registrar.html">
+        🧾 Registrar Portal
+      </a>
+      <a class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-extrabold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition" href="office-staff-health.html">
+        🏥 Health Portal
+      </a>
+      <a class="inline-flex items-center gap-2 px-4 py-2 text-sm font-extrabold text-blue-600 bg-white border border-blue-200 rounded-xl hover:bg-slate-50 hover:border-blue-300 shadow-sm transition active:scale-95" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+        WUSD Central Hub
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+  <section class="bg-gradient-to-r from-navy-900 via-[#1a3d6c] to-blue-600 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        🧑‍💼 ADMINISTRATIVE SITE SUPPORT & DATA HYGIENE
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Administrative Assistant Playbook</h2>
+      <p class="text-blue-100 text-sm sm:text-lg font-medium max-w-3xl leading-relaxed">
+        Your unified guide for daily executive office support. Open this interactive companion next to your active Aeries database window to record student discipline incidents, extract meeting rosters, and run flawless parent mail merges.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPLIT COLUMN LAYOUT -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- LEFT & CENTER COLUMN (2/3 width) - IN-DEPTH WORKFLOWS -->
+    <div class="lg:col-span-2 space-y-8">
+
+      <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+          <div class="text-2xl">⚡</div>
+          <div>
+            <h3 class="text-lg font-black text-navy-900">Interactive Admin Data Assistant</h3>
+            <p class="text-xs text-slate-500 font-medium">Select an administrative office task to instantly map fields, find navigation paths, and load query templates.</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            <button onclick="switchAdminAction('discipline')" id="ad-btn-discipline" class="ad-btn p-2 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md">
+              <span class="block text-lg mb-1">⚖️</span>
+              Discipline Logs
+            </button>
+            <button onclick="switchAdminAction('meeting')" id="ad-btn-meeting" class="ad-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">📅</span>
+              Meeting Prep
+            </button>
+            <button onclick="switchAdminAction('roster')" id="ad-btn-roster" class="ad-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">📋</span>
+              Roster Filters
+            </button>
+            <button onclick="switchAdminAction('mailmerge')" id="ad-btn-mailmerge" class="ad-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">✉️</span>
+              Mail Merges
+            </button>
+            <button onclick="switchAdminAction('counselor')" id="ad-btn-counselor" class="ad-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300">
+              <span class="block text-lg mb-1">👩‍🏫</span>
+              Counselors
+            </button>
+          </div>
+
+          <!-- DYNAMIC CONTENT CARD -->
+          <div class="p-5 rounded-xl border border-blue-100 bg-blue-50/25 space-y-4" id="ad-content">
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-black text-navy-900 uppercase tracking-wider" id="ad-title">Discipline Tracking & Ed Code Infractions</h4>
+                <span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-extrabold rounded-lg uppercase" id="ad-badge">DIS & ADS Tables</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-normal" id="ad-description">Used to document administrative referrals, parent suspension notifications, and state behavioral incident reporting.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-blue-100/50 pt-4">
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2">Required Fields & Documentation:</span>
+                <ul class="space-y-1.5" id="ad-docs">
+                  <!-- Javascript dynamic load -->
+                </ul>
+              </div>
+              <div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Aeries Click-by-Click Implementation:</span>
+                <div class="path" id="ad-path">Aeries Navigation → Student Data → Behavior → Discipline</div>
+                <ol class="list-decimal pl-4 space-y-1.5 text-xs text-slate-600 font-medium" id="ad-steps">
+                  <!-- Javascript dynamic load -->
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLAYBOOK 1: DISCIPLINE TRACKING -->
+      <article id="discipline-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-black text-lg flex-shrink-0">
+            1
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 1 • Behavioral Compliance</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Discipline Entry & California Ed Code Tracking</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Accurate behavior tracking is a critical legal and state reporting mandate under CALPADS. Site admin assistants must log behavioral incidents in the Discipline (`DIS`) and Assertive Discipline (`ADS`) tables immediately after administrative actions are finalized.
+        </p>
+
+        <div class="space-y-4">
+          <h4 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">Detailed Discipline Log Setup (DIS Table):</h4>
+          <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-3">
+            <li>Search for the student ID. Navigate to the Discipline module.
+              <div class="path">Aeries Sidebar → Student Data → Behavior → Discipline</div>
+            </li>
+            <li>Click **Add New Record** at the bottom of the form.</li>
+            <li>Input the exact **Incident Date** and **Time**.</li>
+            <li>Select the correct California Education Code **Infraction Code** from the dropdown menu (e.g., *48900(a)(1) - Mutual Combat* or *48900(k) - Disruption*).</li>
+            <li><strong>Action & Suspension Details:</strong> Log the consequence (e.g., Out-of-School Suspension, In-School Suspension, Friday School) along with the start and end dates.</li>
+            <li><strong>State Reporting Fields:</strong> Verify that the state-mandated suspension day count matches the physical administrative letters sent to parents.</li>
+            <li>In the **Comments/Details** box, record objective observations from the administrator's investigation. Avoid hearsay or subjective language.
+              <div class="example"><strong>Objective Entry Format:</strong> "Student engaged in mutual combat on blacktop. Parents notified via telephone on 10/12/26. Suspension letter mailed home."</div>
+            </li>
+            <li>Click **Save** to lock the record. Scan and upload the signed suspension packet directly to the student’s Documents tab.</li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-red-50 border border-red-100 rounded-xl">
+          <strong class="text-xs text-red-800 uppercase tracking-wider block font-extrabold">🚨 Legal Notification Compliance Warning:</strong>
+          <p class="text-xs text-slate-600 mt-1 leading-normal">Under California Education Code, a parent/guardian must be formally notified of suspension actions in writing. Ensure the 'Notification Date' and 'Mailed Date' fields are filled out in the `DIS` record to prove timeline compliance during localized state behavior audits.</p>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 2: MEETING DATA PULLS -->
+      <article id="meeting-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-black text-lg flex-shrink-0">
+            2
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 2 • Administrative Logistics</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">SST, IEP & Parent Meeting Data Prep</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Site admin assistants act as information dispatchers during parent-teacher conferences, Student Success Team (SST) meetings, and IEP reviews. Pulling student background reports cleanly prevents meeting delays.
+        </p>
+
+        <div class="space-y-4">
+          <h4 class="text-xs font-extrabold text-navy-900 uppercase tracking-wider">The Standard Meeting Prep Packet Sequence:</h4>
+          <ol class="list-decimal pl-5 text-sm text-slate-600 space-y-3">
+            <li>
+              <strong>Generate the student profile worksheet:</strong>
+              Look up the student to load their Demographic profile card.
+              <div class="path">Aeries Navigation: Student Data → Demographics</div>
+              <p class="text-xs text-slate-500 mt-1">Print the Demographic details page directly to have physical contact and emergency contact lists ready.</p>
+            </li>
+            <li>
+              <strong>Export Academic Transcripts (HIS Table):</strong>
+              Navigate to Course History to evaluate historical performance and current credits.
+              <div class="path">Aeries Navigation: Student Data → Course History (HIS)</div>
+              <p class="text-xs text-slate-500 mt-1">Click **Print Transcript**, leaving unofficial/draft status checked for counselors and parents.</p>
+            </li>
+            <li>
+              <strong>Extract Active Attendance History (ATT Table):</strong>
+              Open the student's Attendance details to analyze chronic absences or high tardy percentages.
+              <div class="path">Aeries Navigation: Attendance → Attendance Detail</div>
+              <p class="text-xs text-slate-500 mt-1">Print the active year attendance summary calendar to locate scheduling or truancy patterns before meeting times.</p>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 3: CUSTOM LISTS -->
+      <article id="rosters-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-black text-lg flex-shrink-0">
+            3
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 3 • Data Filtering</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Creating Custom Student Lists & Filter Rosters</h3>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          When site leaders request specific student rosters (e.g., *Active 10th graders assigned to Counselor B with a GPA below 2.0*), assistants can use Aeries student filters to construct targeted lists rapidly without using complex SQL databases.
+        </p>
+
+        <div class="space-y-4">
+          <h4 class="text-sm font-black text-navy-900">Step-by-Step Custom Filtering Sequence:</h4>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2">
+            <li>Navigate to the Aeries student search bar.</li>
+            <li><strong>Trigger Search Filters:</strong> Click the small filter toggle icon located next to the search input.</li>
+            <li>Select search attributes:
+              <ul class="list-disc pl-4 mt-1 space-y-1">
+                <li>Set **Grade (GR)** to the target class level (e.g., *10*).</li>
+                <li>Set **Counselor (CNS)** to the target supervisor code.</li>
+                <li>Set **Status Code (TG)** to **Active (A)** to exclude withdrawn students.</li>
+              </ul>
+            </li>
+            <li>Click **Search**. Aeries will filter your active view to display only matching records.</li>
+            <li><strong>Exporting Your filtered list:</strong> Click the **Aeries Analytics / Export to Excel** button in the lower results card. This downloads a cleanly formatted XLS file ready for site leadership review.</li>
+          </ol>
+          <div class="path">Aeries Header Search → Toggle Search Filters → Select Attributes → Export Results</div>
+        </div>
+      </article>
+
+      <!-- PLAYBOOK 4: DISTRICT MAIL MERGES -->
+      <article id="mailmerge-playbook" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 glow-card space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-black text-lg flex-shrink-0">
+            4
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Playbook 4 • Administrative Communication</span>
+            <h3 class="text-xl font-black text-navy-900 tracking-tight">Generating Parent Mail Merges & Address Labels</h3>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="text-sm font-black text-navy-900">How to Export Clean Mailing Lists for Word/Google Merges</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Site-wide mailings (such as principal orientation flyers or report card mailers) require extracting clean parent mailing records without duplicate address rows:
+          </p>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2">
+            <li>Open the Query utility. Run your target parent address extract query.
+              <div class="path">Aeries Path: Header Search → Reports → Query</div>
+            </li>
+            <li>Copy the WUSD parent address query:
+              <div class="example font-mono">LIST STU CON STU.ID STU.NM CON.NM CON.AD CON.CY CON.ST CON.ZP IF CON.AD > "" AND CON.OR = 1</div>
+              <p class="text-[10px] text-slate-400 mt-1">This isolates Primary parent addresses (Contact Order = 1) to prevent sending duplicate letters to the same family home.</p>
+            </li>
+            <li>Select **Run Query**. Click the **Export** button. Save the output as a `.csv` file.</li>
+            <li>Open Microsoft Word or Google Docs. Select **Mailings → Start Mail Merge**.</li>
+            <li>Choose **Select Recipients → Use an Existing List**, then select your downloaded Aeries CSV file.</li>
+            <li>Insert Merge Fields (e.g., Parent Name, Address, City, State, Zip) onto your document, and select **Finish & Merge** to generate print-ready letters.</li>
+          </ol>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- RIGHT COLUMN (1/3 width) - WORKSPACE CHECKLISTS & TOOLS -->
+    <div class="space-y-8">
+      
+      <!-- DAILY SITE ASSISTANT CHECKLIST -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-blue-600">📋</span>
+          <span>Admin Assistant Checklist</span>
+        </h3>
+        <p class="text-xs text-slate-500 font-medium">Verify your behavioral logs and meeting prep tasks chronologically. Your state saves locally:</p>
+
+        <div class="space-y-3" id="admin-tasks-container">
+          <!-- Dynamically generated with JS localstorage -->
+        </div>
+
+        <div class="pt-2 border-t border-slate-100 space-y-2">
+          <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+            <div id="admin-progress-bar" class="h-full bg-blue-600 transition-all duration-300" style="width: 0%;"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-bold text-navy-900">
+            <span id="admin-percent-text">0% Completed</span>
+            <button class="text-blue-600 hover:underline" onclick="resetAdminChecklist()">Reset Tasks</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PARENT NOTIFICATION WATCHDOG -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-3 shadow-sm">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-red-600">⚠️</span>
+          <span>Behavioral Audit Watchdog</span>
+        </h3>
+        <p class="text-xs text-slate-500 leading-normal">
+          The California Department of Education audits suspension and expulsion records. Be on alert for these red flags:
+        </p>
+        
+        <div class="p-3 bg-red-50 border border-red-100 rounded-xl space-y-1">
+          <strong class="text-xs text-red-800 block font-extrabold">Behavioral Record Audits:</strong>
+          <p class="text-[11px] text-slate-600 leading-normal">
+            Ensure that every out-of-school suspension is supported by a physical parent notification letter. Verify that active suspensions do not exceed state maximum limits per academic year without administrative approval.
+          </p>
+        </div>
+      </div>
+
+      <!-- ADMIN SQL QUERY COPIER -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 glow-card space-y-4">
+        <h3 class="text-lg font-extrabold text-navy-900 flex items-center gap-2">
+          <span class="text-gold-600">📊</span>
+          <span>Administrative Queries</span>
+        </h3>
+        <p class="text-xs text-slate-500 font-medium">Copy these queries to search for suspension trends and extract address lists instantly:</p>
+
+        <div class="space-y-4">
+          <!-- Query 1 -->
+          <div class="space-y-2">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">1. Find Active suspensions (DIS)</span>
+            <div class="relative bg-slate-900 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto select-all">
+              <pre id="query-discipline-list">LIST STU DIS STU.ID STU.NM DIS.CD DIS.SD DIS.ED BY STU.NM</pre>
+              <button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded-md px-1.5 py-0.5 transition text-[9px]" onclick="copyAdminQueryText('query-discipline-list')">Copy</button>
+            </div>
+          </div>
+
+          <!-- Query 2 -->
+          <div class="space-y-2">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block">2. Export Primary parent Addresses</span>
+            <div class="relative bg-slate-900 rounded-xl p-3 text-xs font-mono text-blue-400 overflow-x-auto select-all">
+              <pre id="query-addresses">LIST STU CON STU.ID STU.NM CON.NM CON.AD CON.ZP BY STU.NM IF CON.OR = 1</pre>
+              <button class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-white rounded-md px-1.5 py-0.5 transition text-[9px]" onclick="copyAdminQueryText('query-addresses')">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<div class="copy-toast fixed bottom-6 right-6 bg-navy-950 text-white rounded-xl px-4 py-3 shadow-2xl flex items-center gap-2 text-xs font-bold opacity-0 translate-y-10 transition-all duration-300 pointer-events-none" id="copy-toast-notify">
+  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  Query copied to clipboard!
+</div>
+
+<footer class="footer border-t border-slate-200 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium mt-12">
+  WUSD Aeries Resource Center • Administrative Site Resources Workspace • Formatted for follow-along training next to your active database.
+</footer>
+
+<script>
+// SCENARIO DICTIONARY FOR ADMINISTRATIVE ASSISTANTS
+const adminActionData = {
+  discipline: {
+    title: "Discipline Incident Tracking & Ed Code Logging",
+    badge: "DIS Table (Discipline History)",
+    description: "Enter discipline infractions, track parent notification mailers, and document administrative consequences under California Education Code 48900.",
+    docs: [
+      "Signed parent notification suspension letter",
+      "Administrative suspension checklist packet",
+      "Counselor safety plan or behavioral contract"
+    ],
+    steps: [
+      "Navigate to Student Data → Behavior → Discipline (DIS).",
+      "Click Add New Record, then populate Incident Date, Time, and Location.",
+      "Select Ed Code Infraction (e.g., 48900(a)(1) - Mutual Combat).",
+      "Log out-of-school suspension days matching calendar dates.",
+      "Write objective narrative in comments. Save, and upload letters to Documents."
+    ],
+    path: "Left Sidebar → Student Data → Behavior → Discipline"
+  },
+  meeting: {
+    title: "IEP, SST & Counselor Meeting Prep Packets",
+    badge: "Meeting Prep • STU, HIS, & ATT Tables",
+    description: "Pull student records, academic course transcripts, behavior histories, and calendars to prepare site teams for scheduled parent meetings.",
+    docs: [
+      "Unofficial academic transcript (Course History)",
+      "Daily Attendance calendar history details",
+      "Standard Demographic and emergency contact profiles"
+    ],
+    steps: [
+      "Search student ID to open their Demographics profile.",
+      "Navigate to Course History (HIS). Click unofficial transcript print.",
+      "Navigate to Attendance Detail. Export a clean calendar summary sheet.",
+      "Check Special Programs for active program tags (e.g., IEP, 504).",
+      "Compile files into meeting folders for counseling and site teams."
+    ],
+    path: "Left Sidebar → Student Data → Demographics / Course History"
+  },
+  roster: {
+    title: "Custom Student Roster Filtering",
+    badge: "Demographic search Filters",
+    description: "Used to build, segment, and isolate specific student lists based on counselor, grade level, GPA, or specialized program attributes.",
+    docs: [
+      "WUSD student list request parameter form",
+      "Active roster counts from student search lists"
+    ],
+    steps: [
+      "Click the Search icon in Aeries. Select the search filter toggle.",
+      "Define search criteria (e.g., set GR to 11, CNS to target Counselor).",
+      "Review filtered records on the search table card.",
+      "Click Export to Excel in the results grid to save a clean spreadsheet.",
+      "Format output in Excel for site leadership evaluation."
+    ],
+    path: "Left Sidebar → Student Data → Filter Search"
+  },
+  mailmerge: {
+    title: "Parent Mail Merges & Label Extracts",
+    badge: "CON Address Records",
+    description: "Used to extract clean parent address rosters for printing physical letters, mailing labels, and community flyers without sending duplicate copies to single homes.",
+    docs: [
+      "WUSD Parent Address Query template",
+      "Microsoft Word or Google Docs label template sheets"
+    ],
+    query: 'LIST STU CON STU.ID STU.NM CON.NM CON.AD CON.CY CON.ST CON.ZP BY STU.NM IF CON.AD > "" AND CON.OR = 1',
+    steps: [
+      "Open the Query module. Copy and paste the Parent Address template.",
+      "Ensure the filter CON.OR = 1 (Contact Order = 1) is active to prevent duplicates.",
+      "Run and Export the query output as a CSV file.",
+      "Open Word/Google Mail Merge and select your downloaded address list.",
+      "Place address merge fields and print standard site label templates."
+    ],
+    path: "Left Sidebar → Reports → Query"
+  },
+  counselor: {
+    title: "Counselor Allocation Checks",
+    badge: "STU Demographic Alignment",
+    description: "Verifies counselor allocations across active grade levels to ensure students are assigned to the correct counseling caseloads.",
+    docs: [
+      "District counseling caseload allocation boundaries sheet",
+      "Counselor verification query parameters"
+    ],
+    steps: [
+      "Navigate to Student Data → Demographics (STU).",
+      "Verify the Counselor Code (CNS) field on the student profile.",
+      "Compare the assigned counselor to WUSD boundary worksheets.",
+      "Click Change to update allocations. Save records to lock caseloads.",
+      "Run global counselor totals weekly to verify site-wide caseload balance."
+    ],
+    path: "Left Sidebar → Student Data → Demographics"
+  }
+};
+
+function switchAdminAction(actionKey) {
+  const data = adminActionData[actionKey];
+  if (!data) return;
+
+  // Update button active styles
+  document.querySelectorAll('.ad-btn').forEach(btn => {
+    btn.className = "ad-btn p-2 text-center border border-slate-200 rounded-xl text-xs font-bold transition-all bg-white hover:bg-slate-50 hover:border-slate-300";
+  });
+
+  const activeBtn = document.getElementById(`ad-btn-${actionKey}`);
+  if (activeBtn) {
+    activeBtn.className = "ad-btn p-2 text-center border-2 rounded-xl text-xs font-black transition-all bg-blue-600 text-white border-blue-600 shadow-md";
+  }
+
+  // Update text values
+  document.getElementById('ad-title').textContent = data.title;
+  document.getElementById('ad-badge').textContent = data.badge;
+  document.getElementById('ad-description').textContent = data.description;
+  document.getElementById('ad-path').textContent = data.path;
+
+  // Update Documentation checklists
+  const docsList = document.getElementById('ad-docs');
+  docsList.innerHTML = '';
+  data.docs.forEach(doc => {
+    const li = document.createElement('li');
+    li.className = "flex items-start gap-2 text-xs text-slate-600 font-medium";
+    li.innerHTML = `<span class="text-blue-600">✓</span> <span>${doc}</span>`;
+    docsList.appendChild(li);
+  });
+
+  // Update Steps checklists
+  const stepsList = document.getElementById('ad-steps');
+  stepsList.innerHTML = '';
+  data.steps.forEach(step => {
+    const li = document.createElement('li');
+    li.className = "mb-1.5 leading-normal";
+    li.innerHTML = step;
+    stepsList.appendChild(li);
+  });
+}
+
+// COPY QUERY SYSTEM (falls back reliably in frames)
+function copyAdminQueryText(elementId) {
+  const element = document.getElementById(elementId);
+  const text = element.textContent;
+  
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = text;
+  document.body.appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempTextArea);
+  
+  // Toast notifications
+  const toast = document.getElementById('copy-toast-notify');
+  toast.classList.remove('opacity-0', 'translate-y-10');
+  toast.classList.add('opacity-100', 'translate-y-0');
+  setTimeout(() => {
+    toast.classList.remove('opacity-100', 'translate-y-0');
+    toast.classList.add('opacity-0', 'translate-y-10');
+  }, 2500);
+}
+
+// DAILY AUDIT LOCALSTORAGE STATE TRACKER
+const ADMIN_STORAGE_KEY = 'wusd_admin_assistant_daily_audit';
+const dailyAdminTasks = [
+  "Verify database year and school site on login (top right corner)",
+  "Sweep suspension referrals and log behavior codes (DIS table)",
+  "Scan, log, and upload parent notification letters to Documents",
+  "Prepare files and transcripts for scheduled SST/IEP meetings",
+  "Run filter searches to check student counselor allocations",
+  "Execute clean parent address exports for out-going mailings",
+  "Crosscheck and balance teacher prep and caseload directories"
+];
+
+function initAdminTracker() {
+  const container = document.getElementById('admin-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  dailyAdminTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-2.5 p-2 border rounded-lg hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-blue-50/40 border-blue-200' : 'border-slate-100'}`;
+    taskRow.setAttribute('onclick', `toggleAdminTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-4 h-4 border rounded mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3 h-3 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-[11px] font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = dailyAdminTasks.length > 0 ? Math.round((completedCount / dailyAdminTasks.length) * 100) : 0;
+  document.getElementById('admin-progress-bar').style.width = percent + '%';
+  document.getElementById('admin-percent-text').textContent = `${percent}% Completed`;
+}
+
+function toggleAdminTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(savedState));
+  initAdminTracker();
+}
+
+function resetAdminChecklist() {
+  localStorage.removeItem(ADMIN_STORAGE_KEY);
+  initAdminTracker();
+}
+
+// INITIALIZATION
+window.onload = function() {
+  initAdminTracker();
+  switchAdminAction('discipline');
+};
+</script>
+
+</body>
+</html>
