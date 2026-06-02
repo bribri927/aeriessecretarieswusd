@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Final Submission Checklist - Master Scheduling Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #12355b;
+  --blue: #2563eb;
+  --blue-hover: #1d4ed8;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --red: #ef4444;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #dbe3ef;
+  --bg: #f8fafc;
+  --soft: #eff6ff;
+  --white: #ffffff;
+}
+
+* { 
+  box-sizing: border-box; 
+}
+
+body {
+  margin: 0; 
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef5ff 100%); 
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.header {
+  position: sticky; 
+  top: 0; 
+  z-index: 50; 
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(14px); 
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+}
+
+.header-inner {
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 14px 22px; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 16px; 
+  flex-wrap: wrap;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 16px; 
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 900; 
+  font-size: 24px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, .22);
+}
+
+h1 { font-size: 22px; margin: 0; font-weight: 900; letter-spacing: -.04em; color: var(--navy); }
+.subtitle { margin-top: 3px; color: var(--muted); font-size: 13px; font-weight: 650; }
+
+.btn {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+  border-radius: 14px;
+  padding: 11px 18px; 
+  text-decoration: none; 
+  font-weight: 900; 
+  border: 1px solid transparent;
+  background: var(--blue); 
+  color: white; 
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.btn:hover { 
+  transform: translateY(-1px); 
+  filter: brightness(.95); 
+}
+
+.btn.secondary { 
+  background: white; 
+  color: #1d4ed8; 
+  border-color: #bfdbfe; 
+  box-shadow: none;
+}
+
+.container { 
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 22px; 
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--navy), #1e3a8a); 
+  color: white; 
+  border-radius: 30px; 
+  padding: 34px;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, .22); 
+  margin: 18px 0 22px;
+}
+
+.badge {
+  display: inline-flex; 
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, .16); 
+  border: 1px solid rgba(255, 255, 255, .26);
+  border-radius: 999px; 
+  padding: 6px 12px; 
+  font-size: 11px; 
+  font-weight: 900;
+  text-transform: uppercase; 
+  letter-spacing: .08em; 
+  margin-bottom: 14px;
+}
+
+.hero h2 { font-size: 38px; line-height: 1.05; margin: 0 0 12px; letter-spacing: -.05em; }
+.hero p { color: #dbeafe; max-width: 900px; font-size: 16px; line-height: 1.6; margin: 0; }
+
+.section {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-radius: 24px; 
+  padding: 24px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .055);
+  margin-bottom: 22px;
+}
+
+.section h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.035em; color: var(--navy); }
+.section p { color: #475569; line-height: 1.58; font-size: 14.5px; }
+
+/* Interactive Progress HUD */
+.hud-card {
+  background: white;
+  border: 2px solid var(--blue);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.08);
+  margin-bottom: 22px;
+  position: sticky;
+  top: 90px;
+  z-index: 40;
+}
+
+.hud-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hud-meta h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--navy);
+}
+
+.hud-meta p {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  color: var(--muted);
+  font-weight: 550;
+}
+
+.hud-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.progress-container {
+  background: #e2e8f0;
+  border-radius: 999px;
+  height: 14px;
+  width: 100%;
+  margin-top: 14px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--green), #34d399);
+  height: 100%;
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Checklist Cards styling */
+.phase-group {
+  margin-bottom: 30px;
+}
+
+.phase-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.phase-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--soft);
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.checklist-items {
+  display: grid;
+  gap: 14px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.checklist-item:hover {
+  border-color: #cbd5e1;
+  background: #fdfdfd;
+}
+
+.checklist-item.checked {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.checkbox-box {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: white;
+  margin-top: 2px;
+  transition: all 0.1s ease;
+}
+
+.checklist-item.checked .checkbox-box {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.checkbox-box svg {
+  display: none;
+  stroke: white;
+  stroke-width: 3;
+}
+
+.checklist-item.checked .checkbox-box svg {
+  display: block;
+}
+
+.checklist-body {
+  flex: 1;
+}
+
+.checklist-body h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--navy);
+  transition: all 0.15s ease;
+}
+
+.checklist-item.checked .checklist-body h4 {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.checklist-body p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.checklist-item.checked .checklist-body p {
+  color: #64748b;
+}
+
+/* Callout Styling */
+.callout { border-radius: 14px; padding: 14px; margin: 12px 0 0; font-size: 13.5px; line-height: 1.5; font-weight: 600; }
+.callout.tip { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
+.callout.mistake { background: #fff7ed; border: 1px solid #fed7aa; color: #92400e; }
+.callout.alert { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+
+.path {
+  display: inline-block; 
+  background: #0f172a; 
+  color: #38bdf8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  border-radius: 10px; 
+  padding: 6px 10px; 
+  font-size: 12.5px; 
+  margin-top: 8px;
+  border: 1px solid #334155;
+}
+
+.footer { color: #64748b; text-align: center; font-size: 12px; padding: 34px 20px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+.next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+.next-card { background: linear-gradient(180deg, #fff, #f8fafc); border: 1px solid var(--line); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.next-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--navy); }
+.next-card p { font-size: 13.5px; color: #475569; margin-top: 0; margin-bottom: 14px; line-height: 1.5; }
+
+@media(max-width:900px) {
+  .next-grid { grid-template-columns: 1fr; }
+  .hud-card { position: relative; top: 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">W</div>
+      <div>
+        <h1>Master Scheduling Workspace</h1>
+        <div class="subtitle">Complete step-by-step master scheduling build-along toolkit</div>
+      </div>
+    </div>
+    <a class="btn secondary" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+      🏠 WUSD Central Hub Home
+    </a>
+  </div>
+</header>
+
+<main class="container">
+  
+  <!-- HERO BANNER -->
+  <section class="hero">
+    <div class="badge">✅ Submission Audit Checklist</div>
+    <h2>The Final Master Schedule Pre-Flight Check</h2>
+    <p>Before submitting your draft schedule to your district committee or unlocking it for public viewing, you must perform a comprehensive data validation pass. Keep this workbook open on one side of your monitor as a guide, and run each live verification step inside your <strong>Aeries database window</strong> side-by-side.</p>
+  </section>
+
+  <!-- INTERACTIVE HUD -->
+  <section class="hud-card">
+    <div class="hud-flex">
+      <div class="hud-meta">
+        <h3>Live Pre-Flight Audit Status</h3>
+        <p id="progress-text">0 of 15 verification steps completed (0%)</p>
+      </div>
+      <div class="hud-actions">
+        <button class="btn secondary" style="padding: 10px 14px; font-size: 12.5px;" onclick="resetChecklist()">Reset Checks</button>
+      </div>
+    </div>
+    <div class="progress-container">
+      <div id="progress-indicator-bar" class="progress-bar"></div>
+    </div>
+  </section>
+
+  <!-- STAGE 1 -->
+  <section class="phase-group">
+    <div class="phase-title">
+      <div class="phase-num">1</div>
+      <h3>Enrollment Sizing & Core Allocation Checks</h3>
+    </div>
+    
+    <div class="checklist-items">
+      
+      <div class="checklist-item" id="item_1_1" onclick="toggleItem('1_1')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Match Section Capacity Against Enrollment Limits</h4>
+          <p>Open your Master Board and verify that the Class Section Limits (<code>MST.MX</code>) match contracted student caps exactly. Overlooking this step creates localized class sizing imbalances during student scheduling runs.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Master Schedule → Interactive Schedule Board</div>
+          <div class="callout tip">
+            <strong>Where to look:</strong> Check that general education courses are set to standard limits (e.g., 30) and that specialized Special Ed blocks are capped appropriately.
+          </div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_1_2" onclick="toggleItem('1_2')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Audit Sections with Zero Active Enrollment</h4>
+          <p>Scan your current Master Schedule draft to identify sections where the active headcount is 0. Verify whether these represent unplaced courses that should be deleted, or holding sections designated for late registrants.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Reports → Master Schedule Board List</div>
+          <div class="callout check">
+            <strong>Auditing Query:</strong> <code>LIST MST CRS MST.SE MST.CN CRS.CO MST.ACT IF MST.ACT = 0</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_1_3" onclick="toggleItem('1_3')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Review Grade-Level Course Request Alignments</h4>
+          <p>Confirm that your total core section counts (English, Math, History, Science) meet grade-level projections. If incoming counts require 6 sections, but you only created 5, students will be locked out of required subjects.</p>
+          <div class="path">Aeries Staging: Reports → Enrollment Reports → Course Request Tallies</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STAGE 2 -->
+  <section class="phase-group">
+    <div class="phase-title">
+      <div class="phase-num">2</div>
+      <h3>Master Board Structural & Calendar Sanity Checks</h3>
+    </div>
+    
+    <div class="checklist-items">
+      
+      <div class="checklist-item" id="item_2_1" onclick="toggleItem('2_1')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Verify Flex Class Calendar Index Links</h4>
+          <p>If your campus runs under a Flex period layout, every section must be explicitly linked to an active Class Calendar sequence (<code>SMS.CSQ</code>). Unlinked flex periods generate attendance auditing failures and gradebook errors.</p>
+          <div class="path">Aeries Staging: Attendance Accounting → Flex Period Setup → Class Calendars</div>
+          <div class="callout mistake">
+            <strong>Diagnostic Check:</strong> Ensure that all standard academic courses are assigned with calendar index 1, and alternate rotations are assigned with respective A/B calendars.
+          </div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_2_2" onclick="toggleItem('2_2')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Check for Double-Booked Classrooms (Room overlaps)</h4>
+          <p>Scan your schedule to ensure no physical room is scheduled for multiple sections during the same instructional period. This check is crucial for shared rooms, including gyms, computer labs, and science classrooms.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Reports → Room Overlap Listing</div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_2_3" onclick="toggleItem('2_3')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Validate Term Layout Definitions (Year vs. Semester vs. Quarters)</h4>
+          <p>Ensure that matching multi-part courses (e.g., Semester 1 and Semester 2 course pairs) are assigned to the correct term fields on the section card. Out-of-alignment codes prevent gradebooks from carrying over credits.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Master Schedule → Sections Detail</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STAGE 3 -->
+  <section class="phase-group">
+    <div class="phase-title">
+      <div class="phase-num">3</div>
+      <h3>Staffing Load & FTE Compliance Checks</h3>
+    </div>
+    
+    <div class="checklist-items">
+      
+      <div class="checklist-item" id="item_3_1" onclick="toggleItem('3_1')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Audit Instructor Maximum Load Targets</h4>
+          <p>Verify that teachers are not scheduled for more instruction blocks than their FTE allowance permits (e.g., standard 5 blocks max for secondary teachers). Over-assignment violates district contracts.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Reports → Teacher Section Load Audit</div>
+          <div class="callout tip">
+            <strong>Tip:</strong> Keep a master worksheet of teacher prep blocks open on your screen and confirm that no instructor is assigned to teach during their designated prep periods.
+          </div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_3_2" onclick="toggleItem('3_2')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Confirm Shared/Itinerant Travel Windows</h4>
+          <p>Cross-examine schedules for shared split-site teachers (such as band or speech specialists) who split sites with adjacent schools. Confirm they are assigned to empty periods during travel windows.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Staff Assignments</div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_3_3" onclick="toggleItem('3_3')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Identify and Verify Staff Assignment placeholders</h4>
+          <p>Identify all active sections currently assigned to temporary placeholder staff records (e.g., "STAFF MATH" or "STAFF SPANISH"). Cross-check these with outstanding credential clearances or recruiting pipelines.</p>
+          <div class="path">Aeries Staging: Scheduling Process → master schedule → Teacher Table</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STAGE 4 -->
+  <section class="phase-group">
+    <div class="phase-title">
+      <div class="phase-num">4</div>
+      <h3>Student Request & Pre-Scheduling Audits</h3>
+    </div>
+    
+    <div class="checklist-items">
+      
+      <div class="checklist-item" id="item_4_1" onclick="toggleItem('4_1')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Isolate and Purge Duplicate Student Requests</h4>
+          <p>Identify and delete duplicate course requests inside the SSS table (such as a student signed up for English 10 twice). Leaving duplicate requests breaks seat allocation math in student scheduling runs.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Student Requests → Request Reports</div>
+          <div class="callout alert">
+            <strong>Isolating Query:</strong> <code>LIST STU SSS STU.ID STU.LN STU.FN SSS.CN BY STU.ID IF SSS.CN = SSS.CN</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_4_2" onclick="toggleItem('4_2')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Identify Students with Completely Empty Requests</h4>
+          <p>Run a demographic check to isolate students who are currently missing required course requests. If students have blank SSS sheets, they cannot be placed during automated scheduling runs.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Reports → Student Request Audit</div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_4_3" onclick="toggleItem('4_3')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Verify Senior Graduation Pathway Alignments</h4>
+          <p>Prioritize seniors (Grade 12) and check that required core graduation requirements are fully scheduled. Clear senior schedule gaps or unmatched requests first to ensure graduation pathway compliance.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Student Data → Graduation Status (REQ)</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STAGE 5 -->
+  <section class="phase-group">
+    <div class="phase-title">
+      <div class="phase-num">5</div>
+      <h3>Run-Time Conflict & Validation Audits</h3>
+    </div>
+    
+    <div class="checklist-items">
+      
+      <div class="checklist-item" id="item_5_1" onclick="toggleItem('5_1')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Run a Pre-Scheduling Edit Listing Check</h4>
+          <p>Execute the core Aeries pre-scheduling validation sweep to identify structural errors, missing teacher tags, invalid room IDs, and out-of-range periods before starting scheduling runs.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Reports → Prescheduling Edit Listing</div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_5_2" onclick="toggleItem('5_2')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Analyze the Scheduling Reject Analysis Listing (D7)</h4>
+          <p>After executing your draft scheduling pass, analyze your Reject Code D7 listings. Check for recurring pattern errors: if a specific AP or elective is showing full, adjust the maximum seat capacity to balance scheduling matches.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Reports → Student Reject Analysis (D7)</div>
+          <div class="callout tip">
+            <strong>Audit Target:</strong> Do not attempt to adjust individual students manually yet. Focus on correcting master schedule board conflicts first (such as overlapping singletons) to clear the bulk of your rejects automatically.
+          </div>
+        </div>
+      </div>
+
+      <div class="checklist-item" id="item_5_3" onclick="toggleItem('5_3')">
+        <div class="checkbox-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="checklist-body">
+          <h4>Acquire Principal Sign-Off and Freeze the Master Schedule</h4>
+          <p>Confirm that your scheduling placement success rates meet WUSD targets (typically above 85% on your final run). Lock the verified Master Schedule draft in Aeries to freeze your configurations, preventing automated background runs from overwriting details.</p>
+          <div class="path">Aeries Staging: Scheduling Process → Interactive Schedule Board → Lock Schedule</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEXT PATHS SEGMENT NAVIGATOR -->
+  <section class="section" style="margin-top:22px">
+    <h3>Where to go next</h3>
+    <p>Align your completed submission validation audits back to corresponding master scheduling design milestones:</p>
+    <div class="next-grid">
+      <div class="next-card">
+        <div>
+          <h3>🚀 Start Here Guide</h3>
+          <p>Review standard timelines, initial configurations, and chronological rules of master schedule design.</p>
+        </div>
+        <a class="btn" href="scheduling-start-here.html">Open Start Here</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🏫 Middle School Level</h3>
+          <p>Learn to design core academic teams, elective rotation wheels, and integrated WIN support blocks.</p>
+        </div>
+        <a class="btn" href="scheduling-middle-school.html">Open Middle Guide</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🛠 Troubleshooting</h3>
+          <p>Deep-dive into student reject codes, room overrides, class overload margins, and diagnostic matrices.</p>
+        </div>
+        <a class="btn" href="scheduling-troubleshooting.html">Open Troubleshooting</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  WUSD Aeries Resource Center • Final Submission Checklist Guide • Designed for District Administrators, Registrars, and Principals. Ensure query parameters match school year definitions before execution.
+</footer>
+
+<script>
+// LOCALSTORAGE KEY
+const STORAGE_KEY = 'wusd_preflight_checklist_state';
+
+// LIST OF ALL CHECKLIST ITEM IDS
+const checklistItemIds = [
+  '1_1', '1_2', '1_3',
+  '2_1', '2_2', '2_3',
+  '3_1', '3_2', '3_3',
+  '4_1', '4_2', '4_3',
+  '5_1', '5_2', '5_3'
+];
+
+// TOGGLE ITEM STATUS
+function toggleItem(id) {
+  const el = document.getElementById('item_' + id);
+  if (!el) return;
+  
+  el.classList.toggle('checked');
+  saveState();
+  updateProgressHUD();
+}
+
+// SAVE STATE TO LOCAL STORAGE
+function saveState() {
+  const state = {};
+  checklistItemIds.forEach(id => {
+    const el = document.getElementById('item_' + id);
+    if (el) {
+      state[id] = el.classList.contains('checked');
+    }
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+// LOAD STATE FROM LOCAL STORAGE
+function loadState() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (!saved) {
+    updateProgressHUD();
+    return;
+  }
+  
+  try {
+    const state = JSON.parse(saved);
+    checklistItemIds.forEach(id => {
+      const el = document.getElementById('item_' + id);
+      if (el && state[id] === true) {
+        el.classList.add('checked');
+      }
+    });
+  } catch(e) {
+    console.error("Error reading saved checklist states: ", e);
+  }
+  updateProgressHUD();
+}
+
+// RESET CHECKS
+function resetChecklist() {
+  checklistItemIds.forEach(id => {
+    const el = document.getElementById('item_' + id);
+    if (el) {
+      el.classList.remove('checked');
+    }
+  });
+  saveState();
+  updateProgressHUD();
+}
+
+// UPDATE HUD METRICS
+function updateProgressHUD() {
+  let checkedCount = 0;
+  const totalCount = checklistItemIds.length;
+  
+  checklistItemIds.forEach(id => {
+    const el = document.getElementById('item_' + id);
+    if (el && el.classList.contains('checked')) {
+      checkedCount++;
+    }
+  });
+  
+  const percentage = Math.round((checkedCount / totalCount) * 100);
+  
+  // Update percentage bar and texts
+  document.getElementById('progress-indicator-bar').style.width = percentage + '%';
+  document.getElementById('progress-text').textContent = `${checkedCount} of ${totalCount} verification steps completed (${percentage}%)`;
+}
+
+// ON WINDOW LOAD INIT
+window.onload = function() {
+  loadState();
+};
+</script>
+
+</body>
+</html>
