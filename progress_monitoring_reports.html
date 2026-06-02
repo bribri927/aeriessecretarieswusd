@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Progress Monitoring & Reports - WUSD Aeries Teacher Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          classroom: {
+            50: '#f0fdf4',
+            100: '#dcfce7',
+            200: '#bbf7d0',
+            500: '#22c55e',
+            600: '#16a34a',
+            700: '#15803d',
+            800: '#166534',
+            900: '#14532d',
+            950: '#022c22',
+          },
+          slate: {
+            900: '#0f172a',
+            950: '#020617',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.04);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    #printable-report-area, #printable-report-area * {
+      visibility: visible;
+    }
+    #printable-report-area {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f7fcf9] to-[#edf9f1] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<!-- TOP HEADER BAR -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-classroom-800 to-classroom-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
+        W
+      </div>
+      <div>
+        <h1 class="text-sm font-extrabold text-slate-900 tracking-tight leading-none">
+          WUSD Teacher Aeries Workspace
+        </h1>
+        <p class="text-[10px] font-semibold text-slate-500 mt-1">Washington Unified School District Support Portal</p>
+      </div>
+    </div>
+    
+    <nav class="flex items-center gap-1.5 flex-wrap text-xs font-semibold text-slate-600">
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">Aeries Home</a>
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition font-bold text-classroom-800" href="teacher-resources.html">🍎 Teacher Directory</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN CONTENT CONTAINER -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow">
+
+  <!-- HERO BANNER -->
+  <section class="bg-gradient-to-br from-classroom-900 via-classroom-800 to-classroom-600 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        📊 5. Progress Monitoring & Reports • Accountability
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Progress Monitoring & Reports</h2>
+      <p class="text-classroom-100 text-sm sm:text-base font-medium leading-relaxed">
+        Raw data only becomes educational insight when configured and communicated clearly. On this page, you will master compiling student grade audits, tracking missing assignments before thresholds are crossed, executing stress-free parent conferences, and exporting certified grade sheets during district submission windows.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE REPORT GENERATOR SIMULATOR -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-start gap-4 border-b border-slate-100 pb-4">
+      <div class="w-10 h-10 rounded-xl bg-classroom-50 text-classroom-800 flex items-center justify-center font-black text-lg flex-shrink-0 border border-classroom-100">
+        <i class="fa-solid fa-file-invoice text-base"></i>
+      </div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">WUSD Student Grade Audit & Report Simulator</h3>
+        <p class="text-xs text-slate-500 font-semibold">
+          Select a student and a standard school report format below to generate a real-time, parent-ready progress printout.
+        </p>
+      </div>
+    </div>
+
+    <!-- Active Simulator Controls -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-2xl border">
+      <div class="space-y-1">
+        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">1. Select Student</label>
+        <select id="sim-student" onchange="generateMockReport()" class="w-full px-2.5 py-1.5 text-xs border rounded-xl bg-white font-bold">
+          <option value="1">Alexander, Maya (Grade 10)</option>
+          <option value="2">Davis, Jackson (Grade 10)</option>
+          <option value="3">Garcia, Sofia (Grade 10)</option>
+          <option value="4">Martinez, Leo (Grade 10)</option>
+        </select>
+      </div>
+
+      <div class="space-y-1">
+        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">2. Report Type</label>
+        <select id="sim-report-type" onchange="generateMockReport()" class="w-full px-2.5 py-1.5 text-xs border rounded-xl bg-white font-bold">
+          <option value="summary">Parent Conference Grade Summary</option>
+          <option value="missing">Missing Assignments Ledger (Action Required)</option>
+          <option value="verification">Final Grade Reporting Verification</option>
+        </select>
+      </div>
+
+      <div class="flex items-end">
+        <button onclick="printMockReport()" class="w-full px-4 py-2 bg-classroom-600 hover:bg-classroom-700 text-white rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition active:scale-95 shadow-sm">
+          <i class="fa-solid fa-print"></i> Print Clean Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Preview Display Area -->
+    <div id="printable-report-area" class="border border-slate-200 rounded-2xl p-6 sm:p-8 bg-white shadow-sm space-y-6">
+      <!-- Dynamically populated by JS -->
+    </div>
+  </section>
+
+  <!-- DETAILED TEACHER PLAYBOOKS -->
+  <section class="space-y-8">
+
+    <!-- PLAYBOOK 1: RUNNING PROGRESS SUMMARIES -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">1</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Daily Operation • Parent Communications</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Running Parent-Ready Progress Reports</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Aeries provides a native printing engine designed to output cleanly formatted progress sheets for parents. Running these reports protects you during grading disputes by providing a clear paper trail.
+        </p>
+
+        <div class="path">Left Sidebar → Gradebook → Reports → Student Progress Report</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">Standard Report Printing Steps:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li><strong>Select Parameters:</strong> Check options to display category breakdowns, individual assignment scores, and teacher comments.</li>
+            <li><strong>Parent Signature Line:</strong> Toggle on the **"Include Signature Line"** property. This is highly recommended for students currently falling below a C average.</li>
+            <li><strong>Portal Exclusions:</strong> Ensure you do not print "unpublished" or draft grades that haven't been finalized in your Gradebook defaults.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 2: END-OF-TERM REPORT CARDS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">2</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Trimester / Quarter Rollover • Administration</span>
+          <h3 class="text-xl font-extrabold text-slate-900">End-of-Term Grade Rollover & Verifications</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          At the end of each reporting period, gradebooks must be cleanly closed, audited for exceptions, and submitted to the administrative registrar.
+        </p>
+
+        <div class="path">Left Sidebar → Grades → Grade Reporting → Initialize Grade Reporting</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">The End-of-Term Sequence:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li><strong>Zero Out Blank Work:</strong> Make sure no assignments remain as a blank field unless excused. Turn blanks into zero scores or use the `MI` (Missing) code.</li>
+            <li><strong>Load Grades from Gradebook:</strong> Execute the system import. This pulls final percentage marks directly into the report card table (`GRD`).</li>
+            <li><strong>Input Comments & Citizenship:</strong> Enter citizenship metrics (Outstanding, Satisfactory, Needs Improvement) and choose standardized comments (e.g., *Hardworking*, *Consistently participates*).</li>
+            <li><strong>Print Grade Verification Sheets:</strong> Print, review, sign, and deliver the final verification sheets to your site clerk to certify submission.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 3: PROGRESS MONITORING & INTERVENTIONS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">3</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Early Intervention • Student Success</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Missing Assignment Sweeps & Progress Monitoring</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Waiting until the end of a grading window to find failing grades is too late. Running proactive missing assignment sweeps enables timely intervention.
+        </p>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Missing Assignments Listing:</strong> Run the "Missing Assignments" report weekly. This lists students who have accumulated more than a set threshold of `MI` tags (e.g., 3+ missing assignments) across your roster.</li>
+            <li><strong>D/F Grade Monitoring:</strong> Under **Grades → Gradebook Summary**, you can filter your active view to only show students currently sitting below 70%. Use this list to coordinate tutoring and contact parents.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- CONFIDENCE BUILDER CHECKLIST -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+      <div class="text-3xl">🎒</div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Active Progress Monitoring & Reports Check</h3>
+        <p class="text-xs text-slate-500 font-semibold">Track your progress across these critical reporting tasks. Your state is saved locally in your browser:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      
+      <div class="lg:col-span-8 space-y-3" id="reports-tasks-container">
+        <!-- Javascript populated checklists -->
+      </div>
+
+      <div class="lg:col-span-4 bg-classroom-50 border border-classroom-100 p-5 rounded-2xl space-y-3 text-center">
+        <strong class="text-xs text-classroom-800 uppercase tracking-widest block font-extrabold">Reports Readiness:</strong>
+        <div class="text-4xl font-black text-classroom-900" id="percent-display-text">0% Ready</div>
+        <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+          <div id="tracker-progress-bar" class="h-full bg-classroom-600 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+        <button onclick="resetReportsTracker()" class="text-[10px] font-bold text-classroom-700 hover:underline">Reset Progress</button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-classroom-100 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium">
+  WUSD Aeries Resource Center • Progress Monitoring & Reports Guide • Formatted for side-by-side reference.
+</footer>
+
+<script>
+// SIMULATOR STUDENT DATA
+const studentsReportData = {
+  "1": {
+    name: "Alexander, Maya",
+    id: "20260401",
+    grade: "10",
+    classPercent: "84.2%",
+    letter: "B",
+    missingCount: 0,
+    categories: [
+      { name: "Assessments (60% weight)", score: "82%" },
+      { name: "Homework/Classwork (30% weight)", score: "87%" },
+      { name: "Participation (10% weight)", score: "90%" }
+    ],
+    assignments: [
+      { date: "05/12", title: "Unit 4 Trigonometry Exam", score: "41/50", status: "Graded" },
+      { date: "05/18", title: "Trig Functions Worksheet", score: "10/10", status: "Graded" },
+      { date: "05/22", title: "Class Participation Block 4", score: "9/10", status: "Graded" }
+    ],
+    teacherComment: "Consistently turns in high-quality assignments. Actively participates."
+  },
+  "2": {
+    name: "Davis, Jackson",
+    id: "20260402",
+    grade: "10",
+    classPercent: "68.5%",
+    letter: "D",
+    missingCount: 3,
+    categories: [
+      { name: "Assessments (60% weight)", score: "61%" },
+      { name: "Homework/Classwork (30% weight)", score: "78%" },
+      { name: "Participation (10% weight)", score: "80%" }
+    ],
+    assignments: [
+      { date: "05/12", title: "Unit 4 Trigonometry Exam", score: "31/50", status: "Graded" },
+      { date: "05/18", title: "Trig Functions Worksheet", score: "0/10", status: "MI (Missing)" },
+      { date: "05/20", title: "Sine Curve Graphic Project", score: "0/20", status: "MI (Missing)" },
+      { date: "05/25", title: "Homework: Angle Sums", score: "0/10", status: "MI (Missing)" }
+    ],
+    teacherComment: "In danger of failing. Missing key homework. Suggest attending lunch tutoring."
+  },
+  "3": {
+    name: "Garcia, Sofia",
+    id: "20260403",
+    grade: "10",
+    classPercent: "98.1%",
+    letter: "A",
+    missingCount: 0,
+    categories: [
+      { name: "Assessments (60% weight)", score: "99%" },
+      { name: "Homework/Classwork (30% weight)", score: "96%" },
+      { name: "Participation (10% weight)", score: "100%" }
+    ],
+    assignments: [
+      { date: "05/12", title: "Unit 4 Trigonometry Exam", score: "50/50", status: "Graded" },
+      { date: "05/18", title: "Trig Functions Worksheet", score: "10/10", status: "Graded" },
+      { date: "05/20", title: "Sine Curve Graphic Project", score: "21/20", status: "Graded (Extra Credit)" }
+    ],
+    teacherComment: "Outstanding student leadership. Consistently produces high-quality work."
+  },
+  "4": {
+    name: "Martinez, Leo",
+    id: "20260404",
+    grade: "10",
+    classPercent: "71.4%",
+    letter: "C",
+    missingCount: 1,
+    categories: [
+      { name: "Assessments (60% weight)", score: "68%" },
+      { name: "Homework/Classwork (30% weight)", score: "76%" },
+      { name: "Participation (10% weight)", score: "78%" }
+    ],
+    assignments: [
+      { date: "05/12", title: "Unit 4 Trigonometry Exam", score: "34/50", status: "Graded" },
+      { date: "05/18", title: "Trig Functions Worksheet", score: "0/10", status: "MI (Missing)" },
+      { date: "05/25", title: "Homework: Angle Sums", score: "8/10", status: "Graded" }
+    ],
+    teacherComment: "Solid participation, but homework consistency is affecting final grades."
+  }
+};
+
+function generateMockReport() {
+  const studentId = document.getElementById('sim-student').value;
+  const reportType = document.getElementById('sim-report-type').value;
+  const student = studentsReportData[studentId];
+  const container = document.getElementById('printable-report-area');
+
+  if (!student) return;
+
+  let reportHtml = '';
+
+  // HEADER BLOCK (Common to all reports)
+  reportHtml += `
+    <div class="border-b-4 border-classroom-800 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div>
+        <h4 class="text-xs font-black uppercase tracking-widest text-classroom-800">Washington Unified School District</h4>
+        <h2 class="text-xl font-extrabold text-slate-900">Aeries Gradebook Audit & Reporting Portal</h2>
+        <p class="text-xs text-slate-500 font-semibold mt-1">Washington High School • Instructor: J. Doe</p>
+      </div>
+      <div class="bg-slate-100 px-4 py-2 rounded-xl text-right">
+        <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Date Generated</span>
+        <span class="text-xs font-black text-slate-700">${new Date().toLocaleDateString()}</span>
+      </div>
+    </div>
+
+    <!-- STUDENT METRIC BLOCK -->
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 py-4 bg-slate-50 rounded-xl p-4 border border-slate-200">
+      <div>
+        <span class="text-[9px] font-black uppercase text-slate-400 block">Student Name</span>
+        <strong class="text-sm text-slate-800 block">${student.name}</strong>
+      </div>
+      <div>
+        <span class="text-[9px] font-black uppercase text-slate-400 block">Student ID / Grade</span>
+        <strong class="text-sm text-slate-800 block">${student.id} / Grade ${student.grade}</strong>
+      </div>
+      <div>
+        <span class="text-[9px] font-black uppercase text-slate-400 block">Calculated Grade average</span>
+        <strong class="text-sm text-classroom-800 block">${student.classPercent} (${student.letter})</strong>
+      </div>
+      <div>
+        <span class="text-[9px] font-black uppercase text-slate-400 block">Missing Work Count</span>
+        <strong class="text-sm ${student.missingCount > 0 ? 'text-red-600 animate-pulse' : 'text-green-700'} block">${student.missingCount} Assignments</strong>
+      </div>
+    </div>
+  `;
+
+  // DYNAMIC BODY BLOCK BASED ON SELECTION
+  if (reportType === 'summary') {
+    reportHtml += `
+      <div class="space-y-4">
+        <h3 class="text-sm font-black uppercase tracking-widest text-slate-400 border-b pb-1">Syllabus Categories & Weighted Averages</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          ${student.categories.map(cat => `
+            <div class="bg-white border rounded-xl p-3 shadow-sm text-center">
+              <span class="text-[10px] text-slate-400 font-black uppercase block">${cat.name}</span>
+              <strong class="text-lg text-slate-800 block mt-1">${cat.score}</strong>
+            </div>
+          `).join('')}
+        </div>
+
+        <h3 class="text-sm font-black uppercase tracking-widest text-slate-400 border-b pb-1 pt-2">Detailed Assignments Log</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-left text-xs">
+            <thead>
+              <tr class="border-b text-slate-400 font-black uppercase text-[9px]">
+                <th class="py-2">Assign Date</th>
+                <th class="py-2">Assignment Title</th>
+                <th class="py-2">Score / Max</th>
+                <th class="py-2 text-right">Reporting Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${student.assignments.map(ass => `
+                <tr class="border-b font-medium text-slate-600">
+                  <td class="py-2 font-mono text-slate-400">${ass.date}</td>
+                  <td class="py-2 font-black text-slate-800">${ass.title}</td>
+                  <td class="py-2 font-bold">${ass.score}</td>
+                  <td class="py-2 text-right">
+                    <span class="px-2 py-0.5 rounded-md text-[9px] font-black ${ass.status.includes('Missing') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}">
+                      ${ass.status}
+                    </span>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  } else if (reportType === 'missing') {
+    const missingAssignments = student.assignments.filter(ass => ass.status.includes('Missing'));
+    
+    if (missingAssignments.length === 0) {
+      reportHtml += `
+        <div class="p-6 bg-green-50 border border-green-200 text-green-800 rounded-2xl text-center space-y-2">
+          <div class="text-3xl">🎉</div>
+          <strong class="text-sm font-black block">No Outstanding Missing Assignments Detected!</strong>
+          <p class="text-xs text-green-600 font-medium">${student.name} is completely compliant. No remediation action required.</p>
+        </div>
+      `;
+    } else {
+      reportHtml += `
+        <div class="space-y-4">
+          <div class="p-4 bg-red-50 border border-red-200 text-red-800 rounded-xl text-xs font-semibold leading-relaxed">
+            ⚠️ <strong>Action Required:</strong> The student listed has crossed active missing assignment limits. In compliance with WUSD reporting standards, missing work must be completed and submitted immediately to prevent term failures.
+          </div>
+
+          <h3 class="text-sm font-black uppercase tracking-widest text-slate-400 border-b pb-1">Missing Assignment Ledger</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse text-left text-xs">
+              <thead>
+                <tr class="border-b text-slate-400 font-black uppercase text-[9px]">
+                  <th class="py-2">Target Date</th>
+                  <th class="py-2">Assignment Details</th>
+                  <th class="py-2">Remediation Score Boundary</th>
+                  <th class="py-2 text-right">Auditor Flag</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${missingAssignments.map(ass => `
+                  <tr class="border-b font-medium text-slate-600">
+                    <td class="py-2 font-mono text-slate-400">${ass.date}</td>
+                    <td class="py-2 font-black text-slate-800">${ass.title}</td>
+                    <td class="py-2 font-bold">Needs submission (0 / Max points)</td>
+                    <td class="py-2 text-right">
+                      <span class="px-2 py-0.5 bg-red-100 text-red-800 rounded-md text-[9px] font-black uppercase">MI - Missing</span>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+  } else if (reportType === 'verification') {
+    reportHtml += `
+      <div class="space-y-4">
+        <h3 class="text-sm font-black uppercase tracking-widest text-slate-400 border-b pb-1">Final Grade Reporting Alignment (GRD File Summary)</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+            <span class="text-[9px] font-black uppercase text-slate-400 block">Migrated Grade Record Code</span>
+            <div class="flex items-center gap-3">
+              <span class="text-3xl font-black text-classroom-800">${student.letter}</span>
+              <div>
+                <strong class="text-xs font-black text-slate-800 block">Final average: ${student.classPercent}</strong>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Loaded successfully from electronic gradebook</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+            <span class="text-[9px] font-black uppercase text-slate-400 block">Citizenship and Comments</span>
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span class="font-bold text-slate-500">Citizenship Code:</span>
+                <strong class="font-black text-slate-800">S (Satisfactory)</strong>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="font-bold text-slate-500">Selected Remark Code:</span>
+                <strong class="font-black text-slate-800">14 (Outstanding Leadership)</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // TEACHER COMMENT & SIGN-OFF LINE (Common to all reports)
+  reportHtml += `
+    <div class="border-t border-slate-200 pt-4 space-y-4">
+      <div class="bg-classroom-50/50 border border-classroom-100 p-4 rounded-xl text-xs font-medium text-classroom-900 leading-relaxed">
+        ⭐ <strong>Teacher Professional Notes:</strong> ${student.teacherComment}
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 text-[10px] text-slate-400 uppercase font-bold tracking-wider">
+        <div class="border-t border-slate-300 pt-2">
+          <span>Instructor J. Doe — Authorized Digital Signature</span>
+        </div>
+        <div class="border-t border-slate-300 pt-2 sm:text-right">
+          <span>Parent/Guardian Acknowledgement Signature</span>
+        </div>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = reportHtml;
+}
+
+function printMockReport() {
+  window.print();
+}
+
+// CHECKLIST TRACKER STATE
+const REPORTS_STORAGE_KEY = 'wusd_teacher_progress_reports_state';
+const reportsTasks = [
+  "I have completed and generated parent-ready summary reports above.",
+  "I can run a proactive 'Missing Assignments' sweep to identify struggling students.",
+  "I know how to initialize Grade Reporting and migrate marks into report cards (GRD table).",
+  "I understand how to input Citizenship and standard standardized comment codes.",
+  "I can print and sign Certified Grade Verification Sheets for the site clerk."
+];
+
+function initReportsTracker() {
+  const container = document.getElementById('reports-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(REPORTS_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  reportsTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-classroom-50 border-classroom-200' : 'border-slate-100 bg-white'}`;
+    taskRow.setAttribute('onclick', `toggleReportsTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-5 h-5 border rounded-lg mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-classroom-600 border-classroom-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3.5 h-3.5 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-xs font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400 font-medium' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = reportsTasks.length > 0 ? Math.round((completedCount / reportsTasks.length) * 100) : 0;
+  document.getElementById('tracker-progress-bar').style.width = percent + '%';
+  document.getElementById('percent-display-text').textContent = `${percent}% Ready`;
+}
+
+function toggleReportsTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(REPORTS_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(REPORTS_STORAGE_KEY, JSON.stringify(savedState));
+  initReportsTracker();
+}
+
+function resetReportsTracker() {
+  localStorage.removeItem(REPORTS_STORAGE_KEY);
+  initReportsTracker();
+}
+
+// INITIALIZATION
+window.onload = function() {
+  generateMockReport();
+  initReportsTracker();
+};
+</script>
+
+</body>
+</html>
