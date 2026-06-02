@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Start Here - WUSD Teacher Aeries Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          classroom: {
+            50: '#f0fdf4',
+            100: '#dcfce7',
+            200: '#bbf7d0',
+            600: '#16a34a',
+            700: '#15803d',
+            800: '#166534',
+            900: '#14532d',
+            950: '#022c22',
+          },
+          slate: {
+            900: '#0f172a',
+            950: '#020617',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.04);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+  .example {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 12.5px;
+    color: #475569;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f7fcf9] to-[#edf9f1] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<!-- TOP HEADER BAR -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-classroom-800 to-classroom-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
+        W
+      </div>
+      <div>
+        <h1 class="text-sm font-extrabold text-slate-900 tracking-tight leading-none">
+          WUSD Teacher Aeries Workspace
+        </h1>
+        <p class="text-[10px] font-semibold text-slate-500 mt-1">Washington Unified School District Support Portal</p>
+      </div>
+    </div>
+    
+    <nav class="flex items-center gap-1.5 flex-wrap text-xs font-semibold text-slate-600">
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">Aeries Home</a>
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition font-bold" href="teacher-resources.html">🍎 Teacher Directory</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN CONTENT CONTAINER -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow">
+
+  <!-- HERO WELCOME BANNER -->
+  <section class="bg-gradient-to-br from-classroom-900 via-classroom-800 to-classroom-600 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        🚀 1. Start Here • Class Onboarding
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-none">New to Aeries? Or Just Need a Refresher?</h2>
+      <p class="text-classroom-100 text-sm sm:text-base font-medium leading-relaxed">
+        Don’t worry—you can do this, and we’ll walk you through it step-by-step. This onboarding guide is structured to sit open on one half of your screen while you log in and prepare your active classroom rosters, categories, and grading periods inside your real database window. Let's make sure everything runs smoothly before your students arrive!
+      </p>
+    </div>
+  </section>
+
+  <!-- STEP-BY-STEP STEPPER -->
+  <section class="space-y-8">
+    
+    <!-- STEP 1 -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">1</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 1 • Navigation</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Log In & Learn the Layout Map</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          The secret to mastering Aeries is knowing where key classroom functions are located. Let’s log in and look around your main menu bar so you can comfortably move between your rosters and active gradebooks.
+        </p>
+
+        <div class="space-y-3">
+          <strong class="text-xs font-extrabold text-slate-400 uppercase tracking-wider block">What this helps you do:</strong>
+          <p class="text-xs text-slate-600 leading-relaxed">Locate essential teaching functions (like rosters, daily attendance grids, and scorebooks) without searching through general system options.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <strong class="text-xs text-classroom-800 uppercase font-black block tracking-wider">What to click:</strong>
+            <ul class="list-disc pl-4 text-xs text-slate-600 space-y-1 font-semibold leading-relaxed">
+              <li>Open your district Aeries portal page and select <strong>Teacher Portal</strong>.</li>
+              <li>Type in your secure WUSD single sign-on (SSO) email.</li>
+              <li>Find the left-hand navigation sidebar on your home screen.</li>
+              <li>Click on <strong>Attendance</strong> to view your daily roll, or expand <strong>Gradebook</strong> to check active assignments.</li>
+            </ul>
+          </div>
+
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <strong class="text-xs text-classroom-800 uppercase font-black block tracking-wider">What to look for:</strong>
+            <ul class="list-disc pl-4 text-xs text-slate-600 space-y-1 font-semibold leading-relaxed">
+              <li><strong>Roster View:</strong> Look for your students’ demographic summaries.</li>
+              <li><strong>Gradebook Card:</strong> Your digital grade calculation sheets.</li>
+              <li><strong>Messaging Panel:</strong> Automate missing work emails directly to parents.</li>
+              <li><strong>Active Year:</strong> Make sure the top right corner shows the current academic year.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-4 bg-emerald-50 border border-classroom-200 rounded-2xl">
+          <strong class="text-xs text-classroom-800 uppercase tracking-wider block font-extrabold">🚨 Common Onboarding Mistake:</strong>
+          <p class="text-xs text-slate-600 mt-1 leading-normal"><strong>Trying to learn everything at once.</strong> Aeries is a robust database, but classroom teachers only need to interact with a tiny portion of it. Focus exclusively on setting up your gradebooks, recording daily attendance, and updating assignments during your first weeks!</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- STEP 2 -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">2</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 2 • Setup Sequence</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Set Up Your Digital Gradebooks</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Let’s initialize your digital gradebooks. Setting up your rules early ensures your scores calculate exactly how you want throughout the semester.
+        </p>
+
+        <div class="path">Left Sidebar → Gradebook → Click [Add Gradebook] button</div>
+
+        <div class="space-y-3">
+          <strong class="text-xs font-extrabold text-slate-400 uppercase tracking-wider block">Your Step-by-Step Gradebook Setup:</strong>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2.5 leading-relaxed font-semibold">
+            <li><strong>Select Course Sections:</strong> Check the boxes next to matching classes to link sections of the same subject.</li>
+            <li><strong>Choose Term Grading Periods:</strong> Match your active grading term parameters (e.g., Semester 1 or Trimester 1).</li>
+            <li><strong>Add Categories:</strong> Establish clean category buckets (e.g., Homework, Tests, Projects).</li>
+            <li><strong>Apply Weighting Rules:</strong> If your syllabus uses weighted values, check "Weight Categories" and enter percentage proportions. Weighted grades are calculated using the standard formula:
+              <div class="my-2 p-2 bg-slate-100 rounded text-center text-slate-800 font-mono">
+                $\text{Final Grade} = \sum (\text{Category Score} \times \text{Category Weight})$
+              </div>
+            </li>
+            <li><strong>Set Assignment Defaults:</strong> Configure default max points (e.g., 100) and decide whether late work automatically receives a missing marker.</li>
+            <li><strong>Safe-Copy Configurations:</strong> If you taught this course previously, use the **Copy Settings** utility to duplicate configurations and rubrics from previous terms to save time.</li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-orange-50 border border-orange-200 rounded-2xl">
+          <strong class="text-xs text-orange-800 uppercase tracking-wider block font-extrabold">❓ What happens if I skip this?</strong>
+          <p class="text-xs text-slate-600 mt-1 leading-normal">If you don't define categories and weights first, Aeries will treat all entered assignments with equal points weight. A 10-point quick quiz will carry the exact same mathematical weight as a 10-point final exam, which can lead to unexpected grading errors later!</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- STEP 3 -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">3</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 3 • Daily Compliance</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Take Your Daily Attendance</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Daily attendance is a key legal and funding mandate. Your rolls must be submitted during your designated period window.
+        </p>
+
+        <div class="path">Left Sidebar → Attendance (or click the green 'Take Attendance' box on your home dashboard)</div>
+
+        <div class="space-y-3">
+          <strong class="text-xs font-extrabold text-slate-400 uppercase tracking-wider block">Your Attendance Workflow:</strong>
+          <ol class="list-decimal pl-5 text-xs text-slate-600 space-y-2 leading-relaxed font-semibold">
+            <li>Open the attendance grid. It will list your students alphabetically alongside a daily grid.</li>
+            <li>Leave students who are physically in their seats as **Present (Blank)**. By default, Aeries assumes everyone is present.</li>
+            <li>Click the status cell for absent students to mark them **Absent (A)**.</li>
+            <li>If a student arrives late, update their status to **Tardy (T)** and record their arrival time if required.</li>
+            <li><strong>Short-Term Independent Study (IS):</strong> If a student has an active, pre-approved IS contract, leave them marked as **Present/Independent Study (I)** based on counselor instructions.</li>
+            <li>Click **Submit Attendance** to lock your roster. A green confirmation badge will render in your header.</li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-emerald-50 border border-classroom-200 rounded-2xl">
+          <strong class="text-xs text-classroom-800 uppercase tracking-wider block font-extrabold">💡 How to correct mistakes:</strong>
+          <p class="text-xs text-slate-600 mt-1 leading-normal">If you make an attendance error (e.g., marking a late student absent), you can adjust codes and resubmit within your school's open submission window. If the window has closed, email your site attendance clerk immediately with the correction details.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- STEP 4 -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">4</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 4 • Gradebook Management</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Add an Assignment</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Once your gradebook structure is initialized, you can begin adding assignments as students complete coursework.
+        </p>
+
+        <div class="path">Open Gradebook → Click 'Assignments' tab → Click 'Add Assignment'</div>
+
+        <div class="space-y-3">
+          <strong class="text-xs font-extrabold text-slate-400 uppercase tracking-wider block">Key Parameters to Populate:</strong>
+          <ul class="space-y-2 text-xs text-slate-600 font-semibold leading-relaxed">
+            <li><span class="text-classroom-800 font-extrabold">Name & Description:</span> Write clear titles (e.g., *Ch. 1 Vocabulary homework*) so parents understand the assignment.</li>
+            <li><span class="text-classroom-800 font-extrabold">Assign & Due Dates:</span> Record accurate dates. This determines which grading period is credited.</li>
+            <li><span class="text-classroom-800 font-extrabold">Category:</span> Select the correct linked category bucket (e.g., Tests, Assignments).</li>
+            <li><span class="text-classroom-800 font-extrabold">Scoring Rules:</span> Set the maximum points value (e.g., 50) and grading scale.</li>
+            <li><span class="text-classroom-800 font-extrabold">Publish Visibility:</span> Toggle the **Publish to Parent/Student Portal** flag. If unchecked, the assignment is hidden on family dashboards.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- STEP 5 -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">5</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 5 • Scorekeeping</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Enter Grades & Scores</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Aeries offers several ways to input grades. Choose the method that best fits your classroom setup.
+        </p>
+
+        <div class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+              <strong class="text-xs text-slate-800 font-extrabold block">Option A: Quick Grid Input</strong>
+              <p class="text-xs text-slate-500 leading-normal">Open your full gradebook spreadsheet card, double-click individual cells, and type scores directly. Press **Enter** to save and move down.</p>
+            </div>
+            <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+              <strong class="text-xs text-slate-800 font-extrabold block">Option B: Mass Grade Input</strong>
+              <p class="text-xs text-slate-500 leading-normal">Select a specific assignment, and click **Mass Entry**. This allows you to apply a baseline grade (e.g., 10/10) to the entire class, and adjust individual scores for missing work.</p>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-100 border border-slate-200 rounded-xl space-y-2 text-xs">
+            <strong class="text-slate-800 font-extrabold block">WUSD Standard Grade Flags & Tags:</strong>
+            <ul class="space-y-1 text-slate-600 font-medium">
+              <li><strong class="font-mono text-classroom-800">MI (Missing):</strong> Counts as a zero, flagging the student profile and triggering parent missing work notifications.</li>
+              <li><strong class="font-mono text-classroom-800">EX (Excused):</strong> Bypasses grade calculations, preventing the assignment from impacting the student's average.</li>
+              <li><strong class="font-mono text-classroom-800">Comments:</strong> Click the comment bubble on a student's row to add notes (e.g., *"Late, turned in 2 days over"*).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- STEP 6 -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">6</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 6 • Family Transparency</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Parent & Student Portal Visibility</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Aeries is a transparent system. When you input grades, they can immediately impact student and parent dashboards.
+        </p>
+
+        <div class="space-y-3 text-xs text-slate-600 font-semibold leading-relaxed">
+          <p>Keep these district visibility guidelines in mind:</p>
+          <ul class="list-disc pl-4 space-y-1.5">
+            <li><strong>Immediate Updates:</strong> Once a score is entered, it is displayed on family portal dashboards unless the assignment is explicitly set to "Hidden/Unpublished."</li>
+            <li><strong>Grading Drafts:</strong> If you are working on a multi-week essay or project, uncheck **Publish to Portal** until you have graded all rosters. This prevents parent emails before grades are finalized.</li>
+            <li><strong>LMS Sync Expectations:</strong> If you sync grades from Canvas or Google Classroom, remember sync intervals run overnight. Allow up to 24 hours for grades to update in Aeries before manual adjustments.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- STEP 7 -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">7</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Milestone 7 • Classroom Triage</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Troubleshoot Common Problems</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          If you encounter an issue, don't worry—most problems can be resolved quickly. Here is how to fix the most common teacher roadblocks:
+        </p>
+
+        <div class="space-y-3">
+          <div class="p-3 bg-red-50 border border-red-200 rounded-xl space-y-1">
+            <strong class="text-xs text-red-800 block font-extrabold">Q: "My gradebook scores have disappeared!"</strong>
+            <p class="text-xs text-slate-600 leading-normal"><strong>Fix:</strong> You are likely logged into last year's database or a different school term. Check the site year dropdown in the top-right corner, and verify that your gradebook active term is configured correctly.</p>
+          </div>
+
+          <div class="p-3 bg-orange-50 border border-orange-200 rounded-xl space-y-1">
+            <strong class="text-xs text-orange-800 block font-extrabold">Q: "My Canvas/Google Classroom assignments are not syncing to Aeries."</strong>
+            <p class="text-xs text-slate-600 leading-normal"><strong>Fix:</strong> Your categories must match exactly. If Canvas has a group named "Tests" (plural) but Aeries has "Test" (singular), the sync will fail. Check and align your category names.</p>
+          </div>
+
+          <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl space-y-1">
+            <strong class="text-xs text-blue-800 block font-extrabold">Q: "Attendance won't save, and I see a warning banner."</strong>
+            <p class="text-xs text-slate-600 leading-normal"><strong>Fix:</strong> This happens if you are attempting to take attendance outside of the district's open scheduling period. Check that your class period matches your active session.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- CONFIDENCE BUILDER CHECKLIST -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+      <div class="text-3xl">🎒</div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Aeries Classroom Readiness Check</h3>
+        <p class="text-xs text-slate-500 font-semibold">Test your skills in your training sandbox. Complete these checklist tasks to build your confidence:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      
+      <div class="lg:col-span-8 space-y-3" id="onboarding-tasks-container">
+        <!-- Dynamically Generated JS checkmarks -->
+      </div>
+
+      <div class="lg:col-span-4 bg-classroom-50 border border-classroom-100 p-5 rounded-2xl space-y-3 text-center">
+        <strong class="text-xs text-classroom-800 uppercase tracking-widest block font-extrabold">Your Readiness Score:</strong>
+        <div class="text-4xl font-black text-classroom-900" id="percent-display-text">0% Ready</div>
+        <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+          <div id="tracker-progress-bar" class="h-full bg-classroom-600 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+        <button onclick="resetTeacherTracker()" class="text-[10px] font-bold text-classroom-700 hover:underline">Reset Progress</button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-classroom-100 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium">
+  WUSD Aeries Resource Center • Teacher Onboarding Start Here. Formatted for side-by-side active classroom reference.
+</footer>
+
+<script>
+// TEACHER TRACKER SYSTEM (Saves state locally in browser)
+const ONBOARDING_STORAGE_KEY = 'wusd_teacher_onboarding_start_here_state';
+const teacherTasks = [
+  "I can take daily attendance and submit rolls successfully.",
+  "I can initialize a digital gradebook and link multiple sections.",
+  "I can set up weighted grading categories and assignment defaults.",
+  "I can create assignments, set due dates, and configure category buckets.",
+  "I can enter grades manually, mass-input grades, and use missing tags (MI).",
+  "I can toggle assignment parent portal visibility and verify sync exceptions."
+];
+
+function initOnboardingTracker() {
+  const container = document.getElementById('onboarding-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(ONBOARDING_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  teacherTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-classroom-50 border-classroom-200' : 'border-slate-100 bg-white'}`;
+    taskRow.setAttribute('onclick', `toggleTeacherTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-5 h-5 border rounded-lg mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-classroom-600 border-classroom-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3.5 h-3.5 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-xs font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400 font-medium' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = teacherTasks.length > 0 ? Math.round((completedCount / teacherTasks.length) * 100) : 0;
+  document.getElementById('tracker-progress-bar').style.width = percent + '%';
+  document.getElementById('percent-display-text').textContent = `${percent}% Ready`;
+}
+
+function toggleTeacherTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(ONBOARDING_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(ONBOARDING_STORAGE_KEY, JSON.stringify(savedState));
+  initOnboardingTracker();
+}
+
+function resetTeacherTracker() {
+  localStorage.removeItem(ONBOARDING_STORAGE_KEY);
+  initOnboardingTracker();
+}
+
+window.onload = function() {
+  initOnboardingTracker();
+};
+</script>
+
+</body>
+</html>
