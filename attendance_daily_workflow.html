@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Attendance & Daily Workflow - WUSD Aeries Teacher Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          classroom: {
+            50: '#f0fdf4',
+            100: '#dcfce7',
+            200: '#bbf7d0',
+            500: '#22c55e',
+            600: '#16a34a',
+            700: '#15803d',
+            800: '#166534',
+            900: '#14532d',
+            950: '#022c22',
+          },
+          slate: {
+            900: '#0f172a',
+            950: '#020617',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.04);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+  .desk-active {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .desk-active:hover {
+    transform: translateY(-2px);
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f7fcf9] to-[#edf9f1] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<!-- TOP HEADER BAR -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-classroom-800 to-classroom-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
+        W
+      </div>
+      <div>
+        <h1 class="text-sm font-extrabold text-slate-900 tracking-tight leading-none">
+          WUSD Teacher Aeries Workspace
+        </h1>
+        <p class="text-[10px] font-semibold text-slate-500 mt-1">Washington Unified School District Support Portal</p>
+      </div>
+    </div>
+    
+    <nav class="flex items-center gap-1.5 flex-wrap text-xs font-semibold text-slate-600">
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">Aeries Home</a>
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition font-bold text-classroom-800" href="teacher-resources.html">🍎 Teacher Directory</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN CONTENT CONTAINER -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow">
+
+  <!-- HERO WELCOME BANNER -->
+  <section class="bg-gradient-to-br from-classroom-900 via-classroom-800 to-classroom-600 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        📝 3. Attendance & Daily Workflow • Legal Compliance
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Attendance is More Than Roll Call</h2>
+      <p class="text-classroom-100 text-sm sm:text-base font-medium leading-relaxed">
+        Taking attendance in California is a legal mandate, a primary funding mechanism (Average Daily Attendance - ADA), and a critical safety directive. In this workspace, you will learn the exact steps to record daily roll-call, correct minor entries within legal timelines, arrange physical seating chart maps in Aeries, and prepare stress-free substitutes rosters. Keep this guide tiled next to your active database workspace window!
+      </p>
+    </div>
+  </section>
+
+  <!-- THE "WHY" COMPLIANCE CALLOUT -->
+  <section class="bg-red-50 border border-red-200 rounded-3xl p-6 sm:p-8 space-y-4">
+    <div class="flex items-start gap-4">
+      <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-700 flex items-center justify-center font-black text-xl flex-shrink-0">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <div class="space-y-2 flex-1">
+        <h3 class="text-lg font-black text-red-950">What happens if attendance isn't submitted?</h3>
+        <p class="text-xs sm:text-sm text-red-900 leading-relaxed font-medium">
+          Under California Education Code, a school's funding is calculated directly through student daily physical presence. Every single classroom attendance record that remains "Unsubmitted" by the designated daily period window triggers immediate operational issues:
+        </p>
+        <ul class="list-disc pl-5 text-xs text-red-900 font-semibold space-y-1">
+          <li><strong>Funding Loss:</strong> The school district is legally prohibited from claiming state average daily attendance (ADA) revenue for unverified classrooms.</li>
+          <li><strong>Emergency Liability:</strong> In the event of an active evacuation, drill, or campus lock-down, the front office has no official digital record of where students are physically located.</li>
+          <li><strong>Office Interruption:</strong> Unsubmitted rosters force front office staff to call your classroom directly, interrupting instructional time during critical periods.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEATING CHART & ROLL CALL SIMULATOR -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-start gap-4 border-b border-slate-100 pb-4">
+      <div class="w-10 h-10 rounded-xl bg-classroom-50 text-classroom-800 flex items-center justify-center font-black text-lg flex-shrink-0 border border-classroom-100">
+        <i class="fa-solid fa-chair text-base"></i>
+      </div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Interactive Class Seating Chart & Roll-Call Practice Sandbox</h3>
+        <p class="text-xs text-slate-500 font-semibold">Click on each desk below to toggle the student's status: <strong>Present (Sage)</strong>, <strong>Absent (Coral)</strong>, or <strong>Tardy (Gold)</strong>. Watch how Aeries compiles the total class numbers automatically!</p>
+      </div>
+    </div>
+
+    <!-- Live Counter HUD -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="p-3 bg-slate-50 border rounded-2xl text-center">
+        <span class="text-[10px] text-slate-400 font-black uppercase tracking-wider block">Roster Total</span>
+        <span class="text-2xl font-black text-slate-800" id="sim-total-count">8</span>
+      </div>
+      <div class="p-3 bg-green-50 border border-green-100 rounded-2xl text-center">
+        <span class="text-[10px] text-green-600 font-black uppercase tracking-wider block">Present (Blank)</span>
+        <span class="text-2xl font-black text-green-700" id="sim-present-count">8</span>
+      </div>
+      <div class="p-3 bg-red-50 border border-red-100 rounded-2xl text-center">
+        <span class="text-[10px] text-red-600 font-black uppercase tracking-wider block">Absent (A)</span>
+        <span class="text-2xl font-black text-red-700" id="sim-absent-count">0</span>
+      </div>
+      <div class="p-3 bg-yellow-50 border border-yellow-100 rounded-2xl text-center">
+        <span class="text-[10px] text-yellow-600 font-black uppercase tracking-wider block">Tardy (T)</span>
+        <span class="text-2xl font-black text-yellow-700" id="sim-tardy-count">0</span>
+      </div>
+    </div>
+
+    <!-- Simulator Seating Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4" id="seating-grid-container">
+      <!-- Generated with JS -->
+    </div>
+
+    <!-- Simulator Status Button -->
+    <div class="p-4 bg-classroom-50 border border-classroom-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="space-y-0.5">
+        <strong class="text-xs text-classroom-800 font-black uppercase tracking-wider block">Roll-Call Validation</strong>
+        <p class="text-xs text-slate-500 font-medium">Verify your classroom counts before sealing your daily legal submittal roster.</p>
+      </div>
+      <button onclick="submitSimulatorRoll()" id="sim-submit-btn" class="px-5 py-2.5 bg-classroom-600 hover:bg-classroom-700 text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-sm transition active:scale-95 flex items-center gap-2">
+        <i class="fa-solid fa-cloud-arrow-up"></i> Submit Attendance to Aeries
+      </button>
+    </div>
+  </section>
+
+  <!-- OPERATIONAL TRAINING PLAYBOOKS -->
+  <section class="space-y-8">
+
+    <!-- PLAYBOOK 1: DAILY ATTENDANCE -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">1</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Daily Operation • Step-by-Step</span>
+          <h3 class="text-xl font-extrabold text-slate-900">How to Submit Daily Attendance</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Whether you teach a self-contained elementary classroom or a rotating secondary block, the daily submission workflow inside your active Aeries database follows this exact chronological structure:
+        </p>
+
+        <div class="path">Left Navigation → Attendance → Take Attendance (or click the Green Check box on your Dashboard)</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">Standard Submission Workflow:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Open the attendance module. By default, Aeries loads your classroom alphabetical roster with empty cells representing **Present**.</li>
+            <li>Look over your classroom desks. Leave physical present students completely **Blank** in the cell. Do not key codes for present students.</li>
+            <li>Identify physically absent students. Click the cell adjacent to their name and select **Absent (A)** from the status dropdown.</li>
+            <li>If a student arrives late within your site's tardy threshold window, click their cell to switch the status to **Tardy (T)**.</li>
+            <li>Review class count summaries at the top. Click **Submit Attendance**.</li>
+            <li><strong>The Receipt Badge:</strong> Ensure a solid green checkmark or confirmation banner renders in your top status header. If it stays orange or blank, your roll has not been saved inside database files!</li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-orange-50 border border-orange-200 rounded-2xl">
+          <strong class="text-xs text-orange-800 uppercase tracking-wider block font-extrabold">⚠️ Common Roster Mistake:</strong>
+          <p class="text-xs text-slate-600 mt-1 leading-normal"><strong>Marking tardy students as absent.</strong> If a student walks in late, you must update their status cell to Tardy (T). Leaving them marked Absent (A) triggers automated truancy emails and voice calls to their parent, resulting in avoidable front-desk panic.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 2: CORRECTIONS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">2</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Operational Errors • Step-by-Step</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Correcting Attendance Errors</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Did you accidentally mark the wrong student absent? Or did a student walk in late after you submitted your daily roll? Teachers can easily execute minor corrections within a <strong>3-day compliance window</strong>.
+        </p>
+
+        <div class="path">Open Attendance sheet → Click 'Change' or target Period row → Update code</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">How to Correct an Entry:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Re-open your active class period attendance card in Aeries.</li>
+            <li>Locate the row of the student requiring adjustments.</li>
+            <li>Click their active status cell (e.g., change `A` back to `Blank` for present, or click `A` to toggle to `T` for tardy).</li>
+            <li>Click the **Submit Attendance** button again to seal the updated ledger.</li>
+            <li><strong>Locked Records:</strong> If the 3-day site correction window has passed, the attendance cell will show a lock icon. You cannot edit locked data. Email your site attendance clerk immediately with the student's name, ID, and correction details.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 3: SEATING CHARTS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">3</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Classroom Architecture • Layout Controls</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Setting Up Seating Charts in Aeries</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Aeries features a native drag-and-drop Seating Chart builder. Using a seating chart simplifies attendance and enables substitutes to identify students.
+        </p>
+
+        <div class="path">Attendance sheet → Click 'Seating Chart' button at Top Right</div>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 block font-bold">Step-by-Step Chart Design:</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Open the Seating Chart tool. You will see an empty canvas on the left and your roster list of students on the right.</li>
+            <li>Use the grid layout tools to define your room's rows and columns (e.g., a 5x6 desk array).</li>
+            <li>Click and drag each student card from your roster panel directly onto its designated desk block on the canvas.</li>
+            <li>Toggle the option **"Show Student Photos"** to display school ID pictures on the seating chart.</li>
+            <li>Click **Save Layout**. When taking attendance daily, you can toggle the 'Chart View' to simply click on desks to mark absences.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 4: INDEPENDENT STUDY & SUB WORKFLOWS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">4</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Specialized Workflows • Compliance</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Short-Term Independent Study & Substitute Rosters</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Teachers must coordinate specialized actions when students are on approved Independent Study contracts, or when a substitute instructor is managing the daily roll.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold leading-relaxed text-slate-600">
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <strong class="text-xs text-classroom-800 uppercase font-black block tracking-wider">Independent Study (I Code)</strong>
+            <p>If a student has a pre-approved Short-Term Independent Study contract:</p>
+            <ul class="list-disc pl-4 space-y-1">
+              <li>The office will flag their roster row with a specialized pending marker.</li>
+              <li>Coordinate and deliver academic assignments before they depart.</li>
+              <li>Upon return, grade and evaluate their completed work to determine academic credit hours, enabling the clerk to clear their attendance code.</li>
+            </ul>
+          </div>
+
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <strong class="text-xs text-classroom-800 uppercase font-black block tracking-wider">Preparing for a Substitute</strong>
+            <p>Substitutes do not have direct digital access to write to your live Aeries database:</p>
+            <ul class="list-disc pl-4 space-y-1">
+              <li>Open your Aeries attendance portal and select **Print Attendance Slip**.</li>
+              <li>Leave this physical, printed roster checklist alongside your physical lesson plans.</li>
+              <li>The substitute will mark absences manually and deliver the signed slip to the front office for database entry.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- CONFIDENCE BUILDER CHECKLIST -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+      <div class="text-3xl">🎒</div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Daily Attendance Routine Verification</h3>
+        <p class="text-xs text-slate-500 font-semibold">Verify your understanding of compulsory school attendance procedures. Progress saves locally in your browser:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      
+      <div class="lg:col-span-8 space-y-3" id="attendance-tasks-container">
+        <!-- Javascript populated checklists -->
+      </div>
+
+      <div class="lg:col-span-4 bg-classroom-50 border border-classroom-100 p-5 rounded-2xl space-y-3 text-center">
+        <strong class="text-xs text-classroom-800 uppercase tracking-widest block font-extrabold">Workflow Readiness:</strong>
+        <div class="text-4xl font-black text-classroom-900" id="percent-display-text">0% Ready</div>
+        <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+          <div id="tracker-progress-bar" class="h-full bg-classroom-600 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+        <button onclick="resetAttendanceTracker()" class="text-[10px] font-bold text-classroom-700 hover:underline">Reset Progress</button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-classroom-100 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium">
+  WUSD Aeries Resource Center • Attendance & Daily Workflow Guide • Formatted for side-by-side active classroom reference.
+</footer>
+
+<script>
+// SIMULATOR STATE
+const studentsData = [
+  { id: 1, name: "Alexander, Maya", status: "Present" },
+  { id: 2, name: "Davis, Jackson", status: "Present" },
+  { id: 3, name: "Garcia, Sofia", status: "Present" },
+  { id: 4, name: "Martinez, Leo", status: "Present" },
+  { id: 5, name: "Nguyen, Chloe", status: "Present" },
+  { id: 6, name: "Smith, William", status: "Present" },
+  { id: 7, name: "Taylor, Emma", status: "Present" },
+  { id: 8, name: "Vance, Oliver", status: "Present" }
+];
+
+function initAttendanceSimulator() {
+  const container = document.getElementById('seating-grid-container');
+  container.innerHTML = '';
+
+  studentsData.forEach(student => {
+    const desk = document.createElement('button');
+    desk.setAttribute('onclick', `toggleStudentStatus(${student.id})`);
+    desk.id = `desk-${student.id}`;
+    
+    // Set dynamic style depending on status
+    updateDeskStyles(desk, student);
+
+    container.appendChild(desk);
+  });
+
+  updateSimCounts();
+}
+
+function toggleStudentStatus(studentId) {
+  const student = studentsData.find(s => s.id === studentId);
+  if (!student) return;
+
+  if (student.status === "Present") {
+    student.status = "Absent";
+  } else if (student.status === "Absent") {
+    student.status = "Tardy";
+  } else {
+    student.status = "Present";
+  }
+
+  // Visual state updates
+  const desk = document.getElementById(`desk-${studentId}`);
+  updateDeskStyles(desk, student);
+  updateSimCounts();
+}
+
+function updateDeskStyles(deskElement, student) {
+  let styles = "desk-active p-4 border rounded-2xl text-center space-y-1 relative shadow-sm ";
+  let statusBadge = "";
+
+  if (student.status === "Present") {
+    styles += "bg-green-50 border-green-200 text-green-950";
+    statusBadge = "<span class='px-1.5 py-0.5 bg-green-200 text-green-800 text-[9px] font-black rounded uppercase block w-14 mx-auto'>Present</span>";
+  } else if (student.status === "Absent") {
+    styles += "bg-red-50 border-red-200 text-red-950";
+    statusBadge = "<span class='px-1.5 py-0.5 bg-red-200 text-red-800 text-[9px] font-black rounded uppercase block w-14 mx-auto'>Absent</span>";
+  } else {
+    styles += "bg-yellow-50 border-yellow-200 text-yellow-950";
+    statusBadge = "<span class='px-1.5 py-0.5 bg-yellow-200 text-yellow-800 text-[9px] font-black rounded uppercase block w-14 mx-auto'>Tardy</span>";
+  }
+
+  deskElement.className = styles;
+  deskElement.innerHTML = `
+    <span class="text-slate-400 text-[10px] font-bold block">Desk ${student.id}</span>
+    <strong class="text-xs font-black block">${student.name}</strong>
+    ${statusBadge}
+  `;
+}
+
+function updateSimCounts() {
+  const total = studentsData.length;
+  const present = studentsData.filter(s => s.status === "Present").length;
+  const absent = studentsData.filter(s => s.status === "Absent").length;
+  const tardy = studentsData.filter(s => s.status === "Tardy").length;
+
+  document.getElementById('sim-total-count').textContent = total;
+  document.getElementById('sim-present-count').textContent = present;
+  document.getElementById('sim-absent-count').textContent = absent;
+  document.getElementById('sim-tardy-count').textContent = tardy;
+}
+
+function submitSimulatorRoll() {
+  const submitBtn = document.getElementById('sim-submit-btn');
+  submitBtn.className = "px-5 py-2.5 bg-emerald-700 text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-inner transition flex items-center gap-2";
+  submitBtn.innerHTML = "<i class='fa-solid fa-circle-check text-green-300'></i> Roll-Call Submitted Successfully!";
+  
+  // Update task 0 in the confidence checklist
+  const savedState = JSON.parse(localStorage.getItem(ATTENDANCE_STORAGE_KEY) || '{}');
+  savedState[0] = true;
+  localStorage.setItem(ATTENDANCE_STORAGE_KEY, JSON.stringify(savedState));
+  initAttendanceTracker();
+}
+
+// ROUTINE VERIFICATION STORAGE ENGINE
+const ATTENDANCE_STORAGE_KEY = 'wusd_teacher_attendance_workflow_routine_state';
+const attendanceTasks = [
+  "I have completed the Seating Chart & Roll-Call practice sandbox above.",
+  "I can identify and mark students absent (A) and tardy (T) daily.",
+  "I know how to correct attendance within the legal 3-day window.",
+  "I can construct visual seating charts with drag-and-drop layout cards.",
+  "I know how to prepare and print physical roll-sheets for substitute teachers.",
+  "I understand the Average Daily Attendance (ADA) school funding implications of unsubmitted logs."
+];
+
+function initAttendanceTracker() {
+  const container = document.getElementById('attendance-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(ATTENDANCE_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  attendanceTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-classroom-50 border-classroom-200' : 'border-slate-100 bg-white'}`;
+    taskRow.setAttribute('onclick', `toggleAttendanceTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-5 h-5 border rounded-lg mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-classroom-600 border-classroom-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3.5 h-3.5 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-xs font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400 font-medium' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = attendanceTasks.length > 0 ? Math.round((completedCount / attendanceTasks.length) * 100) : 0;
+  document.getElementById('tracker-progress-bar').style.width = percent + '%';
+  document.getElementById('percent-display-text').textContent = `${percent}% Ready`;
+}
+
+function toggleAttendanceTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(ATTENDANCE_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(ATTENDANCE_STORAGE_KEY, JSON.stringify(savedState));
+  initAttendanceTracker();
+}
+
+function resetAttendanceTracker() {
+  localStorage.removeItem(ATTENDANCE_STORAGE_KEY);
+  initAttendanceTracker();
+  
+  // Reset submit button state
+  const submitBtn = document.getElementById('sim-submit-btn');
+  submitBtn.className = "px-5 py-2.5 bg-classroom-600 hover:bg-classroom-700 text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-sm transition active:scale-95 flex items-center gap-2";
+  submitBtn.innerHTML = "<i class='fa-solid fa-cloud-arrow-up'></i> Submit Attendance to Aeries";
+}
+
+// WINDOW LOAD INITIALIZATION
+window.onload = function() {
+  initAttendanceSimulator();
+  initAttendanceTracker();
+};
+</script>
+
+</body>
+</html>
