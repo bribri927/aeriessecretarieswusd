@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flex Scheduling Models - Master Scheduling Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #12355b;
+  --blue: #2563eb;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #dbe3ef;
+  --bg: #f8fafc;
+  --soft: #eff6ff;
+  --white: #ffffff;
+}
+
+* { 
+  box-sizing: border-box; 
+  transition: max-width 0.3s ease, width 0.3s ease, padding 0.3s ease;
+}
+
+body {
+  margin: 0; 
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef5ff 100%); 
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.header {
+  position: sticky; 
+  top: 0; 
+  z-index: 50; 
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(14px); 
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+}
+
+.header-inner {
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 14px 22px; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 16px; 
+  flex-wrap: wrap;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 16px; 
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white; 
+  display: grid; 
+  place-items: center; 
+  font-weight: 900; 
+  font-size: 24px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, .22);
+}
+
+h1 { font-size: 24px; margin: 0; font-weight: 900; letter-spacing: -.04em; }
+.subtitle { margin-top: 3px; color: var(--muted); font-size: 13px; font-weight: 650; }
+
+.btn {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+  border-radius: 14px;
+  padding: 11px 18px; 
+  text-decoration: none; 
+  font-weight: 900; 
+  border: 1px solid transparent;
+  background: var(--blue); 
+  color: white; 
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.btn:hover { 
+  transform: translateY(-1px); 
+  filter: brightness(.95); 
+}
+
+.btn.secondary { 
+  background: white; 
+  color: #1d4ed8; 
+  border-color: #bfdbfe; 
+  box-shadow: none;
+}
+
+.container { 
+  max-width: 1180px; 
+  margin: 0 auto; 
+  padding: 22px; 
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--navy), var(--blue)); 
+  color: white; 
+  border-radius: 30px; 
+  padding: 34px;
+  box-shadow: 0 18px 48px rgba(37, 99, 235, .22); 
+  margin: 18px 0 22px;
+}
+
+.badge {
+  display: inline-flex; 
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, .16); 
+  border: 1px solid rgba(255, 255, 255, .26);
+  border-radius: 999px; 
+  padding: 6px 12px; 
+  font-size: 11px; 
+  font-weight: 900;
+  text-transform: uppercase; 
+  letter-spacing: .08em; 
+  margin-bottom: 14px;
+}
+
+.hero h2 { font-size: 38px; line-height: 1.05; margin: 0 0 12px; letter-spacing: -.05em; }
+.hero p { color: #dbeafe; max-width: 900px; font-size: 16px; line-height: 1.6; margin: 0; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.section {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-radius: 24px; 
+  padding: 24px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .055);
+}
+
+.section h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.035em; color: var(--navy); }
+.section p { color: #475569; line-height: 1.58; font-size: 14.5px; }
+
+.callout { border-radius: 18px; padding: 16px; margin: 16px 0; font-size: 14px; line-height: 1.55; }
+.callout.strong { display: block; margin-bottom: 4px; font-size: 15px; }
+.callout.tip { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
+.callout.mistake { background: #fff7ed; border: 1px solid #fed7aa; color: #92400e; }
+.callout.check { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+
+.path {
+  display: inline-block; 
+  background: #0f172a; 
+  color: #38bdf8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  border-radius: 12px; 
+  padding: 9px 14px; 
+  font-size: 13px; 
+  margin: 8px 0 12px;
+  border: 1px solid #334155;
+}
+
+.steps { display: grid; gap: 20px; }
+.step {
+  background: white; 
+  border: 1px solid var(--line); 
+  border-left: 7px solid var(--blue);
+  border-radius: 24px; 
+  padding: 26px; 
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .05);
+}
+
+.step h3 { margin: 0 0 6px; font-size: 22px; letter-spacing: -.04em; color: var(--navy); }
+.step .step-subtitle { color: var(--muted); font-size: 14px; font-weight: 500; margin-bottom: 16px; display: block; }
+.step h4 {
+  margin: 20px 0 8px; 
+  color: #1e3a8a; 
+  font-size: 13px; 
+  text-transform: uppercase; 
+  letter-spacing: .06em;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.step ul, .step ol { color: #334155; line-height: 1.65; padding-left: 22px; font-size: 14.5px; }
+.step li { margin-bottom: 8px; }
+
+/* Interactive Flex Model Configurator Tool */
+.interactive-calc {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 14px 0;
+  border: 1px solid #e2e8f0;
+}
+
+.interactive-calc label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.interactive-calc select, .interactive-calc input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14.5px;
+  margin-bottom: 14px;
+  background: white;
+}
+
+.config-container {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 14px;
+}
+
+.config-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+  border-bottom: 1.5px solid #f1f5f9;
+  padding-bottom: 6px;
+}
+
+.config-detail {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #334155;
+  margin-bottom: 12px;
+}
+
+.calc-result {
+  font-size: 13.5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #0f172a;
+  background: #f8fafc;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: block;
+  white-space: pre-wrap;
+  margin-top: 6px;
+}
+
+.checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.checklist li {
+  padding: 12px 14px; 
+  border: 1px solid var(--line); 
+  background: #f8fafc;
+  border-radius: 14px; 
+  color: #334155; 
+  font-weight: 600; 
+  line-height: 1.45;
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checklist li::before { 
+  content: "☐"; 
+  color: var(--blue); 
+  font-weight: 900; 
+  font-size: 16px;
+}
+
+.example { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; padding: 16px; margin: 12px 0; font-size: 14px; color: #475569; line-height: 1.5; }
+.next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+.next-card { background: linear-gradient(180deg, #fff, #f8fafc); border: 1px solid var(--line); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.next-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--navy); }
+.next-card p { font-size: 13.5px; color: #475569; margin-top: 0; margin-bottom: 14px; line-height: 1.5; }
+
+.footer { color: #64748b; text-align: center; font-size: 12px; padding: 34px 20px; border-top: 1px solid var(--line); margin-top: 40px; }
+
+@media(max-width:900px) {
+  .two, .next-grid { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 30px; }
+  .container { padding: 16px; }
+  .header-inner { padding: 12px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">W</div>
+      <div>
+        <h1>Flex Scheduling & Specialized Blocks</h1>
+        <div class="subtitle">WUSD District-Wide Aeries Resource & Support Toolkit</div>
+      </div>
+    </div>
+    <a class="btn secondary" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">
+      🏠 WUSD Central Hub Home
+    </a>
+  </div>
+</header>
+
+<main class="container">
+  
+  <section class="hero">
+    <div class="badge">🔄 Interactive Build-Along Training Guide</div>
+    <h2>Unlocking Aeries Flex Scheduling Models</h2>
+    <p>Aeries Flex Scheduling is a powerful paradigm shift in student-centered schedule building. Moving away from traditional 10-period limits, Flex Scheduling enables schools to support unlimited periods, overlapping start times, multiple instructors per section, and customizable calendars. Open this workspace page on one side of your monitor and your active <strong>Aeries database</strong> on the other to plan and build your flex structures systematically.</p>
+  </section>
+
+  <section class="two" style="margin-bottom: 22px;">
+    <div class="section">
+      <h3>The "Why" and "How" of Flex Models</h3>
+      <p>Traditional secondary schedules are locked into rigid structural periods. Pedagogical models like WIN (What I Need) blocks, advisory hours, and rotating block sessions require dynamic time segments. Working within Aeries Flex Scheduling removes these constraints by introducing the <code>FTF</code> (Flex Periods) and <code>CCL</code> (Class Calendars) tables.</p>
+      <div class="callout check">
+        <strong>Our Training Goal:</strong>
+        <p style="margin: 4px 0 0;">Together, we are going to understand how Flex Scheduling works, configure custom Flex Periods, associate Class Calendars, and leverage non-conflict code options to construct seamless, multi-teacher block schedules.</p>
+      </div>
+    </div>
+    <div class="section">
+      <h3>The Live Checklist We Are Building</h3>
+      <ul class="checklist">
+        <li><strong>Phase 1:</strong> Convert traditional SMS table setups to Flex structures.</li>
+        <li><strong>Phase 2:</strong> Define distinct Flex Periods with custom start/end times.</li>
+        <li><strong>Phase 3:</strong> Build unique Class Calendars for specialized rotations.</li>
+        <li><strong>Phase 4:</strong> Map multiple instructors using Staff-Section Associations.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Understanding the Aeries Tables We are Modifying</h3>
+    <p>As you build a Flex schedule, you are actively writing configurations across several key database tables. Let's make sure you know where this information lives:</p>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-top:12px;">
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--navy);">FTF (Flex Periods Setup)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Houses your school's customized period identifiers (Short Titles), start and end times, and period types.</p>
+      </div>
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--blue);">CCL / CCD (Class Calendars)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Tracks exact calendar dates when a specific flex period or section is active. Great for alternating A/B days.</p>
+      </div>
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--gold);">STF (Staff Association Table)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Replaces traditional <code>TCH</code> records. Enables you to assign multiple staff members to a single section with custom role titles.</p>
+      </div>
+      <div style="background:#f1f5f9; padding:14px; border-radius:12px; border:1px solid #e2e8f0;">
+        <strong style="color:var(--green);">SMS / MST (Scheduling Sections)</strong>
+        <p style="font-size:13px; margin:4px 0 0;">Connects course IDs to a Flex Period sequence (<code>SMS.FSQ</code>), Class Calendar index (<code>SMS.CSQ</code>), and exclusion flag properties (<code>SMS.ES</code>).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3>Interactive Flex Period & WIN Configurator</h3>
+    <p>Select a modern scheduling model below to explore its structural purpose, pedagogical benefits, and see the exact parameters needed to build it in Aeries.</p>
+    
+    <div class="interactive-calc">
+      <label for="flex-model-select">Select a Schedule Model:</label>
+      <select id="flex-model-select" onchange="renderFlexModel()">
+        <option value="win">WIN (What I Need) Support Block</option>
+        <option value="ab_block">A/B Day Rotating Block</option>
+        <option value="advisory">Advisory Homeroom Cohorts</option>
+        <option value="non_conflict">Non-Conflict Specialist Pull-Outs (RSP/ELD)</option>
+      </select>
+
+      <div class="config-container">
+        <div id="flex-model-title" class="config-title">WIN (What I Need) Support Block</div>
+        <div id="flex-model-desc" class="config-detail">A flexible period where students rotate to intervention, study hall, or enrichment classes.</div>
+        
+        <label>Recommended Aeries Database Settings:</label>
+        <div id="flex-model-params" class="calc-result">Loading settings...</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3 style="font-size:24px; border-bottom: 2px solid var(--line); padding-bottom:10px;">The 5 Flex Training Milestones</h3>
+    <p>Perform these configurations systematically in your Aeries staging database environment alongside this training guide.</p>
+    
+    <div class="steps">
+
+      <!-- MILESTONE 1 -->
+      <article class="step">
+        <h3>Step 1 — Initialize Flex Scheduling on Scheduling Setup</h3>
+        <span class="step-subtitle">Flex Milestone 1 • Initialization</span>
+        <p><strong>Goal:</strong> Transition your scheduling environment to recognize Flex features rather than traditional, 10-period grid limits.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling Process → Configurations → Scheduling Setup</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Open the **Scheduling Setup** page in your database.</li>
+          <li>Look under the **Scheduling Status** section.</li>
+          <li>Select the option **Use Flex Scheduling for Next Year**.</li>
+          <li>Ensure the checkbox for **Use Staff-Section Association instead of Teacher Number (TN)** is checked. This enables multi-teacher configurations.</li>
+          <li>If you are importing a traditional schedule, locate and click the **Convert to Flex Scheduling** utility at the bottom of the page. This converts existing traditional sections into Flex format.</li>
+        </ol>
+        
+        <div class="callout mistake">
+          <strong>Beginner Mistake:</strong> Initializing the schedule without enabling the "Staff-Section Association" flag. If you rely on traditional Teacher Numbers (TCH), Aeries will prevent you from assigning co-teachers, push-in RSP specialists, or counselors to active sections.
+        </div>
+      </article>
+
+      <!-- MILESTONE 2 -->
+      <article class="step">
+        <h3>Step 2 — Create Custom Flex Periods (FTF Table)</h3>
+        <span class="step-subtitle">Flex Milestone 2 • Defining Time Blocks</span>
+        <p><strong>Goal:</strong> Construct your periods as independent records with explicit start times, end times, and period codes.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Attendance Accounting → Configurations → Flex Periods</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Click **Add New Record** to create a Flex Period.</li>
+          <li>Enter a **Short Title** (limited to 6 characters, such as `P1`, `ADVIS`, or `WIN`). This is what prints on student schedule documents.</li>
+          <li>Enter the **Start Time** and **End Time** for the period block.</li>
+          <li>Select the **Type** for the period:
+            <ul>
+              <li><strong>Standard:</strong> Standard academic classes. Aeries will actively search for and flag student or teacher conflicts.</li>
+              <li><strong>C - Non-Conflict:</strong> Used for pull-outs, advisories, or unstructured blocks. Aeries will NOT check for student scheduling overlaps in this block.</li>
+            </ul>
+          </li>
+        </ol>
+        
+        <div class="callout tip">
+          <strong>The Pull-Out Rule:</strong> By designating support periods (like RSP, speech, or independent study) as **Type C (Non-Conflict)**, teachers can keep accurate attendance without forcing counselors to balance overlapping course request conflicts.
+        </div>
+      </article>
+
+      <!-- MILESTONE 3 -->
+      <article class="step">
+        <h3>Step 3 — Build and Assign Class Calendars (CCL)</h3>
+        <span class="step-subtitle">Flex Milestone 3 • Calendar Mapping</span>
+        <p><strong>Goal:</strong> Specify which dates throughout the year a section is active. Essential for building A/B blocks or multi-term elective wheels.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling Process → Scheduling Master Schedule → Section Details</div>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Navigate to **Attendance Accounting → Configurations → Class Calendars**.</li>
+          <li>Create a new calendar profile (e.g., `A-DAY` or `B-DAY`) and select the matching instructional days from the main year calendar.</li>
+          <li>Navigate to your section details page on the Scheduling Master Schedule (SMS).</li>
+          <li>Map the Section's Class Calendar (<code>SMS.CSQ</code>) to your custom calendar ID.</li>
+        </ol>
+        
+        <div class="callout check">
+          <strong>Validation Step:</strong> If a student has an A-Day class mapped to a calendar and a B-Day class mapped to another, Aeries will schedule both into the same period block without creating a conflict reject code.
+        </div>
+      </article>
+
+      <!-- MILESTONE 4 -->
+      <article class="step">
+        <h3>Step 4 — Implement WIN (What I Need) Rotation Blocks</h3>
+        <span class="step-subtitle">Flex Milestone 4 • Flex Interventions</span>
+        <p><strong>Goal:</strong> Structure mid-day support blocks where students are placed dynamically into intervention or enrichment groups weekly.</p>
+        
+        <h4>What we are doing together:</h4>
+        <ol>
+          <li>Create a unified course code in your catalog: e.g., `Course 9901 - WIN Support Block`. Set it as **Non-Credit / No Grade** so it does not calculate into GPAs.</li>
+          <li>Build corresponding sections in your Scheduling Master Schedule (SMS) during your designated WIN period.</li>
+          <li>Roster students into a permanent homeroom/WIN teacher section in Aeries for official state attendance reporting.</li>
+          <li>For weekly rosters, use Aeries **Supplemental Groups** or shared district tracking lists to manage student rotation schedules. This maintains clean attendance audits.</li>
+        </ol>
+      </article>
+
+      <!-- MILESTONE 5 -->
+      <article class="step">
+        <h3>Step 5 — Run Flex Validation Reports & Queries</h3>
+        <span class="step-subtitle">Flex Milestone 5 • Testing Configurations</span>
+        <p><strong>Goal:</strong> Execute database validations to verify that all flex sections have valid times, teachers, calendars, and structural setups.</p>
+        
+        <h4>Aeries Path (Find this in your Aeries Window):</h4>
+        <div class="path">Scheduling Process → Reports → Prescheduling Edit Listing</div>
+        
+        <h4>Essential Flex Verification Queries:</h4>
+        <p>Run these commands inside your Aeries Query window to catch missing calendar IDs or period sequence mismatches before running the scheduler:</p>
+        
+        <div class="example">
+          <strong>Identify Sections Missing Class Calendars:</strong>
+          <pre class="calc-result" style="font-size:12px; margin:4px 0 0;">LIST SMS SSM STF STF.FN STF.LN SMS.SE SMS.FSQ SMS.CSQ SMS.ES BY STF.LN STF.FN IF ( SSM.PR = 1 AND SMS.CSQ &lt; 1 )</pre>
+        </div>
+        
+        <div class="example" style="margin-top:10px;">
+          <strong>List Sections with Exclusions Turn On:</strong>
+          <pre class="calc-result" style="font-size:12px; margin:4px 0 0;">LIST SMS SSM STF STF.FN STF.LN SMS.SE SMS.ES BY STF.LN STF.FN IF SMS.ES = 1</pre>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:22px">
+    <h3>Where to go next</h3>
+    <p>Once you coordinate your Flex Scheduling settings, return to your core school-level training workspaces:</p>
+    <div class="next-grid">
+      <div class="next-card">
+        <div>
+          <h3>🚀 Start Here Guide</h3>
+          <p>Review standard timelines, basic Aeries calendar configurations, and the general chronological order of building.</p>
+        </div>
+        <a class="btn" href="scheduling-start-here.html">Open Start Here</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🏫 Middle School Level</h3>
+          <p>Learn to design core academic teams, elective rotation wheels, and integrated WIN support blocks.</p>
+        </div>
+        <a class="btn" href="scheduling-middle-school.html">Open Middle Guide</a>
+      </div>
+      <div class="next-card">
+        <div>
+          <h3>🎓 High School Level</h3>
+          <p>Learn to analyze graduation pathways, complex singletons, student request ratios, and counselor checks.</p>
+        </div>
+        <a class="btn" href="scheduling-high-school.html">Open High Guide</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  WUSD Aeries Resource Center • Master Scheduling Flex Guide • Formatted for interactive build-along training. Ensure you coordinate database changes with your site administrator.
+</footer>
+
+<script>
+// Interactive Flex Model Configurator Logic
+const modelData = {
+  win: {
+    title: "WIN (What I Need) Support Block",
+    desc: "A designated 30-45 minute period built into the school day for targeted interventions, study hall, or enrichment activities. Students shift classrooms based on weekly assessment indicators.",
+    params: `• Flex Period Code: WIN
+• Period Start/End: 11:15 AM - 11:55 AM
+• Period Type: Standard (Aeries checks teacher loads)
+• Class Calendar (SMS.CSQ): Set to standard daily school calendar (CCL Index 1)
+• Grading Profile: Non-Credit / No-Grade (CRS.GR = 0)
+• Staff-Section Association (STF): Homeroom Advisor assigned as primary instructor`
+  },
+  ab_block: {
+    title: "A/B Day Rotating Block",
+    desc: "An instructional layout where students rotate 8 classes across alternating calendar days (Periods 1, 3, 5, 7 on 'A' Days; Periods 2, 4, 6, 8 on 'B' Days). Ensures deeper learning windows.",
+    params: `• Flex Period Codes: P1 through P8 (configured with overlapping block times)
+• Period Start/End: Block times vary (e.g., 90-minute blocks)
+• Period Type: Standard
+• Class Calendar (SMS.CSQ): Mapped to alternating calendars:
+  - Sections 1, 3, 5, 7 linked to 'A-DAY' Calendar (CCL Index 2)
+  - Sections 2, 4, 6, 8 linked to 'B-DAY' Calendar (CCL Index 3)
+• Scheduling Exclusions (SMS.ES): Enabled on non-instructional assembly days`
+  },
+  advisory: {
+    title: "Advisory Homeroom Cohorts",
+    desc: "A structured advisory session focusing on social-emotional learning, academic check-ins, and transcript counseling. Facilitates strong connection blocks between students and a permanent teacher.",
+    params: `• Flex Period Code: ADV
+• Period Start/End: 8:30 AM - 8:55 AM (e.g., Mondays & Wednesdays)
+• Period Type: Standard
+• Class Calendar (SMS.CSQ): Advisory-specific Calendar tracking twice-weekly meetings
+• Scheduling Group (SMS.SG): Cohort groups matched cleanly on Demographics (STU.SG)
+• Grading Profile: No-Grade / Mark Attendance Only`
+  },
+  non_conflict: {
+    title: "Non-Conflict Specialist Support (RSP/ELD)",
+    desc: "A pull-out or push-in structure where support teachers (RSP, ELD, Speech) work with students during other academic blocks without generating conflict reject codes in Aeries.",
+    params: `• Flex Period Code: RSP
+• Period Start/End: Overlaps standard instruction hours (e.g., 9:00 AM - 2:00 PM)
+• Period Type: C - Non-Conflict (Instructs Aeries to bypass scheduling checks)
+• Attendance Rules: Exclude section from active state attendance audits if students are audited in main homeroom sections
+• Staff-Section Association: Co-teacher assigned alongside core content teacher`
+  }
+};
+
+function renderFlexModel() {
+  const selectVal = document.getElementById('flex-model-select').value;
+  const data = modelData[selectVal];
+  
+  const titleDiv = document.getElementById('flex-model-title');
+  const descDiv = document.getElementById('flex-model-desc');
+  const paramsDiv = document.getElementById('flex-model-params');
+  
+  if (data) {
+    titleDiv.textContent = data.title;
+    descDiv.textContent = data.desc;
+    paramsDiv.textContent = data.params;
+  }
+}
+
+// Run configurator once on load
+window.onload = function() {
+  renderFlexModel();
+};
+</script>
+
+</body>
+</html>
