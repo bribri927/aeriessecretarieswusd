@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Troubleshooting & Common Problems - WUSD Aeries Teacher Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          classroom: {
+            50: '#f0fdf4',
+            100: '#dcfce7',
+            200: '#bbf7d0',
+            500: '#22c55e',
+            600: '#16a34a',
+            700: '#15803d',
+            800: '#166534',
+            900: '#14532d',
+            950: '#022c22',
+          },
+          slate: {
+            900: '#0f172a',
+            950: '#020617',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.04);
+  }
+  .path {
+    display: inline-block;
+    background: #0f1e36;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+  .gauge-bar {
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f7fcf9] to-[#edf9f1] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<!-- TOP HEADER BAR -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-classroom-800 to-classroom-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
+        W
+      </div>
+      <div>
+        <h1 class="text-sm font-extrabold text-slate-900 tracking-tight leading-none">
+          WUSD Teacher Aeries Workspace
+        </h1>
+        <p class="text-[10px] font-semibold text-slate-500 mt-1">Washington Unified School District Support Portal</p>
+      </div>
+    </div>
+    
+    <nav class="flex items-center gap-1.5 flex-wrap text-xs font-semibold text-slate-600">
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">Aeries Home</a>
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition font-bold text-classroom-800" href="teacher-resources.html">🍎 Teacher Directory</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN CONTENT CONTAINER -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow">
+
+  <!-- HERO WELCOME BANNER -->
+  <section class="bg-gradient-to-br from-classroom-900 via-classroom-800 to-classroom-600 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        🛠️ 8. Troubleshooting & Common Problems • IT Triage Desk
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Your Desk-Side Support Manual</h2>
+      <p class="text-classroom-100 text-sm sm:text-base font-medium leading-relaxed">
+        Don’t panic—grading and sync hitches happen to everyone, and almost all of them can be resolved in under two minutes without waiting for a support ticket. Keep this guide tiled next to your active Aeries tab to instantly diagnose locked rosters, missing Canvas scores, empty dashboards, or publishing blockages!
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE DESK-SIDE DIAGNOSTIC TRIAGE TOOL -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-start gap-4 border-b border-slate-100 pb-4">
+      <div class="w-10 h-10 rounded-xl bg-classroom-50 text-classroom-800 flex items-center justify-center font-black text-lg flex-shrink-0 border border-classroom-100">
+        <i class="fa-solid fa-screwdriver-wrench text-base"></i>
+      </div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Active Incident Resolver & Self-Support Triage</h3>
+        <p class="text-xs text-slate-500 font-semibold">
+          Select your current Aeries or sync headache below. The diagnostic panel will instantly map the problem, target path, self-resolution, and when to call support.
+        </p>
+      </div>
+    </div>
+
+    <!-- Dropdown Selector and Gauge Indicator -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+      <div class="md:col-span-7 space-y-4">
+        <div class="space-y-1">
+          <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500">1. Select Your Aeries Symptom</label>
+          <select id="triage-selector" onchange="runTriage()" class="w-full px-3 py-2 border rounded-xl bg-white font-bold text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-classroom-500">
+            <option value="empty_gb">My gradebook is completely empty or missing</option>
+            <option value="canvas_fail">My Canvas grades aren't syncing to Aeries</option>
+            <option value="att_locked">My attendance sheet is locked or won't save</option>
+            <option value="missing_student">A new student is on my physical roster but missing in Aeries</option>
+            <option value="parent_invisible">Parents say they cannot see current assignment scores</option>
+          </select>
+        </div>
+
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Resolution Triage Level</span>
+            <span id="triage-badge" class="px-2.5 py-0.5 rounded text-[10px] font-black">--</span>
+          </div>
+          <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+            <div id="triage-gauge" class="h-full gauge-bar bg-classroom-600" style="width: 0%;"></div>
+          </div>
+          <p id="triage-gauge-text" class="text-xs font-semibold text-slate-600 leading-normal">--</p>
+        </div>
+      </div>
+
+      <!-- Live Dynamic Output Panel -->
+      <div class="md:col-span-5 bg-classroom-50 border border-classroom-100 p-5 rounded-3xl flex flex-col justify-between space-y-4">
+        <div class="space-y-2">
+          <span class="text-[9px] font-black uppercase tracking-widest text-classroom-800 block">Immediate Diagnosis</span>
+          <h4 id="diag-title" class="text-sm font-extrabold text-slate-900">--</h4>
+          <p id="diag-cause" class="text-xs text-slate-600 leading-relaxed font-medium">--</p>
+        </div>
+
+        <div class="border-t border-classroom-200/50 pt-3 space-y-2">
+          <span class="text-[9px] font-black uppercase tracking-widest text-classroom-800 block">WUSD Action Path</span>
+          <div id="diag-path" class="path">--</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Resolution Panel -->
+    <div id="resolution-detail" class="bg-slate-50 border border-slate-200 p-6 rounded-2xl space-y-4">
+      <!-- Injected Dynamically by JavaScript -->
+    </div>
+  </section>
+
+  <!-- REPAIR PLAYBOOKS FOR HIGHEST VOLUME TICKETS -->
+  <section class="space-y-8">
+
+    <!-- PLAYBOOK 1: THE AUGUST GRADEBOOK RESET -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">1</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Operational Triage • Back-to-school</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Symptom: My Gradebook is Completely Empty</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          Usually, this happens on your first week of school or right after a trimester rollover. You log in, but your dashboard shows zero gradebooks, or last year’s courses.
+        </p>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 font-bold block">Why it happens & How to Fix it:</p>
+          <ul class="list-disc pl-5 space-y-2 text-slate-500">
+            <li><strong class="text-slate-800">Check Your Year Filter context:</strong> Aeries defaults your login to the most recent historical year you actively modified. Look at the very top-right of your screen. If it says last year, switch the dropdown to the active academic year.</li>
+            <li><strong class="text-slate-800">Rosters are Not Loaded Yet:</strong> If you are in the correct year, you may need to import your scheduling blocks. Navigate to <span class="path">Manage Gradebook → Add/Link Sections</span> and click <span class="font-black text-classroom-700">Add Sections</span> to pull your classes from the central master scheduling directory.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 2: CANVAS PASSBACK BLOCKAGES -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">2</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Canvas Integration • Grade Passback</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Symptom: Canvas Sync is Running but Grades Are Missing</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          You initiated Canvas "Sync to SIS" last night, but your grading columns inside Aeries are still empty or completely blank.
+        </p>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+          <p class="text-slate-900 font-bold block">Verify the 3 Passback Constraints:</p>
+          <ol class="list-decimal pl-5 space-y-2 text-slate-500">
+            <li><strong class="text-slate-800">Check Category Name Spelling:</strong> Canvas Assignment Groups must match Aeries Categories exactly (including spaces and capitalization). If Aeries says "Homework" but Canvas says "HW" or "homework", the API passback rejects the transfer.</li>
+            <li><strong class="text-slate-800">Enable 'Sync to SIS' Toggle:</strong> Inside Canvas, click on individual assignments and ensure the "Sync to SIS" checkbox is checked. Unchecked assignments are bypassed.</li>
+            <li><strong class="text-slate-800">Verify Student Email Formats:</strong> If a single student's grades are missing, check their email in Canvas. It must match their official `@wusd.k12.ca.us` district SSO account.</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- PLAYBOOK 3: SEATING & ENROLLMENT SYNCS -->
+    <article class="step bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row gap-6 items-start glow-card border-l-8 border-l-classroom-600">
+      <div class="w-12 h-12 rounded-2xl bg-classroom-100 text-classroom-800 flex items-center justify-center font-black text-xl flex-shrink-0">3</div>
+      <div class="space-y-4 flex-1">
+        <div class="space-y-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">Roster Alignment • Enrollment delays</span>
+          <h3 class="text-xl font-extrabold text-slate-900">Symptom: Student is physically present but missing in Aeries</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+          A new student walks into your classroom with a scheduling slip from the office, but their name does not display on your digital attendance or grading rosters.
+        </p>
+
+        <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600 text-slate-500">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong class="text-slate-800">Rosters Sync Overnights:</strong> Demographics are entered by school registrars and overnight synchronization runs at 3:00 AM. Allow 24 hours for new enrollments to populate teacher dashboards automatically.</li>
+            <li><strong class="text-slate-800">Force Student Import:</strong> If you need to grade or mark attendance immediately, open your gradebook. Navigate to <span class="font-black text-classroom-700">Manage Students</span> and click <span class="font-black text-classroom-700">Add Students</span>. Aeries will instantly pull any newly registered student from the master scheduling database.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- COGNITIVE KNOWLEDGE CHECKLIST -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+      <div class="text-3xl">🎒</div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Active Self-Support Checklist</h3>
+        <p class="text-xs text-slate-500 font-semibold">Track your self-support checklist to build confidence. Your state is preserved locally in your browser:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      
+      <div class="lg:col-span-8 space-y-3" id="trouble-tasks-container">
+        <!-- Javascript populated checklists -->
+      </div>
+
+      <div class="lg:col-span-4 bg-classroom-50 border border-classroom-100 p-5 rounded-2xl space-y-3 text-center">
+        <strong class="text-xs text-classroom-800 uppercase tracking-widest block font-extrabold">Support Readiness Score:</strong>
+        <div class="text-4xl font-black text-classroom-900" id="percent-display-text">0% Ready</div>
+        <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+          <div id="tracker-progress-bar" class="h-full bg-classroom-600 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+        <button onclick="resetTroubleTracker()" class="text-[10px] font-bold text-classroom-700 hover:underline">Reset Progress</button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-classroom-100 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium">
+  WUSD Aeries Resource Center • Troubleshooting & Common Problems • Formatted for side-by-side active classroom triage.
+</footer>
+
+<script>
+// TRIAGE DATABASE DICTIONARY
+const triageDatabase = {
+  empty_gb: {
+    title: "My gradebook is completely empty or missing",
+    cause: "Usually caused by an incorrect Year or School context selector upon login, or sections are not yet linked.",
+    path: "Aeries Header (Top Right Year Selector) OR Manage Gradebook → Add/Link Sections",
+    badge: "Teacher Action (2 Mins)",
+    gaugeVal: 20,
+    gaugeText: "Self-correct this in 2 minutes! Verify your active year first.",
+    remedy: `
+      <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+        <h4 class="text-sm font-black text-slate-800 uppercase">Self-Resolution Steps:</h4>
+        <ol class="list-decimal pl-5 space-y-1.5 text-slate-500">
+          <li>Look at the very top-right corner of your screen next to your name. Verify that the school year dropdown reflects the active academic term (e.g. 2026-2027) and your school is correct.</li>
+          <li>If the year matches but you still see no classes, navigate to <span class="font-mono bg-slate-100 px-1 rounded text-slate-800">Gradebook Dashboard → Manage Gradebook → Add/Link Sections</span>.</li>
+          <li>Click <span class="text-classroom-700 font-black">Add Sections</span> and check the box next to your assigned periods to link them to your gradebook framework.</li>
+        </ol>
+        <div class="p-3.5 bg-orange-50 border border-orange-100 rounded-xl text-orange-900 mt-2 font-medium">
+          <strong>⚠️ When to Call Support:</strong> If you are in the correct year, but no sections display under Add/Link Sections, your master schedule assignments may not have been finalized by your school registrar. Email your site clerk.
+        </div>
+      </div>
+    `
+  },
+  canvas_fail: {
+    title: "My Canvas grades aren't syncing to Aeries",
+    cause: "Most commonly caused by spelling differences in Category Names across both platforms, or missing SIS Sync flags in Canvas.",
+    path: "Aeries Gradebook → Manage Gradebook → Categories AND Canvas → Assignments",
+    badge: "Teacher Action (5 Mins)",
+    gaugeVal: 40,
+    gaugeText: "Highly fixable! This is a category naming or configuration mismatch.",
+    remedy: `
+      <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+        <h4 class="text-sm font-black text-slate-800 uppercase">Self-Resolution Steps:</h4>
+        <ol class="list-decimal pl-5 space-y-1.5 text-slate-500">
+          <li>Compare category names side-by-side. If Aeries lists "Assessments" (plural) but Canvas lists "Assessment" (singular) or "Tests", the sync will fail. Align the spellings exactly.</li>
+          <li>Inside Canvas, go to Assignments and edit individual cards. Ensure the checkbox for <span class="font-black">"Sync to SIS"</span> is toggled on.</li>
+          <li>Inside Canvas Gradebook, click <span class="font-black">Actions → Sync to SIS</span> to re-initiate the direct LTI transfer.</li>
+        </ol>
+        <div class="p-3.5 bg-orange-50 border border-orange-100 rounded-xl text-orange-900 mt-2 font-medium">
+          <strong>⚠️ When to Call Support:</strong> If spelling and LTI SIS toggles match exactly, but the passback fails with an 'LTI Token Expired' warning, your authentication credentials have timed out. Navigate to <span class="font-mono">Manage Gradebook → LMS Options</span>, click <span class="font-black">Disconnect</span>, and re-authorize with district G-Suite/SSO.
+        </div>
+      </div>
+    `
+  },
+  att_locked: {
+    title: "My attendance sheet is locked or won't save",
+    cause: "Occurs if the district's legal 3-day teacher correction window has passed, or if the attendance is outside standard period times.",
+    path: "Aeries Attendance Sheet → Lock Icon Status Indicators",
+    badge: "Requires Registrar / Support (24 hours)",
+    gaugeVal: 80,
+    gaugeText: "System locked. Registration or office staff intervention required.",
+    remedy: `
+      <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+        <h4 class="text-sm font-black text-slate-800 uppercase">Self-Resolution Steps:</h4>
+        <p class="text-slate-500">Under California Ed Code, teachers have exactly 3 days to adjust rolls. If a lock icon displays, Aeries database security has frozen the attendance table record.</p>
+        <ol class="list-decimal pl-5 space-y-1.5 text-slate-500">
+          <li>Identify the target student name, date, and specific period correction required.</li>
+          <li>Do not submit multiple empty rosters.</li>
+          <li>Email your site's Attendance Clerk directly with the details so they can unlock and excuse the record in the administration panel.</li>
+        </ol>
+        <div class="p-3.5 bg-emerald-50 border border-emerald-100 rounded-xl text-classroom-900 mt-2 font-medium">
+          <strong>💡 Pro Tip:</strong> To avoid locked records, always update tardies on the active day. Leaving a late student marked absent causes automated truancy alerts to families.
+        </div>
+      </div>
+    `
+  },
+  missing_student: {
+    title: "Student is physically present but missing in Aeries",
+    cause: "Normally caused by overnight demographic sync intervals, or students are assigned to the wrong section in the Master Schedule.",
+    path: "Aeries Gradebook Dashboard → Manage Students → Click [Add Students]",
+    badge: "Teacher Action (1 Min)",
+    gaugeVal: 10,
+    gaugeText: "Fix this instantly! Run the Aeries student pull utility.",
+    remedy: `
+      <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+        <h4 class="text-sm font-black text-slate-800 uppercase">Self-Resolution Steps:</h4>
+        <p class="text-slate-500">When school registrars enter a new student, Aeries automatically links them during nightly sync cycles. You can force an instant import in 60 seconds:</p>
+        <ol class="list-decimal pl-5 space-y-1.5 text-slate-500">
+          <li>Open your active Gradebook card. Click on <span class="font-black">Manage Students</span>.</li>
+          <li>Click the button labeled <span class="text-classroom-700 font-black">Add Students</span>.</li>
+          <li>Aeries will scan current demographics and pull the newly enrolled student into your active roster immediately, letting you score assignments right away.</li>
+        </ol>
+        <div class="p-3.5 bg-orange-50 border border-orange-100 rounded-xl text-orange-900 mt-2 font-medium">
+          <strong>⚠️ When to Call Support:</strong> If the student still doesn't display, they may have been scheduled into a different section. Email your registrar to verify the section number printed on the student's locator schedule.
+        </div>
+      </div>
+    `
+  },
+  parent_invisible: {
+    title: "Parents say they cannot see current assignments",
+    cause: "Caused by the 'Publish to Portal' visibility checkbox remaining unchecked on individual assignment configurations.",
+    path: "Aeries Gradebook → Assignments → Select Assignment → Edit → 'Publish to Portal' Toggle",
+    badge: "Teacher Action (1 Min)",
+    gaugeVal: 30,
+    gaugeText: "Self-correct this in 60 seconds! Change the visibility settings.",
+    remedy: `
+      <div class="space-y-3 text-xs leading-relaxed font-semibold text-slate-600">
+        <h4 class="text-sm font-black text-slate-800 uppercase">Self-Resolution Steps:</h4>
+        <p class="text-slate-500">By default, some bulk-created or Canvas-imported assignments are saved in draft format, hiding them on parent dashboards:</p>
+        <ol class="list-decimal pl-5 space-y-1.5 text-slate-500">
+          <li>Open your Gradebook, navigate to the <span class="font-bold">Assignments</span> tab, and locate the missing assignment column.</li>
+          <li>Click the column header or select <span class="font-bold">Edit Assignment</span>.</li>
+          <li>Ensure the checkbox labeled <span class="font-bold text-classroom-700">"Publish to Portal"</span> (or "Show to Parent/Student") is checked.</li>
+          <li>Save the changes. Roster grades will instantly render on parent dashboards.</li>
+        </ol>
+      </div>
+    `
+  }
+};
+
+// RUN ACTIVE TRIAGE RESOLUTIONS
+function runTriage() {
+  const selection = document.getElementById('triage-selector').value;
+  const target = triageDatabase[selection];
+  const container = document.getElementById('resolution-detail');
+
+  if (!target) return;
+
+  // Render Left Gauge HUD
+  document.getElementById('diag-title').textContent = target.title;
+  document.getElementById('diag-cause').textContent = target.cause;
+  document.getElementById('diag-path').textContent = target.path;
+  document.getElementById('triage-badge').textContent = target.badge;
+  
+  // Set badge class styling
+  let badgeStyle = "bg-green-100 text-green-800";
+  if (target.badge.includes("Registrar")) {
+    badgeStyle = "bg-yellow-100 text-yellow-800";
+  }
+  document.getElementById('triage-badge').className = `px-2.5 py-0.5 rounded text-[10px] font-black ${badgeStyle}`;
+
+  // Update Triage Gauge bar
+  const bar = document.getElementById('triage-gauge');
+  bar.style.width = target.gaugeVal + '%';
+  document.getElementById('triage-gauge-text').textContent = target.gaugeText;
+
+  // Render Right Remedy detailed instructions
+  container.innerHTML = target.remedy;
+}
+
+// TRIAGE CHECKLIST LOCALSTORAGE STATE
+const TROUBLE_STORAGE_KEY = 'wusd_teacher_troubleshooting_manual_state';
+const troubleTasks = [
+  "I have executed a live Triage Diagnostic run inside the support console above.",
+  "I can verify and switch active academic year contexts in Aeries (top-right corner).",
+  "I know how to align Canvas and Aeries category spellings to prevent sync blocks.",
+  "I understand how to force-add a newly registered student via 'Add Students'.",
+  "I know how to toggle 'Publish to Portal' visibility on draft assignments.",
+  "I can identify and report locked attendance sheets to the site attendance clerk."
+];
+
+function initTroubleTracker() {
+  const container = document.getElementById('trouble-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(TROUBLE_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  troubleTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-classroom-50 border-classroom-200' : 'border-slate-100 bg-white'}`;
+    taskRow.setAttribute('onclick', `toggleTroubleTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-5 h-5 border rounded-lg mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-classroom-600 border-classroom-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3.5 h-3.5 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-xs font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400 font-medium' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = troubleTasks.length > 0 ? Math.round((completedCount / troubleTasks.length) * 100) : 0;
+  document.getElementById('tracker-progress-bar').style.width = percent + '%';
+  document.getElementById('percent-display-text').textContent = `${percent}% Ready`;
+}
+
+function toggleTroubleTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(TROUBLE_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(TROUBLE_STORAGE_KEY, JSON.stringify(savedState));
+  initTroubleTracker();
+}
+
+function resetTroubleTracker() {
+  localStorage.removeItem(TROUBLE_STORAGE_KEY);
+  initTroubleTracker();
+}
+
+// WINDOW ONLOAD TRIAGE INITIALIZATION
+window.onload = function() {
+  runTriage();
+  initTroubleTracker();
+};
+</script>
+
+</body>
+</html>
