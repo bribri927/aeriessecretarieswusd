@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quick Training & Refreshers - WUSD Aeries Teacher Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          classroom: {
+            50: '#f0fdf4',
+            100: '#dcfce7',
+            200: '#bbf7d0',
+            500: '#22c55e',
+            600: '#16a34a',
+            700: '#15803d',
+            800: '#166534',
+            900: '#14532d',
+            950: '#022c22',
+          },
+          slate: {
+            900: '#0f172a',
+            950: '#020617',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style type="text/css">
+  .glow-card {
+    box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.04);
+  }
+  .path {
+    display: inline-block;
+    background: #0f172a;
+    color: #38bdf8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    margin: 4px 0 8px;
+    border: 1px solid #1e293b;
+  }
+  .progress-fill {
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#f7fcf9] to-[#edf9f1] min-h-screen text-slate-900 font-sans antialiased flex flex-col justify-between">
+
+<!-- TOP HEADER BAR -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-classroom-800 to-classroom-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
+        W
+      </div>
+      <div>
+        <h1 class="text-sm font-extrabold text-slate-900 tracking-tight leading-none">
+          WUSD Teacher Aeries Workspace
+        </h1>
+        <p class="text-[10px] font-semibold text-slate-500 mt-1">Washington Unified School District Support Portal</p>
+      </div>
+    </div>
+    
+    <nav class="flex items-center gap-1.5 flex-wrap text-xs font-semibold text-slate-600">
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition" href="https://sites.google.com/wusd.k12.ca.us/wusdaeriesresourcecenter/home" target="_blank" rel="noopener noreferrer">Aeries Home</a>
+      <a class="px-2.5 py-1.5 rounded-lg hover:bg-slate-50 hover:text-classroom-700 transition font-bold text-classroom-800" href="teacher-resources.html">🍎 Teacher Directory</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN CONTENT CONTAINER -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow">
+
+  <!-- HERO WELCOME BANNER -->
+  <section class="bg-gradient-to-br from-classroom-900 via-classroom-800 to-classroom-600 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl space-y-4">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+        🎓 10. Quick Training & Refreshers • Micro-PD
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-none">Bite-Sized Professional Development</h2>
+      <p class="text-classroom-100 text-sm sm:text-base font-medium leading-relaxed">
+        We know your planning time is valuable. This "Micro-PD" center is built with quick, two-minute on-demand walkthroughs, essential start-of-year guides, and end-of-term checklist refreshers. Run these interactive modules right next to your active database window to confirm settings in under 5 minutes!
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE MICRO-PD STEPS PLAYER -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-start gap-4 border-b border-slate-100 pb-4">
+      <div class="w-10 h-10 rounded-xl bg-classroom-50 text-classroom-800 flex items-center justify-center font-black text-lg flex-shrink-0 border border-classroom-100">
+        <i class="fa-solid fa-person-running text-base"></i>
+      </div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">WUSD Interactive On-Demand Training Player</h3>
+        <p class="text-xs text-slate-500 font-semibold">
+          Select an active training module, click through the quick, bite-sized slides, and pass the 1-question check to earn your seasonal PD badge!
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      
+      <!-- Stepper Controls (Left 4 cols) -->
+      <div class="lg:col-span-4 flex flex-col justify-between gap-3 bg-slate-50 p-4 rounded-2xl border">
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block">Select Refresher Course</span>
+        
+        <div class="flex flex-col gap-2 flex-grow">
+          <button onclick="switchRefresher('bts')" id="ref-btn-bts" class="ref-btn text-left p-3 border-2 rounded-xl text-xs font-black transition bg-classroom-600 text-white border-classroom-600">
+            🚀 Back-To-School Setups
+          </button>
+          <button onclick="switchRefresher('attendance')" id="ref-btn-attendance" class="ref-btn text-left p-3 border rounded-xl text-xs font-bold transition bg-white hover:bg-slate-50">
+            📝 Daily Attendance Sprints
+          </button>
+          <button onclick="switchRefresher('grading')" id="ref-btn-grading" class="ref-btn text-left p-3 border rounded-xl text-xs font-bold transition bg-white hover:bg-slate-50">
+            📊 Quarter-End Report Cards
+          </button>
+          <button onclick="switchRefresher('archive')" id="ref-btn-archive" class="ref-btn text-left p-3 border rounded-xl text-xs font-bold transition bg-white hover:bg-slate-50">
+            🔒 End-Of-Year Archival
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide Display & Quiz Panel (Right 8 cols) -->
+      <div class="lg:col-span-8 bg-[#fdfdfd] border rounded-2xl p-6 flex flex-col justify-between space-y-6 min-h-[320px]">
+        
+        <!-- Interactive Header & Stepper Progress bar -->
+        <div class="space-y-2">
+          <div class="flex justify-between items-center text-[10px] font-black uppercase text-slate-400">
+            <span id="player-course-title">Back-to-School Setup</span>
+            <span id="player-step-indicator">Slide 1 of 3</span>
+          </div>
+          <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+            <div id="player-progress-bar" class="h-full bg-classroom-600 progress-fill" style="width: 33%;"></div>
+          </div>
+        </div>
+
+        <!-- Slide Body Text Area -->
+        <div class="space-y-2 flex-grow flex flex-col justify-center">
+          <h4 id="slide-title" class="text-base font-extrabold text-classroom-950">--</h4>
+          <p id="slide-text" class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">--</p>
+          <div id="slide-interactive-area" class="mt-4">
+            <!-- Dynamically populated if quiz or badge -->
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="border-t pt-4 flex justify-between items-center">
+          <button onclick="prevSlide()" id="prev-btn" class="px-3.5 py-1.5 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 text-slate-600 transition">
+            Back
+          </button>
+          <button onclick="nextSlide()" id="next-btn" class="px-5 py-1.5 bg-classroom-600 text-white rounded-xl text-xs font-black uppercase tracking-wider hover:bg-classroom-700 transition">
+            Next
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MICRO-PD CARD DIRECTORIES -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- CARD 1: ATTENDANCE DASH -->
+    <article class="bg-white border border-slate-200 rounded-3xl p-5 shadow-sm hover:border-classroom-200 transition glow-card flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-2xl">📝</span>
+          <span class="px-2 py-0.5 bg-classroom-50 text-classroom-800 border border-classroom-100 text-[9px] font-black uppercase tracking-wider rounded-lg">2-Min Sprint</span>
+        </div>
+        <h4 class="text-sm font-extrabold text-classroom-950">The 2-Minute Attendance Dash</h4>
+        <p class="text-xs text-slate-500 leading-relaxed">
+          The legal roll-call checklist. Present students remain completely blank. Absent students are marked as <strong>Absent (A)</strong>, and late arrivals are updated immediately to <strong>Tardy (T)</strong>.
+        </p>
+        <div class="path">Aeries Sidebar → Attendance → Take Attendance</div>
+      </div>
+    </article>
+
+    <!-- CARD 2: GRADEBOOK SETUPS -->
+    <article class="bg-white border border-slate-200 rounded-3xl p-5 shadow-sm hover:border-classroom-200 transition glow-card flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-2xl">📘</span>
+          <span class="px-2 py-0.5 bg-classroom-50 text-classroom-800 border border-classroom-100 text-[9px] font-black uppercase tracking-wider rounded-lg">3-Min Initializer</span>
+        </div>
+        <h4 class="text-sm font-extrabold text-classroom-950">The 3-Minute Gradebook Setup</h4>
+        <p class="text-xs text-slate-500 leading-relaxed">
+          Setting up weighted categories. Check the <strong>"Do Weighted Grading"</strong> box under configurations, enter categories (Homework, Tests), and confirm weights total exactly 100%.
+        </p>
+        <div class="path">Manage Gradebook → Categories → Add Category</div>
+      </div>
+    </article>
+
+    <!-- CARD 3: REPORT CARDS -->
+    <article class="bg-white border border-slate-200 rounded-3xl p-5 shadow-sm hover:border-classroom-200 transition glow-card flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-2xl">📊</span>
+          <span class="px-2 py-0.5 bg-classroom-50 text-classroom-800 border border-classroom-100 text-[9px] font-black uppercase tracking-wider rounded-lg">5-Min Rollup</span>
+        </div>
+        <h4 class="text-sm font-extrabold text-classroom-950">The 5-Minute Report Card Rollup</h4>
+        <p class="text-xs text-slate-500 leading-relaxed">
+          Migrating gradebook totals. Import grades directly into report card tables (`GRD`), enter citizenship codes (O, S, N, U), select comment codes, and sign the verification printout.
+        </p>
+        <div class="path">Grades → Grade Reporting → Initialize Grade Reporting</div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- SEASONAL REFRESHERS CHRONOLOGY -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+      <div class="text-2xl">📅</div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Annual Refresher Calendar & Milestones</h3>
+        <p class="text-xs text-slate-500 font-semibold">Track key operational milestones by season to maintain compliant database records:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- BOY -->
+      <div class="p-4 bg-slate-50 border border-slate-100 rounded-2xl space-y-2">
+        <span class="text-[10px] font-black text-classroom-800 uppercase tracking-widest bg-classroom-50 border border-classroom-100 px-2 py-0.5 rounded">August / September</span>
+        <h4 class="text-xs font-black text-slate-900 uppercase">Beginning-Of-Year Setups</h4>
+        <ul class="list-disc pl-4 text-[11px] text-slate-500 font-semibold space-y-1.5 leading-normal">
+          <li>Create active gradebook cards and link adjacent sections.</li>
+          <li>Set up syllabus categories and confirm weights total 100%.</li>
+          <li>Audit opening week attendance and run the Student Import utility to pull new roster enrollments.</li>
+        </ul>
+      </div>
+
+      <!-- MOY -->
+      <div class="p-4 bg-slate-50 border border-slate-100 rounded-2xl space-y-2">
+        <span class="text-[10px] font-black text-classroom-800 uppercase tracking-widest bg-classroom-50 border border-classroom-100 px-2 py-0.5 rounded">December / January</span>
+        <h4 class="text-xs font-black text-slate-900 uppercase">Semester / Quarter Rotations</h4>
+        <ul class="list-disc pl-4 text-[11px] text-slate-500 font-semibold space-y-1.5 leading-normal">
+          <li>Run missing assignment sweeps (`MI` code check) before grading locks.</li>
+          <li>Import term averages to report cards and double-click to add comment codes.</li>
+          <li>Re-authorize G-Suite/Canvas secure tokens to prevent grade passback failures.</li>
+        </ul>
+      </div>
+
+      <!-- EOY -->
+      <div class="p-4 bg-slate-50 border border-slate-100 rounded-2xl space-y-2">
+        <span class="text-[10px] font-black text-classroom-800 uppercase tracking-widest bg-classroom-50 border border-classroom-100 px-2 py-0.5 rounded">May / June</span>
+        <h4 class="text-xs font-black text-slate-900 uppercase">End-Of-Year Grade Archival</h4>
+        <ul class="list-disc pl-4 text-[11px] text-slate-500 font-semibold space-y-1.5 leading-normal">
+          <li>Confirm all outstanding assignments are scored or marked `EX` / `MI`.</li>
+          <li>Generate clean progress reports, print parent summaries, and collect signatures.</li>
+          <li>Print, sign, and deliver the final Term Grade Verification Sheet to the site registrar.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONFIDENCE BUILDER STATE CHECKLIST -->
+  <section class="bg-white rounded-3xl border border-classroom-100 p-6 sm:p-8 glow-card space-y-6">
+    <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+      <div class="text-3xl">🎒</div>
+      <div>
+        <h3 class="text-lg font-black text-classroom-950">Active Micro-PD Checklist Tracker</h3>
+        <p class="text-xs text-slate-500 font-semibold">Track your progress across these critical daily, monthly, and seasonal tasks. Your progress is saved locally:</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      
+      <div class="lg:col-span-8 space-y-3" id="quick-tasks-container">
+        <!-- Javascript populated checklists -->
+      </div>
+
+      <div class="lg:col-span-4 bg-classroom-50 border border-classroom-100 p-5 rounded-2xl space-y-3 text-center">
+        <strong class="text-xs text-classroom-800 uppercase tracking-widest block font-extrabold">Training Completion Rate:</strong>
+        <div class="text-4xl font-black text-classroom-900" id="percent-display-text">0% Done</div>
+        <div class="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden">
+          <div id="tracker-progress-bar" class="h-full bg-classroom-600 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+        <button onclick="resetQuickTracker()" class="text-[10px] font-bold text-classroom-700 hover:underline">Reset Progress</button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-classroom-100 bg-white/80 py-8 text-center text-xs text-slate-500 font-medium animate-fade-in">
+  WUSD Aeries Resource Center • Quick Training & Refreshers • Formatted for side-by-side active classroom reference.
+</footer>
+
+<!-- INTERACTIVE PD STEPPER ENGINE -->
+<script>
+// SLIDES DATABASE FOR ON-DEMAND PLAYER
+const refresherCourses = {
+  bts: {
+    title: "Back-to-School Gradebook Setup",
+    slides: [
+      {
+        title: "Slide 1: Link Your Sections",
+        text: "Never create separate gradebooks if you teach multiple periods of the same class (e.g., Period 1, 3, and 5 Biology). In Aeries, open a single gradebook, click <strong>Manage Gradebook → Add/Link Sections</strong>, and link adjacent periods to manage all assignments in one central list.",
+        quiz: null
+      },
+      {
+        title: "Slide 2: Set Weighted Categories",
+        text: "Syllabus categories (Homework, Tests, Projects) must sum to exactly <strong>100%</strong> for grades to compute accurately. In configurations, check <strong>'Do Weighted Grading'</strong> and input category weights carefully before entering assignments.",
+        quiz: null
+      },
+      {
+        title: "Slide 3: Comprehensive Onboarding Quiz",
+        text: "Let's check your understanding before granting your Back-to-School badge. What is the database impact of enabling weighted categories that total 95% instead of 100%?",
+        quiz: {
+          q: "What happens if category weights total 95%?",
+          opts: {
+            A: "Aeries will automatically adjust and add 5% to the highest weighted category.",
+            B: "Aeries cannot compute standard averages, causing grades to display incorrectly or fail.",
+            C: "State audits will flag the school, but grades will calculate normally."
+          },
+          correct: "B"
+        }
+      }
+    ]
+  },
+  attendance: {
+    title: "Daily Attendance Sprints",
+    slides: [
+      {
+        title: "Slide 1: Record Absent Roster Codes",
+        text: "Open the attendance module. Present students should remain completely <strong>Blank</strong>. If a student is physically absent, click their row cell and assign the <strong>Absent (A)</strong> code from the status dropdown menu.",
+        quiz: null
+      },
+      {
+        title: "Slide 2: Manage Late Arrivals & Tardies",
+        text: "If a student arrives late within your school's tardy threshold window, update their row cell from Absent (A) to <strong>Tardy (T)</strong>. Leaving them marked absent triggers automated truancy calls to their family, causing unnecessary front-office panic.",
+        quiz: null
+      },
+      {
+        title: "Slide 3: Attendance Compliance Check",
+        text: "Let's verify daily attendance mandates under California Education Code before locking the module.",
+        quiz: {
+          q: "Under California law, how many school days do teachers have to correct an attendance error?",
+          opts: {
+            A: "Exactly 3 school days before the database security freezes the record.",
+            B: "Exactly 5 school days.",
+            C: "Changes can be made at any point prior to end-of-year closeouts."
+          },
+          correct: "A"
+        }
+      }
+    ]
+  },
+  grading: {
+    title: "Quarter-End Report Card Rollup",
+    slides: [
+      {
+        title: "Slide 1: Zero Out Empty Cells",
+        text: "Before report cards are generated, check your spreadsheet. No assignments can remain blank. Change blank incomplete cells to zero scores or use the <strong>MI (Missing)</strong> code, which counts as a zero and alerts parents.",
+        quiz: null
+      },
+      {
+        title: "Slide 2: Import Gradebook Totals",
+        text: "Navigate to <strong>Initialize Grade Reporting</strong>. Use the Aeries import function to pull final percentage marks directly from your digital gradebook into the report card table (`GRD`), eliminating manual grade entering.",
+        quiz: null
+      },
+      {
+        title: "Slide 3: Report Card Rollup Quiz",
+        text: "Check your understanding before completing your report card submission.",
+        quiz: {
+          q: "What does the 'EX' code do when entered in an assignment cell?",
+          opts: {
+            A: "Gives the student extra credit for that specific assignment.",
+            B: "Bypasses gradebook calculations, ensuring the assignment does not help or hurt their average.",
+            C: "Flags the assignment as missing, prompting counselor support."
+          },
+          correct: "B"
+        }
+      }
+    ]
+  },
+  archive: {
+    title: "End-of-Year Gradebook Closeout",
+    slides: [
+      {
+        title: "Slide 1: Compile Independent Study Contracts",
+        text: "Check that all short-term Independent Study contract check-ins are verified and marked. Change temporary placeholders to code <strong>I</strong> (Independent Study) once teachers evaluate the submitted coursework.",
+        quiz: null
+      },
+      {
+        title: "Slide 2: Print Grade Verification Sheets",
+        text: "Run the final Term Grade Verification Report. Print, sign, and deliver the hardcopy sheet to your school registrar to certify that your digital records are locked, completed, and audited.",
+        quiz: null
+      },
+      {
+        title: "Slide 3: Closeout Security Quiz",
+        text: "Let's review final closeout compliance before archive locking.",
+        quiz: {
+          q: "Why is submitting signed verification sheets required if grades are saved online?",
+          opts: {
+            A: "Signed verification sheets provide a legally binding physical audit trail required by state auditors.",
+            B: "Verification sheets are only used to notify counselor teams.",
+            C: "Signed sheets are required only for graduating senior cohorts."
+          },
+          correct: "A"
+        }
+      }
+    ]
+  }
+};
+
+// ACTIVE STATE PARAMS
+let currentCourseKey = 'bts';
+let currentSlideIndex = 0;
+
+function switchRefresher(key) {
+  // Reset button active styles
+  document.querySelectorAll('.ref-btn').forEach(btn => {
+    btn.className = "ref-btn text-left p-3 border rounded-xl text-xs font-bold transition bg-white hover:bg-slate-50";
+  });
+  
+  const activeBtn = document.getElementById(`ref-btn-${key}`);
+  if (activeBtn) {
+    activeBtn.className = "ref-btn text-left p-3 border-2 rounded-xl text-xs font-black transition bg-classroom-600 text-white border-classroom-600";
+  }
+
+  currentCourseKey = key;
+  currentSlideIndex = 0;
+  loadSlide();
+}
+
+function loadSlide() {
+  const course = refresherCourses[currentCourseKey];
+  const slide = course.slides[currentSlideIndex];
+  
+  // Progress & Stepper counts
+  document.getElementById('player-course-title').textContent = course.title;
+  document.getElementById('player-step-indicator').textContent = `Slide ${currentSlideIndex + 1} of ${course.slides.length}`;
+  
+  const pct = ((currentSlideIndex + 1) / course.slides.length) * 100;
+  document.getElementById('player-progress-bar').style.width = pct + '%';
+
+  // Title & Body
+  document.getElementById('slide-title').textContent = slide.title;
+  document.getElementById('slide-text').innerHTML = slide.text;
+
+  // Render Interactive Areas (Quiz or Badges)
+  const interactiveArea = document.getElementById('slide-interactive-area');
+  interactiveArea.innerHTML = '';
+
+  if (slide.quiz) {
+    const quiz = slide.quiz;
+    let quizHtml = `
+      <div class="p-4 bg-slate-50 border rounded-2xl space-y-3 mt-4">
+        <strong class="text-xs text-slate-800 block">${quiz.q}</strong>
+        <div class="grid grid-cols-1 gap-2">
+          ${Object.keys(quiz.opts).map(key => `
+            <button onclick="checkQuizAnswer('${key}')" id="opt-btn-${key}" class="opt-btn text-left p-2.5 border rounded-lg text-xs bg-white hover:bg-slate-50 font-semibold transition">
+              ${key}) ${quiz.opts[key]}
+            </button>
+          `).join('')}
+        </div>
+        <div id="quiz-feedback-banner" class="hidden text-xs font-bold mt-2"></div>
+      </div>
+    `;
+    interactiveArea.innerHTML = quizHtml;
+    document.getElementById('next-btn').disabled = true; // Lock 'Next' until passed
+    document.getElementById('next-btn').className = "px-5 py-1.5 bg-slate-200 text-slate-400 rounded-xl text-xs font-black uppercase tracking-wider cursor-not-allowed";
+  } else {
+    document.getElementById('next-btn').disabled = false;
+    document.getElementById('next-btn').className = "px-5 py-1.5 bg-classroom-600 text-white rounded-xl text-xs font-black uppercase tracking-wider hover:bg-classroom-700 transition";
+  }
+
+  // Handle final badges
+  if (currentSlideIndex === course.slides.length - 1 && !slide.quiz) {
+    renderBadgeClaim();
+  }
+
+  // Back button visibility
+  document.getElementById('prev-btn').disabled = currentSlideIndex === 0;
+  document.getElementById('prev-btn').className = currentSlideIndex === 0
+    ? "px-3.5 py-1.5 border rounded-xl text-xs font-bold bg-slate-100 text-slate-400 cursor-not-allowed"
+    : "px-3.5 py-1.5 border rounded-xl text-xs font-bold bg-white hover:bg-slate-50 text-slate-600 transition";
+}
+
+function checkQuizAnswer(key) {
+  const quiz = refresherCourses[currentCourseKey].slides[currentSlideIndex].quiz;
+  const feedback = document.getElementById('quiz-feedback-banner');
+  
+  // Clear option styles
+  document.querySelectorAll('.opt-btn').forEach(btn => {
+    btn.className = "opt-btn text-left p-2.5 border rounded-lg text-xs bg-white hover:bg-slate-50 font-semibold transition";
+  });
+
+  const selectedBtn = document.getElementById(`opt-btn-${key}`);
+
+  if (key === quiz.correct) {
+    selectedBtn.className = "opt-btn text-left p-2.5 border-2 rounded-lg text-xs bg-green-50 text-green-700 border-green-600 font-bold transition";
+    feedback.className = "text-xs font-bold mt-2 text-green-700";
+    feedback.innerHTML = "✓ Correct! Click Next to earn your refresher course badge.";
+    
+    // Unlock Next Button
+    document.getElementById('next-btn').disabled = false;
+    document.getElementById('next-btn').className = "px-5 py-1.5 bg-classroom-600 text-white rounded-xl text-xs font-black uppercase tracking-wider hover:bg-classroom-700 transition";
+    
+    // Auto trigger final badge on successful quiz check
+    setTimeout(() => {
+      renderBadgeClaim();
+    }, 1000);
+
+  } else {
+    selectedBtn.className = "opt-btn text-left p-2.5 border-2 rounded-lg text-xs bg-red-50 text-red-700 border-red-600 font-bold transition";
+    feedback.className = "text-xs font-bold mt-2 text-red-700";
+    feedback.innerHTML = "✗ Incorrect. Review the course slide material and try again!";
+  }
+}
+
+function renderBadgeClaim() {
+  const interactiveArea = document.getElementById('slide-interactive-area');
+  interactiveArea.innerHTML = `
+    <div class="p-6 bg-classroom-50 border border-classroom-200 rounded-3xl text-center space-y-4 animate-fade-in mt-4">
+      <div class="text-4xl">🏅</div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-black text-classroom-950 uppercase tracking-wider">Refresher Badge Unlocked!</h4>
+        <p class="text-xs text-classroom-800 font-medium">You have completed the visual checks for: ${refresherCourses[currentCourseKey].title}</p>
+      </div>
+      <button onclick="claimRefresherBadge()" class="px-5 py-2.5 bg-classroom-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-classroom-700 active:scale-95 transition shadow-md">
+        Add to Checklist Progress
+      </button>
+    </div>
+  `;
+  document.getElementById('next-btn').disabled = true;
+  document.getElementById('next-btn').className = "px-5 py-1.5 bg-slate-100 text-slate-400 rounded-xl text-xs font-black uppercase tracking-wider cursor-not-allowed";
+}
+
+function claimRefresherBadge() {
+  // Update task 0 in the checklist
+  const savedState = JSON.parse(localStorage.getItem(QUICK_STORAGE_KEY) || '{}');
+  savedState[0] = true;
+  localStorage.setItem(QUICK_STORAGE_KEY, JSON.stringify(savedState));
+  initQuickTracker();
+
+  // Reset Stepper HUD and show confirmation
+  const interactiveArea = document.getElementById('slide-interactive-area');
+  interactiveArea.innerHTML = `
+    <div class="p-5 bg-green-50 border border-green-200 text-green-800 rounded-2xl text-center text-xs font-semibold leading-relaxed">
+      ✓ Training completion updated in your local checklist tracker! Check your progress bar below.
+    </div>
+  `;
+}
+
+function nextSlide() {
+  const course = refresherCourses[currentCourseKey];
+  if (currentSlideIndex < course.slides.length - 1) {
+    currentSlideIndex++;
+    loadSlide();
+  }
+}
+
+function prevSlide() {
+  if (currentSlideIndex > 0) {
+    currentSlideIndex--;
+    loadSlide();
+  }
+}
+
+// STORAGE PD TRACKER ENGINE
+const QUICK_STORAGE_KEY = 'wusd_teacher_quick_training_state';
+const quickTasks = [
+  "I have completed at least one interactive Refresher Course in the simulator above.",
+  "I understand how to record Present (Blank), Absent (A), and Tardy (T) codes.",
+  "I can initialize weighted categories (totaling 100%) and link adjacent sections.",
+  "I know how to run missing assignment sweeps (checking for blank cells vs 'MI').",
+  "I can roll gradebook totals into report card tables ('GRD' file integration).",
+  "I understand the CA Ed Code 3-day compulsory attendance correction window.",
+  "I know how to print final Term Grade Verification Sheets to sign and submit."
+];
+
+function initQuickTracker() {
+  const container = document.getElementById('quick-tasks-container');
+  container.innerHTML = '';
+  
+  const savedState = JSON.parse(localStorage.getItem(QUICK_STORAGE_KEY) || '{}');
+  let completedCount = 0;
+  
+  quickTasks.forEach((task, idx) => {
+    const isChecked = !!savedState[idx];
+    if (isChecked) completedCount++;
+    
+    const taskRow = document.createElement('div');
+    taskRow.className = `flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition ${isChecked ? 'bg-classroom-50 border-classroom-200' : 'border-slate-100 bg-white'}`;
+    taskRow.setAttribute('onclick', `toggleQuickTask(${idx})`);
+    
+    taskRow.innerHTML = `
+      <div class="w-5 h-5 border rounded-lg mt-0.5 flex items-center justify-center flex-shrink-0 transition-all ${isChecked ? 'bg-classroom-600 border-classroom-600 text-white' : 'border-slate-300 bg-white'}">
+        <svg class="w-3.5 h-3.5 ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="text-xs font-semibold text-slate-700 leading-tight ${isChecked ? 'line-through text-slate-400 font-medium' : ''}">${task}</span>
+    `;
+    container.appendChild(taskRow);
+  });
+  
+  const percent = quickTasks.length > 0 ? Math.round((completedCount / quickTasks.length) * 100) : 0;
+  document.getElementById('tracker-progress-bar').style.width = percent + '%';
+  document.getElementById('percent-display-text').textContent = `${percent}% Done`;
+}
+
+function toggleQuickTask(idx) {
+  const savedState = JSON.parse(localStorage.getItem(QUICK_STORAGE_KEY) || '{}');
+  savedState[idx] = !savedState[idx];
+  localStorage.setItem(QUICK_STORAGE_KEY, JSON.stringify(savedState));
+  initQuickTracker();
+}
+
+function resetQuickTracker() {
+  localStorage.removeItem(QUICK_STORAGE_KEY);
+  initQuickTracker();
+}
+
+// WINDOW LOAD INITIALIZATION
+window.onload = function() {
+  switchRefresher('bts');
+  initQuickTracker();
+};
+</script>
+
+</body>
+</html>
